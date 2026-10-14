@@ -1,0 +1,1543 @@
+﻿<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klinik ThibbunCare | Premium Holistic Care</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        window.tailwind = window.tailwind || {};
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        primary: { DEFAULT: 'var(--color-primary)', light: '#CCFBF1', dark: 'var(--color-primary-dark)' },
+                        secondary: { DEFAULT: '#B45309', light: '#FEF3C7' },
+                        surface: '#FAFAFA',
+                    },
+                    boxShadow: {
+                        'premium': '0 4px 20px -2px rgba(15, 118, 110, 0.05), 0 0 3px rgba(0,0,0,0.02)',
+                        'premium-hover': '0 10px 30px -5px rgba(15, 118, 110, 0.1), 0 0 5px rgba(0,0,0,0.04)',
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        :root {
+            --color-primary: #0F766E;
+            --color-primary-dark: #042F2E;
+        }
+        body { background-color: #FAFAFA; color: #1E293B; }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #FAFAFA; }
+        ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230f766e' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .page-header-bg {
+            background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden">
+    <div id="public-view">
+
+    <nav class="glass fixed w-full z-50 transition-all duration-300 shadow-sm" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <a href="javascript:void(0)" onclick="navigateTo('home')" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white shadow-md group-hover:shadow-lg transition-all">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <span class="font-bold text-2xl text-slate-900 tracking-tight">Al-Shafa.</span>
+                </a>
+                
+                <div class="hidden lg:flex items-center space-x-7">
+                    <button onclick="navigateTo('home')" class="nav-link text-sm font-medium text-slate-600 hover:text-primary transition-colors">Beranda</button>
+                    <button onclick="navigateTo('services')" class="nav-link text-sm font-medium text-slate-600 hover:text-primary transition-colors">Layanan</button>
+                    <button onclick="navigateTo('articles')" class="nav-link text-sm font-medium text-slate-600 hover:text-primary transition-colors">Artikel</button>
+                    <button onclick="navigateTo('shop')" class="nav-link text-sm font-medium text-slate-600 hover:text-primary transition-colors">Toko Herbal</button>
+                    <button onclick="navigateTo('branches')" class="nav-link text-sm font-medium text-slate-600 hover:text-primary transition-colors">Cabang</button>
+                    
+                    <button onclick="navigateTo('calculator')" class="text-sm font-medium text-primary hover:text-primary-dark transition-colors flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full">
+                        <i class="fa-solid fa-stethoscope"></i> Cek Kondisi
+                    </button>
+
+                    <button onclick="navigateTo('about')" class="nav-link text-sm font-medium text-slate-600 hover:text-primary transition-colors">Tentang Kami</button>
+
+                    <button onclick="toggleModal('cart-modal')" class="relative p-2 text-slate-700 hover:text-primary transition-colors flex items-center gap-1 group" title="Keranjang Belanja">
+                        <i class="fa-solid fa-cart-shopping text-xl"></i>
+                        <span id="cart-badge-desktop" class="bg-red-500 text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center -mt-3 -ml-1 border-2 border-white shadow-sm">0</span>
+                    </button>
+
+                    <button onclick="openReservationModal()" class="bg-primary hover:bg-primary-dark text-white px-6 py-2.5 rounded-full text-sm font-medium transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+                        Reservasi
+                    </button>
+                </div>
+
+                <div class="lg:hidden flex items-center gap-3">
+                    <button onclick="toggleModal('cart-modal')" class="relative p-2 text-slate-700 hover:text-primary">
+                        <i class="fa-solid fa-cart-shopping text-xl"></i>
+                        <span id="cart-badge-mobile-nav" class="bg-red-500 text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center -mt-3 -ml-1 border-2 border-white shadow-sm">0</span>
+                    </button>
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="text-slate-600 hover:text-primary p-2">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 absolute w-full shadow-xl">
+            <div class="px-4 py-4 space-y-2">
+                <button onclick="navigateTo('home')" class="w-full text-left px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-lg font-medium">Beranda</button>
+                <button onclick="navigateTo('services')" class="w-full text-left px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-lg font-medium">Layanan</button>
+                <button onclick="navigateTo('articles')" class="w-full text-left px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-lg font-medium">Artikel</button>
+                <button onclick="navigateTo('shop')" class="w-full text-left px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-lg font-medium">Toko Herbal</button>
+                <button onclick="navigateTo('branches')" class="w-full text-left px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-lg font-medium">Cabang</button>
+                <button onclick="navigateTo('calculator')" class="w-full text-left px-4 py-3 text-primary bg-primary/5 rounded-lg font-medium flex items-center gap-2">
+                    <i class="fa-solid fa-stethoscope"></i> Cek Kondisi (Gratis)
+                </button>
+                <button onclick="navigateTo('about')" class="w-full text-left px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-lg font-medium">Tentang Kami</button>
+                <button onclick="navigateTo('therapists')" class="w-full text-left px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-lg font-medium">Tim Terapis</button>
+                <button onclick="navigateTo('careers')" class="w-full text-left px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-lg font-medium">Karir</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content" class="min-h-screen">
+        <!-- HALAMAN BERANDA -->
+        <div id="page-home" class="page-view block">
+            <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 hero-bg overflow-hidden min-h-[90vh] flex items-center">
+                <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-primary-light/40 to-transparent rounded-bl-full -z-10"></div>
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+                    <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                        <div class="space-y-8 reveal active">
+                            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 text-slate-600 text-xs font-semibold uppercase tracking-wider shadow-sm">
+                                <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span> Klinik Holistik Islami & TCM
+                            </div>
+                            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-[1.1] tracking-tight">
+                                Kesehatan Sejati <br> Berawal dari <span class="text-primary">Keseimbangan.</span>
+                            </h1>
+                            <p class="text-lg text-slate-600 max-w-lg leading-relaxed font-light">Menggabungkan kearifan Thibbun Nabawi dan sains akupunktur tradisional. Pemulihan alami, aman, dan ditangani oleh terapis tersertifikasi nasional.</p>
+                            <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                                <button onclick="openReservationModal()" class="bg-slate-900 hover:bg-black text-white px-8 py-4 rounded-full font-medium transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 flex items-center justify-center gap-3">
+                                    Reservasi Layanan <i class="fa-solid fa-calendar-check text-sm"></i>
+                                </button>
+                                <button onclick="navigateTo('calculator')" class="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-8 py-4 rounded-full font-medium transition-all shadow-sm flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-microscope text-primary"></i> Deteksi Mandiri
+                                </button>
+                            </div>
+                            <div class="pt-8 flex items-center gap-6 border-t border-slate-200/60 max-w-md">
+                                <div class="flex -space-x-3">
+                                    <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="User">
+                                    <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&q=80" alt="User">
+                                    <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&q=80" alt="User">
+                                </div>
+                                <div>
+                                    <div class="flex text-amber-400 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                    <p class="text-xs font-medium text-slate-500 mt-1">Dipercaya 5.000+ Pasien</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative reveal active lg:ml-auto">
+                            <div class="absolute -left-8 top-12 glass p-4 rounded-2xl shadow-glass flex items-center gap-4 z-20 hidden md:flex">
+                                <div class="w-12 h-12 bg-primary-light/50 rounded-full flex items-center justify-center text-primary"><i class="fa-solid fa-certificate text-xl"></i></div>
+                                <div><p class="text-xs font-bold text-slate-900">Terapis Tersertifikasi</p><p class="text-xs text-slate-500">Izin STPT Resmi</p></div>
+                            </div>
+                            <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                                <div class="absolute inset-0 bg-primary/10 mix-blend-overlay z-10"></div>
+                                <img src="https://images.unsplash.com/photo-1605684954998-685c79d6a018?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Klinik Therapy" class="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-700">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Services (Centered Layout) -->
+            <section class="py-24 bg-white relative border-t border-slate-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                        <h2 class="text-primary font-semibold tracking-wide text-sm uppercase mb-3">Layanan Unggulan</h2>
+                        <h3 class="text-3xl font-bold text-slate-900 mb-6">Terapi Berbasis Bukti & Sunnah</h3>
+                        <button onclick="navigateTo('services')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-6 py-3 rounded-full text-sm font-medium transition-colors inline-flex items-center gap-2">
+                            Lihat Semua Layanan <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div id="home-services-grid" class="grid md:grid-cols-3 gap-8"></div>
+                </div>
+            </section>
+
+            <!-- Featured Products -->
+            <section class="py-24 bg-surface border-y border-slate-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4 reveal">
+                        <div class="max-w-2xl">
+                            <h2 class="text-primary font-semibold tracking-wide text-sm uppercase mb-3">Farmasi Alam</h2>
+                            <h3 class="text-3xl font-bold text-slate-900">Herbal Premium Terkurasi</h3>
+                        </div>
+                        <button onclick="navigateTo('shop')" class="bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-full text-sm font-medium transition-colors shadow-md flex items-center gap-2">
+                            Kunjungi Toko Herbal <i class="fa-solid fa-basket-shopping"></i>
+                        </button>
+                    </div>
+                    <div id="home-products-grid" class="grid grid-cols-2 lg:grid-cols-4 gap-6"></div>
+                </div>
+            </section>
+
+            <!-- Featured Articles -->
+            <section class="py-24 bg-white border-b border-slate-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4 reveal">
+                        <div class="max-w-2xl">
+                            <h2 class="text-primary font-semibold tracking-wide text-sm uppercase mb-3">Edukasi Kesehatan</h2>
+                            <h3 class="text-3xl font-bold text-slate-900">Jurnal Al-Shafa</h3>
+                        </div>
+                        <button onclick="navigateTo('articles')" class="text-sm font-medium text-slate-600 hover:text-primary transition-colors flex items-center gap-2">
+                            Baca Jurnal Lainnya <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div id="home-articles-grid" class="grid md:grid-cols-3 gap-8"></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- HALAMAN TENTANG KAMI -->
+        <div id="page-about" class="page-view hidden">
+            <div class="pt-32 pb-16 page-header-bg text-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal active">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-primary-light text-xs font-semibold uppercase tracking-wider mb-4 backdrop-blur-sm">
+                        <i class="fa-solid fa-shield-heart"></i> Profil & Filosofi Klinik
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Tentang Klinik Thibbun Care</h1>
+                    <p class="text-primary-light max-w-2xl mx-auto text-lg font-light">Pusat pelayanan kesehatan holistik yang memadukan kearifan Thibbun Nabawi dan sains Pengobatan Tradisional Tiongkok (TCM) berstandar medis.</p>
+                </div>
+            </div>
+
+            <div class="py-16 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
+                        <div class="space-y-6">
+                            <h2 class="text-3xl font-bold text-slate-900 leading-tight">Menghadirkan Standar Baru Pemulihan Alami & Syar'i</h2>
+                            <p class="text-slate-600 leading-relaxed font-light text-justify">
+                                Klinik Thibbun Care didirikan dengan komitmen murni untuk memberikan solusi pengobatan alami tanpa mengesampingkan keamanan dan higiene medis modern. Kami percaya bahwa kesehatan sejati tercipta ketika aliran energi tubuh (Qi), sirkulasi darah, dan keseimbangan emosional berada dalam kondisi harmonis.
+                            </p>
+                            <p class="text-slate-600 leading-relaxed font-light text-justify">
+                                Seluruh terapis kami mengantongi lisensi STPT (Surat Terdaftar Penyehat Tradisional) resmi dari Dinas Kesehatan, serta rutin menjalani pelatihan sterilisasi alat medis sesuai standar Kemenkes RI.
+                            </p>
+                            <div class="grid grid-cols-2 gap-6 pt-4 border-t border-slate-100">
+                                <div>
+                                    <p class="text-3xl font-extrabold text-primary">100%</p>
+                                    <p class="text-xs text-slate-500 font-medium mt-1">Steril & Sekali Pakai</p>
+                                </div>
+                                <div>
+                                    <p class="text-3xl font-extrabold text-primary">5.000+</p>
+                                    <p class="text-xs text-slate-500 font-medium mt-1">Pasien Terlayani</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative rounded-3xl overflow-hidden shadow-xl">
+                            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80" alt="Suasana Klinik" class="w-full h-[400px] object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent flex items-end p-8">
+                                <p class="text-white text-sm font-medium"><i class="fa-solid fa-location-dot text-primary mr-2"></i> Fasilitas Ruang Terapi Nyaman & Terpisah Pria/Wanita</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8 mb-20">
+                        <div class="bg-surface rounded-3xl p-8 border border-slate-100 shadow-sm relative overflow-hidden">
+                            <div class="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-eye"></i></div>
+                            <h3 class="text-2xl font-bold text-slate-900 mb-4">Visi Kami</h3>
+                            <p class="text-slate-600 leading-relaxed font-light text-justify">Menjadi pusat pelayanan kesehatan holistik terdepan dan terpercaya di Indonesia yang memadukan kearifan Thibbun Nabawi serta Akupunktur TCM secara ilmiah, higienis, dan profesional demi mewujudkan masyarakat yang sehat lahir dan batin.</p>
+                        </div>
+
+                        <div class="bg-surface rounded-3xl p-8 border border-slate-100 shadow-sm relative overflow-hidden">
+                            <div class="w-14 h-14 bg-secondary/10 text-secondary rounded-2xl flex items-center justify-center text-2xl mb-6"><i class="fa-solid fa-bullseye"></i></div>
+                            <h3 class="text-2xl font-bold text-slate-900 mb-4">Misi Kami</h3>
+                            <ul class="space-y-3 text-slate-600 text-sm font-light text-justify">
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-primary mt-1"></i> Menyediakan layanan terapi komprehensif dengan prosedur higienis berstandar medis.</li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-primary mt-1"></i> Mengedukasi masyarakat tentang pentingnya pola hidup sehat alami selaras dengan sunnah.</li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-primary mt-1"></i> Menyediakan produk herbal murni berkualitas tinggi yang aman dan terdaftar BPOM.</li>
+                                <li class="flex items-start gap-3"><i class="fa-solid fa-circle-check text-primary mt-1"></i> Melayani setiap pasien secara personal dengan kasih sayang dan empati islami.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 text-white rounded-3xl p-8 md:p-12 mb-20">
+                        <div class="text-center max-w-2xl mx-auto mb-10">
+                            <h3 class="text-2xl md:text-3xl font-bold mb-3">Tujuan Utama Klinik Thibbun Care</h3>
+                            <p class="text-slate-400 font-light text-sm">Empat pilar utama yang mendasari setiap prosedur dan pelayanan kami kepada masyarakat.</p>
+                        </div>
+                        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700/50">
+                                <div class="text-primary-light text-2xl mb-3"><i class="fa-solid fa-heart-pulse"></i></div>
+                                <h4 class="font-bold text-base mb-2">Detoksifikasi Alami</h4>
+                                <p class="text-xs text-slate-400 font-light leading-relaxed">Membuang toksin dan darah statis yang menghambat sirkulasi organ internal.</p>
+                            </div>
+                            <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700/50">
+                                <div class="text-primary-light text-2xl mb-3"><i class="fa-solid fa-yin-yang"></i></div>
+                                <h4 class="font-bold text-base mb-2">Keseimbangan Qi</h4>
+                                <p class="text-xs text-slate-400 font-light leading-relaxed">Menyeimbangkan energi vital tubuh guna meningkatkan daya tahan mandiri.</p>
+                            </div>
+                            <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700/50">
+                                <div class="text-primary-light text-2xl mb-3"><i class="fa-solid fa-pills"></i></div>
+                                <h4 class="font-bold text-base mb-2">Bebas Efek Samping</h4>
+                                <p class="text-xs text-slate-400 font-light leading-relaxed">Menggunakan terapi dan herbal racikan tanpa ketergantungan obat kimia sintetis.</p>
+                            </div>
+                            <div class="bg-slate-800/60 p-6 rounded-2xl border border-slate-700/50">
+                                <div class="text-primary-light text-2xl mb-3"><i class="fa-solid fa-user-shield"></i></div>
+                                <h4 class="font-bold text-base mb-2">Kenyamanan Pasien</h4>
+                                <p class="text-xs text-slate-400 font-light leading-relaxed">Menjamin privasi, kebersihan alat sekali pakai, dan terapis gender sejenis.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HALAMAN TIM TERAPIS -->
+        <div id="page-therapists" class="page-view hidden">
+            <div class="pt-32 pb-16 page-header-bg text-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal active">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-primary-light text-xs font-semibold uppercase tracking-wider mb-4 backdrop-blur-sm">
+                        <i class="fa-solid fa-user-doctor"></i> Tenaga Ahli Profesional
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Tim Terapis & Dokter</h1>
+                    <p class="text-primary-light max-w-2xl mx-auto text-lg font-light">Ditangani langsung oleh para ahli kesehatan holistik, akupunkturis, dan praktisi Thibbun Nabawi bersertifikasi resmi.</p>
+                </div>
+            </div>
+            <div class="py-16 bg-surface">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div id="therapists-grid" class="grid md:grid-cols-3 gap-8"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HALAMAN KARIR (TERINTEGRASI DENGAN ADMIN & FORM LAMARAN) -->
+        <div id="page-careers" class="page-view hidden">
+            <div class="pt-32 pb-16 page-header-bg text-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal active">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-primary-light text-xs font-semibold uppercase tracking-wider mb-4 backdrop-blur-sm">
+                        <i class="fa-solid fa-briefcase"></i> Bergabung Bersama Kami
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Karir di Klinik Thibbun Care</h1>
+                    <p class="text-primary-light max-w-2xl mx-auto text-lg font-light">Mari berkontribusi mengembangkan dunia kesehatan holistik Islami dan TCM bersama tim profesional kami.</p>
+                </div>
+            </div>
+            <div class="py-16 bg-surface">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+                    <div class="text-center mb-10">
+                        <h2 class="text-2xl font-bold text-slate-900">Lowongan Pekerjaan Tersedia</h2>
+                        <p class="text-slate-500 text-sm font-light mt-1">Pilih posisi dan kirimkan lamaran langsung melalui formulir di bawah ini.</p>
+                    </div>
+                    <div id="careers-grid" class="space-y-6"></div>
+
+                    <!-- Form Lamaran Kerja Interaktif -->
+                    <div class="bg-white rounded-3xl p-8 md:p-12 border border-slate-100 shadow-sm mt-12">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2"><i class="fa-solid fa-paper-plane text-primary mr-2"></i> Formulir Lamaran Kerja Online</h3>
+                        <p class="text-slate-500 text-sm font-light mb-6">Isi data diri Anda di bawah ini, HRD kami akan langsung menerima notifikasi via WhatsApp.</p>
+                        
+                        <form onsubmit="submitCareerForm(event)" class="space-y-4">
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-1">Nama Lengkap</label>
+                                    <input type="text" id="career-name" class="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm" required placeholder="Nama lengkap Anda">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-1">Nomor WhatsApp Aktif</label>
+                                    <input type="tel" id="career-phone" class="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm" required placeholder="Contoh: 08123456789">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1">Posisi yang Dilamar</label>
+                                <select id="career-position" class="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm" required>
+                                    <option value="Terapis Bekam & Akupunktur">Terapis Bekam & Akupunktur (STPT)</option>
+                                    <option value="Apoteker / Staf Toko Herbal">Apoteker / Staf Toko Herbal</option>
+                                    <option value="Administrasi & Customer Service">Administrasi & Customer Service</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1">Pengalaman & Ringkasan Kualifikasi</label>
+                                <textarea id="career-desc" rows="3" class="w-full px-4 py-3 border border-slate-200 rounded-xl text-sm" required placeholder="Tuliskan pengalaman kerja atau keahlian Anda..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-slate-900 hover:bg-black text-white py-3.5 rounded-xl font-semibold text-sm transition-all shadow-md">Kirim Lamaran via WhatsApp</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HALAMAN LAYANAN FULL -->
+        <div id="page-services" class="page-view hidden">
+            <div class="pt-32 pb-16 page-header-bg text-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal active">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Layanan Komprehensif Kami</h1>
+                    <p class="text-primary-light max-w-2xl mx-auto text-lg font-light">Pilihan terapi holistik yang dirancang khusus untuk memulihkan keseimbangan tubuh, pikiran, dan energi Anda.</p>
+                </div>
+            </div>
+            <div class="py-16 bg-surface min-h-[50vh]">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div id="full-services-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HALAMAN TOKO HERBAL FULL -->
+        <div id="page-shop" class="page-view hidden">
+            <div class="pt-32 pb-12 bg-white border-b border-slate-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6 reveal active">
+                    <div>
+                        <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-2">Toko Herbal Al-Shafa</h1>
+                        <p class="text-slate-500 font-light">Pusat herbal murni, tersertifikasi, dan aman.</p>
+                    </div>
+                    <div class="flex gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0">
+                        <button onclick="filterProducts('Semua', this)" class="shop-filter-btn px-5 py-2 rounded-full bg-slate-900 text-white text-sm font-medium whitespace-nowrap">Semua</button>
+                        <button onclick="filterProducts('Imunitas', this)" class="shop-filter-btn px-5 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium whitespace-nowrap">Imunitas</button>
+                        <button onclick="filterProducts('Pencernaan', this)" class="shop-filter-btn px-5 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium whitespace-nowrap">Pencernaan</button>
+                        <button onclick="filterProducts('Stamina', this)" class="shop-filter-btn px-5 py-2 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium whitespace-nowrap">Stamina</button>
+                    </div>
+                </div>
+            </div>
+            <div class="py-12 bg-surface min-h-[60vh]">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div id="full-products-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HALAMAN ARTIKEL FULL -->
+        <div id="page-articles" class="page-view hidden">
+            <div class="pt-32 pb-16 page-header-bg text-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal active">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Jurnal & Edukasi Kesehatan</h1>
+                    <p class="text-primary-light max-w-2xl mx-auto text-lg font-light">Wawasan holistik untuk gaya hidup sehat selaras dengan alam dan sunnah.</p>
+                </div>
+            </div>
+            <div class="py-16 bg-surface min-h-[50vh]">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div id="full-articles-grid" class="grid md:grid-cols-3 gap-8"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HALAMAN DETAIL ARTIKEL (Justify Text) -->
+        <div id="page-article-detail" class="page-view hidden">
+            <div class="pt-32 pb-12 bg-white border-b border-slate-100">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <button onclick="navigateTo('articles')" class="inline-flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-primary mb-6 transition-colors">
+                        <i class="fa-solid fa-arrow-left"></i> Kembali ke Daftar Artikel
+                    </button>
+                    <div class="flex items-center gap-3 text-xs font-semibold text-primary mb-4">
+                        <span id="detail-article-tag" class="bg-primary/10 px-3 py-1 rounded-full">Kategori</span>
+                        <span id="detail-article-date" class="text-slate-400 font-normal"><i class="fa-regular fa-calendar mr-1"></i> 12 Okt 2026</span>
+                    </div>
+                    <h1 id="detail-article-title" class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-8"></h1>
+                </div>
+            </div>
+            <div class="py-12 bg-surface">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden p-6 sm:p-10 mb-12">
+                        <div class="rounded-2xl overflow-hidden mb-8 aspect-video">
+                            <img id="detail-article-image" src="" alt="Article Image" class="w-full h-full object-cover">
+                        </div>
+                        <div id="detail-article-content" class="prose max-w-none text-slate-700 leading-relaxed space-y-4 font-light text-base md:text-lg text-justify"></div>
+                    </div>
+                    
+                    <div class="border-t border-slate-200 pt-12">
+                        <div class="flex justify-between items-center mb-8">
+                            <div>
+                                <h3 class="text-2xl font-bold text-slate-900">Rekomendasi Herbal Terkait</h3>
+                                <p class="text-sm text-slate-500 font-light mt-1">Dukung kesehatan Anda dengan produk alami pilihan berkualitas tinggi.</p>
+                            </div>
+                        </div>
+                        <div id="detail-article-recommendations" class="grid grid-cols-2 md:grid-cols-4 gap-6"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HALAMAN CABANG -->
+        <div id="page-branches" class="page-view hidden">
+            <div class="pt-32 pb-16 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal active">
+                    <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Jaringan Klinik Kami</h1>
+                    <p class="text-slate-500 max-w-2xl mx-auto text-lg font-light">Temukan fasilitas Al-Shafa terdekat dari lokasi Anda untuk pelayanan optimal.</p>
+                </div>
+            </div>
+            <div class="py-12 bg-surface border-t border-slate-200 min-h-[50vh]">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid lg:grid-cols-2 gap-12" id="branches-container"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HALAMAN KALKULATOR KESEHATAN -->
+        <div id="page-calculator" class="page-view hidden">
+            <div class="pt-32 pb-12 bg-white border-b border-slate-100">
+                <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal active">
+                    <div class="w-16 h-16 bg-primary-light text-primary rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 shadow-sm"><i class="fa-solid fa-stethoscope"></i></div>
+                    <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Deteksi Sindrom Mandiri</h1>
+                    <p class="text-slate-500 font-light">Analisa awal kondisi tubuh Anda berdasarkan keluhan dominan menggunakan pendekatan Traditional Chinese Medicine (TCM).</p>
+                </div>
+            </div>
+            
+            <div class="py-12 bg-surface min-h-[60vh]">
+                <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="bg-white rounded-3xl shadow-premium border border-slate-100 overflow-hidden">
+                        <div class="p-8 md:p-12">
+                            <div id="calc-step-1">
+                                <h3 class="text-lg font-bold text-slate-800 mb-6 border-b border-slate-100 pb-4">Pilih Keluhan Dominan (Seminggu Terakhir):</h3>
+                                
+                                <div id="calc-error" class="hidden mb-6 p-4 bg-red-50 text-red-600 rounded-xl text-sm flex items-start gap-3 border border-red-100">
+                                    <i class="fa-solid fa-circle-exclamation mt-0.5"></i> <span>Silakan pilih salah satu gejala terlebih dahulu.</span>
+                                </div>
+
+                                <form id="healthForm" class="space-y-4">
+                                    <label class="block relative p-5 border-2 border-slate-100 rounded-2xl cursor-pointer hover:border-primary/50 transition-colors group has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+                                        <div class="flex items-start gap-4">
+                                            <div class="mt-1 flex-shrink-0 w-5 h-5 rounded-full border-2 border-slate-300 group-hover:border-primary flex items-center justify-center has-[:checked]:border-primary"><input type="radio" name="symptom" value="defisiensi_qi" class="appearance-none w-2.5 h-2.5 rounded-full bg-primary hidden checked:block"></div>
+                                            <div>
+                                                <h4 class="font-bold text-slate-800 text-base group-hover:text-primary transition-colors">Kelelahan Kronis, Pucat & Letih</h4>
+                                                <p class="text-sm text-slate-500 mt-1 font-light leading-relaxed text-justify">Napas pendek, enggan bicara, anggota tubuh terasa berat, mudah berkeringat meski tidak beraktivitas berat, pusing saat bangun.</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <label class="block relative p-5 border-2 border-slate-100 rounded-2xl cursor-pointer hover:border-primary/50 transition-colors group has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+                                        <div class="flex items-start gap-4">
+                                            <div class="mt-1 flex-shrink-0 w-5 h-5 rounded-full border-2 border-slate-300 group-hover:border-primary flex items-center justify-center has-[:checked]:border-primary"><input type="radio" name="symptom" value="panas" class="appearance-none w-2.5 h-2.5 rounded-full bg-primary hidden checked:block"></div>
+                                            <div>
+                                                <h4 class="font-bold text-slate-800 text-base group-hover:text-primary transition-colors">Sensasi Panas, Nyeri Tajam & Emosional</h4>
+                                                <p class="text-sm text-slate-500 mt-1 font-light leading-relaxed text-justify">Wajah/mata kemerahan, sering haus ingin minum dingin, sariawan, susah tidur, urine kuning pekat, mudah marah atau tensi tinggi.</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <label class="block relative p-5 border-2 border-slate-100 rounded-2xl cursor-pointer hover:border-primary/50 transition-colors group has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+                                        <div class="flex items-start gap-4">
+                                            <div class="mt-1 flex-shrink-0 w-5 h-5 rounded-full border-2 border-slate-300 group-hover:border-primary flex items-center justify-center has-[:checked]:border-primary"><input type="radio" name="symptom" value="lembab_dingin" class="appearance-none w-2.5 h-2.5 rounded-full bg-primary hidden checked:block"></div>
+                                            <div>
+                                                <h4 class="font-bold text-slate-800 text-base group-hover:text-primary transition-colors">Pencernaan Buruk, Kembung & Dingin</h4>
+                                                <p class="text-sm text-slate-500 mt-1 font-light leading-relaxed text-justify">Tangan/kaki sering dingin, perut kembung/begah, feses lembek, banyak dahak/lendir, enggan minum air, mudah masuk angin.</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </form>
+                                <div class="mt-8 text-right border-t border-slate-100 pt-6">
+                                    <button onclick="showResult()" class="px-8 py-3.5 rounded-xl bg-slate-900 text-white font-medium hover:bg-black transition-colors shadow-md w-full sm:w-auto">Lihat Hasil Analisa</button>
+                                </div>
+                            </div>
+
+                            <div id="calc-result" class="hidden text-center">
+                                <div class="w-20 h-20 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6"><i class="fa-solid fa-file-medical"></i></div>
+                                <h3 class="text-2xl font-bold text-slate-900 mb-2">Hasil Analisa Awal</h3>
+                                
+                                <div class="bg-surface rounded-2xl p-6 my-6 text-left border border-slate-100 shadow-inner">
+                                    <p id="result-text" class="text-slate-700 leading-relaxed text-sm text-justify"></p>
+                                </div>
+                                
+                                <p class="text-xs text-slate-500 mb-8 bg-slate-50 p-4 rounded-lg border border-slate-100 text-left font-light">* Catatan Medis: Ini adalah analisa sistem otomatis berbasis teori TCM dasar. Hasil ini tidak menggantikan diagnosa profesional. Konsultasikan langsung dengan Terapis kami untuk observasi presisi (Nadi dan Lidah).</p>
+                                
+                                <div class="flex flex-col sm:flex-row gap-4 border-t border-slate-100 pt-6">
+                                    <button onclick="resetCalc()" class="w-full sm:w-1/3 px-6 py-3.5 rounded-xl text-slate-600 font-medium border border-slate-200 hover:bg-slate-50 transition-colors text-sm">Cek Ulang</button>
+                                    <button onclick="sendResultToWA()" class="w-full sm:w-2/3 px-8 py-3.5 rounded-xl bg-[#25d366] text-white font-bold hover:bg-[#1ebd5a] transition-colors text-sm shadow-md flex items-center justify-center gap-2">
+                                        <i class="fab fa-whatsapp text-lg"></i> Konsultasi Hasil via WA
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 text-slate-300 py-16 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                <div class="md:col-span-5">
+                    <a href="javascript:void(0)" onclick="navigateTo('home')" class="flex items-center gap-3 mb-6">
+                        <div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white text-sm"><i class="fa-solid fa-leaf"></i></div>
+                        <span class="font-bold text-xl text-white tracking-wide">Al-Shafa.</span>
+                    </a>
+                    <p class="text-sm leading-relaxed mb-8 max-w-sm font-light text-slate-400">Menghadirkan standar baru dalam pengobatan holistik dengan memadukan keilmuan medis timur dan prosedur steril modern.</p>
+                    
+                    <div class="flex items-center gap-4">
+                        <a href="#" target="_blank" class="social-fb-link w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition-all shadow-sm hover:shadow-lg hover:-translate-y-1" title="Facebook Resmi">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" target="_blank" class="social-ig-link w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-gradient-to-tr hover:from-yellow-500 hover:via-red-500 hover:to-fuchsia-600 hover:text-white transition-all shadow-sm hover:shadow-lg hover:-translate-y-1" title="Instagram Resmi">
+                            <i class="fa-brands fa-instagram text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-3">
+                    <h4 class="text-white font-semibold mb-6 text-sm tracking-widest uppercase">Eksplorasi</h4>
+                    <ul class="space-y-4 text-sm font-light">
+                        <li><button onclick="navigateTo('about')" class="hover:text-white transition-colors">Tentang Kami</button></li>
+                        <li><button onclick="navigateTo('services')" class="hover:text-white transition-colors">Layanan Terapi</button></li>
+                        <li><button onclick="navigateTo('shop')" class="hover:text-white transition-colors">Farmasi Herbal</button></li>
+                        <li><button onclick="navigateTo('articles')" class="hover:text-white transition-colors">Jurnal Kesehatan</button></li>
+                        <li><button onclick="navigateTo('calculator')" class="hover:text-white transition-colors">Kalkulator Sindrom</button></li>
+                        <li><button onclick="navigateTo('therapists')" class="hover:text-white transition-colors">Tim Terapis</button></li>
+                        <li><button onclick="navigateTo('careers')" class="hover:text-white transition-colors">Karir</button></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-4">
+                    <h4 class="text-white font-semibold mb-6 text-sm tracking-widest uppercase">Legal & Kontak</h4>
+                    <ul class="space-y-4 text-sm font-light">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-file-contract mt-1 text-slate-500"></i> <span>Izin STPT: 448/123/2026<br>Dinas Kesehatan RI</span></li>
+                        <li class="flex items-center gap-3"><i class="fa-solid fa-envelope text-slate-500"></i><a href="mailto:hello@alshafa.com" class="hover:text-white">hello@alshafa.com</a></li>
+                        <li class="mt-4 pt-4 border-t border-slate-800"><button onclick="toggleModal('admin-login-modal')" class="text-primary-light hover:text-white transition-colors">Login Admin Portal &rarr;</button></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 mt-16 pt-8 text-center text-xs text-slate-500 font-light">&copy; 2026 Klinik Thibbun Care. All rights reserved.</div>
+        </div>
+    </footer>
+
+    </div> <!-- Tutup public-view -->
+
+    <div id="admin-view" class="hidden min-h-screen bg-slate-50 font-sans">
+        <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col shadow-2xl z-20 fixed h-full">
+            <div class="h-20 flex items-center px-6 border-b border-slate-800">
+                <div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white text-sm mr-3"><i class="fa-solid fa-leaf"></i></div>
+                <span class="font-bold text-xl text-white tracking-wide">Admin.</span>
+            </div>
+            <nav class="flex-1 py-6 px-4 space-y-2 overflow-y-auto">
+                <button onclick="switchAdminPanel('overview')" class="admin-tab w-full flex items-center gap-3 px-4 py-3 bg-primary text-white rounded-xl text-sm font-medium transition-colors shadow-md"><i class="fa-solid fa-chart-pie w-5"></i> Ringkasan</button>
+                <button onclick="switchAdminPanel('layanan')" class="admin-tab w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-800 hover:text-white rounded-xl text-sm font-medium transition-colors"><i class="fa-solid fa-bed-pulse w-5"></i> Layanan</button>
+                <button onclick="switchAdminPanel('produk')" class="admin-tab w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-800 hover:text-white rounded-xl text-sm font-medium transition-colors"><i class="fa-solid fa-box w-5"></i> Toko Herbal</button>
+                <button onclick="switchAdminPanel('artikel')" class="admin-tab w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-800 hover:text-white rounded-xl text-sm font-medium transition-colors"><i class="fa-solid fa-newspaper w-5"></i> Artikel</button>
+                <button onclick="switchAdminPanel('terapis')" class="admin-tab w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-800 hover:text-white rounded-xl text-sm font-medium transition-colors"><i class="fa-solid fa-user-doctor w-5"></i> Tim Terapis</button>
+                <button onclick="switchAdminPanel('karir')" class="admin-tab w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-800 hover:text-white rounded-xl text-sm font-medium transition-colors"><i class="fa-solid fa-briefcase w-5"></i> Lowongan Karir</button>
+                <button onclick="switchAdminPanel('pengaturan')" class="admin-tab w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-800 hover:text-white rounded-xl text-sm font-medium transition-colors mt-8"><i class="fa-solid fa-gear w-5"></i> Pengaturan</button>
+            </nav>
+            <div class="p-4 border-t border-slate-800">
+                <button onclick="logoutAdmin()" class="w-full flex items-center gap-3 px-4 py-3 text-red-400 hover:bg-red-500/10 hover:text-red-300 rounded-xl text-sm font-medium transition-colors"><i class="fa-solid fa-right-from-bracket w-5"></i> Keluar Portal</button>
+            </div>
+        </aside>
+
+        <main class="ml-64 flex flex-col min-h-screen">
+            <header class="h-20 bg-white border-b border-slate-200 flex items-center justify-between px-8 sticky top-0 z-10 shadow-sm">
+                <h2 id="admin-header-title" class="text-xl font-bold text-slate-800">Ringkasan Utama</h2>
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-3 pl-4 border-l border-slate-200">
+                        <div class="w-10 h-10 rounded-full bg-primary-light text-primary flex items-center justify-center font-bold">AD</div>
+                        <div class="hidden md:block text-left">
+                            <p class="text-sm font-bold text-slate-800 leading-tight">Administrator</p>
+                            <p class="text-xs text-slate-500">Klinik Pusat</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="p-8">
+                <div id="panel-overview" class="admin-panel block">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4"><div class="w-14 h-14 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-2xl"><i class="fa-solid fa-users"></i></div><div><p class="text-sm text-slate-500 font-medium mb-1">Pengunjung Web</p><p class="text-2xl font-bold text-slate-800">1,248</p></div></div>
+                        <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4"><div class="w-14 h-14 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl"><i class="fa-brands fa-whatsapp"></i></div><div><p class="text-sm text-slate-500 font-medium mb-1">Klik Reservasi</p><p class="text-2xl font-bold text-slate-800">89</p></div></div>
+                        <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4"><div class="w-14 h-14 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl"><i class="fa-solid fa-box-open"></i></div><div><p class="text-sm text-slate-500 font-medium mb-1">Total Produk Herbal</p><p id="stat-products" class="text-2xl font-bold text-slate-800">0</p></div></div>
+                    </div>
+                </div>
+                
+                <div id="panel-produk" class="admin-panel hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-bold text-slate-800">Katalog Toko Herbal</h3>
+                        <button onclick="openFormModal('produk')" class="bg-primary text-white px-5 py-2.5 rounded-lg font-medium shadow-sm flex items-center gap-2"><i class="fa-solid fa-plus"></i> Tambah Produk</button>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden"><table class="w-full text-left border-collapse"><thead><tr class="bg-slate-50 text-slate-500 text-xs uppercase"><th class="px-6 py-4">Produk</th><th class="px-6 py-4">Kategori</th><th class="px-6 py-4">Harga</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-produk" class="text-sm text-slate-700 divide-y divide-slate-50"></tbody></table></div>
+                </div>
+
+                <div id="panel-layanan" class="admin-panel hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-bold text-slate-800">Manajemen Layanan</h3>
+                        <button onclick="openFormModal('layanan')" class="bg-primary text-white px-5 py-2.5 rounded-lg font-medium shadow-sm flex items-center gap-2"><i class="fa-solid fa-plus"></i> Tambah Layanan</button>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden"><table class="w-full text-left border-collapse"><thead><tr class="bg-slate-50 text-slate-500 text-xs uppercase"><th class="px-6 py-4">Layanan</th><th class="px-6 py-4">Deskripsi</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-layanan" class="text-sm text-slate-700 divide-y divide-slate-50"></tbody></table></div>
+                </div>
+
+                <div id="panel-artikel" class="admin-panel hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-bold text-slate-800">Jurnal & Artikel</h3>
+                        <button onclick="openFormModal('artikel')" class="bg-primary text-white px-5 py-2.5 rounded-lg font-medium shadow-sm flex items-center gap-2"><i class="fa-solid fa-plus"></i> Tulis Artikel</button>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden"><table class="w-full text-left border-collapse"><thead><tr class="bg-slate-50 text-slate-500 text-xs uppercase"><th class="px-6 py-4">Judul</th><th class="px-6 py-4">Kategori</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-artikel" class="text-sm text-slate-700 divide-y divide-slate-50"></tbody></table></div>
+                </div>
+
+                <div id="panel-terapis" class="admin-panel hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-bold text-slate-800">Manajemen Tim Terapis</h3>
+                        <button onclick="openFormModal('terapis')" class="bg-primary text-white px-5 py-2.5 rounded-lg font-medium shadow-sm flex items-center gap-2"><i class="fa-solid fa-plus"></i> Tambah Terapis</button>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden"><table class="w-full text-left border-collapse"><thead><tr class="bg-slate-50 text-slate-500 text-xs uppercase"><th class="px-6 py-4">Nama</th><th class="px-6 py-4">Spesialisasi</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-terapis" class="text-sm text-slate-700 divide-y divide-slate-50"></tbody></table></div>
+                </div>
+
+                <div id="panel-karir" class="admin-panel hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-bold text-slate-800">Manajemen Lowongan Karir</h3>
+                        <button onclick="openFormModal('karir')" class="bg-primary text-white px-5 py-2.5 rounded-lg font-medium shadow-sm flex items-center gap-2"><i class="fa-solid fa-plus"></i> Tambah Lowongan</button>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden"><table class="w-full text-left border-collapse"><thead><tr class="bg-slate-50 text-slate-500 text-xs uppercase"><th class="px-6 py-4">Posisi</th><th class="px-6 py-4">Lokasi / Tipe</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-karir" class="text-sm text-slate-700 divide-y divide-slate-50"></tbody></table></div>
+                </div>
+
+                <div id="panel-pengaturan" class="admin-panel hidden">
+                    <h3 class="text-xl font-bold text-slate-800 mb-6">Pengaturan Website</h3>
+                    <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm max-w-xl space-y-6">
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Nomor WhatsApp CS (Tanpa 0, pakai 62)</label>
+                            <input type="text" id="setting-wa" class="w-full px-4 py-3 border border-slate-200 rounded-xl">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">URL Facebook Resmi</label>
+                            <input type="url" id="setting-fb" class="w-full px-4 py-3 border border-slate-200 rounded-xl" placeholder="https://facebook.com/nama.klinik">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">URL Instagram Resmi</label>
+                            <input type="url" id="setting-ig" class="w-full px-4 py-3 border border-slate-200 rounded-xl" placeholder="https://instagram.com/nama.klinik">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">Warna Tema Utama</label>
+                            <input type="color" id="setting-color" class="h-12 w-full rounded-xl cursor-pointer">
+                        </div>
+                        <button onclick="saveSettings()" class="w-full bg-slate-900 text-white px-6 py-3.5 rounded-xl font-semibold shadow-md">Simpan Pengaturan</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- MODAL RESERVASI LAYANAN (Klinik / Homecare) -->
+    <div id="reservation-modal" class="fixed inset-0 z-[130] hidden">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="toggleReservationModal()"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-lg px-4">
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden p-8 border border-slate-100 max-h-[90vh] overflow-y-auto">
+                <div class="flex justify-between items-center mb-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-primary-light text-primary flex items-center justify-center text-lg"><i class="fa-solid fa-calendar-check"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900">Reservasi Jadwal Terapi</h3>
+                            <p class="text-xs text-slate-500">Pilih jenis kunjungan & layanan</p>
+                        </div>
+                    </div>
+                    <button onclick="toggleReservationModal()" class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <form onsubmit="submitReservationForm(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Nama Lengkap Pasien</label>
+                        <input type="text" id="res-name" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm" required placeholder="Nama Anda">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Nomor WhatsApp</label>
+                            <input type="tel" id="res-phone" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm" required placeholder="0812...">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Jenis Layanan</label>
+                            <select id="res-service" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm" required>
+                                <option value="Bekam (Hijamah) Medis">Bekam (Hijamah) Medis</option>
+                                <option value="Akupunktur TCM">Akupunktur TCM</option>
+                                <option value="Pijat Tuina & Tulang Belakang">Pijat Tuina & Tulang Belakang</option>
+                                <option value="Terapi Lintah (Hirudoterapi)">Terapi Lintah (Hirudoterapi)</option>
+                                <option value="Konsultasi Umum">Konsultasi Umum / Lainnya</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Metode Kunjungan</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="border rounded-xl p-3 flex items-center gap-2 cursor-pointer hover:border-primary has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+                                <input type="radio" name="res-type" value="Datang ke Klinik" checked class="text-primary">
+                                <span class="text-xs font-bold text-slate-800"><i class="fa-solid fa-hospital text-primary mr-1"></i> Datang ke Klinik</span>
+                            </label>
+                            <label class="border rounded-xl p-3 flex items-center gap-2 cursor-pointer hover:border-primary has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+                                <input type="radio" name="res-type" value="Homecare (Terapis ke Rumah)" class="text-primary">
+                                <span class="text-xs font-bold text-slate-800"><i class="fa-solid fa-house-chimney-medical text-primary mr-1"></i> Homecare</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Cabang Pilihan (Jika ke Klinik)</label>
+                        <select id="res-branch" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm">
+                            <option value="Jakarta Selatan (Pusat)">Jakarta Selatan (Pusat)</option>
+                            <option value="Depok">Depok</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-600 mb-1">Alamat Lengkap (Wajib diisi jika Homecare)</label>
+                        <textarea id="res-address" rows="2" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm" placeholder="Nama jalan, nomor rumah, patokan..."></textarea>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Tanggal Rencana</label>
+                            <input type="date" id="res-date" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm" required>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-600 mb-1">Jam Terapi</label>
+                            <input type="time" id="res-time" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm" required>
+                        </div>
+                    </div>
+                    <div class="pt-2">
+                        <button type="submit" class="w-full bg-[#25d366] hover:bg-[#1ebd5a] text-white py-3.5 rounded-xl font-bold text-sm shadow-md flex items-center justify-center gap-2">
+                            <i class="fab fa-whatsapp text-lg"></i> Kirim Reservasi via WhatsApp
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals & Floating Buttons -->
+    <div id="crud-modal" class="fixed inset-0 z-[120] hidden">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeFormModal()"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl px-4">
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+                <div class="px-8 py-5 border-b border-slate-100 flex justify-between items-center bg-surface sticky top-0"><h3 id="crud-modal-title" class="text-xl font-bold text-slate-900">Tambah Data</h3><button onclick="closeFormModal()" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button></div>
+                <div class="p-8 overflow-y-auto"><form id="crud-form" class="space-y-5"></form></div>
+                <div class="px-8 py-5 border-t border-slate-100 bg-surface flex justify-end gap-3 sticky bottom-0"><button onclick="closeFormModal()" class="px-6 py-2.5 rounded-xl text-slate-600 font-medium bg-slate-100">Batal</button><button onclick="saveCrudData()" class="px-8 py-2.5 rounded-xl bg-primary text-white font-medium shadow-md">Simpan Data</button></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cart-modal" class="fixed inset-0 z-[110] hidden">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="toggleModal('cart-modal')"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl px-4">
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+                <div class="px-8 py-5 border-b border-slate-100 flex justify-between items-center bg-surface sticky top-0"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-primary-light text-primary flex items-center justify-center text-lg"><i class="fa-solid fa-cart-shopping"></i></div><div><h3 class="text-xl font-bold text-slate-900">Keranjang Belanja</h3><p class="text-xs text-slate-500">Pemesanan Herbal</p></div></div><div class="flex items-center gap-2"><button onclick="clearCart()" class="text-xs text-red-500 font-medium px-3 py-1.5 rounded-lg hover:bg-red-50"><i class="fa-solid fa-trash-can mr-1"></i> Kosongkan</button><button onclick="toggleModal('cart-modal')" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button></div></div>
+                <div class="p-8 overflow-y-auto flex-1">
+                    <div id="cart-items-container" class="space-y-4"></div>
+                    <div id="cart-checkout-form" class="mt-8 pt-6 border-t border-slate-100 space-y-4 hidden">
+                        <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2"><i class="fa-solid fa-user-pen text-primary"></i> Data Pemesan & Pengiriman</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4"><div><label class="block text-xs font-semibold mb-1">Nama Lengkap</label><input type="text" id="cust-name" class="w-full px-4 py-2.5 rounded-xl border border-slate-200"></div><div><label class="block text-xs font-semibold mb-1">Kota / Kecamatan</label><input type="text" id="cust-city" class="w-full px-4 py-2.5 rounded-xl border border-slate-200"></div></div>
+                        <div><label class="block text-xs font-semibold mb-1">Alamat Lengkap</label><textarea id="cust-address" rows="2" class="w-full px-4 py-2.5 rounded-xl border border-slate-200"></textarea></div>
+                    </div>
+                </div>
+                <div class="px-8 py-5 border-t border-slate-100 bg-surface flex flex-col sm:flex-row justify-between items-center gap-4 sticky bottom-0"><div><p class="text-xs text-slate-500 font-medium">Total Pembelian</p><p id="cart-total-price" class="text-2xl font-extrabold text-primary">Rp 0</p></div><button id="cart-checkout-btn" onclick="checkoutCartWA()" disabled class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-[#25d366] text-white font-bold shadow-md flex items-center justify-center gap-2 disabled:opacity-50"><i class="fab fa-whatsapp text-xl"></i> Pesan via WhatsApp</button></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="admin-login-modal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="toggleModal('admin-login-modal')"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-md px-4">
+            <div class="bg-white rounded-3xl shadow-2xl p-8 border border-slate-100">
+                <div class="absolute top-4 right-4"><button onclick="toggleModal('admin-login-modal')" class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button></div>
+                <div class="text-center mb-8 mt-2"><div class="w-14 h-14 bg-primary-light text-primary rounded-2xl flex items-center justify-center text-2xl mx-auto mb-5 shadow-sm border border-primary/20"><i class="fa-solid fa-shield-halved"></i></div><h3 class="text-2xl font-bold text-slate-900">Admin Portal</h3></div>
+                <form id="adminLoginForm" onsubmit="handleAdminLogin(event)" class="space-y-5">
+                    <div id="login-error" class="hidden p-3 bg-red-50 text-red-600 rounded-xl text-sm text-center border border-red-100 font-medium flex items-center justify-center gap-2"><i class="fa-solid fa-circle-exclamation"></i> Username atau password salah!</div>
+                    <div><label class="block text-sm font-semibold mb-2">Username</label><div class="relative"><div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none"><i class="fa-regular fa-user text-slate-400"></i></div><input type="text" id="admin-user" class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-slate-200 bg-slate-50" required></div></div>
+                    <div><div class="flex justify-between items-center mb-2"><label class="block text-sm font-semibold">Password</label></div><div class="relative"><div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none"><i class="fa-solid fa-lock text-slate-400"></i></div><input type="password" id="admin-pass" class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-slate-200 bg-slate-50" required></div></div>
+                    <div class="pt-4"><button type="submit" class="w-full bg-slate-900 text-white px-6 py-4 rounded-xl font-semibold shadow-lg">Masuk Dashboard</button></div>
+                    <div class="text-center mt-6 p-3 bg-slate-50 rounded-xl border border-slate-100"><p class="text-xs text-slate-500 mb-1">Akses demo:</p><p class="text-sm text-slate-800">User: <b class="text-primary font-bold">admin</b> &nbsp;|&nbsp; Pass: <b class="text-primary font-bold">admin</b></p></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <a id="wa-floating-btn" href="javascript:void(0)" onclick="openReservationModal()" class="fixed bottom-6 right-6 w-14 h-14 bg-[#25d366] text-white rounded-full flex items-center justify-center text-3xl shadow-lg hover:scale-110 transition-all z-40" title="Reservasi Terapi"><i class="fa-solid fa-calendar-check"></i></a>
+    <button id="cart-floating-btn" onclick="toggleModal('cart-modal')" class="fixed bottom-24 right-6 w-14 h-14 bg-slate-900 text-white rounded-full flex items-center justify-center text-xl shadow-xl hover:scale-110 transition-all z-40 group"><i class="fa-solid fa-basket-shopping"></i><span id="cart-badge-float" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-extrabold w-6 h-6 rounded-full flex items-center justify-center border-2 border-white shadow-md">0</span></button>
+    <div id="toast-notification" class="fixed top-5 right-5 z-[200] transform translate-x-full transition-transform duration-300 ease-in-out pointer-events-none"><div class="bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 border border-slate-700"><div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center"><i class="fa-solid fa-check"></i></div><p id="toast-message" class="text-sm font-medium"></p></div></div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, onSnapshot, collection, deleteDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const comprehensiveData = {
+            settings: { 
+                waNumber: "6281200000000", 
+                primaryColor: "#0F766E",
+                facebookUrl: "https://facebook.com/klinikalshafa",
+                instagramUrl: "https://instagram.com/klinik.alshafa"
+            },
+            services: [
+                { id: '1', image: 'https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=400&q=80', title: 'Bekam (Hijamah) Medis', desc: 'Proses detoksifikasi darah statis. Menggunakan peralatan 100% steril dan pisau bedah medis sekali pakai (Surgical Blade).' },
+                { id: '2', image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&q=80', title: 'Akupunktur TCM', desc: 'Stimulasi titik meridian tubuh menggunakan jarum sangat halus untuk melancarkan sirkulasi Qi (energi) dan Darah.' },
+                { id: '3', image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&q=80', title: 'Pijat Tuina & Tulang Belakang', desc: 'Manipulasi jaringan otot dan persendian untuk mengatasi nyeri kronis, saraf terjepit (HNP), dan kelelahan.' },
+                { id: '4', image: 'https://images.unsplash.com/photo-1550345332-09e3ac987658?w=400&q=80', title: 'Terapi Lintah (Hirudoterapi)', desc: 'Penggunaan lintah medis untuk mengatasi masalah kardiovaskular, kolesterol, dan penyumbatan pembuluh darah.' },
+                { id: '5', image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&q=80', title: 'Moxibustion (Moksa)', desc: 'Terapi pemanasan menggunakan herbal Mugwort (Ai Ye) untuk mengusir patogen dingin dan lembab dari dalam tubuh.' },
+                { id: '6', image: 'https://images.unsplash.com/photo-1552693673-1bf958298935?w=400&q=80', title: 'Ruqyah Syar\'iyyah', desc: 'Terapi psikis dan spiritual membacakan ayat-ayat suci Al-Qur\'an untuk menangani masalah psikologis dan gangguan jin.' }
+            ],
+            products: [
+                { id: 'p1', image: 'https://images.unsplash.com/photo-1587049352851-8d4e8e12b6f1?w=400&q=80', name: 'Madu Hitam Pahit Baduy', tag: 'Imunitas & Gula Darah', price: '125000', badge: 'Best Seller' },
+                { id: 'p2', image: 'https://images.unsplash.com/photo-1610444317134-297eb0d3663a?w=400&q=80', name: 'Habbatussauda Habasyi Ekstrak', tag: 'Stamina & Antioksidan', price: '85000', badge: 'Premium' },
+                { id: 'p3', image: 'https://images.unsplash.com/photo-1474722883778-792e7990302f?w=400&q=80', name: 'Minyak Zaitun Extra Virgin (EVOO)', tag: 'Pencernaan & Kolesterol', price: '110000', badge: '' },
+                { id: 'p4', image: 'https://images.unsplash.com/photo-1628151015968-3a4429e9ef04?w=400&q=80', name: 'TeH Daun Jati Cina', tag: 'Detoks & Pelangsing', price: '35000', badge: '' }
+            ],
+            articles: [
+                { id: 'a1', image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&q=80', tag: 'Edukasi Nutrisi', date: '12 Okt 2026', title: 'Mengenal Sifat Panas & Dingin Makanan Menurut TCM', desc: 'Dalam ilmu Pengobatan Tradisional Tiongkok (TCM), makanan tidak hanya diukur dari kalori, melainkan dari sifat energinya (panas, hangat, netral, sejuk, dingin). Menyeimbangkan makanan ini kunci kesehatan.', content: '<p>Dalam tradisi Pengobatan Tradisional Tiongkok (TCM), setiap makanan memiliki karakter termal atau sifat energi yang dapat memengaruhi keseimbangan yin dan yang di dalam tubuh manusia.</p><p>Makanan dengan sifat panas atau hangat cenderung menstimulasi sirkulasi darah, menghangatkan organ pencernaan, dan sangat cocok bagi orang yang sering merasa kedinginan. Sebaliknya, makanan bersiftat sejuk atau dingin membantu menurunkan panas berlebih, meredakan peradangan, serta mengurangi rasa haus yang intens.</p><p>Dengan memahami konstitusi tubuh Anda sendiri, Anda dapat memilih jenis asupan yang tepat setiap harinya untuk menjaga vitalitas tanpa membebani organ pencernaan.</p>' },
+                { id: 'a2', image: 'https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=500&q=80', tag: 'Terapi Fisik', date: '05 Okt 2026', title: '5 Manfaat Rutin Berbekam Sebulan Sekali', desc: 'Bekam bukan sekadar sunnah, namun kajian medis modern membuktikan efektivitasnya dalam membuang sel darah merah yang telah rusak (statis) dan menstimulasi pembentukan sel darah baru di sumsum tulang.', content: '<p>Bekam atau hijamah merupakan salah satu bentuk terapi detoksifikasi tertua yang telah dipraktikkan selama ribuan tahun. Secara fisiologis, bekam menciptakan tekanan negatif lokal di permukaan kulit untuk menarik toksin serta sel darah merah tua yang terjebak di kapiler perifer.</p><p>Rutin melaksanakan bekam setiap bulan terbukti membantu melancarkan suplai oksigen segar ke seluruh jaringan organ, menurunkan kadar kolesterol LDL, serta merilekskan otot-otot kaku akibat aktivitas harian yang padat.</p>' },
+                { id: 'a3', image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=500&q=80', tag: 'Psikologi', date: '28 Sep 2026', title: 'Kaitan Erat Antara Emosi Marah dan Fungsi Organ Liver', desc: 'Pernahkah Anda merasa sakit kepala atau mata merah saat sedang stres berat? Dalam filosofi pengobatan timur, emosi kemarahan terpusat dan sangat membebani organ liver (hati).', content: '<p>Emosi dan organ tubuh tidak terpisahkan dalam kacamata holistik. Liver (hati) bertanggung jawab terhadap kelancaran aliran Qi (energi vital) serta emosi di dalam tubuh.</p><p>Ketika seseorang sering menahan amarah atau mudah tersulut emosi, aliran Qi di liver akan mengalami stagnasi, memicu gejala fisik seperti nyeri dada, sakit kepala sebelah (migrain), mata merah, hingga tekanan darah tinggi.</p>' }
+            ],
+            therapists: [
+                { id: 't1', image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80', name: 'dr. H. Ahmad Fauzi, Lc., M.Kes', role: 'Kepala Medis & Praktisi Thibbun Nabawi', desc: 'Berpengalaman lebih dari 12 tahun dalam terapi holistik terpadu dan pembinaan kesehatan berbasis kedokteran sunnah.' },
+                { id: 't2', image: 'https://images.unsplash.com/photo-1594824813587-756184a4ff49?w=400&q=80', name: 'Siti Nur Azizah, S.Tr.Kes', role: 'Senior Akupunkturis TCM', desc: 'Lulusan Akademi Akupunktur Nasional bersertifikat STPT, ahli dalam penanganan nyeri saraf, migrain, dan pemulihan pasca stroke.' },
+                { id: 't3', image: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&q=80', name: 'Ustadz M. Farhan, Dipl.', role: 'Praktisi Ruqyah & Herbalis', desc: 'Spesialis penanganan terapi psikis Islami, ruqyah syar\'iyyah, serta formulasi herbal alami untuk imunitas tubuh.' }
+            ],
+            careers: [
+                { id: 'c1', type: 'Full Time', title: 'Terapis Bekam & Akupunktur (STPT)', location: 'Cabang Jakarta Selatan / Depok', desc: 'Dibutuhkan praktisi berpengalaman min. 1 tahun, memiliki sertifikat STPT aktif, berakhlak mulia, dan berkomitmen pada pelayanan islami.' },
+                { id: 'c2', type: 'Part Time / Full Time', title: 'Apoteker / Staf Toko Herbal', location: 'Cabang Bekasi', desc: 'Pendidikan min. D3 Farmasi/Sederajat. Teliti, ramah, dan memahami berbagai jenis tanaman obat serta suplemen herbal murni.' }
+            ],
+            branches: [
+                { name: 'Jakarta Selatan (Pusat)', address: 'Jl. TB Simatupang No. 123, Cilandak', phone: '6281200000001', mapInfo: 'Gedung Klinik Berwarna Putih Hijau' },
+                { name: 'Depok', address: 'Jl. Margonda Raya No. 45, Pancoran Mas', phone: '6281200000002', mapInfo: 'Samping Ruko Margo City' }
+            ]
+        };
+
+        function safeGet(key, defaultData) {
+            try { return JSON.parse(localStorage.getItem(key)) || defaultData; } 
+            catch(e) { return defaultData; }
+        }
+        function safeSet(key, value) {
+            try { localStorage.setItem(key, JSON.stringify(value)); } 
+            catch(e) { console.warn("Local storage diblokir."); }
+        }
+
+        window.appState = safeGet('alshafa_state_v6', comprehensiveData);
+        window.cart = safeGet('alshafa_cart_v6', []);
+        
+        const formatRp = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
+
+        window.toggleReservationModal = function() {
+            const modal = document.getElementById('reservation-modal');
+            if (modal) modal.classList.toggle('hidden');
+        };
+
+        window.openReservationModal = function() {
+            const modal = document.getElementById('reservation-modal');
+            if (modal) {
+                const today = new Date().toISOString().split('T')[0];
+                const dateInput = document.getElementById('res-date');
+                if (dateInput) dateInput.value = today;
+                modal.classList.remove('hidden');
+            }
+        };
+
+        window.submitReservationForm = function(e) {
+            e.preventDefault();
+            const name = document.getElementById('res-name').value;
+            const phone = document.getElementById('res-phone').value;
+            const service = document.getElementById('res-service').value;
+            const type = document.querySelector('input[name="res-type"]:checked').value;
+            const branch = document.getElementById('res-branch').value;
+            const address = document.getElementById('res-address').value;
+            const date = document.getElementById('res-date').value;
+            const time = document.getElementById('res-time').value;
+
+            let msg = `Halo Admin Klinik Thibbun Care,\n\nSaya ingin melakukan *Reservasi Terapi* dengan detail berikut:\n\n`;
+            msg += `👤 *Nama:* ${name}\n`;
+            msg += `📞 *No WhatsApp:* ${phone}\n`;
+            msg += `🩺 *Layanan:* ${service}\n`;
+            msg += `📍 *Metode:* ${type}\n`;
+            if(type.includes('Klinik')) {
+                msg += `🏥 *Cabang:* ${branch}\n`;
+            } else {
+                msg += `🏠 *Alamat Homecare:* ${address}\n`;
+            }
+            msg += `📅 *Tanggal:* ${date}\n`;
+            msg += `⏰ *Jam:* ${time}\n\n`;
+            msg += `Mohon konfirmasi jadwal ketersediaan terapis. Terima kasih!`;
+
+            window.openWhatsApp(msg);
+            window.toggleReservationModal();
+            showToast("Form reservasi berhasil dikirim ke WhatsApp!");
+        };
+
+        window.submitCareerForm = function(e) {
+            e.preventDefault();
+            const name = document.getElementById('career-name').value;
+            const phone = document.getElementById('career-phone').value;
+            const position = document.getElementById('career-position').value;
+            const desc = document.getElementById('career-desc').value;
+
+            let msg = `Halo HRD Klinik Thibbun Care,\n\nSaya berminat melamar pekerjaan di klinik:\n\n`;
+            msg += `👤 *Nama:* ${name}\n`;
+            msg += `📞 *No WhatsApp:* ${phone}\n`;
+            msg += `💼 *Posisi Dilamar:* ${position}\n`;
+            msg += `📝 *Ringkasan Kualifikasi:* ${desc}\n\n`;
+            msg += `Mohon petunjuk tahap seleksi berikutnya. Terima kasih.`;
+
+            window.openWhatsApp(msg);
+            showToast("Lamaran terkirim ke HRD!");
+        };
+
+        window.filterProducts = function(category, btnElement) {
+            const allBtns = document.querySelectorAll('.shop-filter-btn');
+            allBtns.forEach(btn => {
+                btn.classList.remove('bg-slate-900', 'text-white');
+                btn.classList.add('bg-slate-100', 'hover:bg-slate-200', 'text-slate-700');
+            });
+            
+            if (btnElement) {
+                btnElement.classList.remove('bg-slate-100', 'hover:bg-slate-200', 'text-slate-700');
+                btnElement.classList.add('bg-slate-900', 'text-white');
+            }
+
+            let filteredProducts = window.appState.products;
+            if (category !== 'Semua') {
+                filteredProducts = window.appState.products.filter(p => 
+                    p.tag.toLowerCase().includes(category.toLowerCase())
+                );
+            }
+
+            const fullProdGrid = document.getElementById('full-products-grid');
+            if (fullProdGrid) {
+                if (filteredProducts.length === 0) {
+                    fullProdGrid.innerHTML = `
+                        <div class="col-span-full text-center py-16">
+                            <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center text-2xl mx-auto mb-4"><i class="fa-solid fa-box-open"></i></div>
+                            <h4 class="font-bold text-slate-800 text-lg mb-1">Produk Tidak Ditemukan</h4>
+                            <p class="text-slate-500 text-sm font-light">Belum ada herbal untuk kategori "${category}" saat ini.</p>
+                        </div>
+                    `;
+                } else {
+                    fullProdGrid.innerHTML = filteredProducts.map(window.generateProductCard).join('');
+                }
+            }
+        };
+
+        window.generateProductCard = function(p) {
+            return `
+                <div class="group reveal active bg-white p-4 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="bg-surface rounded-xl overflow-hidden mb-4 aspect-[4/5] relative flex items-center justify-center">
+                        ${p.badge ? `<span class="absolute top-3 left-3 bg-white/90 backdrop-blur text-[10px] font-bold px-2 py-1 rounded text-slate-800 uppercase tracking-wider z-10">${p.badge}</span>` : ''}
+                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/400x500/eee/999?text=No+Image'">
+                        <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2 p-4">
+                            <button onclick="addToCart('${p.id}')" class="w-full bg-white hover:bg-slate-100 text-slate-900 px-4 py-2.5 rounded-xl font-bold text-xs shadow-md transform translate-y-2 group-hover:translate-y-0 transition-all flex items-center justify-center gap-2"><i class="fa-solid fa-cart-plus text-primary"></i> + Keranjang</button>
+                            <button onclick="orderProduct('${p.name}', '${formatRp(p.price)}')" class="w-full bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-xl font-semibold text-xs shadow-md transform translate-y-2 group-hover:translate-y-0 transition-all flex items-center justify-center gap-2"><i class="fab fa-whatsapp"></i> Beli Langsung</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-sm line-clamp-2 min-h-[40px] mb-1 group-hover:text-primary transition-colors">${p.name}</h4>
+                        <p class="text-slate-500 text-xs mb-3 line-clamp-1">${p.tag}</p>
+                        <div class="flex items-center justify-between border-t border-slate-100 pt-3">
+                            <p class="font-bold text-primary text-sm">${formatRp(p.price)}</p>
+                            <button onclick="addToCart('${p.id}')" class="text-slate-700 hover:text-primary p-2 bg-slate-100 hover:bg-primary-light/50 rounded-lg transition-colors flex items-center gap-1 text-xs" title="Tambah ke Keranjang"><i class="fa-solid fa-cart-plus text-sm"></i></button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        };
+
+        window.readArticle = function(id) {
+            const article = window.appState.articles.find(a => a.id === id);
+            if (!article) return;
+
+            const titleEl = document.getElementById('detail-article-title');
+            const tagEl = document.getElementById('detail-article-tag');
+            const dateEl = document.getElementById('detail-article-date');
+            const imgEl = document.getElementById('detail-article-image');
+            const contentEl = document.getElementById('detail-article-content');
+            const recEl = document.getElementById('detail-article-recommendations');
+
+            if (titleEl) titleEl.innerText = article.title;
+            if (tagEl) tagEl.innerText = article.tag;
+            if (dateEl) dateEl.innerHTML = `<i class="fa-regular fa-calendar mr-1"></i> ${article.date}`;
+            if (imgEl) imgEl.src = article.image;
+            if (contentEl) contentEl.innerHTML = article.content || `<p class="mb-4">${article.desc}</p>`;
+            if (recEl) {
+                const recommendations = window.appState.products.slice(0, 4);
+                recEl.innerHTML = recommendations.map(window.generateProductCard).join('');
+            }
+
+            document.querySelectorAll('.page-view').forEach(page => {
+                page.classList.remove('block');
+                page.classList.add('hidden');
+            });
+            const detailPage = document.getElementById('page-article-detail');
+            if (detailPage) {
+                detailPage.classList.remove('hidden');
+                detailPage.classList.add('block');
+            }
+            
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) mobileMenu.classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        window.navigateTo = function(pageId) {
+            document.querySelectorAll('.page-view').forEach(page => {
+                page.classList.remove('block');
+                page.classList.add('hidden');
+            });
+            
+            const targetPage = document.getElementById('page-' + pageId);
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+                targetPage.classList.add('block');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                setTimeout(() => {
+                    targetPage.querySelectorAll(".reveal").forEach(el => {
+                        if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add("active");
+                    });
+                }, 100);
+            }
+            
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) mobileMenu.classList.add('hidden');
+        };
+
+        window.toggleMobileMenu = function() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) menu.classList.toggle('hidden');
+        };
+
+        window.addToCart = function(productId) {
+            const product = window.appState.products.find(p => p.id === productId);
+            if (!product) return;
+            const existingIndex = window.cart.findIndex(item => item.id === productId);
+            if (existingIndex > -1) window.cart[existingIndex].qty += 1;
+            else window.cart.push({ id: product.id, name: product.name, price: Number(product.price), image: product.image, qty: 1 });
+            saveCart();
+            showToast(`"${product.name}" ditambahkan ke keranjang`);
+        };
+        window.updateCartQty = function(id, delta) {
+            const idx = window.cart.findIndex(i => i.id === id);
+            if (idx > -1) { window.cart[idx].qty += delta; if (window.cart[idx].qty <= 0) window.cart.splice(idx, 1); saveCart(); }
+        };
+        window.removeFromCart = function(id) { window.cart = window.cart.filter(i => i.id !== id); saveCart(); showToast("Item dihapus."); };
+        window.clearCart = function() { window.cart = []; saveCart(); showToast("Keranjang dikosongkan."); };
+        function saveCart() { safeSet('alshafa_cart_v6', window.cart); renderCartUI(); }
+
+        function renderCartUI() {
+            const totalQty = window.cart.reduce((s, i) => s + i.qty, 0);
+            const totalPrice = window.cart.reduce((s, i) => s + (i.price * i.qty), 0);
+            ['cart-badge-desktop', 'cart-badge-mobile', 'cart-badge-mobile-nav', 'cart-badge-float'].forEach(id => {
+                const el = document.getElementById(id); if (el) el.innerText = totalQty;
+            });
+            const container = document.getElementById('cart-items-container');
+            const checkoutForm = document.getElementById('cart-checkout-form');
+            const checkoutBtn = document.getElementById('cart-checkout-btn');
+            const totalPriceEl = document.getElementById('cart-total-price');
+            if (totalPriceEl) totalPriceEl.innerText = formatRp(totalPrice);
+            
+            if (!container) return;
+            if (window.cart.length === 0) {
+                container.innerHTML = `<div class="text-center py-12"><div class="w-20 h-20 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center text-3xl mx-auto mb-4"><i class="fa-solid fa-basket-shopping"></i></div><h4 class="font-bold text-slate-800 text-lg mb-1">Keranjang Kosong</h4><button onclick="toggleModal('cart-modal'); navigateTo('shop');" class="bg-primary text-white px-6 py-2.5 rounded-full text-xs font-semibold mt-4">Belanja Herbal</button></div>`;
+                if (checkoutForm) checkoutForm.classList.add('hidden');
+                if (checkoutBtn) checkoutBtn.disabled = true;
+            } else {
+                container.innerHTML = window.cart.map(i => `
+                    <div class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-slate-100 gap-4"><img src="${i.image}" class="w-16 h-16 object-cover rounded-xl border border-slate-200" onerror="this.src='https://placehold.co/100/eee/999?text=IMG'"><div class="flex-1 min-w-0"><h5 class="font-bold text-slate-900 text-sm truncate">${i.name}</h5><p class="text-xs text-primary font-semibold mt-0.5">${formatRp(i.price)}</p></div><div class="flex items-center gap-2"><div class="flex items-center border border-slate-200 rounded-xl bg-white overflow-hidden shadow-sm"><button onclick="updateCartQty('${i.id}', -1)" class="w-8 h-8 flex items-center justify-center font-bold">-</button><span class="w-8 text-center text-xs font-bold">${i.qty}</span><button onclick="updateCartQty('${i.id}', 1)" class="w-8 h-8 flex items-center justify-center font-bold">+</button></div><button onclick="removeFromCart('${i.id}')" class="p-2 text-slate-400 hover:text-red-500"><i class="fa-solid fa-trash-can text-sm"></i></button></div></div>
+                `).join('');
+                if (checkoutForm) checkoutForm.classList.remove('hidden');
+                if (checkoutBtn) checkoutBtn.disabled = false;
+            }
+        }
+
+        window.checkoutCartWA = function() {
+            if (window.cart.length === 0) return;
+            const name = document.getElementById('cust-name')?.value.trim() || 'Pelanggan';
+            const city = document.getElementById('cust-city')?.value.trim() || '-';
+            const address = document.getElementById('cust-address')?.value.trim() || '-';
+            let msg = `Halo Admin Toko Herbal Al-Shafa,\n\nSaya ingin memesan herbal dengan detail berikut:\n\n📋 *DAFTAR PESANAN:*`;
+            let total = 0;
+            window.cart.forEach((item, idx) => {
+                const sub = item.price * item.qty; total += sub;
+                msg += `\n${idx + 1}. *${item.name}* (${item.qty}x) = ${formatRp(sub)}`;
+            });
+            msg += `\n\n💰 *TOTAL PEMBELIAN:* ${formatRp(total)}\n\n👤 *DATA PEMESAN:*\n- Nama: ${name}\n- Kota: ${city}\n- Alamat: ${address}\n\nMohon info ongkir.`;
+            window.openWhatsApp(msg);
+        };
+
+        function renderAll() {
+            document.documentElement.style.setProperty('--color-primary', window.appState.settings.primaryColor);
+            
+            document.querySelectorAll('.social-fb-link').forEach(el => el.href = window.appState.settings.facebookUrl || '#');
+            document.querySelectorAll('.social-ig-link').forEach(el => el.href = window.appState.settings.instagramUrl || '#');
+
+            const svcHtml = (s) => `
+                <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-premium hover:shadow-premium-hover transition-all duration-300 reveal active group h-full flex flex-col items-center justify-center text-center">
+                    <img src="${s.image || 'https://placehold.co/200/eee/999?text=Service'}" alt="${s.title}" class="w-24 h-24 rounded-full object-cover mb-6 border-4 border-slate-50 shadow-md group-hover:scale-110 group-hover:border-primary/20 transition-all duration-300">
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">${s.title}</h4>
+                    <p class="text-slate-600 text-sm mb-8 leading-relaxed font-light flex-1">${s.desc}</p>
+                    <button onclick="openReservationModal()" class="text-sm font-semibold flex items-center justify-center gap-2 group-hover:gap-3 transition-all text-slate-800 hover:text-primary mt-auto">Reservasi Jadwal <i class="fa-solid fa-calendar-check"></i></button>
+                </div>
+            `;
+            const homeSvcGrid = document.getElementById('home-services-grid');
+            const fullSvcGrid = document.getElementById('full-services-grid');
+            if (homeSvcGrid) homeSvcGrid.innerHTML = window.appState.services.slice(0, 3).map(svcHtml).join('');
+            if (fullSvcGrid) fullSvcGrid.innerHTML = window.appState.services.map(svcHtml).join('');
+
+            const homeProdGrid = document.getElementById('home-products-grid');
+            const fullProdGrid = document.getElementById('full-products-grid');
+            if (homeProdGrid) homeProdGrid.innerHTML = window.appState.products.slice(0, 4).map(window.generateProductCard).join('');
+            if (fullProdGrid) fullProdGrid.innerHTML = window.appState.products.map(window.generateProductCard).join('');
+
+            const artHtml = (a) => `
+                <article onclick="readArticle('${a.id}')" class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-md hover:border-primary/25 transition-all reveal active flex flex-col h-full cursor-pointer group">
+                    <div class="overflow-hidden">
+                        <img src="${a.image}" alt="${a.title}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/500x300/eee/999?text=No+Image'">
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <div class="text-xs text-primary font-medium mb-3">${a.tag} • ${a.date}</div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2 leading-tight group-hover:text-primary transition-colors">${a.title}</h4>
+                        <p class="text-slate-500 text-sm mb-6 line-clamp-3 font-light flex-1 text-justify">${a.desc}</p>
+                        <span class="text-sm font-semibold text-slate-800 group-hover:text-primary transition-colors mt-auto flex items-center gap-2">Baca Artikel Lengkap <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i></span>
+                    </div>
+                </article>
+            `;
+            const homeArtGrid = document.getElementById('home-articles-grid');
+            const fullArtGrid = document.getElementById('full-articles-grid');
+            if (homeArtGrid) homeArtGrid.innerHTML = window.appState.articles.slice(0, 3).map(artHtml).join('');
+            if (fullArtGrid) fullArtGrid.innerHTML = window.appState.articles.map(artHtml).join('');
+
+            const therapistsGrid = document.getElementById('therapists-grid');
+            if (therapistsGrid) {
+                therapistsGrid.innerHTML = (window.appState.therapists || []).map(t => `
+                    <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm text-center">
+                        <img src="${t.image}" alt="${t.name}" class="w-32 h-32 rounded-full object-cover mx-auto mb-6 border-4 border-primary/20">
+                        <h3 class="text-xl font-bold text-slate-900 mb-1">${t.name}</h3>
+                        <p class="text-xs font-semibold text-primary uppercase tracking-wider mb-4">${t.role}</p>
+                        <p class="text-slate-600 text-sm font-light mb-6 text-justify">${t.desc}</p>
+                        <button onclick="openReservationModal()" class="bg-primary/10 hover:bg-primary hover:text-white text-primary text-xs font-bold px-5 py-2.5 rounded-xl transition-all w-full">Jadwalkan Konsultasi</button>
+                    </div>
+                `).join('');
+            }
+
+            const careersGrid = document.getElementById('careers-grid');
+            if (careersGrid) {
+                careersGrid.innerHTML = (window.appState.careers || []).map(c => `
+                    <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                        <div>
+                            <span class="bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">${c.type}</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-2 mb-1">${c.title}</h3>
+                            <p class="text-slate-500 text-sm font-light mb-4"><i class="fa-solid fa-location-dot mr-1 text-primary"></i> Penempatan: ${c.location}</p>
+                            <p class="text-slate-600 text-sm font-light text-justify">${c.desc}</p>
+                        </div>
+                        <a href="#career-position" onclick="document.getElementById('career-position').value='${c.title}'" class="bg-slate-900 hover:bg-black text-white px-6 py-3 rounded-xl font-semibold text-sm transition-all whitespace-nowrap shadow-md">Lamar Posisi Ini</a>
+                    </div>
+                `).join('');
+            }
+
+            const branchesContainer = document.getElementById('branches-container');
+            if (branchesContainer) {
+                branchesContainer.innerHTML = (window.appState.branches || []).map(b => `
+                    <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow reveal active flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 bg-primary-light/30 text-primary rounded-xl flex items-center justify-center text-xl mb-5"><i class="fa-solid fa-location-dot"></i></div>
+                            <h3 class="text-2xl font-bold text-slate-900 mb-2">Cabang ${b.name}</h3>
+                            <p class="text-slate-600 font-light mb-4"><i class="fa-regular fa-map mr-2 text-slate-400"></i> ${b.address}</p>
+                            <p class="text-sm text-slate-500 mb-8 bg-slate-50 p-3 rounded-lg border border-slate-100"><i class="fa-solid fa-circle-info mr-2 text-primary"></i> ${b.mapInfo}</p>
+                        </div>
+                        <button onclick="openWhatsApp('Halo CS Cabang ${b.name}, saya butuh informasi...', '${b.phone}')" class="w-full bg-[#25d366]/10 text-[#128C7E] hover:bg-[#25d366] hover:text-white px-6 py-3.5 rounded-xl font-bold transition-colors flex items-center justify-center gap-2">
+                            <i class="fab fa-whatsapp text-xl"></i> Chat CS Cabang ${b.name}
+                        </button>
+                    </div>
+                `).join('');
+            }
+
+            renderAdminTables();
+            renderCartUI();
+        }
+
+        window.openWhatsApp = function(message, specificNumber = null) {
+            const phoneNumber = specificNumber || window.appState.settings.waNumber;
+            window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+        };
+        window.orderProduct = function(name, price) { window.openWhatsApp(`Halo Admin,\nSaya memesan:\n📦 *${name}*\n💰 ${price}\nMohon info stok.`); };
+        window.toggleModal = function(id) { const m = document.getElementById(id); if (m) { m.classList.toggle('hidden'); document.body.style.overflow = m.classList.contains('hidden') ? 'auto' : 'hidden'; } };
+        window.showToast = function(msg) {
+            const t = document.getElementById('toast-notification'), tm = document.getElementById('toast-message');
+            if(t && tm) { tm.innerText = msg; t.classList.remove('translate-x-full'); setTimeout(() => t.classList.add('translate-x-full'), 3000); }
+        };
+
+        let currentCalcResult = "";
+        window.showResult = function() {
+            const sel = document.querySelector('input[name="symptom"]:checked');
+            const errEl = document.getElementById('calc-error');
+            if (!sel) { if (errEl) errEl.classList.remove('hidden'); return; }
+            if (errEl) errEl.classList.add('hidden');
+            let res = sel.value === "defisiensi_qi" ? "<b>Indikasi: Defisiensi Qi (Kurang Energi Vital)</b><br><br><b>Saran:</b> <b>Akupunktur</b> & <b>Moxibustion</b> sangat direkomendasikan." 
+                    : sel.value === "panas" ? "<b>Indikasi: Sindrom Panas Berlebih</b><br><br><b>Saran:</b> Terapi <b>Bekam (Hijamah) Medis</b> untuk detoks."
+                    : "<b>Indikasi: Akumulasi Lembab Dingin</b><br><br><b>Saran:</b> Terapi <b>Pijat Tuina</b> dan herbal penghangat.";
+            const resText = document.getElementById('result-text');
+            if (resText) resText.innerHTML = res; 
+            currentCalcResult = res;
+            
+            const step1 = document.getElementById('calc-step-1');
+            const calcRes = document.getElementById('calc-result');
+            if (step1) step1.classList.add('hidden');
+            if (calcRes) calcRes.classList.remove('hidden');
+        };
+        window.resetCalc = function() {
+            const form = document.getElementById('healthForm');
+            if (form) form.reset();
+            const step1 = document.getElementById('calc-step-1');
+            const calcRes = document.getElementById('calc-result');
+            if (step1) step1.classList.remove('hidden');
+            if (calcRes) calcRes.classList.add('hidden');
+        };
+        window.sendResultToWA = function() { if(currentCalcResult) openWhatsApp(`Hasil Deteksi Mandiri:\n\n${currentCalcResult.replace(/<[^>]*>?/gm, '')}\n\nSaya butuh konsultasi.`); };
+
+        window.handleAdminLogin = function(e) {
+            e.preventDefault();
+            const userInp = document.getElementById('admin-user');
+            const passInp = document.getElementById('admin-pass');
+            const errInp = document.getElementById('login-error');
+            if (userInp && passInp && userInp.value === 'admin' && passInp.value === 'admin') {
+                toggleModal('admin-login-modal'); 
+                const pubView = document.getElementById('public-view');
+                const waFloat = document.getElementById('wa-floating-btn');
+                const cartFloat = document.getElementById('cart-floating-btn');
+                const adminView = document.getElementById('admin-view');
+                if (pubView) pubView.classList.add('hidden'); 
+                if (waFloat) waFloat.classList.add('hidden'); 
+                if (cartFloat) cartFloat.classList.add('hidden');
+                if (adminView) {
+                    adminView.classList.remove('hidden'); 
+                    adminView.classList.add('flex');
+                }
+                if (errInp) errInp.classList.add('hidden');
+            } else if (errInp) {
+                errInp.classList.remove('hidden');
+            }
+        };
+        window.logoutAdmin = function() {
+            const adminView = document.getElementById('admin-view');
+            const pubView = document.getElementById('public-view');
+            const waFloat = document.getElementById('wa-floating-btn');
+            const cartFloat = document.getElementById('cart-floating-btn');
+            if (adminView) {
+                adminView.classList.add('hidden'); 
+                adminView.classList.remove('flex');
+            }
+            if (pubView) pubView.classList.remove('hidden');
+            if (waFloat) waFloat.classList.remove('hidden');
+            if (cartFloat) cartFloat.classList.remove('hidden');
+            navigateTo('home');
+        };
+        window.switchAdminPanel = function(id) {
+            document.querySelectorAll('.admin-tab').forEach(t => { t.classList.replace('bg-primary', 'hover:bg-slate-800'); t.classList.remove('text-white', 'shadow-md'); });
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.remove('hover:bg-slate-800'); 
+                event.currentTarget.classList.add('bg-primary', 'text-white', 'shadow-md');
+            }
+            document.querySelectorAll('.admin-panel').forEach(p => p.classList.add('hidden')); 
+            const targetPanel = document.getElementById('panel-' + id);
+            if (targetPanel) targetPanel.classList.remove('hidden');
+        };
+
+        function renderAdminTables() {
+            const statProd = document.getElementById('stat-products');
+            const setWa = document.getElementById('setting-wa');
+            const setFb = document.getElementById('setting-fb');
+            const setIg = document.getElementById('setting-ig');
+            const setColor = document.getElementById('setting-color');
+            
+            if (statProd) statProd.innerText = window.appState.products.length;
+            if (setWa) setWa.value = window.appState.settings.waNumber; 
+            if (setFb) setFb.value = window.appState.settings.facebookUrl || '';
+            if (setIg) setIg.value = window.appState.settings.instagramUrl || '';
+            if (setColor) setColor.value = window.appState.settings.primaryColor;
+            
+            const tdBtn = (t,id) => `<td class="px-6 py-4 text-right"><button onclick="editItem('${t}', '${id}')" class="text-blue-500 mx-2"><i class="fa fa-pen"></i></button><button onclick="deleteItem('${t}', '${id}')" class="text-red-500"><i class="fa fa-trash"></i></button></td>`;
+            
+            const tblProd = document.getElementById('table-produk');
+            const tblSvc = document.getElementById('table-layanan');
+            const tblArt = document.getElementById('table-artikel');
+            const tblTer = document.getElementById('table-terapis');
+            const tblCar = document.getElementById('table-karir');
+            
+            if (tblProd) tblProd.innerHTML = window.appState.products.map(p => `<tr class="hover:bg-slate-50"><td class="px-6 py-4 flex items-center gap-3"><img src="${p.image}" class="w-10 h-10 rounded object-cover" onerror="this.src='https://placehold.co/100/eee/999?text=IMG'"> <span class="font-medium text-slate-800">${p.name}</span></td><td class="px-6 py-4 text-slate-600">${p.tag}</td><td class="px-6 py-4 text-slate-800">${formatRp(p.price)}</td>${tdBtn('produk', p.id)}</tr>`).join('');
+            if (tblSvc) tblSvc.innerHTML = window.appState.services.map(s => `<tr class="hover:bg-slate-50"><td class="px-6 py-4 flex items-center gap-3"><img src="${s.image}" class="w-10 h-10 rounded object-cover" onerror="this.src='https://placehold.co/100/eee/999?text=IMG'"> <span class="font-medium">${s.title}</span></td><td class="px-6 py-4 text-slate-600"><p class="line-clamp-1 w-48 text-xs">${s.desc}</p></td>${tdBtn('layanan', s.id)}</tr>`).join('');
+            if (tblArt) tblArt.innerHTML = window.appState.articles.map(a => `<tr class="hover:bg-slate-50"><td class="px-6 py-4 flex items-center gap-3"><img src="${a.image}" class="w-12 h-8 rounded object-cover" onerror="this.src='https://placehold.co/100/eee/999?text=IMG'"> <span class="font-medium line-clamp-1 w-40">${a.title}</span></td><td class="px-6 py-4 text-slate-600 text-xs">${a.tag}</td>${tdBtn('artikel', a.id)}</tr>`).join('');
+            if (tblTer) tblTer.innerHTML = (window.appState.therapists || []).map(t => `<tr class="hover:bg-slate-50"><td class="px-6 py-4 flex items-center gap-3"><img src="${t.image}" class="w-10 h-10 rounded-full object-cover"> <span class="font-medium">${t.name}</span></td><td class="px-6 py-4 text-slate-600 text-xs">${t.role}</td>${tdBtn('terapis', t.id)}</tr>`).join('');
+            if (tblCar) tblCar.innerHTML = (window.appState.careers || []).map(c => `<tr class="hover:bg-slate-50"><td class="px-6 py-4 font-medium">${c.title}</td><td class="px-6 py-4 text-slate-600 text-xs">${c.location} (${c.type})</td>${tdBtn('karir', c.id)}</tr>`).join('');
+        }
+
+        let currentCrudType = '', currentCrudId = null;
+        window.openFormModal = function(t, id = null) {
+            currentCrudType = t; currentCrudId = id; 
+            const form = document.getElementById('crud-form'); 
+            const modalTitle = document.getElementById('crud-modal-title');
+            if (modalTitle) modalTitle.innerText = id ? 'Edit Data' : 'Tambah Data';
+            
+            let arr = t==='produk' ? 'products' : t==='layanan' ? 'services' : t==='terapis' ? 'therapists' : t==='karir' ? 'careers' : 'articles'; 
+            let itm = id ? window.appState[arr].find(x => x.id === id) : null;
+            let html = '';
+
+            const imageUploadHtml = (imgValue) => `
+                <div>
+                    <label class="block text-sm font-semibold mb-2">Upload Gambar Foto</label>
+                    <div class="flex items-center gap-4">
+                        <img id="f-image-preview" src="${imgValue || 'https://placehold.co/150x150/eee/999?text=Upload'}" class="w-16 h-16 rounded-xl object-cover border border-slate-200">
+                        <div class="flex-1 min-w-0">
+                            <input type="file" id="f-image-upload" accept="image/*" class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20 cursor-pointer">
+                            <input type="hidden" id="f-image" value="${imgValue || ''}">
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            if (t === 'produk') {
+                html = `<div><label class="block text-sm font-semibold mb-2">Nama Produk</label><input type="text" id="f-name" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? itm.name : ''}" required></div><div class="grid grid-cols-2 gap-4"><div><label class="block text-sm font-semibold mb-2">Tag/Kategori</label><input type="text" id="f-tag" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? itm.tag : ''}" required></div><div><label class="block text-sm font-semibold mb-2">Harga</label><input type="number" id="f-price" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? itm.price : ''}" required></div></div>${imageUploadHtml(itm ? itm.image : '')}<div><label class="block text-sm font-semibold mb-2">Badge (Opsional)</label><input type="text" id="f-badge" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? (itm.badge||'') : ''}"></div>`;
+            } else if (t === 'layanan') {
+                html = `<div><label class="block text-sm font-semibold mb-2">Nama Layanan</label><input type="text" id="f-title" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? itm.title : ''}" required></div>${imageUploadHtml(itm ? itm.image : '')}<div><label class="block text-sm font-semibold mb-2">Deskripsi Lengkap</label><textarea id="f-desc" rows="3" class="w-full p-3 border border-slate-200 rounded-xl" required>${itm ? itm.desc : ''}</textarea></div>`;
+            } else if (t === 'terapis') {
+                html = `<div><label class="block text-sm font-semibold mb-2">Nama Lengkap & Gelar</label><input type="text" id="f-name" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? itm.name : ''}" required></div><div><label class="block text-sm font-semibold mb-2">Peran / Spesialisasi</label><input type="text" id="f-role" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? itm.role : ''}" required></div>${imageUploadHtml(itm ? itm.image : '')}<div><label class="block text-sm font-semibold mb-2">Biografi Singkat</label><textarea id="f-desc" rows="3" class="w-full p-3 border border-slate-200 rounded-xl" required>${itm ? itm.desc : ''}</textarea></div>`;
+            } else if (t === 'karir') {
+                html = `<div><label class="block text-sm font-semibold mb-2">Posisi Lowongan</label><input type="text" id="f-title" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? itm.title : ''}" required></div><div class="grid grid-cols-2 gap-4"><div><label class="block text-sm font-semibold mb-2">Tipe Pekerjaan</label><input type="text" id="f-type" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? itm.type : 'Full Time'}" required></div><div><label class="block text-sm font-semibold mb-2">Lokasi Penempatan</label><input type="text" id="f-location" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? itm.location : 'Jakarta Selatan'}" required></div></div><div><label class="block text-sm font-semibold mb-2">Persyaratan / Deskripsi</label><textarea id="f-desc" rows="3" class="w-full p-3 border border-slate-200 rounded-xl" required>${itm ? itm.desc : ''}</textarea></div>`;
+            } else if (t === 'artikel') {
+                html = `<div><label class="block text-sm font-semibold mb-2">Judul Artikel</label><input type="text" id="f-title" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? itm.title : ''}" required></div><div class="grid grid-cols-2 gap-4"><div><label class="block text-sm font-semibold mb-2">Kategori</label><input type="text" id="f-tag" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? itm.tag : ''}" required></div><div><label class="block text-sm font-semibold mb-2">Tanggal</label><input type="text" id="f-date" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? itm.date : new Date().toLocaleDateString('id-ID', {day:'2-digit',month:'short',year:'numeric'})}" required></div></div>${imageUploadHtml(itm ? itm.image : '')}<div><label class="block text-sm font-semibold mb-2">Isi Singkat (Preview)</label><textarea id="f-desc" rows="2" class="w-full p-3 border border-slate-200 rounded-xl" required>${itm ? itm.desc : ''}</textarea></div><div><label class="block text-sm font-semibold mb-2">Konten Lengkap (HTML)</label><textarea id="f-content" rows="5" class="w-full p-3 border border-slate-200 rounded-xl font-mono text-xs">${itm ? (itm.content||'') : ''}</textarea></div>`;
+            }
+            
+            if (form) form.innerHTML = html; 
+
+            const fileInput = document.getElementById('f-image-upload');
+            if (fileInput) {
+                fileInput.addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(event) {
+                            const img = new Image();
+                            img.onload = function() {
+                                const canvas = document.createElement('canvas');
+                                const MAX_WIDTH = 600; const MAX_HEIGHT = 600;
+                                let width = img.width, height = img.height;
+                                if (width > height) { if (width > MAX_WIDTH) { height *= MAX_WIDTH / width; width = MAX_WIDTH; } } 
+                                else { if (height > MAX_HEIGHT) { width *= MAX_HEIGHT / height; height = MAX_HEIGHT; } }
+                                canvas.width = width; canvas.height = height;
+                                const ctx = canvas.getContext('2d');
+                                ctx.drawImage(img, 0, 0, width, height);
+                                const dataUrl = canvas.toDataURL('image/jpeg', 0.7);
+                                document.getElementById('f-image').value = dataUrl;
+                                document.getElementById('f-image-preview').src = dataUrl;
+                            }
+                            img.src = event.target.result;
+                        }
+                        reader.readAsDataURL(file);
+                    }
+                });
+            }
+
+            toggleModal('crud-modal');
+        };
+        window.closeFormModal = function() { toggleModal('crud-modal'); };
+        
+        window.saveCrudData = function() {
+            const form = document.getElementById('crud-form'); 
+            if(form && !form.checkValidity()) { form.reportValidity(); return; }
+            let arr = currentCrudType === 'produk' ? 'products' : currentCrudType === 'layanan' ? 'services' : currentCrudType === 'terapis' ? 'therapists' : currentCrudType === 'karir' ? 'careers' : 'articles';
+            let newData = { id: currentCrudId || Date.now().toString() };
+
+            const fallbackImg = currentCrudType === 'produk' ? 'https://placehold.co/400x500/eee/999?text=Herbal' : 'https://placehold.co/500x300/eee/999?text=Image';
+
+            if (currentCrudType === 'produk') { 
+                newData.name = document.getElementById('f-name').value; 
+                newData.tag = document.getElementById('f-tag').value; 
+                newData.price = document.getElementById('f-price').value; 
+                newData.image = document.getElementById('f-image').value || fallbackImg; 
+                newData.badge = document.getElementById('f-badge').value; 
+            }
+            else if (currentCrudType === 'layanan') { 
+                newData.title = document.getElementById('f-title').value; 
+                newData.image = document.getElementById('f-image').value || fallbackImg; 
+                newData.desc = document.getElementById('f-desc').value; 
+            }
+            else if (currentCrudType === 'terapis') {
+                newData.name = document.getElementById('f-name').value;
+                newData.role = document.getElementById('f-role').value;
+                newData.image = document.getElementById('f-image').value || fallbackImg;
+                newData.desc = document.getElementById('f-desc').value;
+            }
+            else if (currentCrudType === 'karir') {
+                newData.title = document.getElementById('f-title').value;
+                newData.type = document.getElementById('f-type').value;
+                newData.location = document.getElementById('f-location').value;
+                newData.desc = document.getElementById('f-desc').value;
+            }
+            else if (currentCrudType === 'artikel') { 
+                newData.title = document.getElementById('f-title').value; 
+                newData.tag = document.getElementById('f-tag').value; 
+                newData.date = document.getElementById('f-date').value; 
+                newData.image = document.getElementById('f-image').value || fallbackImg; 
+                newData.desc = document.getElementById('f-desc').value; 
+                newData.content = document.getElementById('f-content')?.value || newData.desc;
+            }
+            
+            if (currentCrudId) {
+                const idx = window.appState[arr].findIndex(x => x.id === currentCrudId);
+                if (idx > -1) window.appState[arr][idx] = newData;
+            } else {
+                window.appState[arr].push(newData);
+            }
+            safeSet('alshafa_state_v6', window.appState); 
+            renderAll(); 
+            closeFormModal(); 
+            showToast("Data berhasil disimpan.");
+        };
+        
+        window.editItem = function(t, id) { openFormModal(t, id); };
+        window.deleteItem = function(t, id) {
+            let arr = t === 'produk' ? 'products' : t === 'layanan' ? 'services' : t === 'terapis' ? 'therapists' : t === 'karir' ? 'careers' : 'articles';
+            window.appState[arr] = window.appState[arr].filter(x => x.id !== id); 
+            safeSet('alshafa_state_v6', window.appState); 
+            renderAll(); 
+            showToast("Data dihapus.");
+        };
+
+        window.saveSettings = function() {
+            const btn = event ? event.currentTarget : null; 
+            const ori = btn ? btn.innerHTML : '';
+            const waInp = document.getElementById('setting-wa');
+            const fbInp = document.getElementById('setting-fb');
+            const igInp = document.getElementById('setting-ig');
+            const colInp = document.getElementById('setting-color');
+            
+            window.appState.settings = { 
+                waNumber: waInp ? waInp.value : '6281200000000', 
+                facebookUrl: fbInp ? fbInp.value : 'https://facebook.com',
+                instagramUrl: igInp ? igInp.value : 'https://instagram.com',
+                primaryColor: colInp ? colInp.value : '#0F766E' 
+            };
+            safeSet('alshafa_state_v6', window.appState); 
+            renderAll();
+            if (btn) {
+                btn.innerHTML = `<i class="fa-solid fa-check"></i> Tersimpan`; 
+                btn.classList.add('bg-green-600'); 
+                setTimeout(() => { btn.innerHTML = ori; btn.classList.remove('bg-green-600'); }, 2000);
+            }
+        };
+
+        window.addEventListener("scroll", () => {
+            document.querySelectorAll(".reveal:not(.active)").forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add("active");
+            });
+            const nav = document.getElementById('navbar');
+            if (nav) {
+                if (window.scrollY > 10) { nav.classList.add('shadow-glass'); nav.classList.replace('bg-white/95', 'glass'); } 
+                else nav.classList.remove('shadow-glass');
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderAll();
+            setTimeout(() => window.dispatchEvent(new Event('scroll')), 200);
+        });
+
+    </script>
+</body>
+</html>
