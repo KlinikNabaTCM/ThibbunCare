@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <script>
         window.tailwind = window.tailwind || {};
@@ -58,6 +59,22 @@
         .page-header-bg {
             background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
         }
+
+        .body-part {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            fill: #E2E8F0;
+            stroke: #CBD5E1;
+            stroke-width: 2;
+        }
+        .body-part:hover {
+            fill: #99F6E4;
+            stroke: #0F766E;
+        }
+        .body-part.selected {
+            fill: #0F766E !important;
+            stroke: #042F2E !important;
+        }
     </style>
 </head>
 <body class="font-sans antialiased overflow-x-hidden">
@@ -73,7 +90,7 @@
                     <span class="font-bold text-xl md:text-2xl text-slate-900 tracking-tight">Thibbun Care.</span>
                 </a>
                 
-                <div class="hidden lg:flex items-center space-x-7">
+                <div class="hidden lg:flex items-center space-x-6">
                     <button onclick="navigateTo('home')" class="nav-link text-sm font-medium text-slate-600 hover:text-primary transition-colors">Beranda</button>
                     <button onclick="navigateTo('services')" class="nav-link text-sm font-medium text-slate-600 hover:text-primary transition-colors">Layanan</button>
                     <button onclick="navigateTo('articles')" class="nav-link text-sm font-medium text-slate-600 hover:text-primary transition-colors">Artikel</button>
@@ -110,17 +127,17 @@
         
         <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 absolute w-full shadow-xl">
             <div class="px-4 py-4 space-y-2">
-                <button onclick="navigateTo('home')" class="w-full text-left px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-lg font-medium">Beranda</button>
-                <button onclick="navigateTo('services')" class="w-full text-left px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-lg font-medium">Layanan</button>
-                <button onclick="navigateTo('articles')" class="w-full text-left px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-lg font-medium">Artikel</button>
-                <button onclick="navigateTo('shop')" class="w-full text-left px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-lg font-medium">Toko Herbal</button>
-                <button onclick="navigateTo('branches')" class="w-full text-left px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-lg font-medium">Cabang</button>
-                <button onclick="navigateTo('calculator')" class="w-full text-left px-4 py-3 text-primary bg-primary/5 rounded-lg font-medium flex items-center gap-2">
+                <button onclick="navigateTo('home'); toggleMobileMenu()" class="w-full text-left px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-lg font-medium">Beranda</button>
+                <button onclick="navigateTo('services'); toggleMobileMenu()" class="w-full text-left px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-lg font-medium">Layanan</button>
+                <button onclick="navigateTo('articles'); toggleMobileMenu()" class="w-full text-left px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-lg font-medium">Artikel</button>
+                <button onclick="navigateTo('shop'); toggleMobileMenu()" class="w-full text-left px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-lg font-medium">Toko Herbal</button>
+                <button onclick="navigateTo('branches'); toggleMobileMenu()" class="w-full text-left px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-lg font-medium">Cabang</button>
+                <button onclick="navigateTo('calculator'); toggleMobileMenu()" class="w-full text-left px-4 py-3 text-primary bg-primary/5 rounded-lg font-medium flex items-center gap-2">
                     <i class="fa-solid fa-stethoscope"></i> Cek Kondisi (Gratis)
                 </button>
-                <button onclick="navigateTo('therapists')" class="w-full text-left px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-lg font-medium">Tim Terapis</button>
-                <button onclick="navigateTo('careers')" class="w-full text-left px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-lg font-medium">Karir</button>
-                <button onclick="navigateTo('about')" class="w-full text-left px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-lg font-medium border-t border-slate-100 mt-2 pt-4">Tentang Kami</button>
+                <button onclick="navigateTo('therapists'); toggleMobileMenu()" class="w-full text-left px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-lg font-medium">Tim Terapis</button>
+                <button onclick="navigateTo('careers'); toggleMobileMenu()" class="w-full text-left px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-lg font-medium">Karir</button>
+                <button onclick="navigateTo('about'); toggleMobileMenu()" class="w-full text-left px-4 py-3 text-slate-700 hover:bg-slate-50 rounded-lg font-medium border-t border-slate-100 mt-2 pt-4">Tentang Kami</button>
             </div>
         </div>
     </nav>
@@ -174,7 +191,6 @@
                 </div>
             </section>
 
-            <!-- Featured Services -->
             <section class="py-24 bg-white relative border-t border-slate-100">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center max-w-3xl mx-auto mb-16 reveal">
@@ -188,7 +204,6 @@
                 </div>
             </section>
 
-            <!-- Featured Products -->
             <section class="py-24 bg-surface border-y border-slate-100">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4 reveal">
@@ -200,11 +215,10 @@
                             Kunjungi Toko Herbal <i class="fa-solid fa-basket-shopping"></i>
                         </button>
                     </div>
-                    <div id="home-products-grid" class="grid grid-cols-2 lg:grid-cols-4 gap-6"></div>
+                    <div id="home-products-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4"></div>
                 </div>
             </section>
 
-            <!-- Featured Articles -->
             <section class="py-24 bg-white border-b border-slate-100">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4 reveal">
@@ -217,6 +231,64 @@
                         </button>
                     </div>
                     <div id="home-articles-grid" class="grid md:grid-cols-3 gap-8"></div>
+                </div>
+            </section>
+
+            <section class="py-24 bg-gradient-to-br from-primary-light/30 via-white to-secondary-light/30 border-b border-slate-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                        <h2 class="text-primary font-semibold tracking-wide text-sm uppercase mb-3">Kisah Pasien</h2>
+                        <h3 class="text-3xl font-bold text-slate-900">Apa Kata Mereka Tentang Thibbun Care?</h3>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8 reveal">
+                        <!-- Komentar 1 (Perempuan) -->
+                        <div class="bg-white p-8 rounded-3xl shadow-premium hover:shadow-premium-hover transition-all duration-300 relative border-t-4 border-primary flex flex-col justify-between">
+                            <div class="absolute top-6 right-8 text-primary/10 text-6xl"><i class="fa-solid fa-quote-right"></i></div>
+                            <div>
+                                <div class="flex text-amber-400 text-sm mb-5 relative z-10"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                <p class="text-slate-700 leading-relaxed font-light mb-8 text-justify relative z-10 text-sm md:text-base">"Luar biasa! Setelah rutin terapi akupunktur dan konsumsi madu hitam dari sini, keluhan pegal linu dan pusing saya jauh berkurang. Terapisnya sangat ramah, profesional, dan tempatnya nyaman sekali."</p>
+                            </div>
+                            <div class="flex items-center gap-4 border-t border-slate-100 pt-5 mt-auto relative z-10">
+                                <div class="w-12 h-12 bg-pink-50 text-pink-500 rounded-full flex items-center justify-center border-2 border-white shadow-sm text-2xl font-bold" title="Perempuan">♀</div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 text-sm">Bunda Aisyah</h4>
+                                    <p class="text-xs text-slate-500">Pasien Terapi TCM</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Komentar 2 (Laki-laki) -->
+                        <div class="bg-white p-8 rounded-3xl shadow-premium hover:shadow-premium-hover transition-all duration-300 relative border-t-4 border-secondary transform md:-translate-y-4 flex flex-col justify-between">
+                            <div class="absolute top-6 right-8 text-secondary/10 text-6xl"><i class="fa-solid fa-quote-right"></i></div>
+                            <div>
+                                <div class="flex text-amber-400 text-sm mb-5 relative z-10"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                <p class="text-slate-700 leading-relaxed font-light mb-8 text-justify relative z-10 text-sm md:text-base">"Sangat puas dengan layanan Homecare-nya. Terapis datang tepat waktu ke rumah, alat-alatnya 100% steril (dibuka dari segel di depan kita), dan pelayanannya sangat sesuai dengan sunnah. Rekomen!"</p>
+                            </div>
+                            <div class="flex items-center gap-4 border-t border-slate-100 pt-5 mt-auto relative z-10">
+                                <div class="w-12 h-12 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center border-2 border-white shadow-sm text-2xl font-bold" title="Laki-laki">♂</div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 text-sm">Bapak Ilham</h4>
+                                    <p class="text-xs text-slate-500">Pasien Homecare Bekam</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Komentar 3 (Perempuan) -->
+                        <div class="bg-white p-8 rounded-3xl shadow-premium hover:shadow-premium-hover transition-all duration-300 relative border-t-4 border-emerald-500 flex flex-col justify-between">
+                            <div class="absolute top-6 right-8 text-emerald-500/10 text-6xl"><i class="fa-solid fa-quote-right"></i></div>
+                            <div>
+                                <div class="flex text-amber-400 text-sm mb-5 relative z-10"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                <p class="text-slate-700 leading-relaxed font-light mb-8 text-justify relative z-10 text-sm md:text-base">"Saya iseng mencoba kalkulator kondisi di web ini, dan hasilnya akurat. Pesan herbalnya via WA juga direspon sangat cepat, barang dikirim hari itu juga. Kualitas herbalnya murni dan terasa khasiatnya."</p>
+                            </div>
+                            <div class="flex items-center gap-4 border-t border-slate-100 pt-5 mt-auto relative z-10">
+                                <div class="w-12 h-12 bg-pink-50 text-pink-500 rounded-full flex items-center justify-center border-2 border-white shadow-sm text-2xl font-bold" title="Perempuan">♀</div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 text-sm">Sarah Amalia</h4>
+                                    <p class="text-xs text-slate-500">Pelanggan Toko Herbal</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
@@ -371,7 +443,7 @@
             </div>
         </div>
 
-        <!-- HALAMAN TOKO HERBAL FULL -->
+        <!-- HALAMAN TOKO HERBAL FULL (Shopee Style) -->
         <div id="page-shop" class="page-view hidden">
             <div class="pt-32 pb-12 bg-white border-b border-slate-100">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6 reveal active">
@@ -389,7 +461,7 @@
             </div>
             <div class="py-12 bg-surface min-h-[60vh]">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div id="full-products-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+                    <div id="full-products-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4"></div>
                 </div>
             </div>
         </div>
@@ -460,77 +532,66 @@
             </div>
         </div>
 
-        <!-- HALAMAN KALKULATOR KESEHATAN -->
+        <!-- HALAMAN KALKULATOR KESEHATAN (Interactive Anatomy Body Map) -->
         <div id="page-calculator" class="page-view hidden">
             <div class="pt-32 pb-12 bg-white border-b border-slate-100">
                 <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal active">
                     <div class="w-16 h-16 bg-primary-light text-primary rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 shadow-sm"><i class="fa-solid fa-stethoscope"></i></div>
-                    <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Deteksi Sindrom Mandiri</h1>
-                    <p class="text-slate-500 font-light">Analisa awal kondisi tubuh Anda berdasarkan keluhan dominan menggunakan pendekatan Traditional Chinese Medicine (TCM).</p>
+                    <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Deteksi Sindrom Mandiri (Anatomi Interaktif)</h1>
+                    <p class="text-slate-500 font-light">Sentuh atau klik pada bagian tubuh yang mengalami keluhan untuk mendiagnosa titik terapi TCM.</p>
                 </div>
             </div>
             
             <div class="py-12 bg-surface min-h-[60vh]">
                 <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="bg-white rounded-3xl shadow-premium border border-slate-100 overflow-hidden">
-                        <div class="p-8 md:p-12">
-                            <div id="calc-step-1">
-                                <h3 class="text-lg font-bold text-slate-800 mb-6 border-b border-slate-100 pb-4">Pilih Keluhan Dominan (Seminggu Terakhir):</h3>
-                                
-                                <div id="calc-error" class="hidden mb-6 p-4 bg-red-50 text-red-600 rounded-xl text-sm flex items-start gap-3 border border-red-100">
-                                    <i class="fa-solid fa-circle-exclamation mt-0.5"></i> <span>Silakan pilih salah satu gejala terlebih dahulu.</span>
-                                </div>
-
-                                <form id="healthForm" class="space-y-4">
-                                    <label class="block relative p-5 border-2 border-slate-100 rounded-2xl cursor-pointer hover:border-primary/50 transition-colors group has-[:checked]:border-primary has-[:checked]:bg-primary/5">
-                                        <div class="flex items-start gap-4">
-                                            <div class="mt-1 flex-shrink-0 w-5 h-5 rounded-full border-2 border-slate-300 group-hover:border-primary flex items-center justify-center has-[:checked]:border-primary"><input type="radio" name="symptom" value="defisiensi_qi" class="appearance-none w-2.5 h-2.5 rounded-full bg-primary hidden checked:block"></div>
-                                            <div>
-                                                <h4 class="font-bold text-slate-800 text-base group-hover:text-primary transition-colors">Kelelahan Kronis, Pucat & Letih</h4>
-                                                <p class="text-sm text-slate-500 mt-1 font-light leading-relaxed text-justify">Napas pendek, enggan bicara, anggota tubuh terasa berat, mudah berkeringat meski tidak beraktivitas berat, pusing saat bangun.</p>
-                                            </div>
-                                        </div>
-                                    </label>
-                                    <label class="block relative p-5 border-2 border-slate-100 rounded-2xl cursor-pointer hover:border-primary/50 transition-colors group has-[:checked]:border-primary has-[:checked]:bg-primary/5">
-                                        <div class="flex items-start gap-4">
-                                            <div class="mt-1 flex-shrink-0 w-5 h-5 rounded-full border-2 border-slate-300 group-hover:border-primary flex items-center justify-center has-[:checked]:border-primary"><input type="radio" name="symptom" value="panas" class="appearance-none w-2.5 h-2.5 rounded-full bg-primary hidden checked:block"></div>
-                                            <div>
-                                                <h4 class="font-bold text-slate-800 text-base group-hover:text-primary transition-colors">Sensasi Panas, Nyeri Tajam & Emosional</h4>
-                                                <p class="text-sm text-slate-500 mt-1 font-light leading-relaxed text-justify">Wajah/mata kemerahan, sering haus ingin minum dingin, sariawan, susah tidur, urine kuning pekat, mudah marah atau tensi tinggi.</p>
-                                            </div>
-                                        </div>
-                                    </label>
-                                    <label class="block relative p-5 border-2 border-slate-100 rounded-2xl cursor-pointer hover:border-primary/50 transition-colors group has-[:checked]:border-primary has-[:checked]:bg-primary/5">
-                                        <div class="flex items-start gap-4">
-                                            <div class="mt-1 flex-shrink-0 w-5 h-5 rounded-full border-2 border-slate-300 group-hover:border-primary flex items-center justify-center has-[:checked]:border-primary"><input type="radio" name="symptom" value="lembab_dingin" class="appearance-none w-2.5 h-2.5 rounded-full bg-primary hidden checked:block"></div>
-                                            <div>
-                                                <h4 class="font-bold text-slate-800 text-base group-hover:text-primary transition-colors">Pencernaan Buruk, Kembung & Dingin</h4>
-                                                <p class="text-sm text-slate-500 mt-1 font-light leading-relaxed text-justify">Tangan/kaki sering dingin, perut kembung/begah, feses lembek, banyak dahak/lendir, enggan minum air, mudah masuk angin.</p>
-                                            </div>
-                                        </div>
-                                    </label>
-                                </form>
-                                <div class="mt-8 text-right border-t border-slate-100 pt-6">
-                                    <button onclick="showResult()" class="px-8 py-3.5 rounded-xl bg-slate-900 text-white font-medium hover:bg-black transition-colors shadow-md w-full sm:w-auto">Lihat Hasil Analisa</button>
-                                </div>
+                    <div class="bg-white rounded-3xl shadow-premium border border-slate-100 overflow-hidden p-8 md:p-12">
+                        <div id="calc-step-1">
+                            <h3 class="text-lg font-bold text-slate-800 mb-6 text-center">Pilih Area Tubuh yang Bermasalah:</h3>
+                            
+                            <div id="calc-error" class="hidden mb-6 p-4 bg-red-50 text-red-600 rounded-xl text-sm flex items-center gap-3 border border-red-100 justify-center">
+                                <i class="fa-solid fa-circle-exclamation"></i> <span>Silakan klik salah satu area tubuh pada gambar di bawah terlebih dahulu.</span>
                             </div>
 
-                            <div id="calc-result" class="hidden text-center">
-                                <div class="w-20 h-20 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6"><i class="fa-solid fa-file-medical"></i></div>
-                                <h3 class="text-2xl font-bold text-slate-900 mb-2">Hasil Analisa Awal</h3>
-                                
-                                <div class="bg-surface rounded-2xl p-6 my-6 text-left border border-slate-100 shadow-inner">
-                                    <p id="result-text" class="text-slate-700 leading-relaxed text-sm text-justify"></p>
-                                </div>
-                                
-                                <p class="text-xs text-slate-500 mb-8 bg-slate-50 p-4 rounded-lg border border-slate-100 text-left font-light">* Catatan Medis: Ini adalah analisa sistem otomatis berbasis teori TCM dasar. Hasil ini tidak menggantikan diagnosa profesional. Konsultasikan langsung dengan Terapis kami untuk observasi presisi (Nadi dan Lidah).</p>
-                                
-                                <div class="flex flex-col sm:flex-row gap-4 border-t border-slate-100 pt-6">
-                                    <button onclick="resetCalc()" class="w-full sm:w-1/3 px-6 py-3.5 rounded-xl text-slate-600 font-medium border border-slate-200 hover:bg-slate-50 transition-colors text-sm">Cek Ulang</button>
-                                    <button onclick="sendResultToWA()" class="w-full sm:w-2/3 px-8 py-3.5 rounded-xl bg-[#25d366] text-white font-bold hover:bg-[#1ebd5a] transition-colors text-sm shadow-md flex items-center justify-center gap-2">
-                                        <i class="fab fa-whatsapp text-lg"></i> Konsultasi Hasil via WA
-                                    </button>
-                                </div>
+                            <!-- Interactive SVG Body Map -->
+                            <div class="flex flex-col items-center justify-center mb-8">
+                                <svg viewBox="0 0 200 350" class="w-48 h-80 drop-shadow-md">
+                                    <!-- Kepala -->
+                                    <ellipse id="part-kepala" onclick="selectBodyPart('kepala')" cx="100" cy="35" rx="22" ry="25" class="body-part" />
+                                    <!-- Leher & Dada -->
+                                    <path id="part-dada" onclick="selectBodyPart('dada')" d="M85 62 L115 62 L120 120 L80 120 Z" class="body-part" />
+                                    <!-- Tangan Kiri & Kanan -->
+                                    <path id="part-tangan" onclick="selectBodyPart('tangan')" d="M65 68 L78 68 L75 160 L62 160 Z" class="body-part" />
+                                    <path id="part-tangan2" onclick="selectBodyPart('tangan')" d="M135 68 L122 68 L125 160 L138 160 Z" class="body-part" />
+                                    <!-- Perut / Abdomen -->
+                                    <rect id="part-perut" onclick="selectBodyPart('perut')" x="80" y="123" width="40" height="60" rx="5" class="body-part" />
+                                    <!-- Kaki Kiri & Kanan -->
+                                    <path id="part-kaki" onclick="selectBodyPart('kaki')" d="M83 186 L97 186 L95 300 L83 300 Z" class="body-part" />
+                                    <path id="part-kaki2" onclick="selectBodyPart('kaki')" d="M103 186 L117 186 L117 300 L105 300 Z" class="body-part" />
+                                </svg>
+                                <p class="text-xs text-slate-400 mt-3 font-medium">Klik pada bagian: Kepala, Dada, Tangan, Perut, atau Kaki</p>
+                                <input type="hidden" id="selected-body-part" value="">
+                            </div>
+
+                            <div class="mt-8 text-center border-t border-slate-100 pt-6">
+                                <button onclick="showResult()" class="px-8 py-3.5 rounded-xl bg-slate-900 text-white font-medium hover:bg-black transition-colors shadow-md w-full sm:w-auto">Analisa Keluhan Area Ini</button>
+                            </div>
+                        </div>
+
+                        <div id="calc-result" class="hidden text-center">
+                            <div class="w-20 h-20 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-6"><i class="fa-solid fa-file-medical"></i></div>
+                            <h3 class="text-2xl font-bold text-slate-900 mb-2">Hasil Analisa Area Tubuh</h3>
+                            
+                            <div class="bg-surface rounded-2xl p-6 my-6 text-left border border-slate-100 shadow-inner">
+                                <p id="result-text" class="text-slate-700 leading-relaxed text-sm text-justify"></p>
+                            </div>
+                            
+                            <p class="text-xs text-slate-500 mb-8 bg-slate-50 p-4 rounded-lg border border-slate-100 text-left font-light">* Catatan Medis: Analisa otomatis berdasarkan titik meridian TCM dan Thibbun Nabawi. Konsultasikan langsung dengan Terapis kami untuk diagnosa presisi.</p>
+                            
+                            <div class="flex flex-col sm:flex-row gap-4 border-t border-slate-100 pt-6">
+                                <button onclick="resetCalc()" class="w-full sm:w-1/3 px-6 py-3.5 rounded-xl text-slate-600 font-medium border border-slate-200 hover:bg-slate-50 transition-colors text-sm">Pilih Bagian Lain</button>
+                                <button onclick="sendResultToWA()" class="w-full sm:w-2/3 px-8 py-3.5 rounded-xl bg-[#25d366] text-white font-bold hover:bg-[#1ebd5a] transition-colors text-sm shadow-md flex items-center justify-center gap-2">
+                                    <i class="fab fa-whatsapp text-lg"></i> Konsultasi Hasil via WA
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -550,10 +611,10 @@
                     <p class="text-sm leading-relaxed mb-8 max-w-sm font-light text-slate-400">Menghadirkan standar baru dalam pengobatan holistik dengan memadukan keilmuan medis timur dan prosedur steril modern.</p>
                     
                     <div class="flex items-center gap-4">
-                        <a href="#" target="_blank" class="social-fb-link w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition-all shadow-sm hover:shadow-lg hover:-translate-y-1" title="Facebook Resmi">
+                        <a href="https://facebook.com" id="footer-fb" target="_blank" class="social-fb-link w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition-all shadow-sm hover:shadow-lg hover:-translate-y-1" title="Facebook Resmi">
                             <i class="fa-brands fa-facebook-f"></i>
                         </a>
-                        <a href="#" target="_blank" class="social-ig-link w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-gradient-to-tr hover:from-yellow-500 hover:via-red-500 hover:to-fuchsia-600 hover:text-white transition-all shadow-sm hover:shadow-lg hover:-translate-y-1" title="Instagram Resmi">
+                        <a href="https://instagram.com" id="footer-ig" target="_blank" class="social-ig-link w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-gradient-to-tr hover:from-yellow-500 hover:via-red-500 hover:to-fuchsia-600 hover:text-white transition-all shadow-sm hover:shadow-lg hover:-translate-y-1" title="Instagram Resmi">
                             <i class="fa-brands fa-instagram text-lg"></i>
                         </a>
                     </div>
@@ -588,18 +649,19 @@
     </div> <!-- Tutup public-view -->
 
     <div id="admin-view" class="hidden min-h-screen bg-slate-50 font-sans">
-        <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col shadow-2xl z-20 fixed h-full">
+        <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col shadow-2xl z-20 fixed h-full md:relative md:min-h-screen">
             <div class="h-20 flex items-center px-6 border-b border-slate-800">
                 <div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white text-sm mr-3"><i class="fa-solid fa-leaf"></i></div>
                 <span class="font-bold text-xl text-white tracking-wide">Admin.</span>
             </div>
-            <nav class="flex-1 py-6 px-4 space-y-2 overflow-y-auto">
+            <nav class="flex-1 py-6 px-4 space-y-2 overflow-y-auto custom-scrollbar">
                 <button onclick="switchAdminPanel('overview', event)" class="admin-tab w-full flex items-center gap-3 px-4 py-3 bg-primary text-white rounded-xl text-sm font-medium transition-colors shadow-md"><i class="fa-solid fa-chart-pie w-5"></i> Ringkasan</button>
                 <button onclick="switchAdminPanel('layanan', event)" class="admin-tab w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-800 hover:text-white rounded-xl text-sm font-medium transition-colors"><i class="fa-solid fa-bed-pulse w-5"></i> Layanan</button>
                 <button onclick="switchAdminPanel('produk', event)" class="admin-tab w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-800 hover:text-white rounded-xl text-sm font-medium transition-colors"><i class="fa-solid fa-box w-5"></i> Toko Herbal</button>
                 <button onclick="switchAdminPanel('artikel', event)" class="admin-tab w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-800 hover:text-white rounded-xl text-sm font-medium transition-colors"><i class="fa-solid fa-newspaper w-5"></i> Artikel</button>
                 <button onclick="switchAdminPanel('terapis', event)" class="admin-tab w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-800 hover:text-white rounded-xl text-sm font-medium transition-colors"><i class="fa-solid fa-user-doctor w-5"></i> Tim Terapis</button>
                 <button onclick="switchAdminPanel('karir', event)" class="admin-tab w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-800 hover:text-white rounded-xl text-sm font-medium transition-colors"><i class="fa-solid fa-briefcase w-5"></i> Lowongan Karir</button>
+                <button onclick="switchAdminPanel('cabang', event)" class="admin-tab w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-800 hover:text-white rounded-xl text-sm font-medium transition-colors"><i class="fa-solid fa-location-dot w-5"></i> Cabang Klinik</button>
                 <button onclick="switchAdminPanel('pengaturan', event)" class="admin-tab w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-800 hover:text-white rounded-xl text-sm font-medium transition-colors mt-8"><i class="fa-solid fa-gear w-5"></i> Pengaturan</button>
             </nav>
             <div class="p-4 border-t border-slate-800">
@@ -607,15 +669,15 @@
             </div>
         </aside>
 
-        <main class="ml-64 flex flex-col min-h-screen">
+        <main class="flex-1 flex flex-col min-h-screen">
             <header class="h-20 bg-white border-b border-slate-200 flex items-center justify-between px-8 sticky top-0 z-10 shadow-sm">
-                <h2 id="admin-header-title" class="text-xl font-bold text-slate-800">Ringkasan Utama</h2>
+                <h2 id="admin-header-title" class="text-xl font-bold text-slate-800">Dashboard</h2>
                 <div class="flex items-center gap-4">
                     <div class="flex items-center gap-3 pl-4 border-l border-slate-200">
                         <div class="w-10 h-10 rounded-full bg-primary-light text-primary flex items-center justify-center font-bold">AD</div>
                         <div class="hidden md:block text-left">
                             <p class="text-sm font-bold text-slate-800 leading-tight">Administrator</p>
-                            <p class="text-xs text-slate-500">Klinik Pusat</p>
+                            <p class="text-xs text-slate-500">Pusat</p>
                         </div>
                     </div>
                 </div>
@@ -628,6 +690,14 @@
                         <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4"><div class="w-14 h-14 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl"><i class="fa-brands fa-whatsapp"></i></div><div><p class="text-sm text-slate-500 font-medium mb-1">Klik Reservasi</p><p class="text-2xl font-bold text-slate-800">89</p></div></div>
                         <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4"><div class="w-14 h-14 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl"><i class="fa-solid fa-box-open"></i></div><div><p class="text-sm text-slate-500 font-medium mb-1">Total Produk Herbal</p><p id="stat-products" class="text-2xl font-bold text-slate-800">0</p></div></div>
                     </div>
+
+                    <!-- Chart.js Analytics Visual -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm mb-8">
+                        <h3 class="text-lg font-bold text-slate-800 mb-4">Grafik Tren Aktivitas Pasien</h3>
+                        <div class="h-72 w-full">
+                            <canvas id="dashboardChart"></canvas>
+                        </div>
+                    </div>
                 </div>
                 
                 <div id="panel-produk" class="admin-panel hidden">
@@ -635,7 +705,7 @@
                         <h3 class="text-xl font-bold text-slate-800">Katalog Toko Herbal</h3>
                         <button onclick="openFormModal('produk')" class="bg-primary text-white px-5 py-2.5 rounded-lg font-medium shadow-sm flex items-center gap-2"><i class="fa-solid fa-plus"></i> Tambah Produk</button>
                     </div>
-                    <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden"><table class="w-full text-left border-collapse"><thead><tr class="bg-slate-50 text-slate-500 text-xs uppercase"><th class="px-6 py-4">Produk</th><th class="px-6 py-4">Kategori</th><th class="px-6 py-4">Harga</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-produk" class="text-sm text-slate-700 divide-y divide-slate-50"></tbody></table></div>
+                    <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-x-auto"><table class="w-full text-left border-collapse min-w-[600px]"><thead><tr class="bg-slate-50 text-slate-500 text-xs uppercase"><th class="px-6 py-4">Produk</th><th class="px-6 py-4">Kategori</th><th class="px-6 py-4">Harga</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-produk" class="text-sm text-slate-700 divide-y divide-slate-50"></tbody></table></div>
                 </div>
 
                 <div id="panel-layanan" class="admin-panel hidden">
@@ -643,7 +713,7 @@
                         <h3 class="text-xl font-bold text-slate-800">Manajemen Layanan</h3>
                         <button onclick="openFormModal('layanan')" class="bg-primary text-white px-5 py-2.5 rounded-lg font-medium shadow-sm flex items-center gap-2"><i class="fa-solid fa-plus"></i> Tambah Layanan</button>
                     </div>
-                    <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden"><table class="w-full text-left border-collapse"><thead><tr class="bg-slate-50 text-slate-500 text-xs uppercase"><th class="px-6 py-4">Layanan</th><th class="px-6 py-4">Deskripsi</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-layanan" class="text-sm text-slate-700 divide-y divide-slate-50"></tbody></table></div>
+                    <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-x-auto"><table class="w-full text-left border-collapse min-w-[600px]"><thead><tr class="bg-slate-50 text-slate-500 text-xs uppercase"><th class="px-6 py-4">Layanan</th><th class="px-6 py-4">Deskripsi</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-layanan" class="text-sm text-slate-700 divide-y divide-slate-50"></tbody></table></div>
                 </div>
 
                 <div id="panel-artikel" class="admin-panel hidden">
@@ -651,7 +721,7 @@
                         <h3 class="text-xl font-bold text-slate-800">Jurnal & Artikel</h3>
                         <button onclick="openFormModal('artikel')" class="bg-primary text-white px-5 py-2.5 rounded-lg font-medium shadow-sm flex items-center gap-2"><i class="fa-solid fa-plus"></i> Tulis Artikel</button>
                     </div>
-                    <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden"><table class="w-full text-left border-collapse"><thead><tr class="bg-slate-50 text-slate-500 text-xs uppercase"><th class="px-6 py-4">Judul</th><th class="px-6 py-4">Kategori</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-artikel" class="text-sm text-slate-700 divide-y divide-slate-50"></tbody></table></div>
+                    <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-x-auto"><table class="w-full text-left border-collapse min-w-[600px]"><thead><tr class="bg-slate-50 text-slate-500 text-xs uppercase"><th class="px-6 py-4">Judul</th><th class="px-6 py-4">Kategori</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-artikel" class="text-sm text-slate-700 divide-y divide-slate-50"></tbody></table></div>
                 </div>
 
                 <div id="panel-terapis" class="admin-panel hidden">
@@ -659,7 +729,7 @@
                         <h3 class="text-xl font-bold text-slate-800">Manajemen Tim Terapis</h3>
                         <button onclick="openFormModal('terapis')" class="bg-primary text-white px-5 py-2.5 rounded-lg font-medium shadow-sm flex items-center gap-2"><i class="fa-solid fa-plus"></i> Tambah Terapis</button>
                     </div>
-                    <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden"><table class="w-full text-left border-collapse"><thead><tr class="bg-slate-50 text-slate-500 text-xs uppercase"><th class="px-6 py-4">Nama</th><th class="px-6 py-4">Spesialisasi</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-terapis" class="text-sm text-slate-700 divide-y divide-slate-50"></tbody></table></div>
+                    <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-x-auto"><table class="w-full text-left border-collapse min-w-[600px]"><thead><tr class="bg-slate-50 text-slate-500 text-xs uppercase"><th class="px-6 py-4">Nama</th><th class="px-6 py-4">Spesialisasi</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-terapis" class="text-sm text-slate-700 divide-y divide-slate-50"></tbody></table></div>
                 </div>
 
                 <div id="panel-karir" class="admin-panel hidden">
@@ -667,23 +737,31 @@
                         <h3 class="text-xl font-bold text-slate-800">Manajemen Lowongan Karir</h3>
                         <button onclick="openFormModal('karir')" class="bg-primary text-white px-5 py-2.5 rounded-lg font-medium shadow-sm flex items-center gap-2"><i class="fa-solid fa-plus"></i> Tambah Lowongan</button>
                     </div>
-                    <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden"><table class="w-full text-left border-collapse"><thead><tr class="bg-slate-50 text-slate-500 text-xs uppercase"><th class="px-6 py-4">Posisi</th><th class="px-6 py-4">Lokasi / Tipe</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-karir" class="text-sm text-slate-700 divide-y divide-slate-50"></tbody></table></div>
+                    <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-x-auto"><table class="w-full text-left border-collapse min-w-[600px]"><thead><tr class="bg-slate-50 text-slate-500 text-xs uppercase"><th class="px-6 py-4">Posisi</th><th class="px-6 py-4">Lokasi / Tipe</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-karir" class="text-sm text-slate-700 divide-y divide-slate-50"></tbody></table></div>
+                </div>
+
+                <div id="panel-cabang" class="admin-panel hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-bold text-slate-800">Manajemen Cabang Klinik</h3>
+                        <button onclick="openFormModal('cabang')" class="bg-primary text-white px-5 py-2.5 rounded-lg font-medium shadow-sm flex items-center gap-2"><i class="fa-solid fa-plus"></i> Tambah Cabang</button>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-x-auto"><table class="w-full text-left border-collapse min-w-[600px]"><thead><tr class="bg-slate-50 text-slate-500 text-xs uppercase"><th class="px-6 py-4">Nama Cabang</th><th class="px-6 py-4">Alamat</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-cabang" class="text-sm text-slate-700 divide-y divide-slate-50"></tbody></table></div>
                 </div>
 
                 <div id="panel-pengaturan" class="admin-panel hidden">
-                    <h3 class="text-xl font-bold text-slate-800 mb-6">Pengaturan Website</h3>
+                    <h3 class="text-xl font-bold text-slate-800 mb-6">Pengaturan Website & Akun Admin</h3>
                     <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm max-w-xl space-y-6">
                         <div>
                             <label class="block text-sm font-semibold mb-2">Nomor WhatsApp CS (Tanpa 0, pakai 62)</label>
                             <input type="text" id="setting-wa" class="w-full px-4 py-3 border border-slate-200 rounded-xl">
                         </div>
                         <div>
-                            <label class="block text-sm font-semibold mb-2">URL Facebook Resmi</label>
-                            <input type="url" id="setting-fb" class="w-full px-4 py-3 border border-slate-200 rounded-xl" placeholder="https://facebook.com/nama.klinik">
+                            <label class="block text-sm font-semibold mb-2">Ubah Username Admin Baru</label>
+                            <input type="text" id="setting-user" class="w-full px-4 py-3 border border-slate-200 rounded-xl" placeholder="Kosongkan jika tidak diubah">
                         </div>
                         <div>
-                            <label class="block text-sm font-semibold mb-2">URL Instagram Resmi</label>
-                            <input type="url" id="setting-ig" class="w-full px-4 py-3 border border-slate-200 rounded-xl" placeholder="https://instagram.com/nama.klinik">
+                            <label class="block text-sm font-semibold mb-2">Ubah Password Admin Baru</label>
+                            <input type="password" id="setting-pass" class="w-full px-4 py-3 border border-slate-200 rounded-xl" placeholder="Kosongkan jika tidak diubah">
                         </div>
                         <div>
                             <label class="block text-sm font-semibold mb-2">Warna Tema Utama</label>
@@ -700,7 +778,7 @@
     <div id="reservation-modal" class="fixed inset-0 z-[130] hidden">
         <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="toggleModal('reservation-modal')"></div>
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-lg px-4">
-            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden p-8 border border-slate-100 max-h-[90vh] overflow-y-auto">
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden p-8 border border-slate-100 max-h-[90vh] overflow-y-auto custom-scrollbar">
                 <div class="flex justify-between items-center mb-6">
                     <div class="flex items-center gap-3">
                         <div class="w-10 h-10 rounded-xl bg-primary-light text-primary flex items-center justify-center text-lg"><i class="fa-solid fa-calendar-check"></i></div>
@@ -777,13 +855,13 @@
         </div>
     </div>
 
-    <!-- Modals & Floating Buttons -->
+    <!-- Modals & Cart / Admin Login -->
     <div id="crud-modal" class="fixed inset-0 z-[120] hidden">
         <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeFormModal()"></div>
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl px-4">
             <div class="bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
                 <div class="px-8 py-5 border-b border-slate-100 flex justify-between items-center bg-surface sticky top-0"><h3 id="crud-modal-title" class="text-xl font-bold text-slate-900">Tambah Data</h3><button onclick="closeFormModal()" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button></div>
-                <div class="p-8 overflow-y-auto"><form id="crud-form" class="space-y-5"></form></div>
+                <div class="p-8 overflow-y-auto custom-scrollbar"><form id="crud-form" class="space-y-5"></form></div>
                 <div class="px-8 py-5 border-t border-slate-100 bg-surface flex justify-end gap-3 sticky bottom-0"><button onclick="closeFormModal()" class="px-6 py-2.5 rounded-xl text-slate-600 font-medium bg-slate-100">Batal</button><button onclick="saveCrudData()" class="px-8 py-2.5 rounded-xl bg-primary text-white font-medium shadow-md">Simpan Data</button></div>
             </div>
         </div>
@@ -794,12 +872,22 @@
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl px-4">
             <div class="bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
                 <div class="px-8 py-5 border-b border-slate-100 flex justify-between items-center bg-surface sticky top-0"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-primary-light text-primary flex items-center justify-center text-lg"><i class="fa-solid fa-cart-shopping"></i></div><div><h3 class="text-xl font-bold text-slate-900">Keranjang Belanja</h3><p class="text-xs text-slate-500">Pemesanan Herbal</p></div></div><div class="flex items-center gap-2"><button onclick="clearCart()" class="text-xs text-red-500 font-medium px-3 py-1.5 rounded-lg hover:bg-red-50"><i class="fa-solid fa-trash-can mr-1"></i> Kosongkan</button><button onclick="toggleModal('cart-modal')" class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button></div></div>
-                <div class="p-8 overflow-y-auto flex-1">
+                <div class="p-8 overflow-y-auto custom-scrollbar flex-1">
                     <div id="cart-items-container" class="space-y-4"></div>
                     <div id="cart-checkout-form" class="mt-8 pt-6 border-t border-slate-100 space-y-4 hidden">
-                        <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2"><i class="fa-solid fa-user-pen text-primary"></i> Data Pemesan & Pengiriman</h4>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4"><div><label class="block text-xs font-semibold mb-1">Nama Lengkap</label><input type="text" id="cust-name" class="w-full px-4 py-2.5 rounded-xl border border-slate-200"></div><div><label class="block text-xs font-semibold mb-1">Kota / Kecamatan</label><input type="text" id="cust-city" class="w-full px-4 py-2.5 rounded-xl border border-slate-200"></div></div>
-                        <div><label class="block text-xs font-semibold mb-1">Alamat Lengkap</label><textarea id="cust-address" rows="2" class="w-full px-4 py-2.5 rounded-xl border border-slate-200"></textarea></div>
+                        <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-100 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-coins text-emerald-600 text-lg"></i>
+                                <div><p class="text-xs font-bold text-emerald-900">Poin Sehat Tersedia</p><p class="text-[10px] text-emerald-600">Potongan Rp15.000 (Min. Belanja Rp15rb)</p></div>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="use-points-cb" onchange="renderCartUI()" class="sr-only peer">
+                                <div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-600"></div>
+                            </label>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2 pt-2"><i class="fa-solid fa-user-pen text-primary"></i> Data Pemesan & Pengiriman</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4"><div><label class="block text-xs font-semibold mb-1">Nama Lengkap</label><input type="text" id="cust-name" class="w-full px-4 py-2.5 rounded-xl border border-slate-200" placeholder="Nama penerima paket"></div><div><label class="block text-xs font-semibold mb-1">Kota / Kecamatan</label><input type="text" id="cust-city" class="w-full px-4 py-2.5 rounded-xl border border-slate-200" placeholder="Contoh: Jakarta Selatan"></div></div>
+                        <div><label class="block text-xs font-semibold mb-1">Alamat Lengkap</label><textarea id="cust-address" rows="2" class="w-full px-4 py-2.5 rounded-xl border border-slate-200" placeholder="Alamat pengiriman herbal..."></textarea></div>
                     </div>
                 </div>
                 <div class="px-8 py-5 border-t border-slate-100 bg-surface flex flex-col sm:flex-row justify-between items-center gap-4 sticky bottom-0"><div><p class="text-xs text-slate-500 font-medium">Total Pembelian</p><p id="cart-total-price" class="text-2xl font-extrabold text-primary">Rp 0</p></div><button id="cart-checkout-btn" onclick="checkoutCartWA()" disabled class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-[#25d366] text-white font-bold shadow-md flex items-center justify-center gap-2 disabled:opacity-50"><i class="fab fa-whatsapp text-xl"></i> Pesan via WhatsApp</button></div>
@@ -818,7 +906,6 @@
                     <div><label class="block text-sm font-semibold mb-2">Username</label><div class="relative"><div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none"><i class="fa-regular fa-user text-slate-400"></i></div><input type="text" id="admin-user" class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-slate-200 bg-slate-50" required></div></div>
                     <div><div class="flex justify-between items-center mb-2"><label class="block text-sm font-semibold">Password</label></div><div class="relative"><div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none"><i class="fa-solid fa-lock text-slate-400"></i></div><input type="password" id="admin-pass" class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-slate-200 bg-slate-50" required></div></div>
                     <div class="pt-4"><button type="submit" class="w-full bg-slate-900 text-white px-6 py-4 rounded-xl font-semibold shadow-lg">Masuk Dashboard</button></div>
-                    <div class="text-center mt-6 p-3 bg-slate-50 rounded-xl border border-slate-100"><p class="text-xs text-slate-500 mb-1">Akses demo:</p><p class="text-sm text-slate-800">User: <b class="text-primary font-bold">admin</b> &nbsp;|&nbsp; Pass: <b class="text-primary font-bold">admin</b></p></div>
                 </form>
             </div>
         </div>
@@ -830,8 +917,8 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, getDocs, doc, setDoc, deleteDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, doc, setDoc, deleteDoc, getDoc, onSnapshot, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyBaguK_IvKbPX6beKYaGQRDG8t5XF-RGoY",
@@ -841,6 +928,7 @@
             messagingSenderId: "239426306737",
             appId: "1:239426306737:web:318adec2ec031b05d79890"
         };
+        const activeAppId = typeof __app_id !== 'undefined' ? __app_id : 'klinik-thibbun-care';
 
         let app, auth, db;
         let isFirebaseActive = false;
@@ -851,7 +939,7 @@
             db = getFirestore(app);
             isFirebaseActive = true;
         } catch(e) {
-            console.warn("Gagal inisialisasi Firebase, menggunakan memori lokal.");
+            console.warn("Gagal inisialisasi Firebase, beralih ke mode lokal.");
         }
 
         const comprehensiveData = {
@@ -859,83 +947,79 @@
                 waNumber: "6281200000000", 
                 primaryColor: "#0F766E",
                 facebookUrl: "https://facebook.com",
-                instagramUrl: "https://instagram.com/klinik.thibbuncare"
+                instagramUrl: "https://instagram.com/klinik.thibbuncare",
+                adminUser: "admin",
+                adminPass: "admin"
             },
             services: [
-                { id: '1', image: 'https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=400&q=80', title: 'Bekam (Hijamah) Medis', desc: 'Proses detoksifikasi darah statis. Menggunakan peralatan 100% steril dan pisau bedah medis sekali pakai.' },
-                { id: '2', image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&q=80', title: 'Akupunktur TCM', desc: 'Stimulasi titik meridian tubuh menggunakan jarum sangat halus untuk melancarkan sirkulasi Qi (energi).' },
-                { id: '3', image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&q=80', title: 'Pijat Tuina & Tulang Belakang', desc: 'Manipulasi jaringan otot dan persendian untuk mengatasi nyeri kronis dan saraf terjepit.' },
-                { id: '4', image: 'https://images.unsplash.com/photo-1550345332-09e3ac987658?w=400&q=80', title: 'Terapi Lintah', desc: 'Penggunaan lintah medis untuk mengatasi masalah kardiovaskular dan penyumbatan pembuluh darah.' },
-                { id: '5', image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&q=80', title: 'Moxibustion (Moksa)', desc: 'Terapi pemanasan menggunakan herbal Mugwort (Ai Ye) untuk mengusir patogen dingin dari tubuh.' },
-                { id: '6', image: 'https://images.unsplash.com/photo-1552693673-1bf958298935?w=400&q=80', title: 'Ruqyah Syar\'iyyah', desc: 'Terapi psikis dan spiritual membacakan ayat-ayat suci Al-Qur\'an untuk menangani masalah psikologis.' }
-            ],
+                { id: "s1", title: "Bekam (Hijamah) Medis", desc: "Membersihkan darah kotor, toksin, serta melancarkan sirkulasi peredaran darah dengan alat steril sekali pakai.", image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80" },
+                { id: "s2", title: "Akupunktur TCM", desc: "Stimulasi titik meridian tubuh menggunakan jarum steril halus untuk menyeimbangkan energi vital (Qi) dan meredakan nyeri.", image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&q=80" },
+                { id: "s3", title: "Pijat Tuina & Tulang Belakang", desc: "Terapi pijat kesehatan tradisional Tiongkok untuk mengatasi ketegangan otot, saraf terjepit ringan, dan perbaikan postur.", image: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=600&q=80" }
+            ], 
             products: [
-                { id: 'p1', image: 'https://images.unsplash.com/photo-1587049352851-8d4e8e12b6f1?w=400&q=80', name: 'Madu Hitam Pahit Baduy', tag: 'Imunitas & Gula Darah', price: '125000', badge: 'Best Seller' },
-                { id: 'p2', image: 'https://images.unsplash.com/photo-1610444317134-297eb0d3663a?w=400&q=80', name: 'Habbatussauda Habasyi', tag: 'Stamina & Antioksidan', price: '85000', badge: 'Premium' },
-                { id: 'p3', image: 'https://images.unsplash.com/photo-1474722883778-792e7990302f?w=400&q=80', name: 'Minyak Zaitun EVOO', tag: 'Pencernaan & Kolesterol', price: '110000', badge: '' },
-                { id: 'p4', image: 'https://images.unsplash.com/photo-1628151015968-3a4429e9ef04?w=400&q=80', name: 'Teh Daun Jati Cina', tag: 'Detoks & Pelangsing', price: '35000', badge: '' }
-            ],
+                { id: "p1", name: "Madu Hitam Pahit Ar-Risyah", price: 75000, tag: "Imunitas", image: "https://images.unsplash.com/photo-1587049352847-4a222e784d38?w=400&q=80" },
+                { id: "p2", name: "Kapsul Habbatussauda 200 Kapsul", price: 50000, tag: "Imunitas", image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&q=80" },
+                { id: "p3", name: "Minyak Zaitun Extra Virgin 250ml", price: 65000, tag: "Pencernaan", image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&q=80" },
+                { id: "p4", name: "Teh Herbal Daun Jati Cina", price: 35000, tag: "Pencernaan", image: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=400&q=80" },
+                { id: "p5", name: "Sari Kurma Ajwa Premium", price: 45000, tag: "Stamina", image: "https://images.unsplash.com/photo-1596797038530-2c107229654b?w=400&q=80" }
+            ], 
             articles: [
-                { id: 'a1', image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&q=80', tag: 'Edukasi Nutrisi', date: '12 Okt 2026', title: 'Mengenal Sifat Panas & Dingin Makanan', desc: 'Dalam ilmu Pengobatan Tradisional Tiongkok (TCM), makanan diukur dari sifat energinya.', content: '<p>Dalam tradisi Pengobatan Tradisional Tiongkok (TCM), setiap makanan memiliki karakter termal atau sifat energi yang dapat memengaruhi keseimbangan yin dan yang di dalam tubuh manusia.</p><p>Makanan dengan sifat panas atau hangat cenderung menstimulasi sirkulasi darah, menghangatkan organ pencernaan, dan sangat cocok bagi orang yang sering merasa kedinginan. Sebaliknya, makanan bersiftat sejuk atau dingin membantu menurunkan panas berlebih, meredakan peradangan, serta mengurangi rasa haus yang intens.</p>' },
-                { id: 'a2', image: 'https://images.unsplash.com/photo-1512069772995-ec65ed45afd6?w=500&q=80', tag: 'Terapi Fisik', date: '05 Okt 2026', title: '5 Manfaat Rutin Berbekam Sebulan Sekali', desc: 'Bekam bukan sekadar sunnah, namun kajian medis modern membuktikan efektivitasnya dalam membuang sel darah statis.', content: '<p>Bekam atau hijamah merupakan salah satu bentuk terapi detoksifikasi tertua yang telah dipraktikkan selama ribuan tahun. Secara fisiologis, bekam menciptakan tekanan negatif lokal di permukaan kulit untuk menarik toksin serta sel darah merah tua yang terjebak di kapiler perifer.</p><p>Rutin melaksanakan bekam setiap bulan terbukti membantu melancarkan suplai oksigen segar ke seluruh jaringan organ, menurunkan kadar kolesterol LDL, serta merilekskan otot-otot kaku akibat aktivitas harian yang padat.</p>' },
-                { id: 'a3', image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=500&q=80', tag: 'Psikologi', date: '28 Sep 2026', title: 'Kaitan Erat Antara Emosi Marah dan Organ Liver', desc: 'Pernahkah Anda merasa sakit kepala atau mata merah saat sedang stres berat? Dalam filosofi pengobatan timur...', content: '<p>Emosi dan organ tubuh tidak terpisahkan dalam kacamata holistik. Liver (hati) bertanggung jawab terhadap kelancaran aliran Qi (energi vital) serta emosi di dalam tubuh.</p><p>Ketika seseorang sering menahan amarah atau mudah tersulut emosi, aliran Qi di liver akan mengalami stagnasi, memicu gejala fisik seperti nyeri dada, sakit kepala sebelah (migrain), mata merah, hingga tekanan darah tinggi.</p>' }
-            ],
+                { id: "a1", title: "Keutamaan & Manfaat Medis Bekam (Hijamah) di Hari Sunnah", tag: "Thibbun Nabawi", date: "10 Okt 2026", image: "https://images.unsplash.com/photo-1512290900672-468205f77864?w=600&q=80", desc: "Bekam bukan sekadar tradisi pengobatan peninggalan Nabi, melainkan terbukti secara klinis mampu meregenerasi sel darah merah dan membuang radikal bebas.", content: "Bekam atau hijamah adalah metode pengobatan yang telah dicontohkan oleh Rasulullah SAW. Secara medis, penyedotan pada titik-titik tertentu di permukaan kulit memicu pelepasan histamin dan prostaglandin serta memperlancar aliran darah mikrosirkulasi." },
+                { id: "a2", title: "Mengenal Titik Meridian Utama dalam Akupunktur TCM", tag: "Akupunktur", date: "08 Okt 2026", image: "https://images.unsplash.com/photo-1519824141549-d345091a97d9?w=600&q=80", desc: "Bagaimana jarum tipis dapat meredakan nyeri punggung hingga mengatasi insomnia kronis berdasarkan ilmu keseimbangan energi (Qi).", content: "Pengobatan Tradisional Tiongkok (TCM) memandang tubuh manusia sebagai sistem energi yang saling terhubung melalui jalur meridian. Ketika terjadi hambatan atau defisiensi, timbulah penyakit." },
+                { id: "a3", title: "Tips Menjaga Kesehatan Pencernaan Sesuai Sunnah Rasulullah", tag: "Gaya Hidup", date: "05 Okt 2026", image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&q=80", desc: "Panduan pola makan seimbang, aturan minum air, dan konsumsi habbatussauda untuk menjaga imunitas usus tetap prima.", content: "Lambung adalah pusat dari berbagai penyakit. Rasulullah SAW mengajarkan untuk mengisi perut dengan sepertiga makanan, sepertiga air, dan sepertiga udara." }
+            ], 
             therapists: [
-                { id: 't1', image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80', name: 'dr. H. Ahmad Fauzi', role: 'Kepala Medis', desc: 'Berpengalaman 12+ tahun dalam terapi holistik terpadu berbasis kedokteran sunnah.' },
-                { id: 't2', image: 'https://images.unsplash.com/photo-1594824813587-756184a4ff49?w=400&q=80', name: 'Siti Nur Azizah, S.Tr.Kes', role: 'Senior Akupunkturis', desc: 'Lulusan Akademi Akupunktur Nasional bersertifikat STPT, ahli nyeri saraf.' },
-                { id: 't3', image: 'https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&q=80', name: 'Ustadz M. Farhan', role: 'Praktisi Ruqyah', desc: 'Spesialis terapi psikis Islami, ruqyah syar\'iyyah, dan formulasi herbal.' }
-            ],
+                { id: "t1", name: "dr. Ahmad Fauzi, M.Biomed", spec: "Dokter Penanggung Jawab & Akupunkturis", image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80" },
+                { id: "t2", name: "Ustadz H. Lukman Hakim, STPT", spec: "Ahli Bekam Medik & Thibbun Nabawi", image: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&q=80" },
+                { id: "t3", name: "Siti Rahmawati, S.Tr.Kes", spec: "Terapis Senior Tiongkok (TCM) & Tuina", image: "https://images.unsplash.com/photo-1594824813575-538466ad9e34?w=400&q=80" }
+            ], 
             careers: [
-                { id: 'c1', type: 'Full Time', title: 'Terapis Bekam & Akupunktur', location: 'Jakarta Selatan', desc: 'Dibutuhkan praktisi berpengalaman min. 1 tahun, sertifikat STPT aktif.' },
-                { id: 'c2', type: 'Full Time', title: 'Apoteker Herbal', location: 'Depok', desc: 'Pendidikan min. D3 Farmasi. Memahami jenis tanaman obat dan suplemen.' }
-            ],
+                { id: "c1", title: "Terapis Bekam & Akupunktur (STPT)", loc: "Jakarta Selatan (Full Time)", desc: "Memiliki sertifikat STPT aktif, berpengalaman minimal 1 tahun di klinik holistik." },
+                { id: "c2", title: "Apoteker / Staf Toko Herbal", loc: "Depok (Full Time)", desc: "Paham produk herbal Thibbun Nabawi, ramah, dan cakap melayani pelanggan." }
+            ], 
             branches: [
-                { name: 'Jakarta Selatan (Pusat)', address: 'Jl. TB Simatupang No. 123, Cilandak', phone: '6281200000001', mapInfo: 'Gedung Klinik Berwarna Putih Hijau' },
-                { name: 'Depok', address: 'Jl. Margonda Raya No. 45, Pancoran Mas', phone: '6281200000002', mapInfo: 'Samping Ruko Margo City' }
+                { id: "b1", name: "Klinik Thibbun Care Pusat - Jaksel", address: "Jl. Margasatwa Raya No. 45, Cilandak, Jakarta Selatan", phone: "0812-3456-7890", hours: "09.00 - 20.00 WIB" },
+                { id: "b2", name: "Klinik Thibbun Care Cabang Depok", address: "Jl. Margonda Raya No. 120, Beji, Depok", phone: "0812-3456-7891", hours: "09.00 - 20.00 WIB" }
             ]
         };
 
-        // Bulletproof storage wrapper to prevent SecurityError in restricted iframes
         function safeGetLocalStorage(key, fallback) {
-            try {
-                const val = localStorage.getItem(key);
-                return val ? JSON.parse(val) : fallback;
-            } catch (e) {
-                return fallback;
-            }
+            try { const val = localStorage.getItem(key); return val ? JSON.parse(val) : fallback; } 
+            catch (e) { return fallback; }
         }
-
         function safeSetLocalStorage(key, value) {
-            try {
-                localStorage.setItem(key, JSON.stringify(value));
-            } catch (e) {
-                // Ignore storage restriction errors gracefully
-            }
+            try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) {}
         }
 
-        window.appState = safeGetLocalStorage('thibbuncare_state_v1', comprehensiveData);
-        window.cart = safeGetLocalStorage('thibbuncare_cart_v1', []);
+        window.appState = safeGetLocalStorage('thibbuncare_state_v3', comprehensiveData);
+        window.cart = safeGetLocalStorage('thibbuncare_cart_v3', []);
+
+        ['services', 'products', 'articles', 'therapists', 'careers', 'branches'].forEach(key => {
+            if(!window.appState[key] || window.appState[key].length === 0) window.appState[key] = comprehensiveData[key] || [];
+        });
 
         const formatRp = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
         window.formatRp = formatRp;
 
         window.generateProductCard = function(p) {
+            const soldCount = Math.floor(Math.random() * 50) + 5; 
+            const poinSehat = Math.floor(p.price / 1000); 
             return `
-                <div class="group reveal active bg-white p-4 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="bg-surface rounded-xl overflow-hidden mb-4 aspect-[4/5] relative flex items-center justify-center">
-                        ${p.badge ? `<span class="absolute top-3 left-3 bg-white/90 backdrop-blur text-[10px] font-bold px-2 py-1 rounded text-slate-800 uppercase tracking-wider z-10">${p.badge}</span>` : ''}
-                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/400x500/eee/999?text=No+Image'">
-                        <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-2 p-4">
-                            <button onclick="window.addToCart('${p.id}')" class="w-full bg-white hover:bg-slate-100 text-slate-900 px-4 py-2.5 rounded-xl font-bold text-xs shadow-md transform translate-y-2 group-hover:translate-y-0 transition-all flex items-center justify-center gap-2"><i class="fa-solid fa-cart-plus text-primary"></i> + Keranjang</button>
-                            <button onclick="window.orderProduct('${p.id}')" class="w-full bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-xl font-semibold text-xs shadow-md transform translate-y-2 group-hover:translate-y-0 transition-all flex items-center justify-center gap-2"><i class="fab fa-whatsapp"></i> Beli Langsung</button>
-                        </div>
+                <div class="group bg-white rounded-md border border-slate-200 shadow-sm hover:shadow-md hover:border-primary transition-all overflow-hidden flex flex-col cursor-pointer h-full relative" onclick="window.orderProduct('${p.id}')">
+                    <div class="absolute top-2 left-2 z-20 bg-amber-100 text-amber-700 text-[10px] font-extrabold px-1.5 py-0.5 rounded shadow-sm flex items-center gap-1 border border-amber-200">
+                        <i class="fa-solid fa-coins"></i> +${poinSehat} Poin
                     </div>
-                    <div>
-                        <h4 class="font-bold text-slate-900 text-sm line-clamp-2 min-h-[40px] mb-1 group-hover:text-primary transition-colors">${p.name}</h4>
-                        <p class="text-slate-500 text-xs mb-3 line-clamp-1">${p.tag}</p>
-                        <div class="flex items-center justify-between border-t border-slate-100 pt-3">
-                            <p class="font-bold text-primary text-sm">${window.formatRp(p.price)}</p>
-                            <button onclick="window.addToCart('${p.id}')" class="text-slate-700 hover:text-primary p-2 bg-slate-100 hover:bg-primary-light/50 rounded-lg transition-colors flex items-center gap-1 text-xs" title="Tambah ke Keranjang"><i class="fa-solid fa-cart-plus text-sm"></i></button>
+                    <div class="relative w-full aspect-square bg-slate-50 overflow-hidden">
+                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://placehold.co/400x400/eee/999?text=Image'">
+                        <button onclick="event.stopPropagation(); window.addToCart('${p.id}')" class="absolute bottom-2 right-2 w-8 h-8 bg-white/90 backdrop-blur text-primary rounded-full shadow border border-slate-100 flex items-center justify-center hover:bg-primary hover:text-white transition-colors z-20" title="Tambah ke Keranjang">
+                            <i class="fa-solid fa-cart-plus text-xs"></i>
+                        </button>
+                    </div>
+                    <div class="p-2 md:p-3 flex flex-col flex-1">
+                        <h4 class="text-slate-800 text-xs md:text-sm leading-tight line-clamp-2 mb-1 group-hover:text-primary transition-colors min-h-[32px] md:min-h-[40px]">${p.name}</h4>
+                        <div class="mt-auto flex items-end justify-between">
+                            <p class="font-bold text-[#ee4d2d] text-sm md:text-base">${window.formatRp(p.price)}</p>
+                            <p class="text-[10px] text-slate-500">${soldCount}RB Terjual</p>
                         </div>
                     </div>
                 </div>
@@ -949,9 +1033,7 @@
 
         window.orderProduct = function(productId) { 
             const p = window.appState.products.find(x => x.id === productId);
-            if (p) {
-                window.openWhatsApp(`Halo Admin,\nSaya memesan:\n📦 *${p.name}*\n💰 ${window.formatRp(p.price)}\nMohon info ketersediaan stok.`);
-            }
+            if (p) window.openWhatsApp(`Halo Admin Thibbun Care,\nSaya memesan produk:\n📦 *${p.name}*\n💰 ${window.formatRp(p.price)}\nMohon info ketersediaan stok.`);
         };
 
         window.toggleModal = function(id) { 
@@ -961,96 +1043,128 @@
                 document.body.style.overflow = m.classList.contains('hidden') ? 'auto' : 'hidden'; 
             } 
         };
-
-        window.openReservationModal = function() {
-            const modal = document.getElementById('reservation-modal');
-            if (modal) {
-                const today = new Date().toISOString().split('T')[0];
-                const dateInput = document.getElementById('res-date');
-                if (dateInput) dateInput.value = today;
-                if(modal.classList.contains('hidden')) {
-                    toggleModal('reservation-modal');
-                }
-            }
-        };
-
+        window.openReservationModal = function() { window.toggleModal('reservation-modal'); };
+        
         window.submitReservationForm = function(e) {
             e.preventDefault();
             const name = document.getElementById('res-name').value;
             const phone = document.getElementById('res-phone').value;
             const service = document.getElementById('res-service').value;
-            const type = document.querySelector('input[name="res-type"]:checked').value;
+            const typeRadio = document.querySelector('input[name="res-type"]:checked');
+            const type = typeRadio ? typeRadio.value : 'Datang ke Klinik';
             const branch = document.getElementById('res-branch').value;
             const address = document.getElementById('res-address').value;
             const date = document.getElementById('res-date').value;
             const time = document.getElementById('res-time').value;
 
-            let msg = `Halo Admin Klinik Thibbun Care,\n\nSaya ingin melakukan *Reservasi Terapi* dengan detail berikut:\n\n`;
-            msg += `👤 *Nama:* ${name}\n📞 *No WhatsApp:* ${phone}\n🩺 *Layanan:* ${service}\n📍 *Metode:* ${type}\n`;
-            if(type.includes('Klinik')) msg += `🏥 *Cabang:* ${branch}\n`;
-            else msg += `🏠 *Alamat Homecare:* ${address}\n`;
-            msg += `📅 *Tanggal:* ${date}\n⏰ *Jam:* ${time}\n\nMohon konfirmasi jadwal. Terima kasih!`;
+            let msg = `Halo Admin Thibbun Care,\nSaya ingin membuat Reservasi Terapi:\n\n👤 *Nama:* ${name}\n📱 *No. WA:* ${phone}\n💆 *Layanan:* ${service}\n🏠 *Metode:* ${type}\n📅 *Rencana Tanggal:* ${date}\n⏰ *Jam:* ${time} WIB`;
+            if (type.includes('Homecare')) msg += `\n📍 *Alamat Rumah:* ${address}`;
+            else msg += `\n🏥 *Cabang:* ${branch}`;
 
             window.openWhatsApp(msg);
-            toggleModal('reservation-modal');
-            showToast("Form reservasi berhasil dikirim ke WhatsApp!");
+            showToast("Form reservasi berhasil disiapkan ke WhatsApp!");
+            window.toggleModal('reservation-modal');
         };
 
         window.submitCareerForm = function(e) {
             e.preventDefault();
             const name = document.getElementById('career-name').value;
             const phone = document.getElementById('career-phone').value;
-            const position = document.getElementById('career-position').value;
+            const pos = document.getElementById('career-position').value;
             const desc = document.getElementById('career-desc').value;
 
-            let msg = `Halo HRD Klinik Thibbun Care,\n\nSaya berminat melamar pekerjaan:\n\n👤 *Nama:* ${name}\n📞 *No WhatsApp:* ${phone}\n💼 *Posisi:* ${position}\n📝 *Kualifikasi:* ${desc}\n\nMohon petunjuk tahap seleksi berikutnya.`;
+            let msg = `Halo HRD Thibbun Care,\nSaya ingin mengajukan lamaran pekerjaan:\n\n👤 *Nama:* ${name}\n📱 *No. WA:* ${phone}\n💼 *Posisi:* ${pos}\n📝 *Kualifikasi / Pengalaman:* ${desc}`;
             window.openWhatsApp(msg);
-            showToast("Lamaran terkirim ke HRD!");
+            showToast("Lamaran terkirim ke WhatsApp HRD!");
         };
 
         window.filterProducts = function(category, btnElement) {
             document.querySelectorAll('.shop-filter-btn').forEach(btn => {
-                btn.classList.remove('bg-slate-900', 'text-white');
-                btn.classList.add('bg-slate-100', 'hover:bg-slate-200', 'text-slate-700');
+                btn.classList.remove('bg-slate-900', 'text-white'); btn.classList.add('bg-slate-100', 'hover:bg-slate-200', 'text-slate-700');
             });
             if (btnElement) {
-                btnElement.classList.remove('bg-slate-100', 'hover:bg-slate-200', 'text-slate-700');
-                btnElement.classList.add('bg-slate-900', 'text-white');
+                btnElement.classList.remove('bg-slate-100', 'hover:bg-slate-200', 'text-slate-700'); btnElement.classList.add('bg-slate-900', 'text-white');
             }
-
             let filteredProducts = window.appState.products;
-            if (category !== 'Semua') {
-                filteredProducts = window.appState.products.filter(p => p.tag.toLowerCase().includes(category.toLowerCase()));
-            }
-
+            if (category !== 'Semua') filteredProducts = window.appState.products.filter(p => p.tag.toLowerCase().includes(category.toLowerCase()));
             const fullProdGrid = document.getElementById('full-products-grid');
             if (fullProdGrid) {
-                if (filteredProducts.length === 0) {
-                    fullProdGrid.innerHTML = `<div class="col-span-full text-center py-16"><div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center text-2xl mx-auto mb-4"><i class="fa-solid fa-box-open"></i></div><h4 class="font-bold text-slate-800 text-lg mb-1">Produk Tidak Ditemukan</h4><p class="text-slate-500 text-sm font-light">Belum ada herbal untuk kategori "${category}".</p></div>`;
-                } else {
-                    fullProdGrid.innerHTML = filteredProducts.map(window.generateProductCard).join('');
-                }
+                if (filteredProducts.length === 0) fullProdGrid.innerHTML = `<div class="col-span-full text-center py-16"><h4 class="font-bold text-slate-800 text-lg mb-1">Produk Tidak Ditemukan</h4></div>`;
+                else fullProdGrid.innerHTML = filteredProducts.map(window.generateProductCard).join('');
             }
+        };
+
+        window.addToCart = function(productId) {
+            const p = window.appState.products.find(x => x.id === productId);
+            if (!p) return;
+            const exIdx = window.cart.findIndex(i => i.id === productId);
+            if (exIdx > -1) window.cart[exIdx].qty += 1;
+            else window.cart.push({ id: p.id, name: p.name, price: Number(p.price), image: p.image, qty: 1 });
+            saveCart(); showToast(`"${p.name}" ditambahkan ke keranjang`);
+        };
+        window.updateCartQty = function(id, delta) { const idx = window.cart.findIndex(i => i.id === id); if (idx > -1) { window.cart[idx].qty += delta; if (window.cart[idx].qty <= 0) window.cart.splice(idx, 1); saveCart(); } };
+        window.removeFromCart = function(id) { window.cart = window.cart.filter(i => i.id !== id); saveCart(); };
+        window.clearCart = function() { window.cart = []; saveCart(); };
+        function saveCart() { safeSetLocalStorage('thibbuncare_cart_v3', window.cart); window.renderCartUI(); }
+
+        window.renderCartUI = function() {
+            const totalQty = window.cart.reduce((s, i) => s + i.qty, 0);
+            const totalPrice = window.cart.reduce((s, i) => s + (i.price * i.qty), 0);
+            ['cart-badge-desktop', 'cart-badge-mobile-nav', 'cart-badge-float'].forEach(id => { const el = document.getElementById(id); if (el) el.innerText = totalQty; });
+            
+            const cb = document.getElementById('use-points-cb');
+            const usePoints = cb && cb.checked;
+            const discount = usePoints && totalPrice > 15000 ? 15000 : 0;
+            const finalPrice = totalPrice - discount;
+
+            const tpEl = document.getElementById('cart-total-price');
+            if(tpEl) {
+                if(usePoints && discount > 0) tpEl.innerHTML = `<span class="line-through text-slate-400 text-sm mr-2">${window.formatRp(totalPrice)}</span>${window.formatRp(finalPrice)}`;
+                else tpEl.innerText = window.formatRp(finalPrice);
+            }
+            
+            const container = document.getElementById('cart-items-container');
+            const checkoutForm = document.getElementById('cart-checkout-form');
+            const checkoutBtn = document.getElementById('cart-checkout-btn');
+            
+            if (!container) return;
+            if (window.cart.length === 0) {
+                container.innerHTML = `<div class="text-center py-12"><h4 class="font-bold text-slate-800 text-lg mb-1">Keranjang Kosong</h4><p class="text-xs text-slate-400">Pilih herbal berkualitas dari Toko Herbal kami.</p></div>`;
+                if (checkoutForm) checkoutForm.classList.add('hidden');
+                if (checkoutBtn) checkoutBtn.disabled = true;
+            } else {
+                container.innerHTML = window.cart.map(i => `<div class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-slate-100 gap-4"><img src="${i.image}" class="w-16 h-16 object-cover rounded-xl border border-slate-200"><div class="flex-1 min-w-0"><h5 class="font-bold text-slate-900 text-sm truncate">${i.name}</h5><p class="text-xs text-primary font-semibold mt-0.5">${window.formatRp(i.price)}</p></div><div class="flex items-center gap-2"><div class="flex items-center border border-slate-200 rounded-xl bg-white shadow-sm"><button onclick="updateCartQty('${i.id}', -1)" class="w-8 h-8 font-bold text-slate-600 hover:bg-slate-50 rounded-l-xl">-</button><span class="w-8 text-center text-xs font-bold">${i.qty}</span><button onclick="updateCartQty('${i.id}', 1)" class="w-8 h-8 font-bold text-slate-600 hover:bg-slate-50 rounded-r-xl">+</button></div><button onclick="removeFromCart('${i.id}')" class="p-2 text-slate-400 hover:text-red-500"><i class="fa-solid fa-trash-can text-sm"></i></button></div></div>`).join('');
+                if (checkoutForm) checkoutForm.classList.remove('hidden');
+                if (checkoutBtn) checkoutBtn.disabled = false;
+            }
+        };
+
+        window.checkoutCartWA = function() {
+            if (window.cart.length === 0) return;
+            const cName = document.getElementById('cust-name').value || '-';
+            const cCity = document.getElementById('cust-city').value || '-';
+            const cAddress = document.getElementById('cust-address').value || '-';
+
+            let msg = `Halo Admin Thibbun Care,\nSaya ingin memesan herbal berikut:\n\n👤 *Nama:* ${cName}\n🏙️ *Kota/Kec:* ${cCity}\n📍 *Alamat:* ${cAddress}\n\n📦 *Rincian Pesanan:*\n`;
+            let total = 0;
+            window.cart.forEach((item, idx) => { const sub = item.price * item.qty; total += sub; msg += `${idx + 1}. *${item.name}* (${item.qty}x) = ${window.formatRp(sub)}\n`; });
+            
+            const cb = document.getElementById('use-points-cb');
+            if(cb && cb.checked && total > 15000) { msg += `\n🎁 Diskon Poin Sehat: -Rp15.000`; total -= 15000; }
+            msg += `\n\n💰 *TOTAL PEMBAYARAN:* ${window.formatRp(total)}\n\nMohon informasi ongkir dan rekening pembayaran. Terima kasih!`;
+            window.openWhatsApp(msg);
         };
 
         window.readArticle = function(id) {
             const article = window.appState.articles.find(a => a.id === id);
             if (!article) return;
-
             document.getElementById('detail-article-title').innerText = article.title;
             document.getElementById('detail-article-tag').innerText = article.tag;
             document.getElementById('detail-article-date').innerHTML = `<i class="fa-regular fa-calendar mr-1"></i> ${article.date}`;
             document.getElementById('detail-article-image').src = article.image;
             document.getElementById('detail-article-content').innerHTML = article.content || `<p class="mb-4">${article.desc}</p>`;
-            
-            const recEl = document.getElementById('detail-article-recommendations');
-            if (recEl) recEl.innerHTML = window.appState.products.slice(0, 4).map(window.generateProductCard).join('');
-
-            document.querySelectorAll('.page-view').forEach(page => { page.classList.remove('block'); page.classList.add('hidden'); });
-            const detailPage = document.getElementById('page-article-detail');
-            if (detailPage) { detailPage.classList.remove('hidden'); detailPage.classList.add('block'); }
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.getElementById('detail-article-recommendations').innerHTML = window.appState.products.slice(0, 4).map(window.generateProductCard).join('');
+            window.navigateTo('article-detail');
         };
 
         window.navigateTo = function(pageId) {
@@ -1059,173 +1173,65 @@
             if (targetPage) {
                 targetPage.classList.remove('hidden'); targetPage.classList.add('block');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                setTimeout(() => {
-                    targetPage.querySelectorAll(".reveal").forEach(el => {
-                        if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add("active");
-                    });
-                }, 100);
-            }
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenu) mobileMenu.classList.add('hidden');
-        };
-
-        window.toggleMobileMenu = function() {
-            const menu = document.getElementById('mobile-menu');
-            if (menu) menu.classList.toggle('hidden');
-        };
-
-        window.addToCart = function(productId) {
-            const product = window.appState.products.find(p => p.id === productId);
-            if (!product) return;
-            const existingIndex = window.cart.findIndex(item => item.id === productId);
-            if (existingIndex > -1) window.cart[existingIndex].qty += 1;
-            else window.cart.push({ id: product.id, name: product.name, price: Number(product.price), image: product.image, qty: 1 });
-            saveCart();
-            showToast(`"${product.name}" ditambahkan ke keranjang`);
-        };
-
-        window.updateCartQty = function(id, delta) {
-            const idx = window.cart.findIndex(i => i.id === id);
-            if (idx > -1) { 
-                window.cart[idx].qty += delta; 
-                if (window.cart[idx].qty <= 0) window.cart.splice(idx, 1); 
-                saveCart(); 
+                setTimeout(() => { targetPage.querySelectorAll(".reveal").forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add("active"); }); }, 100);
             }
         };
+        window.toggleMobileMenu = function() { document.getElementById('mobile-menu').classList.toggle('hidden'); };
 
-        window.removeFromCart = function(id) { window.cart = window.cart.filter(i => i.id !== id); saveCart(); showToast("Item dihapus."); };
-        window.clearCart = function() { window.cart = []; saveCart(); showToast("Keranjang dikosongkan."); };
+        let dashChart = null;
+        window.initDashboardChart = function() {
+            const ctx = document.getElementById('dashboardChart');
+            if(!ctx) return;
+            if(dashChart) dashChart.destroy();
+            if(typeof Chart === 'undefined') return;
 
-        function saveCart() { safeSetLocalStorage('thibbuncare_cart_v1', window.cart); renderCartUI(); }
-
-        function renderCartUI() {
-            const totalQty = window.cart.reduce((s, i) => s + i.qty, 0);
-            const totalPrice = window.cart.reduce((s, i) => s + (i.price * i.qty), 0);
-            ['cart-badge-desktop', 'cart-badge-mobile-nav', 'cart-badge-float'].forEach(id => {
-                const el = document.getElementById(id); if (el) el.innerText = totalQty;
+            dashChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'],
+                    datasets: [{
+                        label: 'Pengunjung Web',
+                        data: [120, 190, 150, 220, 180, 250, 310],
+                        borderColor: '#0F766E',
+                        backgroundColor: 'rgba(15, 118, 110, 0.1)',
+                        tension: 0.4, fill: true
+                    }, {
+                        label: 'Klik WhatsApp',
+                        data: [15, 22, 18, 25, 20, 32, 45],
+                        borderColor: '#B45309',
+                        borderDash: [5, 5],
+                        tension: 0.4
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top' } } }
             });
-            const container = document.getElementById('cart-items-container');
-            const checkoutForm = document.getElementById('cart-checkout-form');
-            const checkoutBtn = document.getElementById('cart-checkout-btn');
-            
-            if (document.getElementById('cart-total-price')) document.getElementById('cart-total-price').innerText = window.formatRp(totalPrice);
-            
-            if (!container) return;
-            if (window.cart.length === 0) {
-                container.innerHTML = `<div class="text-center py-12"><div class="w-20 h-20 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center text-3xl mx-auto mb-4"><i class="fa-solid fa-basket-shopping"></i></div><h4 class="font-bold text-slate-800 text-lg mb-1">Keranjang Kosong</h4><button onclick="toggleModal('cart-modal'); navigateTo('shop');" class="bg-primary text-white px-6 py-2.5 rounded-full text-xs font-semibold mt-4">Belanja Herbal</button></div>`;
-                if (checkoutForm) checkoutForm.classList.add('hidden');
-                if (checkoutBtn) checkoutBtn.disabled = true;
-            } else {
-                container.innerHTML = window.cart.map(i => `
-                    <div class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-slate-100 gap-4"><img src="${i.image}" class="w-16 h-16 object-cover rounded-xl border border-slate-200" onerror="this.src='https://placehold.co/100/eee/999?text=IMG'"><div class="flex-1 min-w-0"><h5 class="font-bold text-slate-900 text-sm truncate">${i.name}</h5><p class="text-xs text-primary font-semibold mt-0.5">${window.formatRp(i.price)}</p></div><div class="flex items-center gap-2"><div class="flex items-center border border-slate-200 rounded-xl bg-white overflow-hidden shadow-sm"><button onclick="updateCartQty('${i.id}', -1)" class="w-8 h-8 flex items-center justify-center font-bold">-</button><span class="w-8 text-center text-xs font-bold">${i.qty}</span><button onclick="updateCartQty('${i.id}', 1)" class="w-8 h-8 flex items-center justify-center font-bold">+</button></div><button onclick="removeFromCart('${i.id}')" class="p-2 text-slate-400 hover:text-red-500"><i class="fa-solid fa-trash-can text-sm"></i></button></div></div>
-                `).join('');
-                if (checkoutForm) checkoutForm.classList.remove('hidden');
-                if (checkoutBtn) checkoutBtn.disabled = false;
-            }
-        }
-
-        window.checkoutCartWA = function() {
-            if (window.cart.length === 0) return;
-            const name = document.getElementById('cust-name')?.value.trim() || 'Pelanggan';
-            const city = document.getElementById('cust-city')?.value.trim() || '-';
-            const address = document.getElementById('cust-address')?.value.trim() || '-';
-            let msg = `Halo Admin Toko Herbal Thibbun Care,\n\nIngin memesan herbal:\n\n📋 *DAFTAR PESANAN:*`;
-            let total = 0;
-            window.cart.forEach((item, idx) => {
-                const sub = item.price * item.qty; total += sub;
-                msg += `\n${idx + 1}. *${item.name}* (${item.qty}x) = ${window.formatRp(sub)}`;
-            });
-            msg += `\n\n💰 *TOTAL PEMBELIAN:* ${window.formatRp(total)}\n\n👤 *DATA PEMESAN:*\n- Nama: ${name}\n- Kota: ${city}\n- Alamat: ${address}\n\nMohon info ongkir.`;
-            window.openWhatsApp(msg);
         };
 
         window.renderAll = function() {
             document.documentElement.style.setProperty('--color-primary', window.appState.settings.primaryColor);
             
-            document.querySelectorAll('.social-fb-link').forEach(el => el.href = window.appState.settings.facebookUrl || '#');
-            document.querySelectorAll('.social-ig-link').forEach(el => el.href = window.appState.settings.instagramUrl || '#');
+            const renderSvc = (s) => `<div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-premium hover:shadow-premium-hover transition-all duration-300 reveal active group h-full flex flex-col items-center justify-center text-center"><img src="${s.image || 'https://placehold.co/200/eee/999?text=Service'}" class="w-24 h-24 rounded-full object-cover mb-6 border-4 border-slate-50 shadow-md group-hover:scale-110 transition-all"><h4 class="text-xl font-bold text-slate-900 mb-3">${s.title}</h4><p class="text-slate-600 text-sm mb-8 leading-relaxed font-light flex-1">${s.desc}</p><button onclick="openReservationModal()" class="text-sm font-semibold flex items-center justify-center gap-2 group-hover:gap-3 transition-all text-slate-800 hover:text-primary mt-auto">Reservasi <i class="fa-solid fa-calendar-check"></i></button></div>`;
+            if (document.getElementById('home-services-grid')) document.getElementById('home-services-grid').innerHTML = window.appState.services.slice(0, 3).map(renderSvc).join('');
+            if (document.getElementById('full-services-grid')) document.getElementById('full-services-grid').innerHTML = window.appState.services.map(renderSvc).join('');
 
-            const svcHtml = (s) => `
-                <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-premium hover:shadow-premium-hover transition-all duration-300 reveal active group h-full flex flex-col items-center justify-center text-center">
-                    <img src="${s.image || 'https://placehold.co/200/eee/999?text=Service'}" alt="${s.title}" class="w-24 h-24 rounded-full object-cover mb-6 border-4 border-slate-50 shadow-md group-hover:scale-110 group-hover:border-primary/20 transition-all duration-300">
-                    <h4 class="text-xl font-bold text-slate-900 mb-3">${s.title}</h4>
-                    <p class="text-slate-600 text-sm mb-8 leading-relaxed font-light flex-1">${s.desc}</p>
-                    <button onclick="openReservationModal()" class="text-sm font-semibold flex items-center justify-center gap-2 group-hover:gap-3 transition-all text-slate-800 hover:text-primary mt-auto">Reservasi Jadwal <i class="fa-solid fa-calendar-check"></i></button>
-                </div>
-            `;
-            const homeSvcGrid = document.getElementById('home-services-grid');
-            const fullSvcGrid = document.getElementById('full-services-grid');
-            if (homeSvcGrid) homeSvcGrid.innerHTML = window.appState.services.slice(0, 3).map(svcHtml).join('');
-            if (fullSvcGrid) fullSvcGrid.innerHTML = window.appState.services.map(svcHtml).join('');
+            if (document.getElementById('home-products-grid')) document.getElementById('home-products-grid').innerHTML = window.appState.products.slice(0, 5).map(window.generateProductCard).join('');
+            if (document.getElementById('full-products-grid')) document.getElementById('full-products-grid').innerHTML = window.appState.products.map(window.generateProductCard).join('');
 
-            const homeProdGrid = document.getElementById('home-products-grid');
-            const fullProdGrid = document.getElementById('full-products-grid');
-            if (homeProdGrid) homeProdGrid.innerHTML = window.appState.products.slice(0, 4).map(window.generateProductCard).join('');
-            if (fullProdGrid) fullProdGrid.innerHTML = window.appState.products.map(window.generateProductCard).join('');
+            const artHtml = (a) => `<article onclick="readArticle('${a.id}')" class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-md hover:border-primary/25 transition-all reveal active flex flex-col h-full cursor-pointer group"><img src="${a.image}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"><div class="p-6 flex flex-col flex-1"><div class="text-xs text-primary font-medium mb-3">${a.tag} • ${a.date}</div><h4 class="text-lg font-bold text-slate-900 mb-2 leading-tight group-hover:text-primary transition-colors">${a.title}</h4><p class="text-slate-500 text-sm mb-6 line-clamp-3 font-light flex-1 text-justify">${a.desc}</p><span class="text-sm font-semibold text-slate-800 group-hover:text-primary transition-colors mt-auto flex items-center gap-2">Baca Lengkap <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i></span></div></article>`;
+            if (document.getElementById('home-articles-grid')) document.getElementById('home-articles-grid').innerHTML = window.appState.articles.slice(0, 3).map(artHtml).join('');
+            if (document.getElementById('full-articles-grid')) document.getElementById('full-articles-grid').innerHTML = window.appState.articles.map(artHtml).join('');
 
-            const artHtml = (a) => `
-                <article onclick="readArticle('${a.id}')" class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-md hover:border-primary/25 transition-all reveal active flex flex-col h-full cursor-pointer group">
-                    <div class="overflow-hidden"><img src="${a.image}" alt="${a.title}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/500x300/eee/999?text=No+Image'"></div>
-                    <div class="p-6 flex flex-col flex-1">
-                        <div class="text-xs text-primary font-medium mb-3">${a.tag} • ${a.date}</div>
-                        <h4 class="text-lg font-bold text-slate-900 mb-2 leading-tight group-hover:text-primary transition-colors">${a.title}</h4>
-                        <p class="text-slate-500 text-sm mb-6 line-clamp-3 font-light flex-1 text-justify">${a.desc}</p>
-                        <span class="text-sm font-semibold text-slate-800 group-hover:text-primary transition-colors mt-auto flex items-center gap-2">Baca Artikel Lengkap <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i></span>
-                    </div>
-                </article>
-            `;
-            const homeArtGrid = document.getElementById('home-articles-grid');
-            const fullArtGrid = document.getElementById('full-articles-grid');
-            if (homeArtGrid) homeArtGrid.innerHTML = window.appState.articles.slice(0, 3).map(artHtml).join('');
-            if (fullArtGrid) fullArtGrid.innerHTML = window.appState.articles.map(artHtml).join('');
+            const renderTh = (t) => `<div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm text-center"><img src="${t.image}" class="w-32 h-32 rounded-full object-cover mx-auto mb-4 border-4 border-surface shadow-md"><h4 class="font-bold text-slate-900 text-lg">${t.name}</h4><p class="text-xs text-primary font-medium mt-1">${t.spec}</p></div>`;
+            if (document.getElementById('therapists-grid')) document.getElementById('therapists-grid').innerHTML = window.appState.therapists.map(renderTh).join('');
 
-            const therapistsGrid = document.getElementById('therapists-grid');
-            if (therapistsGrid) {
-                therapistsGrid.innerHTML = (window.appState.therapists || []).map(t => `
-                    <div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm text-center">
-                        <img src="${t.image}" alt="${t.name}" class="w-32 h-32 rounded-full object-cover mx-auto mb-6 border-4 border-primary/20">
-                        <h3 class="text-xl font-bold text-slate-900 mb-1">${t.name}</h3>
-                        <p class="text-xs font-semibold text-primary uppercase tracking-wider mb-4">${t.role}</p>
-                        <p class="text-slate-600 text-sm font-light mb-6 text-justify">${t.desc}</p>
-                        <button onclick="openReservationModal()" class="bg-primary/10 hover:bg-primary hover:text-white text-primary text-xs font-bold px-5 py-2.5 rounded-xl transition-all w-full">Jadwalkan Konsultasi</button>
-                    </div>
-                `).join('');
-            }
+            const renderCar = (c) => `<div class="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4"><div><h4 class="font-bold text-slate-900 text-lg">${c.title}</h4><p class="text-xs text-primary font-semibold mt-1">${c.loc}</p><p class="text-xs text-slate-500 mt-2">${c.desc}</p></div><button onclick="openWhatsApp('Halo HRD Thibbun Care, saya berminat melamar posisi *${c.title}*')" class="bg-slate-900 text-white px-5 py-2.5 rounded-xl text-xs font-semibold hover:bg-black transition-colors whitespace-nowrap">Lamar Sekarang</button></div>`;
+            if (document.getElementById('careers-grid')) document.getElementById('careers-grid').innerHTML = window.appState.careers.map(renderCar).join('');
 
-            const careersGrid = document.getElementById('careers-grid');
-            if (careersGrid) {
-                careersGrid.innerHTML = (window.appState.careers || []).map(c => `
-                    <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                        <div>
-                            <span class="bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">${c.type}</span>
-                            <h3 class="text-xl font-bold text-slate-900 mt-2 mb-1">${c.title}</h3>
-                            <p class="text-slate-500 text-sm font-light mb-4"><i class="fa-solid fa-location-dot mr-1 text-primary"></i> Penempatan: ${c.location}</p>
-                            <p class="text-slate-600 text-sm font-light text-justify">${c.desc}</p>
-                        </div>
-                        <a href="#career-position" onclick="document.getElementById('career-position').value='${c.title}'" class="bg-slate-900 hover:bg-black text-white px-6 py-3 rounded-xl font-semibold text-sm transition-all whitespace-nowrap shadow-md">Lamar Posisi Ini</a>
-                    </div>
-                `).join('');
-            }
-
-            const branchesContainer = document.getElementById('branches-container');
-            if (branchesContainer) {
-                branchesContainer.innerHTML = (window.appState.branches || []).map(b => `
-                    <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow reveal active flex flex-col justify-between">
-                        <div>
-                            <div class="w-12 h-12 bg-primary-light/30 text-primary rounded-xl flex items-center justify-center text-xl mb-5"><i class="fa-solid fa-location-dot"></i></div>
-                            <h3 class="text-2xl font-bold text-slate-900 mb-2">Cabang ${b.name}</h3>
-                            <p class="text-slate-600 font-light mb-4"><i class="fa-regular fa-map mr-2 text-slate-400"></i> ${b.address}</p>
-                            <p class="text-sm text-slate-500 mb-8 bg-slate-50 p-3 rounded-lg border border-slate-100"><i class="fa-solid fa-circle-info mr-2 text-primary"></i> ${b.mapInfo}</p>
-                        </div>
-                        <button onclick="openWhatsApp('Halo CS Cabang ${b.name}, saya butuh informasi...', '${b.phone}')" class="w-full bg-[#25d366]/10 text-[#128C7E] hover:bg-[#25d366] hover:text-white px-6 py-3.5 rounded-xl font-bold transition-colors flex items-center justify-center gap-2">
-                            <i class="fab fa-whatsapp text-xl"></i> Chat CS Cabang ${b.name}
-                        </button>
-                    </div>
-                `).join('');
-            }
+            const renderBr = (b) => `<div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm"><h3 class="text-xl font-bold text-slate-900 mb-2">${b.name}</h3><p class="text-slate-600 text-sm mb-4 font-light"><i class="fa-solid fa-location-dot text-primary mr-2"></i> ${b.address}</p><div class="flex items-center justify-between text-xs text-slate-500 border-t border-slate-100 pt-4"><span><i class="fa-regular fa-clock text-primary mr-1"></i> ${b.hours}</span><button onclick="openWhatsApp('Halo, saya ingin membuat janji temu di cabang ${b.name}')" class="text-primary font-bold hover:underline">Hubungi Cabang &rarr;</button></div></div>`;
+            if (document.getElementById('branches-container')) document.getElementById('branches-container').innerHTML = window.appState.branches.map(renderBr).join('');
 
             renderAdminTables();
-            renderCartUI();
+            window.renderCartUI();
         };
 
         window.showToast = function(msg) {
@@ -1233,333 +1239,324 @@
             if(t && tm) { tm.innerText = msg; t.classList.remove('translate-x-full'); setTimeout(() => t.classList.add('translate-x-full'), 3000); }
         };
 
-        let currentCalcResult = "";
+        // Interactive Anatomy Body Map Logic
+        window.selectBodyPart = function(partName) {
+            document.querySelectorAll('.body-part').forEach(el => el.classList.remove('selected'));
+            const p = document.getElementById('part-' + partName);
+            if(p) p.classList.add('selected');
+            if(partName === 'tangan') { const t2 = document.getElementById('part-tangan2'); if(t2) t2.classList.add('selected'); }
+            if(partName === 'kaki') { const k2 = document.getElementById('part-kaki2'); if(k2) k2.classList.add('selected'); }
+            document.getElementById('selected-body-part').value = partName;
+        };
+
         window.showResult = function() {
-            const sel = document.querySelector('input[name="symptom"]:checked');
+            const selected = document.getElementById('selected-body-part').value;
             const errEl = document.getElementById('calc-error');
-            if (!sel) { if (errEl) errEl.classList.remove('hidden'); return; }
+            if (!selected) { if (errEl) errEl.classList.remove('hidden'); return; }
             if (errEl) errEl.classList.add('hidden');
-            let res = sel.value === "defisiensi_qi" ? "<b>Indikasi: Defisiensi Qi (Kurang Energi Vital)</b><br><br><b>Saran:</b> <b>Akupunktur</b> & <b>Moxibustion</b> sangat direkomendasikan." 
-                    : sel.value === "panas" ? "<b>Indikasi: Sindrom Panas Berlebih</b><br><br><b>Saran:</b> Terapi <b>Bekam (Hijamah) Medis</b> untuk detoks."
-                    : "<b>Indikasi: Akumulasi Lembab Dingin</b><br><br><b>Saran:</b> Terapi <b>Pijat Tuina</b> dan herbal penghangat.";
-            const resText = document.getElementById('result-text');
-            if (resText) resText.innerHTML = res; 
-            currentCalcResult = res;
             
-            const step1 = document.getElementById('calc-step-1');
-            const calcRes = document.getElementById('calc-result');
-            if (step1) step1.classList.add('hidden');
-            if (calcRes) calcRes.classList.remove('hidden');
+            let res = selected === "kepala" ? "<b>Indikasi: Sindrom Panas Berlebih / Tensi (Yang)</b><br><br><b>Saran:</b> <b>Bekam Titik Ummu Mughits (Puncak Kepala)</b> sangat direkomendasikan untuk mendinginkan tubuh dan mengatasi migrain." 
+                    : selected === "dada" ? "<b>Indikasi: Defisiensi Qi Paru / Emosional Berlebih</b><br><br><b>Saran:</b> Terapi <b>Akupunktur Dada & Moxibustion</b> untuk menenangkan pernafasan dan melancarkan sirkulasi dada."
+                    : selected === "perut" ? "<b>Indikasi: Akumulasi Lembab Dingin Pencernaan</b><br><br><b>Saran:</b> Terapi <b>Pijat Tuina area perut</b> dan herbal penghangat seperti Madu Hitam & Habbatussauda."
+                    : selected === "tangan" ? "<b>Indikasi: Stagnasi Meridian Lengan / Pegal Sendi</b><br><br><b>Saran:</b> Terapi <b>Akupunktur Tangan & Bekam Kering</b> di titik persendian terkait."
+                    : "<b>Indikasi: Stagnasi Saraf & Sirkulasi Darah Kaki</b><br><br><b>Saran:</b> Terapi <b>Bekam Kaki & Pijat Refleksi Tuina</b> untuk menghilangkan kesemutan dan pegal linu.";
+            
+            document.getElementById('result-text').innerHTML = res; 
+            document.getElementById('calc-step-1').classList.add('hidden');
+            document.getElementById('calc-result').classList.remove('hidden');
         };
 
         window.resetCalc = function() {
-            const form = document.getElementById('healthForm');
-            if (form) form.reset();
-            const step1 = document.getElementById('calc-step-1');
-            const calcRes = document.getElementById('calc-result');
-            if (step1) step1.classList.remove('hidden');
-            if (calcRes) calcRes.classList.add('hidden');
+            document.querySelectorAll('.body-part').forEach(el => el.classList.remove('selected'));
+            document.getElementById('selected-body-part').value = "";
+            document.getElementById('calc-step-1').classList.remove('hidden');
+            document.getElementById('calc-result').classList.add('hidden');
         };
 
-        window.sendResultToWA = function() { 
-            if(currentCalcResult) openWhatsApp(`Hasil Deteksi Mandiri:\n\n${currentCalcResult.replace(/<[^>]*>?/gm, '')}\n\nSaya butuh konsultasi.`); 
+        window.sendResultToWA = function() {
+            const part = document.getElementById('selected-body-part').value;
+            window.openWhatsApp(`Halo Admin Thibbun Care,\nSaya melakukan deteksi mandiri area tubuh *${part.toUpperCase()}*. Mohon konsultasi lebih lanjut.`);
         };
 
         window.handleAdminLogin = function(e) {
             e.preventDefault();
-            const userInp = document.getElementById('admin-user');
-            const passInp = document.getElementById('admin-pass');
-            const errInp = document.getElementById('login-error');
-            if (userInp && passInp && userInp.value === 'admin' && passInp.value === 'admin') {
+            const correctUser = window.appState.settings.adminUser || 'admin';
+            const correctPass = window.appState.settings.adminPass || 'admin';
+            
+            if (document.getElementById('admin-user').value === correctUser && document.getElementById('admin-pass').value === correctPass) {
                 toggleModal('admin-login-modal'); 
-                const pubView = document.getElementById('public-view');
-                const waFloat = document.getElementById('wa-floating-btn');
-                const cartFloat = document.getElementById('cart-floating-btn');
-                const adminView = document.getElementById('admin-view');
-                if (pubView) pubView.classList.add('hidden'); 
-                if (waFloat) waFloat.classList.add('hidden'); 
-                if (cartFloat) cartFloat.classList.add('hidden');
-                if (adminView) { adminView.classList.remove('hidden'); adminView.classList.add('flex'); }
-                if (errInp) errInp.classList.add('hidden');
-            } else if (errInp) errInp.classList.remove('hidden');
+                document.getElementById('public-view').classList.add('hidden'); 
+                document.getElementById('admin-view').classList.remove('hidden'); document.getElementById('admin-view').classList.add('flex');
+                document.getElementById('login-error').classList.add('hidden');
+                setTimeout(() => { window.initDashboardChart(); }, 300);
+            } else { document.getElementById('login-error').classList.remove('hidden'); }
         };
 
         window.logoutAdmin = function() {
-            const adminView = document.getElementById('admin-view');
-            const pubView = document.getElementById('public-view');
-            const waFloat = document.getElementById('wa-floating-btn');
-            const cartFloat = document.getElementById('cart-floating-btn');
-            if (adminView) { adminView.classList.add('hidden'); adminView.classList.remove('flex'); }
-            if (pubView) pubView.classList.remove('hidden');
-            if (waFloat) waFloat.classList.remove('hidden');
-            if (cartFloat) cartFloat.classList.remove('hidden');
-            navigateTo('home');
+            document.getElementById('admin-view').classList.add('hidden'); document.getElementById('admin-view').classList.remove('flex');
+            document.getElementById('public-view').classList.remove('hidden');
+            window.navigateTo('home');
         };
 
         window.switchAdminPanel = function(id, eventObj) {
             document.querySelectorAll('.admin-tab').forEach(t => { t.classList.replace('bg-primary', 'hover:bg-slate-800'); t.classList.remove('text-white', 'shadow-md'); });
             if (eventObj && eventObj.currentTarget) { eventObj.currentTarget.classList.remove('hover:bg-slate-800'); eventObj.currentTarget.classList.add('bg-primary', 'text-white', 'shadow-md'); }
             document.querySelectorAll('.admin-panel').forEach(p => p.classList.add('hidden')); 
-            const targetPanel = document.getElementById('panel-' + id);
-            if (targetPanel) targetPanel.classList.remove('hidden');
+            document.getElementById('panel-' + id).classList.remove('hidden');
+            if(id === 'overview') window.initDashboardChart();
         };
 
         function renderAdminTables() {
-            const statProd = document.getElementById('stat-products');
-            const setWa = document.getElementById('setting-wa');
-            const setFb = document.getElementById('setting-fb');
-            const setIg = document.getElementById('setting-ig');
-            const setColor = document.getElementById('setting-color');
-            
-            if (statProd) statProd.innerText = window.appState.products.length;
-            if (setWa) setWa.value = window.appState.settings.waNumber; 
-            if (setFb) setFb.value = window.appState.settings.facebookUrl || '';
-            if (setIg) setIg.value = window.appState.settings.instagramUrl || '';
-            if (setColor) setColor.value = window.appState.settings.primaryColor;
+            if (document.getElementById('stat-products')) document.getElementById('stat-products').innerText = window.appState.products.length;
+            if (document.getElementById('setting-wa')) document.getElementById('setting-wa').value = window.appState.settings.waNumber; 
+            if (document.getElementById('setting-color')) document.getElementById('setting-color').value = window.appState.settings.primaryColor;
             
             const tdBtn = (t,id) => `<td class="px-6 py-4 text-right"><button onclick="editItem('${t}', '${id}')" class="text-blue-500 mx-2"><i class="fa fa-pen"></i></button><button onclick="deleteItem('${t}', '${id}')" class="text-red-500"><i class="fa fa-trash"></i></button></td>`;
             
-            const tblProd = document.getElementById('table-produk');
-            const tblSvc = document.getElementById('table-layanan');
-            const tblArt = document.getElementById('table-artikel');
-            const tblTer = document.getElementById('table-terapis');
-            const tblCar = document.getElementById('table-karir');
-            
-            if (tblProd) tblProd.innerHTML = window.appState.products.map(p => `<tr class="hover:bg-slate-50"><td class="px-6 py-4 flex items-center gap-3"><img src="${p.image}" class="w-10 h-10 rounded object-cover" onerror="this.src='https://placehold.co/100/eee/999?text=IMG'"> <span class="font-medium text-slate-800">${p.name}</span></td><td class="px-6 py-4 text-slate-600">${p.tag}</td><td class="px-6 py-4 text-slate-800">${window.formatRp(p.price)}</td>${tdBtn('produk', p.id)}</tr>`).join('');
-            if (tblSvc) tblSvc.innerHTML = window.appState.services.map(s => `<tr class="hover:bg-slate-50"><td class="px-6 py-4 flex items-center gap-3"><img src="${s.image}" class="w-10 h-10 rounded object-cover" onerror="this.src='https://placehold.co/100/eee/999?text=IMG'"> <span class="font-medium">${s.title}</span></td><td class="px-6 py-4 text-slate-600"><p class="line-clamp-1 w-48 text-xs">${s.desc}</p></td>${tdBtn('layanan', s.id)}</tr>`).join('');
-            if (tblArt) tblArt.innerHTML = window.appState.articles.map(a => `<tr class="hover:bg-slate-50"><td class="px-6 py-4 flex items-center gap-3"><img src="${a.image}" class="w-12 h-8 rounded object-cover" onerror="this.src='https://placehold.co/100/eee/999?text=IMG'"> <span class="font-medium line-clamp-1 w-40">${a.title}</span></td><td class="px-6 py-4 text-slate-600 text-xs">${a.tag}</td>${tdBtn('artikel', a.id)}</tr>`).join('');
-            if (tblTer) tblTer.innerHTML = (window.appState.therapists || []).map(t => `<tr class="hover:bg-slate-50"><td class="px-6 py-4 flex items-center gap-3"><img src="${t.image}" class="w-10 h-10 rounded-full object-cover"> <span class="font-medium">${t.name}</span></td><td class="px-6 py-4 text-slate-600 text-xs">${t.role}</td>${tdBtn('terapis', t.id)}</tr>`).join('');
-            if (tblCar) tblCar.innerHTML = (window.appState.careers || []).map(c => `<tr class="hover:bg-slate-50"><td class="px-6 py-4 font-medium">${c.title}</td><td class="px-6 py-4 text-slate-600 text-xs">${c.location} (${c.type})</td>${tdBtn('karir', c.id)}</tr>`).join('');
+            if (document.getElementById('table-produk')) document.getElementById('table-produk').innerHTML = window.appState.products.map(p => `<tr class="hover:bg-slate-50"><td class="px-6 py-4 flex items-center gap-3"><img src="${p.image}" class="w-10 h-10 rounded object-cover"> <span class="font-medium text-slate-800">${p.name}</span></td><td class="px-6 py-4 text-slate-600">${p.tag}</td><td class="px-6 py-4 text-slate-800">${window.formatRp(p.price)}</td>${tdBtn('produk', p.id)}</tr>`).join('');
+            if (document.getElementById('table-layanan')) document.getElementById('table-layanan').innerHTML = window.appState.services.map(s => `<tr class="hover:bg-slate-50"><td class="px-6 py-4 flex items-center gap-3"><img src="${s.image}" class="w-10 h-10 rounded object-cover"> <span class="font-medium">${s.title}</span></td><td class="px-6 py-4 text-slate-600"><p class="line-clamp-1 w-48 text-xs">${s.desc}</p></td>${tdBtn('layanan', s.id)}</tr>`).join('');
+            if (document.getElementById('table-artikel')) document.getElementById('table-artikel').innerHTML = window.appState.articles.map(a => `<tr class="hover:bg-slate-50"><td class="px-6 py-4 flex items-center gap-3"><img src="${a.image}" class="w-12 h-8 rounded object-cover"> <span class="font-medium line-clamp-1 w-40">${a.title}</span></td><td class="px-6 py-4 text-slate-600 text-xs">${a.tag}</td>${tdBtn('artikel', a.id)}</tr>`).join('');
+            if (document.getElementById('table-terapis')) document.getElementById('table-terapis').innerHTML = window.appState.therapists.map(t => `<tr class="hover:bg-slate-50"><td class="px-6 py-4 flex items-center gap-3"><img src="${t.image}" class="w-10 h-10 rounded-full object-cover"> <span class="font-medium">${t.name}</span></td><td class="px-6 py-4 text-slate-600 text-xs">${t.spec}</td>${tdBtn('terapis', t.id)}</tr>`).join('');
+            if (document.getElementById('table-karir')) document.getElementById('table-karir').innerHTML = window.appState.careers.map(c => `<tr class="hover:bg-slate-50"><td class="px-6 py-4 font-medium">${c.title}</td><td class="px-6 py-4 text-slate-600 text-xs">${c.loc}</td>${tdBtn('karir', c.id)}</tr>`).join('');
+            if (document.getElementById('table-cabang')) document.getElementById('table-cabang').innerHTML = window.appState.branches.map(b => `<tr class="hover:bg-slate-50"><td class="px-6 py-4 font-medium">${b.name}</td><td class="px-6 py-4 text-slate-600 text-xs">${b.address}</td>${tdBtn('cabang', b.id)}</tr>`).join('');
         }
-
-        let currentCrudType = '', currentCrudId = null;
-        window.openFormModal = function(t, id = null) {
-            currentCrudType = t; currentCrudId = id; 
-            const form = document.getElementById('crud-form'); 
-            const modalTitle = document.getElementById('crud-modal-title');
-            if (modalTitle) modalTitle.innerText = id ? 'Edit Data' : 'Tambah Data';
-            
-            let arr = t==='produk' ? 'products' : t==='layanan' ? 'services' : t==='terapis' ? 'therapists' : t==='karir' ? 'careers' : 'articles'; 
-            let itm = id ? window.appState[arr].find(x => x.id === id) : null;
-            let html = '';
-
-            const imageUploadHtml = (imgValue) => `
-                <div>
-                    <label class="block text-sm font-semibold mb-2">Upload Gambar Foto</label>
-                    <div class="flex items-center gap-4">
-                        <img id="f-image-preview" src="${imgValue || 'https://placehold.co/150x150/eee/999?text=Upload'}" class="w-16 h-16 rounded-xl object-cover border border-slate-200">
-                        <div class="flex-1 min-w-0">
-                            <input type="file" id="f-image-upload" accept="image/*" class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20 cursor-pointer">
-                            <input type="hidden" id="f-image" value="${imgValue || ''}">
-                        </div>
-                    </div>
-                </div>
-            `;
-
-            if (t === 'produk') {
-                html = `<div><label class="block text-sm font-semibold mb-2">Nama Produk</label><input type="text" id="f-name" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? itm.name : ''}" required></div><div class="grid grid-cols-2 gap-4"><div><label class="block text-sm font-semibold mb-2">Tag/Kategori</label><input type="text" id="f-tag" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? itm.tag : ''}" required></div><div><label class="block text-sm font-semibold mb-2">Harga</label><input type="number" id="f-price" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? itm.price : ''}" required></div></div>${imageUploadHtml(itm ? itm.image : '')}<div><label class="block text-sm font-semibold mb-2">Badge (Opsional)</label><input type="text" id="f-badge" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? (itm.badge||'') : ''}"></div>`;
-            } else if (t === 'layanan') {
-                html = `<div><label class="block text-sm font-semibold mb-2">Nama Layanan</label><input type="text" id="f-title" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? itm.title : ''}" required></div>${imageUploadHtml(itm ? itm.image : '')}<div><label class="block text-sm font-semibold mb-2">Deskripsi Lengkap</label><textarea id="f-desc" rows="3" class="w-full p-3 border border-slate-200 rounded-xl" required>${itm ? itm.desc : ''}</textarea></div>`;
-            } else if (t === 'terapis') {
-                html = `<div><label class="block text-sm font-semibold mb-2">Nama Lengkap & Gelar</label><input type="text" id="f-name" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? itm.name : ''}" required></div><div><label class="block text-sm font-semibold mb-2">Peran / Spesialisasi</label><input type="text" id="f-role" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? itm.role : ''}" required></div>${imageUploadHtml(itm ? itm.image : '')}<div><label class="block text-sm font-semibold mb-2">Biografi Singkat</label><textarea id="f-desc" rows="3" class="w-full p-3 border border-slate-200 rounded-xl" required>${itm ? itm.desc : ''}</textarea></div>`;
-            } else if (t === 'karir') {
-                html = `<div><label class="block text-sm font-semibold mb-2">Posisi Lowongan</label><input type="text" id="f-title" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? itm.title : ''}" required></div><div class="grid grid-cols-2 gap-4"><div><label class="block text-sm font-semibold mb-2">Tipe Pekerjaan</label><input type="text" id="f-type" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? itm.type : 'Full Time'}" required></div><div><label class="block text-sm font-semibold mb-2">Lokasi Penempatan</label><input type="text" id="f-location" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? itm.location : 'Jakarta Selatan'}" required></div></div><div><label class="block text-sm font-semibold mb-2">Persyaratan / Deskripsi</label><textarea id="f-desc" rows="3" class="w-full p-3 border border-slate-200 rounded-xl" required>${itm ? itm.desc : ''}</textarea></div>`;
-            } else if (t === 'artikel') {
-                html = `<div><label class="block text-sm font-semibold mb-2">Judul Artikel</label><input type="text" id="f-title" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? itm.title : ''}" required></div><div class="grid grid-cols-2 gap-4"><div><label class="block text-sm font-semibold mb-2">Kategori</label><input type="text" id="f-tag" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? itm.tag : ''}" required></div><div><label class="block text-sm font-semibold mb-2">Tanggal</label><input type="text" id="f-date" class="w-full p-3 border border-slate-200 rounded-xl" value="${itm ? itm.date : new Date().toLocaleDateString('id-ID', {day:'2-digit',month:'short',year:'numeric'})}" required></div></div>${imageUploadHtml(itm ? itm.image : '')}<div><label class="block text-sm font-semibold mb-2">Isi Singkat (Preview)</label><textarea id="f-desc" rows="2" class="w-full p-3 border border-slate-200 rounded-xl" required>${itm ? itm.desc : ''}</textarea></div><div><label class="block text-sm font-semibold mb-2">Konten Lengkap (HTML)</label><textarea id="f-content" rows="5" class="w-full p-3 border border-slate-200 rounded-xl font-mono text-xs">${itm ? (itm.content||'') : ''}</textarea></div>`;
-            }
-            
-            if (form) form.innerHTML = html; 
-
-            const fileInput = document.getElementById('f-image-upload');
-            if (fileInput) {
-                fileInput.addEventListener('change', function(e) {
-                    const file = e.target.files[0];
-                    if (file) {
-                        const reader = new FileReader();
-                        reader.onload = function(event) {
-                            const img = new Image();
-                            img.onload = function() {
-                                const canvas = document.createElement('canvas');
-                                const MAX_WIDTH = 600; const MAX_HEIGHT = 600;
-                                let width = img.width, height = img.height;
-                                if (width > height) { if (width > MAX_WIDTH) { height *= MAX_WIDTH / width; width = MAX_WIDTH; } } 
-                                else { if (height > MAX_HEIGHT) { width *= MAX_HEIGHT / height; height = MAX_HEIGHT; } }
-                                canvas.width = width; canvas.height = height;
-                                const ctx = canvas.getContext('2d');
-                                ctx.drawImage(img, 0, 0, width, height);
-                                const dataUrl = canvas.toDataURL('image/jpeg', 0.7);
-                                document.getElementById('f-image').value = dataUrl;
-                                document.getElementById('f-image-preview').src = dataUrl;
-                            }
-                            img.src = event.target.result;
-                        }
-                        reader.readAsDataURL(file);
-                    }
-                });
-            }
-
-            toggleModal('crud-modal');
-        };
-
-        window.closeFormModal = function() { toggleModal('crud-modal'); };
-        
-        window.saveCrudData = async function() {
-            const form = document.getElementById('crud-form'); 
-            if(form && !form.checkValidity()) { form.reportValidity(); return; }
-            let arr = currentCrudType === 'produk' ? 'products' : currentCrudType === 'layanan' ? 'services' : currentCrudType === 'terapis' ? 'therapists' : currentCrudType === 'karir' ? 'careers' : 'articles';
-            let newData = { id: currentCrudId || Date.now().toString() };
-
-            const fallbackImg = currentCrudType === 'produk' ? 'https://placehold.co/400x500/eee/999?text=Herbal' : 'https://placehold.co/500x300/eee/999?text=Image';
-
-            if (currentCrudType === 'produk') { 
-                newData.name = document.getElementById('f-name').value; 
-                newData.tag = document.getElementById('f-tag').value; 
-                newData.price = document.getElementById('f-price').value; 
-                newData.image = document.getElementById('f-image').value || fallbackImg; 
-                newData.badge = document.getElementById('f-badge').value; 
-            }
-            else if (currentCrudType === 'layanan') { 
-                newData.title = document.getElementById('f-title').value; 
-                newData.image = document.getElementById('f-image').value || fallbackImg; 
-                newData.desc = document.getElementById('f-desc').value; 
-            }
-            else if (currentCrudType === 'terapis') {
-                newData.name = document.getElementById('f-name').value;
-                newData.role = document.getElementById('f-role').value;
-                newData.image = document.getElementById('f-image').value || fallbackImg;
-                newData.desc = document.getElementById('f-desc').value;
-            }
-            else if (currentCrudType === 'karir') {
-                newData.title = document.getElementById('f-title').value;
-                newData.type = document.getElementById('f-type').value;
-                newData.location = document.getElementById('f-location').value;
-                newData.desc = document.getElementById('f-desc').value;
-            }
-            else if (currentCrudType === 'artikel') { 
-                newData.title = document.getElementById('f-title').value; 
-                newData.tag = document.getElementById('f-tag').value; 
-                newData.date = document.getElementById('f-date').value; 
-                newData.image = document.getElementById('f-image').value || fallbackImg; 
-                newData.desc = document.getElementById('f-desc').value; 
-                newData.content = document.getElementById('f-content')?.value || newData.desc;
-            }
-            
-            if (isFirebaseActive && auth.currentUser) {
-                try {
-                    const docRef = doc(db, 'artifacts', 'klinik-thibbun-care', 'public', 'data', arr, newData.id);
-                    await setDoc(docRef, newData);
-                } catch(e) { console.error("Gagal sinkron ke Firebase", e); }
-            }
-
-            if (currentCrudId) {
-                const idx = window.appState[arr].findIndex(x => x.id === currentCrudId);
-                if (idx > -1) window.appState[arr][idx] = newData;
-            } else {
-                window.appState[arr].push(newData);
-            }
-            safeSetLocalStorage('thibbuncare_state_v1', window.appState); 
-            window.renderAll(); 
-            closeFormModal(); 
-            showToast("Data berhasil disimpan.");
-        };
-        
-        window.editItem = function(t, id) { openFormModal(t, id); };
-
-        window.deleteItem = async function(t, id) {
-            let arr = t === 'produk' ? 'products' : t === 'layanan' ? 'services' : t === 'terapis' ? 'therapists' : t === 'karir' ? 'careers' : 'articles';
-            
-            if (isFirebaseActive && auth.currentUser) {
-                try {
-                    const docRef = doc(db, 'artifacts', 'klinik-thibbun-care', 'public', 'data', arr, id.toString());
-                    await deleteDoc(docRef);
-                } catch(e) { console.error("Gagal hapus dari Firebase", e); }
-            }
-
-            window.appState[arr] = window.appState[arr].filter(x => x.id !== id); 
-            safeSetLocalStorage('thibbuncare_state_v1', window.appState); 
-            window.renderAll(); 
-            showToast("Data dihapus.");
-        };
 
         window.saveSettings = async function(eventObj) {
             const btn = eventObj ? eventObj.currentTarget : null; 
             const ori = btn ? btn.innerHTML : '';
-            const waInp = document.getElementById('setting-wa');
-            const fbInp = document.getElementById('setting-fb');
-            const igInp = document.getElementById('setting-ig');
-            const colInp = document.getElementById('setting-color');
             
-            window.appState.settings = { 
-                waNumber: waInp ? waInp.value : '6281200000000', 
-                facebookUrl: fbInp ? fbInp.value : 'https://facebook.com',
-                instagramUrl: igInp ? igInp.value : 'https://instagram.com/klinik.thibbuncare',
-                primaryColor: colInp ? colInp.value : '#0F766E' 
-            };
+            window.appState.settings.waNumber = document.getElementById('setting-wa').value;
+            window.appState.settings.primaryColor = document.getElementById('setting-color').value;
+            
+            const uNew = document.getElementById('setting-user').value;
+            const pNew = document.getElementById('setting-pass').value;
+            if(uNew) window.appState.settings.adminUser = uNew;
+            if(pNew) window.appState.settings.adminPass = pNew;
             
             if (isFirebaseActive && auth.currentUser) {
                 try {
-                    const settingsRef = doc(db, 'artifacts', 'klinik-thibbun-care', 'public', 'data', 'config', 'general');
+                    const settingsRef = doc(db, 'artifacts', activeAppId, 'public', 'data', 'config', 'general');
                     await setDoc(settingsRef, window.appState.settings);
-                } catch(e) { console.error("Gagal simpan setting ke Firebase", e); }
+                } catch(e) {}
             }
 
-            safeSetLocalStorage('thibbuncare_state_v1', window.appState); 
+            safeSetLocalStorage('thibbuncare_state_v3', window.appState); 
             window.renderAll();
-            if (btn) {
-                btn.innerHTML = `<i class="fa-solid fa-check"></i> Tersimpan`; 
-                btn.classList.add('bg-green-600'); 
-                setTimeout(() => { btn.innerHTML = ori; btn.classList.remove('bg-green-600'); }, 2000);
+            if (btn) { btn.innerHTML = `<i class="fa-solid fa-check"></i> Tersimpan`; btn.classList.add('bg-green-600'); setTimeout(() => { btn.innerHTML = ori; btn.classList.remove('bg-green-600'); }, 2000); }
+        };
+
+        // CMS CRUD Modal Handlers
+        let currentCrudType = '';
+        let currentEditId = '';
+        let uploadedBase64 = '';
+
+        window.openFormModal = function(type, id = '') {
+            currentCrudType = type;
+            currentEditId = id;
+            uploadedBase64 = '';
+            const modalTitle = document.getElementById('crud-modal-title');
+            const formContainer = document.getElementById('crud-form');
+            
+            let item = {};
+            if (id) {
+                const mapKey = type === 'produk' ? 'products' : type === 'layanan' ? 'services' : type === 'artikel' ? 'articles' : type === 'terapis' ? 'therapists' : type === 'karir' ? 'careers' : 'branches';
+                item = window.appState[mapKey].find(x => x.id === id) || {};
+                modalTitle.innerText = `Edit Data ${type.toUpperCase()}`;
+            } else {
+                modalTitle.innerText = `Tambah Data ${type.toUpperCase()}`;
             }
+
+            if (type === 'produk') {
+                formContainer.innerHTML = `
+                    <div><label class="block text-xs font-semibold mb-1">Nama Produk</label><input type="text" id="f-name" class="w-full px-4 py-2.5 border rounded-xl" value="${item.name || ''}" required></div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div><label class="block text-xs font-semibold mb-1">Harga (Rp)</label><input type="number" id="f-price" class="w-full px-4 py-2.5 border rounded-xl" value="${item.price || ''}" required></div>
+                        <div><label class="block text-xs font-semibold mb-1">Kategori / Tag</label><input type="text" id="f-tag" class="w-full px-4 py-2.5 border rounded-xl" value="${item.tag || 'Imunitas'}" required></div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold mb-1">Upload Foto Produk</label>
+                        <input type="file" accept="image/*" onchange="handleImageUpload(event)" class="w-full px-4 py-2 border rounded-xl text-xs bg-slate-50">
+                        <img id="preview-img" src="${item.image || ''}" class="w-20 h-20 object-cover mt-2 rounded-xl border ${item.image ? '' : 'hidden'}">
+                    </div>
+                `;
+            } else if (type === 'layanan') {
+                formContainer.innerHTML = `
+                    <div><label class="block text-xs font-semibold mb-1">Judul Layanan</label><input type="text" id="f-title" class="w-full px-4 py-2.5 border rounded-xl" value="${item.title || ''}" required></div>
+                    <div><label class="block text-xs font-semibold mb-1">Deskripsi Singkat</label><textarea id="f-desc" rows="3" class="w-full px-4 py-2.5 border rounded-xl" required>${item.desc || ''}</textarea></div>
+                    <div>
+                        <label class="block text-xs font-semibold mb-1">Upload Foto Layanan</label>
+                        <input type="file" accept="image/*" onchange="handleImageUpload(event)" class="w-full px-4 py-2 border rounded-xl text-xs bg-slate-50">
+                        <img id="preview-img" src="${item.image || ''}" class="w-20 h-20 object-cover mt-2 rounded-xl border ${item.image ? '' : 'hidden'}">
+                    </div>
+                `;
+            } else if (type === 'artikel') {
+                formContainer.innerHTML = `
+                    <div><label class="block text-xs font-semibold mb-1">Judul Artikel</label><input type="text" id="f-title" class="w-full px-4 py-2.5 border rounded-xl" value="${item.title || ''}" required></div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div><label class="block text-xs font-semibold mb-1">Kategori</label><input type="text" id="f-tag" class="w-full px-4 py-2.5 border rounded-xl" value="${item.tag || 'Thibbun Nabawi'}" required></div>
+                        <div><label class="block text-xs font-semibold mb-1">Tanggal</label><input type="text" id="f-date" class="w-full px-4 py-2.5 border rounded-xl" value="${item.date || '12 Okt 2026'}" required></div>
+                    </div>
+                    <div><label class="block text-xs font-semibold mb-1">Ringkasan Artikel</label><textarea id="f-desc" rows="2" class="w-full px-4 py-2.5 border rounded-xl" required>${item.desc || ''}</textarea></div>
+                    <div><label class="block text-xs font-semibold mb-1">Isi Lengkap Artikel</label><textarea id="f-content" rows="4" class="w-full px-4 py-2.5 border rounded-xl" required>${item.content || ''}</textarea></div>
+                    <div>
+                        <label class="block text-xs font-semibold mb-1">Upload Foto Artikel</label>
+                        <input type="file" accept="image/*" onchange="handleImageUpload(event)" class="w-full px-4 py-2 border rounded-xl text-xs bg-slate-50">
+                        <img id="preview-img" src="${item.image || ''}" class="w-20 h-20 object-cover mt-2 rounded-xl border ${item.image ? '' : 'hidden'}">
+                    </div>
+                `;
+            } else if (type === 'terapis') {
+                formContainer.innerHTML = `
+                    <div><label class="block text-xs font-semibold mb-1">Nama Terapis</label><input type="text" id="f-name" class="w-full px-4 py-2.5 border rounded-xl" value="${item.name || ''}" required></div>
+                    <div><label class="block text-xs font-semibold mb-1">Spesialisasi</label><input type="text" id="f-spec" class="w-full px-4 py-2.5 border rounded-xl" value="${item.spec || ''}" required></div>
+                    <div>
+                        <label class="block text-xs font-semibold mb-1">Upload Foto Terapis</label>
+                        <input type="file" accept="image/*" onchange="handleImageUpload(event)" class="w-full px-4 py-2 border rounded-xl text-xs bg-slate-50">
+                        <img id="preview-img" src="${item.image || ''}" class="w-20 h-20 object-cover mt-2 rounded-xl border ${item.image ? '' : 'hidden'}">
+                    </div>
+                `;
+            } else if (type === 'karir') {
+                formContainer.innerHTML = `
+                    <div><label class="block text-xs font-semibold mb-1">Posisi Lowongan</label><input type="text" id="f-title" class="w-full px-4 py-2.5 border rounded-xl" value="${item.title || ''}" required></div>
+                    <div><label class="block text-xs font-semibold mb-1">Lokasi / Tipe</label><input type="text" id="f-loc" class="w-full px-4 py-2.5 border rounded-xl" value="${item.loc || ''}" required></div>
+                    <div><label class="block text-xs font-semibold mb-1">Deskripsi Syarat</label><textarea id="f-desc" rows="3" class="w-full px-4 py-2.5 border rounded-xl" required>${item.desc || ''}</textarea></div>
+                `;
+            } else if (type === 'cabang') {
+                formContainer.innerHTML = `
+                    <div><label class="block text-xs font-semibold mb-1">Nama Cabang</label><input type="text" id="f-name" class="w-full px-4 py-2.5 border rounded-xl" value="${item.name || ''}" required></div>
+                    <div><label class="block text-xs font-semibold mb-1">Alamat Lengkap</label><textarea id="f-address" rows="2" class="w-full px-4 py-2.5 border rounded-xl" required>${item.address || ''}</textarea></div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div><label class="block text-xs font-semibold mb-1">Telepon Cabang</label><input type="text" id="f-phone" class="w-full px-4 py-2.5 border rounded-xl" value="${item.phone || ''}" required></div>
+                        <div><label class="block text-xs font-semibold mb-1">Jam Operasional</label><input type="text" id="f-hours" class="w-full px-4 py-2.5 border rounded-xl" value="${item.hours || '09.00 - 20.00 WIB'}" required></div>
+                    </div>
+                `;
+            }
+
+            uploadedBase64 = item.image || '';
+            toggleModal('crud-modal');
+        };
+
+        window.closeFormModal = function() { toggleModal('crud-modal'); };
+
+        window.handleImageUpload = function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                uploadedBase64 = evt.target.result;
+                const prev = document.getElementById('preview-img');
+                if (prev) { prev.src = uploadedBase64; prev.classList.remove('hidden'); }
+            };
+            reader.readAsDataURL(file);
+        };
+
+        window.saveCrudData = async function() {
+            const mapKey = currentCrudType === 'produk' ? 'products' : currentCrudType === 'layanan' ? 'services' : currentCrudType === 'artikel' ? 'articles' : currentCrudType === 'terapis' ? 'therapists' : currentCrudType === 'karir' ? 'careers' : 'branches';
+            
+            let obj = { id: currentEditId || 'id_' + Date.now() };
+            if (currentCrudType === 'produk') {
+                obj.name = document.getElementById('f-name').value;
+                obj.price = Number(document.getElementById('f-price').value);
+                obj.tag = document.getElementById('f-tag').value;
+                obj.image = uploadedBase64 || 'https://placehold.co/400';
+            } else if (currentCrudType === 'layanan') {
+                obj.title = document.getElementById('f-title').value;
+                obj.desc = document.getElementById('f-desc').value;
+                obj.image = uploadedBase64 || 'https://placehold.co/400';
+            } else if (currentCrudType === 'artikel') {
+                obj.title = document.getElementById('f-title').value;
+                obj.tag = document.getElementById('f-tag').value;
+                obj.date = document.getElementById('f-date').value;
+                obj.desc = document.getElementById('f-desc').value;
+                obj.content = document.getElementById('f-content').value;
+                obj.image = uploadedBase64 || 'https://placehold.co/600';
+            } else if (currentCrudType === 'terapis') {
+                obj.name = document.getElementById('f-name').value;
+                obj.spec = document.getElementById('f-spec').value;
+                obj.image = uploadedBase64 || 'https://placehold.co/400';
+            } else if (currentCrudType === 'karir') {
+                obj.title = document.getElementById('f-title').value;
+                obj.loc = document.getElementById('f-loc').value;
+                obj.desc = document.getElementById('f-desc').value;
+            } else if (currentCrudType === 'cabang') {
+                obj.name = document.getElementById('f-name').value;
+                obj.address = document.getElementById('f-address').value;
+                obj.phone = document.getElementById('f-phone').value;
+                obj.hours = document.getElementById('f-hours').value;
+            }
+
+            if (currentEditId) {
+                const idx = window.appState[mapKey].findIndex(x => x.id === currentEditId);
+                if (idx > -1) window.appState[mapKey][idx] = obj;
+            } else {
+                window.appState[mapKey].push(obj);
+            }
+
+            if (isFirebaseActive && auth.currentUser) {
+                try {
+                    await setDoc(doc(db, 'artifacts', activeAppId, 'public', 'data', mapKey, obj.id), obj);
+                } catch(e) {}
+            }
+
+            safeSetLocalStorage('thibbuncare_state_v3', window.appState);
+            window.renderAll();
+            closeFormModal();
+            showToast("Data berhasil disimpan!");
+        };
+
+        window.editItem = function(type, id) { openFormModal(type, id); };
+
+        window.deleteItem = async function(type, id) {
+            if(!confirm("Hapus data ini?")) return;
+            const mapKey = type === 'produk' ? 'products' : type === 'layanan' ? 'services' : type === 'artikel' ? 'articles' : type === 'terapis' ? 'therapists' : type === 'karir' ? 'careers' : 'branches';
+            window.appState[mapKey] = window.appState[mapKey].filter(x => x.id !== id);
+
+            if (isFirebaseActive && auth.currentUser) {
+                try {
+                    await deleteDoc(doc(db, 'artifacts', activeAppId, 'public', 'data', mapKey, id));
+                } catch(e) {}
+            }
+
+            safeSetLocalStorage('thibbuncare_state_v3', window.appState);
+            window.renderAll();
+            showToast("Data berhasil dihapus!");
         };
 
         async function initCloudSync() {
             if (isFirebaseActive && auth) {
                 try {
-                    await signInAnonymously(auth);
+                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) await signInWithCustomToken(auth, __initial_auth_token);
+                    else await signInAnonymously(auth);
+                    
                     if (auth.currentUser) {
                         try {
-                            const settingsSnap = await getDoc(doc(db, 'artifacts', 'klinik-thibbun-care', 'public', 'data', 'config', 'general'));
-                            if (settingsSnap.exists()) {
-                                window.appState.settings = { ...window.appState.settings, ...settingsSnap.data() };
-                            }
-                        } catch(e) { console.warn("Gagal mengambil pengaturan dari Firebase", e); }
+                            onSnapshot(doc(db, 'artifacts', activeAppId, 'public', 'data', 'config', 'general'), (docSnap) => {
+                                if (docSnap.exists()) { window.appState.settings = { ...window.appState.settings, ...docSnap.data() }; window.renderAll(); }
+                            }, (err) => console.warn('Config snapshot listener:', err));
+                        } catch(e) {}
 
-                        const collectionsList = ['products', 'services', 'articles', 'therapists', 'careers'];
-                        for (let colName of collectionsList) {
+                        ['products', 'services', 'articles', 'therapists', 'careers', 'branches'].forEach(colName => {
                             try {
-                                const querySnapshot = await getDocs(collection(db, 'artifacts', 'klinik-thibbun-care', 'public', 'data', colName));
-                                if (!querySnapshot.empty) {
-                                    window.appState[colName] = [];
-                                    querySnapshot.forEach((docSnap) => {
-                                        window.appState[colName].push(docSnap.data());
-                                    });
-                                }
-                            } catch(e) { console.warn("Gagal mengambil data koleksi " + colName, e); }
-                        }
+                                onSnapshot(collection(db, 'artifacts', activeAppId, 'public', 'data', colName), (querySnapshot) => {
+                                    if (!querySnapshot.empty) {
+                                        let newArr = []; querySnapshot.forEach(docSnap => newArr.push(docSnap.data()));
+                                        window.appState[colName] = newArr; window.renderAll();
+                                    }
+                                }, (err) => console.warn(`${colName} snapshot listener:`, err));
+                            } catch(e) {}
+                        });
                     }
-                } catch(e) {
-                    console.warn("Gagal mengambil data Cloud, menggunakan memori lokal.", e);
-                }
+                } catch(e) { console.warn("Lokal mode aktif."); }
             }
             window.renderAll();
         }
 
         window.addEventListener("scroll", () => {
-            document.querySelectorAll(".reveal:not(.active)").forEach(el => {
-                if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add("active");
-            });
+            document.querySelectorAll(".reveal:not(.active)").forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add("active"); });
             const nav = document.getElementById('navbar');
-            if (nav) {
-                if (window.scrollY > 10) { nav.classList.add('shadow-glass'); nav.classList.replace('bg-white/95', 'glass'); } 
-                else nav.classList.remove('shadow-glass');
-            }
+            if (nav) { if (window.scrollY > 10) { nav.classList.add('shadow-glass'); nav.classList.replace('bg-white/95', 'glass'); } else nav.classList.remove('shadow-glass'); }
         });
 
-        window.addEventListener('DOMContentLoaded', () => {
-            initCloudSync();
-            setTimeout(() => window.dispatchEvent(new Event('scroll')), 200);
-        });
-
+        window.addEventListener('DOMContentLoaded', () => { initCloudSync(); setTimeout(() => window.dispatchEvent(new Event('scroll')), 200); });
     </script>
 </body>
 </html>
