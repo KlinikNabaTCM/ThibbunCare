@@ -60,20 +60,11 @@
             background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
         }
 
-        .body-part {
-            transition: all 0.3s ease;
-            cursor: pointer;
-            fill: #E2E8F0;
-            stroke: #CBD5E1;
-            stroke-width: 2;
+        .body-part-card {
+            transition: all 0.25s ease-in-out;
         }
-        .body-part:hover {
-            fill: #99F6E4;
-            stroke: #0F766E;
-        }
-        .body-part.selected {
-            fill: #0F766E !important;
-            stroke: #042F2E !important;
+        .body-part-card:hover {
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -532,13 +523,13 @@
             </div>
         </div>
 
-        <!-- HALAMAN KALKULATOR KESEHATAN (Interactive Anatomy Body Map) -->
+        <!-- HALAMAN KALKULATOR KESEHATAN (CEK KONDISI - TEXT CARDS) -->
         <div id="page-calculator" class="page-view hidden">
             <div class="pt-32 pb-12 bg-white border-b border-slate-100">
                 <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal active">
                     <div class="w-16 h-16 bg-primary-light text-primary rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 shadow-sm"><i class="fa-solid fa-stethoscope"></i></div>
-                    <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Deteksi Sindrom Mandiri (Anatomi Interaktif)</h1>
-                    <p class="text-slate-500 font-light">Sentuh atau klik pada bagian tubuh yang mengalami keluhan untuk mendiagnosa titik terapi TCM.</p>
+                    <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Deteksi Sindrom Mandiri</h1>
+                    <p class="text-slate-500 font-light">Pilih area tubuh yang mengalami keluhan untuk menganalisa titik terapi TCM & Thibbun Nabawi.</p>
                 </div>
             </div>
             
@@ -549,28 +540,43 @@
                             <h3 class="text-lg font-bold text-slate-800 mb-6 text-center">Pilih Area Tubuh yang Bermasalah:</h3>
                             
                             <div id="calc-error" class="hidden mb-6 p-4 bg-red-50 text-red-600 rounded-xl text-sm flex items-center gap-3 border border-red-100 justify-center">
-                                <i class="fa-solid fa-circle-exclamation"></i> <span>Silakan klik salah satu area tubuh pada gambar di bawah terlebih dahulu.</span>
+                                <i class="fa-solid fa-circle-exclamation"></i> <span>Silakan pilih salah satu area tubuh di bawah terlebih dahulu.</span>
                             </div>
 
-                            <!-- Interactive SVG Body Map -->
-                            <div class="flex flex-col items-center justify-center mb-8">
-                                <svg viewBox="0 0 200 350" class="w-48 h-80 drop-shadow-md">
-                                    <!-- Kepala -->
-                                    <ellipse id="part-kepala" onclick="selectBodyPart('kepala')" cx="100" cy="35" rx="22" ry="25" class="body-part" />
-                                    <!-- Leher & Dada -->
-                                    <path id="part-dada" onclick="selectBodyPart('dada')" d="M85 62 L115 62 L120 120 L80 120 Z" class="body-part" />
-                                    <!-- Tangan Kiri & Kanan -->
-                                    <path id="part-tangan" onclick="selectBodyPart('tangan')" d="M65 68 L78 68 L75 160 L62 160 Z" class="body-part" />
-                                    <path id="part-tangan2" onclick="selectBodyPart('tangan')" d="M135 68 L122 68 L125 160 L138 160 Z" class="body-part" />
-                                    <!-- Perut / Abdomen -->
-                                    <rect id="part-perut" onclick="selectBodyPart('perut')" x="80" y="123" width="40" height="60" rx="5" class="body-part" />
-                                    <!-- Kaki Kiri & Kanan -->
-                                    <path id="part-kaki" onclick="selectBodyPart('kaki')" d="M83 186 L97 186 L95 300 L83 300 Z" class="body-part" />
-                                    <path id="part-kaki2" onclick="selectBodyPart('kaki')" d="M103 186 L117 186 L117 300 L105 300 Z" class="body-part" />
-                                </svg>
-                                <p class="text-xs text-slate-400 mt-3 font-medium">Klik pada bagian: Kepala, Dada, Tangan, Perut, atau Kaki</p>
-                                <input type="hidden" id="selected-body-part" value="">
+                            <!-- Text-based Selection Cards Grid -->
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                                <div onclick="selectBodyPartText('kepala', this)" class="body-part-card border-2 border-slate-200 rounded-2xl p-5 cursor-pointer hover:border-primary hover:bg-primary/5 transition-all flex flex-col items-center text-center group">
+                                    <div class="w-12 h-12 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-2xl mb-3 group-hover:bg-primary group-hover:text-white transition-colors"><i class="fa-solid fa-brain"></i></div>
+                                    <h4 class="font-bold text-slate-800 text-sm mb-1">Kepala & Wajah</h4>
+                                    <p class="text-xs text-slate-500">Migrain, pusing, vertigo, insomnia, atau sinusitis</p>
+                                </div>
+                                <div onclick="selectBodyPartText('dada', this)" class="body-part-card border-2 border-slate-200 rounded-2xl p-5 cursor-pointer hover:border-primary hover:bg-primary/5 transition-all flex flex-col items-center text-center group">
+                                    <div class="w-12 h-12 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-2xl mb-3 group-hover:bg-primary group-hover:text-white transition-colors"><i class="fa-solid fa-heart-pulse"></i></div>
+                                    <h4 class="font-bold text-slate-800 text-sm mb-1">Leher, Dada & Tengkuk</h4>
+                                    <p class="text-xs text-slate-500">Kaku leher, sesak napas, tengkuk tegang, atau batuk</p>
+                                </div>
+                                <div onclick="selectBodyPartText('perut', this)" class="body-part-card border-2 border-slate-200 rounded-2xl p-5 cursor-pointer hover:border-primary hover:bg-primary/5 transition-all flex flex-col items-center text-center group">
+                                    <div class="w-12 h-12 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-2xl mb-3 group-hover:bg-primary group-hover:text-white transition-colors"><i class="fa-solid fa-face-grimace"></i></div>
+                                    <h4 class="font-bold text-slate-800 text-sm mb-1">Perut & Pencernaan</h4>
+                                    <p class="text-xs text-slate-500">Maag, gerd, kembung, sembelit, atau nyeri perut</p>
+                                </div>
+                                <div onclick="selectBodyPartText('tangan', this)" class="body-part-card border-2 border-slate-200 rounded-2xl p-5 cursor-pointer hover:border-primary hover:bg-primary/5 transition-all flex flex-col items-center text-center group">
+                                    <div class="w-12 h-12 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-2xl mb-3 group-hover:bg-primary group-hover:text-white transition-colors"><i class="fa-solid fa-hand"></i></div>
+                                    <h4 class="font-bold text-slate-800 text-sm mb-1">Bahu & Lengan / Tangan</h4>
+                                    <p class="text-xs text-slate-500">Pegal bahu, kesemutan jari, nyeri sendi siku/pergelangan</p>
+                                </div>
+                                <div onclick="selectBodyPartText('punggung', this)" class="body-part-card border-2 border-slate-200 rounded-2xl p-5 cursor-pointer hover:border-primary hover:bg-primary/5 transition-all flex flex-col items-center text-center group">
+                                    <div class="w-12 h-12 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-2xl mb-3 group-hover:bg-primary group-hover:text-white transition-colors"><i class="fa-solid fa-child"></i></div>
+                                    <h4 class="font-bold text-slate-800 text-sm mb-1">Punggung & Pinggang</h4>
+                                    <p class="text-xs text-slate-500">Saraf terjepit, encok, nyeri pinggang bawah (LBP)</p>
+                                </div>
+                                <div onclick="selectBodyPartText('kaki', this)" class="body-part-card border-2 border-slate-200 rounded-2xl p-5 cursor-pointer hover:border-primary hover:bg-primary/5 transition-all flex flex-col items-center text-center group">
+                                    <div class="w-12 h-12 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center text-2xl mb-3 group-hover:bg-primary group-hover:text-white transition-colors"><i class="fa-solid fa-person-walking"></i></div>
+                                    <h4 class="font-bold text-slate-800 text-sm mb-1">Paha, Lutut & Kaki</h4>
+                                    <p class="text-xs text-slate-500">Nyeri lutut, asam urat, kesemutan kaki, atau pegal linu</p>
+                                </div>
                             </div>
+                            <input type="hidden" id="selected-body-part" value="">
 
                             <div class="mt-8 text-center border-t border-slate-100 pt-6">
                                 <button onclick="showResult()" class="px-8 py-3.5 rounded-xl bg-slate-900 text-white font-medium hover:bg-black transition-colors shadow-md w-full sm:w-auto">Analisa Keluhan Area Ini</button>
@@ -1239,27 +1245,42 @@
             if(t && tm) { tm.innerText = msg; t.classList.remove('translate-x-full'); setTimeout(() => t.classList.add('translate-x-full'), 3000); }
         };
 
-        // Interactive Anatomy Body Map Logic
-        window.selectBodyPart = function(partName) {
-            document.querySelectorAll('.body-part').forEach(el => el.classList.remove('selected'));
-            const p = document.getElementById('part-' + partName);
-            if(p) p.classList.add('selected');
-            if(partName === 'tangan') { const t2 = document.getElementById('part-tangan2'); if(t2) t2.classList.add('selected'); }
-            if(partName === 'kaki') { const k2 = document.getElementById('part-kaki2'); if(k2) k2.classList.add('selected'); }
+        // Text-based Health Assessment Check Logic
+        window.selectBodyPartText = function(partName, cardEl) {
+            document.querySelectorAll('.body-part-card').forEach(el => {
+                el.classList.remove('border-primary', 'bg-primary/5', 'ring-2', 'ring-primary');
+                el.classList.add('border-slate-200');
+            });
+            if (cardEl) {
+                cardEl.classList.remove('border-slate-200');
+                cardEl.classList.add('border-primary', 'bg-primary/5', 'ring-2', 'ring-primary');
+            }
             document.getElementById('selected-body-part').value = partName;
         };
 
         window.showResult = function() {
             const selected = document.getElementById('selected-body-part').value;
             const errEl = document.getElementById('calc-error');
-            if (!selected) { if (errEl) errEl.classList.remove('hidden'); return; }
+            if (!selected) { 
+                if (errEl) errEl.classList.remove('hidden'); 
+                return; 
+            }
             if (errEl) errEl.classList.add('hidden');
             
-            let res = selected === "kepala" ? "<b>Indikasi: Sindrom Panas Berlebih / Tensi (Yang)</b><br><br><b>Saran:</b> <b>Bekam Titik Ummu Mughits (Puncak Kepala)</b> sangat direkomendasikan untuk mendinginkan tubuh dan mengatasi migrain." 
-                    : selected === "dada" ? "<b>Indikasi: Defisiensi Qi Paru / Emosional Berlebih</b><br><br><b>Saran:</b> Terapi <b>Akupunktur Dada & Moxibustion</b> untuk menenangkan pernafasan dan melancarkan sirkulasi dada."
-                    : selected === "perut" ? "<b>Indikasi: Akumulasi Lembab Dingin Pencernaan</b><br><br><b>Saran:</b> Terapi <b>Pijat Tuina area perut</b> dan herbal penghangat seperti Madu Hitam & Habbatussauda."
-                    : selected === "tangan" ? "<b>Indikasi: Stagnasi Meridian Lengan / Pegal Sendi</b><br><br><b>Saran:</b> Terapi <b>Akupunktur Tangan & Bekam Kering</b> di titik persendian terkait."
-                    : "<b>Indikasi: Stagnasi Saraf & Sirkulasi Darah Kaki</b><br><br><b>Saran:</b> Terapi <b>Bekam Kaki & Pijat Refleksi Tuina</b> untuk menghilangkan kesemutan dan pegal linu.";
+            let res = "";
+            if (selected === "kepala") {
+                res = "<b>Indikasi: Sindrom Panas Berlebih / Tensi (Yang)</b><br><br><b>Saran Terapi:</b> <b>Bekam Titik Ummu Mughits (Puncak Kepala)</b> & Akupunktur Penenang Syaraf sangat direkomendasikan untuk mendinginkan suhu tubuh, meredakan migrain, pusing, vertigo, dan insomnia.";
+            } else if (selected === "dada") {
+                res = "<b>Indikasi: Defisiensi Qi Paru / Stagnasi Emosional</b><br><br><b>Saran Terapi:</b> Terapi <b>Akupunktur Dada & Moksa (Moxibustion)</b> untuk menenangkan pernapasan, melapangkan rongga dada, meredakan batuk serta kecemasan.";
+            } else if (selected === "perut") {
+                res = "<b>Indikasi: Akumulasi Lembab-Dingin Pencernaan & Limpa</b><br><br><b>Saran Terapi:</b> Terapi <b>Pijat Tuina area perut</b>, Bekam Kering, serta konsumsi herbal penghangat pencernaan seperti Madu Hitam & Habbatussauda.";
+            } else if (selected === "tangan") {
+                res = "<b>Indikasi: Stagnasi Meridian Lengan & Persendian</b><br><br><b>Saran Terapi:</b> Terapi <b>Akupunktur Tangan & Bekam Luncur</b> pada titik persendian persendian bahu dan lengan untuk mengatasi kaku, pegal, dan kesemutan jari.";
+            } else if (selected === "punggung") {
+                res = "<b>Indikasi: Stagnasi Qi-Xue Tulang Belakang & Saraf Terjepit Ringan</b><br><br><b>Saran Terapi:</b> Terapi <b>Bekam Medis Basah (Titik Al-Kahil & Lumbal)</b> dipadu Pijat Reparasi Tulang Belakang untuk melemaskan kram otot dan saraf terjepit.";
+            } else {
+                res = "<b>Indikasi: Stagnasi Saraf & Sirkulasi Darah Kaki</b><br><br><b>Saran Terapi:</b> Terapi <b>Bekam Kaki & Pijat Refleksi Tuina</b> untuk meredakan asam urat, kesemutan, nyeri lutut, dan pegal linu kronis.";
+            }
             
             document.getElementById('result-text').innerHTML = res; 
             document.getElementById('calc-step-1').classList.add('hidden');
@@ -1267,15 +1288,18 @@
         };
 
         window.resetCalc = function() {
-            document.querySelectorAll('.body-part').forEach(el => el.classList.remove('selected'));
+            document.querySelectorAll('.body-part-card').forEach(el => {
+                el.classList.remove('border-primary', 'bg-primary/5', 'ring-2', 'ring-primary');
+                el.classList.add('border-slate-200');
+            });
             document.getElementById('selected-body-part').value = "";
             document.getElementById('calc-step-1').classList.remove('hidden');
             document.getElementById('calc-result').classList.add('hidden');
         };
 
         window.sendResultToWA = function() {
-            const part = document.getElementById('selected-body-part').value;
-            window.openWhatsApp(`Halo Admin Thibbun Care,\nSaya melakukan deteksi mandiri area tubuh *${part.toUpperCase()}*. Mohon konsultasi lebih lanjut.`);
+            const part = document.getElementById('selected-body-part').value || 'Umum';
+            window.openWhatsApp(`Halo Admin Thibbun Care,\nSaya melakukan deteksi mandiri keluhan area *${part.toUpperCase()}*. Mohon konsultasi jadwal terapi.`);
         };
 
         window.handleAdminLogin = function(e) {
