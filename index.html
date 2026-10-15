@@ -379,18 +379,17 @@
                         </a>
                         <p class="text-sm leading-relaxed mb-8 font-medium text-slate-400 text-justify">Pusat pengobatan holistik Islami. Memadukan keilmuan medis timur (TCM) dan prosedur steril modern untuk kesembuhan paripurna Anda.</p>
                         <div class="flex gap-4">
-                            <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all shadow-lg hover:-translate-y-1"><i class="fa-brands fa-facebook-f"></i></a>
-                            <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-gradient-to-tr hover:from-amber-400 hover:via-pink-500 hover:to-purple-600 hover:text-white transition-all shadow-lg hover:-translate-y-1"><i class="fa-brands fa-instagram"></i></a>
-                            <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-red-600 hover:text-white transition-all shadow-lg hover:-translate-y-1"><i class="fa-brands fa-youtube"></i></a>
+                            <a id="footer-fb" href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all shadow-lg hover:-translate-y-1"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a id="footer-ig" href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-gradient-to-tr hover:from-amber-400 hover:via-pink-500 hover:to-purple-600 hover:text-white transition-all shadow-lg hover:-translate-y-1"><i class="fa-brands fa-instagram"></i></a>
+                            <a id="footer-yt" href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-red-600 hover:text-white transition-all shadow-lg hover:-translate-y-1"><i class="fa-brands fa-youtube"></i></a>
                         </div>
                     </div>
                     <div>
                         <h4 class="text-white font-bold mb-6 text-sm uppercase tracking-widest border-b border-slate-700 pb-2 inline-block">Pusat Informasi</h4>
                         <ul class="space-y-4 text-sm font-medium text-slate-400">
-                            <li class="flex items-start gap-3"><i class="fa-solid fa-map-location-dot mt-1 text-primary text-lg"></i> <span>Jl. Margasatwa Raya No. 45, Jakarta Selatan, 12345, Indonesia</span></li>
-                            <li class="flex items-center gap-3"><i class="fa-brands fa-whatsapp text-primary text-lg"></i> <span>+62 812-0000-0000</span></li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-envelope text-primary text-lg"></i> <span>info@thibbuncare.com</span></li>
-                            <li class="flex items-center gap-3"><i class="fa-solid fa-clock text-primary text-lg"></i> <span>Buka: 09.00 - 20.00 WIB (Setiap Hari)</span></li>
+                            <li class="flex items-start gap-3"><i class="fa-solid fa-map-location-dot mt-1 text-primary text-lg"></i> <span id="footer-address">Jl. Margasatwa Raya No. 45, Jakarta Selatan, 12345, Indonesia</span></li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-envelope text-primary text-lg"></i> <span id="footer-email">info@thibbuncare.com</span></li>
+                            <li class="flex items-center gap-3"><i class="fa-solid fa-clock text-primary text-lg"></i> <span id="footer-hours">Buka: 09.00 - 20.00 WIB (Setiap Hari)</span></li>
                         </ul>
                     </div>
                     <div>
@@ -457,7 +456,6 @@
                     </div>
                 </div>
                 
-                <!-- Crud Panels -->
                 <div id="panel-produk" class="admin-panel hidden"><div class="flex justify-between items-center mb-6"><h3 class="text-2xl font-black text-slate-900">Katalog Herbal</h3><button onclick="openFormModal('produk')" class="btn-gradient text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-btn hover:-translate-y-0.5 transition-all"><i class="fa-solid fa-plus mr-1"></i> Tambah</button></div><div class="bg-white rounded-2xl border border-slate-200 overflow-x-auto shadow-sm"><table class="w-full text-left whitespace-nowrap"><thead class="bg-slate-50 border-b border-slate-200 text-slate-500 text-xs uppercase font-bold tracking-wider"><tr><th class="px-6 py-4">Nama Produk</th><th class="px-6 py-4">Harga</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-produk" class="divide-y divide-slate-100 text-sm font-medium"></tbody></table></div></div>
                 <div id="panel-layanan" class="admin-panel hidden"><div class="flex justify-between items-center mb-6"><h3 class="text-2xl font-black text-slate-900">Daftar Layanan</h3><button onclick="openFormModal('layanan')" class="btn-gradient text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-btn hover:-translate-y-0.5 transition-all"><i class="fa-solid fa-plus mr-1"></i> Tambah</button></div><div class="bg-white rounded-2xl border border-slate-200 overflow-x-auto shadow-sm"><table class="w-full text-left whitespace-nowrap"><thead class="bg-slate-50 border-b border-slate-200 text-slate-500 text-xs uppercase font-bold tracking-wider"><tr><th class="px-6 py-4">Judul Layanan</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-layanan" class="divide-y divide-slate-100 text-sm font-medium"></tbody></table></div></div>
                 <div id="panel-artikel" class="admin-panel hidden"><div class="flex justify-between items-center mb-6"><h3 class="text-2xl font-black text-slate-900">Jurnal Artikel</h3><button onclick="openFormModal('artikel')" class="btn-gradient text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-btn hover:-translate-y-0.5 transition-all"><i class="fa-solid fa-plus mr-1"></i> Tulis Baru</button></div><div class="bg-white rounded-2xl border border-slate-200 overflow-x-auto shadow-sm"><table class="w-full text-left whitespace-nowrap"><thead class="bg-slate-50 border-b border-slate-200 text-slate-500 text-xs uppercase font-bold tracking-wider"><tr><th class="px-6 py-4">Judul Artikel</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-artikel" class="divide-y divide-slate-100 text-sm font-medium"></tbody></table></div></div>
@@ -465,16 +463,30 @@
                 <div id="panel-karir" class="admin-panel hidden"><div class="flex justify-between items-center mb-6"><h3 class="text-2xl font-black text-slate-900">Lowongan Karir</h3><button onclick="openFormModal('karir')" class="btn-gradient text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-btn hover:-translate-y-0.5 transition-all"><i class="fa-solid fa-plus mr-1"></i> Tambah</button></div><div class="bg-white rounded-2xl border border-slate-200 overflow-x-auto shadow-sm"><table class="w-full text-left whitespace-nowrap"><thead class="bg-slate-50 border-b border-slate-200 text-slate-500 text-xs uppercase font-bold tracking-wider"><tr><th class="px-6 py-4">Posisi Jabatan</th><th class="px-6 py-4">Lokasi</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-karir" class="divide-y divide-slate-100 text-sm font-medium"></tbody></table></div></div>
                 <div id="panel-cabang" class="admin-panel hidden"><div class="flex justify-between items-center mb-6"><h3 class="text-2xl font-black text-slate-900">Cabang Klinik</h3><button onclick="openFormModal('cabang')" class="btn-gradient text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-btn hover:-translate-y-0.5 transition-all"><i class="fa-solid fa-plus mr-1"></i> Tambah</button></div><div class="bg-white rounded-2xl border border-slate-200 overflow-x-auto shadow-sm"><table class="w-full text-left whitespace-nowrap"><thead class="bg-slate-50 border-b border-slate-200 text-slate-500 text-xs uppercase font-bold tracking-wider"><tr><th class="px-6 py-4">Nama Cabang</th><th class="px-6 py-4">No WA</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-cabang" class="divide-y divide-slate-100 text-sm font-medium"></tbody></table></div></div>
                 
-                <!-- Settings Panel -->
+                <!-- Settings Panel with New Features -->
                 <div id="panel-pengaturan" class="admin-panel hidden">
-                    <h3 class="text-2xl font-black text-slate-900 mb-6">Pengaturan Privasi & Sistem</h3>
-                    <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm max-w-xl space-y-6">
-                        <div><label class="block text-sm font-bold text-slate-700 mb-2">No WhatsApp CS (Awali 628...)</label><input type="text" id="setting-wa" class="w-full px-4 py-3 border-2 border-slate-200 focus:border-primary rounded-xl font-medium outline-none transition-colors"></div>
-                        <div><label class="block text-sm font-bold text-slate-700 mb-2">Ubah Username Admin</label><input type="text" id="setting-user" class="w-full px-4 py-3 border-2 border-slate-200 focus:border-primary rounded-xl font-medium outline-none transition-colors bg-slate-50"></div>
-                        <div><label class="block text-sm font-bold text-slate-700 mb-2">Ubah Password Admin</label><input type="password" id="setting-pass" class="w-full px-4 py-3 border-2 border-slate-200 focus:border-primary rounded-xl font-medium outline-none transition-colors bg-slate-50" placeholder="Biarkan kosong jika tidak ingin mengubah password"></div>
-                        <div><label class="block text-sm font-bold text-slate-700 mb-2">Warna Tema Utama</label><input type="color" id="setting-color" class="h-14 w-full rounded-xl cursor-pointer border-2 border-slate-200"></div>
-                        <button onclick="saveSettings(event)" class="w-full bg-slate-900 text-white px-6 py-4 rounded-xl font-bold hover:bg-black shadow-lg transition-all active:scale-95 text-lg mt-4">Simpan Pengaturan</button>
+                    <h3 class="text-2xl font-black text-slate-900 mb-6">Pengaturan Web & Informasi Pusat</h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                            <h4 class="font-bold text-lg text-slate-800 border-b border-slate-100 pb-3 mb-4"><i class="fa-solid fa-shield-halved text-primary"></i> Keamanan & Sistem</h4>
+                            <div><label class="block text-sm font-bold text-slate-700 mb-2">No WhatsApp CS (Awali 628...)</label><input type="text" id="setting-wa" class="w-full px-4 py-3 border-2 border-slate-200 focus:border-primary rounded-xl font-medium outline-none transition-colors"></div>
+                            <div><label class="block text-sm font-bold text-slate-700 mb-2">Ubah Username Admin</label><input type="text" id="setting-user" class="w-full px-4 py-3 border-2 border-slate-200 focus:border-primary rounded-xl font-medium outline-none transition-colors bg-slate-50"></div>
+                            <div><label class="block text-sm font-bold text-slate-700 mb-2">Ubah Password Admin</label><input type="password" id="setting-pass" class="w-full px-4 py-3 border-2 border-slate-200 focus:border-primary rounded-xl font-medium outline-none transition-colors bg-slate-50" placeholder="Biarkan kosong jika tidak mengubah password"></div>
+                            <div><label class="block text-sm font-bold text-slate-700 mb-2">Warna Tema Utama</label><input type="color" id="setting-color" class="h-14 w-full rounded-xl cursor-pointer border-2 border-slate-200"></div>
+                        </div>
+                        <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
+                            <h4 class="font-bold text-lg text-slate-800 border-b border-slate-100 pb-3 mb-4"><i class="fa-solid fa-address-card text-primary"></i> Kontak & Sosial Media Footer</h4>
+                            <div><label class="block text-sm font-bold text-slate-700 mb-2">Alamat Lengkap</label><input type="text" id="setting-address" placeholder="Contoh: Jl. Margasatwa Raya..." class="w-full px-4 py-3 border-2 border-slate-200 focus:border-primary rounded-xl font-medium outline-none transition-colors"></div>
+                            <div><label class="block text-sm font-bold text-slate-700 mb-2">Email Operasional</label><input type="email" id="setting-email" placeholder="contoh@thibbuncare.com" class="w-full px-4 py-3 border-2 border-slate-200 focus:border-primary rounded-xl font-medium outline-none transition-colors"></div>
+                            <div><label class="block text-sm font-bold text-slate-700 mb-2">Jam Buka</label><input type="text" id="setting-hours" placeholder="Buka: 09.00 - 20.00 WIB" class="w-full px-4 py-3 border-2 border-slate-200 focus:border-primary rounded-xl font-medium outline-none transition-colors"></div>
+                            <div class="flex gap-3">
+                                <div class="flex-1"><label class="block text-[10px] font-bold text-slate-700 mb-1">Link Facebook</label><input type="text" id="setting-fb" class="w-full px-3 py-2 border-2 border-slate-200 focus:border-primary rounded-lg text-xs outline-none"></div>
+                                <div class="flex-1"><label class="block text-[10px] font-bold text-slate-700 mb-1">Link Instagram</label><input type="text" id="setting-ig" class="w-full px-3 py-2 border-2 border-slate-200 focus:border-primary rounded-lg text-xs outline-none"></div>
+                                <div class="flex-1"><label class="block text-[10px] font-bold text-slate-700 mb-1">Link YouTube</label><input type="text" id="setting-yt" class="w-full px-3 py-2 border-2 border-slate-200 focus:border-primary rounded-lg text-xs outline-none"></div>
+                            </div>
+                        </div>
                     </div>
+                    <button onclick="saveSettings(event)" class="w-full bg-slate-900 text-white px-6 py-4 rounded-xl font-bold hover:bg-black shadow-lg transition-all active:scale-95 text-lg mt-6">Simpan Pengaturan</button>
                 </div>
             </div>
         </main>
@@ -506,26 +518,35 @@
     <div id="reservation-modal" class="fixed inset-0 z-[130] hidden">
         <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onclick="toggleModal('reservation-modal')"></div>
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-md px-4">
-            <div class="bg-white rounded-[2rem] p-8 relative shadow-2xl border border-white">
+            <div class="bg-white rounded-[2rem] p-8 relative shadow-2xl border border-white max-h-[90vh] overflow-y-auto">
                 <button onclick="toggleModal('reservation-modal')" class="absolute top-4 right-4 w-8 h-8 bg-slate-100 hover:bg-slate-200 rounded-full flex items-center justify-center transition-colors"><i class="fa-solid fa-xmark"></i></button>
                 <h3 class="text-2xl font-black mb-6 text-slate-900">Reservasi Terapi</h3>
                 <form onsubmit="submitReservationForm(event)" class="space-y-4 text-sm font-medium">
                     <input type="text" id="res-name" class="w-full px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:border-primary outline-none transition-colors" required placeholder="Nama Lengkap Pasien">
                     <input type="tel" id="res-phone" class="w-full px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:border-primary outline-none transition-colors" required placeholder="No WhatsApp (Contoh: 628...)">
                     <select id="res-service" class="w-full px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:border-primary outline-none transition-colors bg-white" required>
+                        <option value="Umum">- Pilih Layanan Utama -</option>
                         <option value="Bekam Medis">Bekam Medis</option>
                         <option value="Akupunktur TCM">Akupunktur TCM</option>
                         <option value="Homecare Terapi">Homecare Terapi</option>
                         <option value="Konsultasi Umum">Konsultasi Umum</option>
                     </select>
-                    <input type="date" id="res-date" class="w-full px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:border-primary outline-none transition-colors bg-white" required>
+                    <div class="flex gap-4">
+                        <input type="date" id="res-date" class="w-1/2 px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:border-primary outline-none transition-colors bg-white" required>
+                        <select id="res-time" class="w-1/2 px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:border-primary outline-none transition-colors bg-white" required>
+                            <option value="">- Waktu -</option>
+                            <option value="Pagi (09:00 - 12:00)">Pagi (09:00 - 12:00)</option>
+                            <option value="Siang (13:00 - 15:00)">Siang (13:00 - 15:00)</option>
+                            <option value="Sore (16:00 - 20:00)">Sore (16:00 - 20:00)</option>
+                        </select>
+                    </div>
+                    <textarea id="res-complaint" class="w-full px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:border-primary outline-none transition-colors h-24 resize-none" placeholder="Tuliskan keluhan yang Anda rasakan..." required></textarea>
                     <button type="submit" class="w-full bg-gradient-to-r from-[#25d366] to-[#1ebd5a] text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-green-500/30 hover:-translate-y-1 active:scale-95 transition-all text-base mt-2"><i class="fab fa-whatsapp text-xl"></i> Pesan Jadwal via WA</button>
                 </form>
             </div>
         </div>
     </div>
     
-    <!-- Cart Modal (Shopee Style) -->
     <div id="cart-modal" class="fixed inset-0 z-[110] hidden">
         <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="toggleModal('cart-modal')"></div>
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-lg px-4">
@@ -546,7 +567,7 @@
                             <input type="checkbox" id="use-points-cb" onchange="window.renderCartUI(); event.stopPropagation();" class="w-6 h-6 accent-amber-500 cursor-pointer">
                         </div>
                         <input type="text" id="cust-name" placeholder="Nama Lengkap Penerima" class="w-full px-4 py-3.5 border-2 border-slate-200 focus:border-primary rounded-xl text-sm font-medium outline-none">
-                        <textarea id="cust-address" placeholder="Kota & Alamat Lengkap Pengiriman" class="w-full px-4 py-3.5 border-2 border-slate-200 focus:border-primary rounded-xl text-sm font-medium outline-none h-24"></textarea>
+                        <textarea id="cust-address" placeholder="Kota & Alamat Lengkap Pengiriman" class="w-full px-4 py-3.5 border-2 border-slate-200 focus:border-primary rounded-xl text-sm font-medium outline-none h-24 resize-none"></textarea>
                     </div>
                 </div>
                 <div class="px-6 py-5 border-t border-slate-200 bg-white flex justify-between items-center z-10">
@@ -598,9 +619,15 @@
         let app, auth, db, isFirebaseActive = false;
         try { app = initializeApp(firebaseConfig); auth = getAuth(app); db = getFirestore(app); isFirebaseActive = true; } catch(e) { console.warn("Firebase Offline Mode"); }
 
-        // Master Data Dummy
+        // Master Data Dummy with full initial settings
         const comprehensiveData = {
-            settings: { waNumber: "6281200000000", primaryColor: "#0D9488", adminUser: "admin", adminPass: "admin" },
+            settings: { 
+                waNumber: "6281200000000", primaryColor: "#0D9488", adminUser: "admin", adminPass: "admin",
+                address: "Jl. Margasatwa Raya No. 45, Jakarta Selatan, 12345, Indonesia",
+                email: "info@thibbuncare.com",
+                hours: "Buka: 09.00 - 20.00 WIB (Setiap Hari)",
+                facebook: "#", instagram: "#", youtube: "#"
+            },
             services: [{ id: "s1", title: "Bekam (Hijamah) Medis", desc: "Membersihkan darah statis dengan metode steril & pisau bedah sekali pakai.", image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80" }, { id: "s2", title: "Akupunktur TCM", desc: "Stimulasi titik meridian menggunakan jarum halus untuk keseimbangan Qi.", image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&q=80" }], 
             products: [{ id: "p1", name: "Madu Hitam Pahit Ar-Risyah", price: 75000, tag: "Imunitas", image: "https://images.unsplash.com/photo-1587049352847-4a222e784d38?w=400&q=80" }, { id: "p2", name: "Habbatussauda Extra Propolis", price: 50000, tag: "Imunitas", image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&q=80" }, { id: "p3", name: "Kapsul Minyak Zaitun", price: 45000, tag: "Kolesterol", image: "https://images.unsplash.com/photo-1474631245212-32dc3c8310c6?w=400&q=80" }, { id: "p4", name: "Jahe Merah Instan", price: 30000, tag: "Pencernaan", image: "https://images.unsplash.com/photo-1596356453261-0d265eb2c205?w=400&q=80" }, { id: "p5", name: "Teh Jati Cina", price: 25000, tag: "Diet", image: "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?w=400&q=80" }], 
             articles: [{ id: "a1", title: "Keutamaan & Manfaat Medis Bekam", tag: "Thibbun Nabawi", date: "10 Okt 2026", image: "https://images.unsplash.com/photo-1512290900672-468205f77864?w=600&q=80", desc: "Penjelasan ilmiah bagaimana bekam dapat menstabilkan tekanan darah.", content: "Bekam atau Hijamah adalah metode pengobatan yang dianjurkan dalam Islam. Secara medis modern, bekam basah dapat membantu membuang sel darah merah yang menua dan merangsang produksi sel darah merah baru..." }], 
@@ -614,6 +641,9 @@
 
         window.appState = safeGet('tc_state_v7_premium', comprehensiveData);
         window.cart = safeGet('tc_cart_v7_premium', []);
+        
+        // Data Fallback Protection
+        if(!window.appState.settings) window.appState.settings = comprehensiveData.settings;
         ['services', 'products', 'articles', 'therapists', 'careers', 'branches'].forEach(k => { if(!window.appState[k] || window.appState[k].length===0) window.appState[k] = comprehensiveData[k] || []; });
 
         // Basic Navigation & UI Toggles
@@ -622,7 +652,16 @@
         window.openWhatsApp = (msg, num) => { window.open(`https://wa.me/${num || window.appState.settings.waNumber}?text=${encodeURIComponent(msg)}`, '_blank'); };
         window.toggleMobileMenu = () => { document.getElementById('mobile-menu').classList.toggle('hidden'); };
         window.toggleAdminSidebar = () => { document.getElementById('admin-sidebar').classList.toggle('-translate-x-full'); };
-        window.openReservationModal = (svc) => { document.getElementById('res-service').value=svc; toggleModal('reservation-modal'); };
+        
+        // Smart Reservation Modal Logic (Prevents missing option errors)
+        window.openReservationModal = (svc) => { 
+            const select = document.getElementById('res-service');
+            let found = false;
+            for(let i=0; i<select.options.length; i++) { if(select.options[i].value === svc) { found = true; break; } }
+            if(!found && svc) { const opt = document.createElement('option'); opt.value = svc; opt.innerText = svc; select.appendChild(opt); }
+            select.value = svc; 
+            toggleModal('reservation-modal'); 
+        };
 
         let currentSymptomArea = '';
         window.selectSymptom = (area, desc, element) => {
@@ -643,7 +682,10 @@
                 <div class="p-3 md:p-4 flex flex-col flex-1"><h4 class="text-slate-800 text-xs md:text-sm font-bold line-clamp-2 mb-2 min-h-[32px] group-hover:text-primary transition-colors">${p.name}</h4><div class="mt-auto flex flex-col sm:flex-row sm:items-end justify-between"><p class="font-black text-[#ee4d2d] text-sm md:text-base">${window.formatRp(p.price)}</p><p class="text-[10px] font-semibold text-slate-400 mt-1 sm:mt-0 bg-slate-100 px-1.5 py-0.5 rounded">1RB+ Terjual</p></div></div>
             </div>`;
         };
-        window.generateServiceCard = (s) => `<div class="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-slate-100 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 group flex flex-col relative"><div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/5 z-10 pointer-events-none group-hover:opacity-0 transition-opacity"></div><div class="h-56 overflow-hidden relative"><img src="${s.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"></div><div class="p-8 flex-1 flex flex-col relative z-20 bg-white rounded-t-[2rem] -mt-6"><h4 class="text-2xl font-black text-slate-900 mb-3 group-hover:text-primary transition-colors">${s.title}</h4><p class="text-slate-600 mb-8 flex-1 leading-relaxed font-medium">${s.desc}</p><button onclick="openReservationModal('${s.title}')" class="w-full py-4 rounded-xl border-2 border-slate-100 text-slate-700 font-bold hover:border-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-sm hover:shadow-md flex items-center justify-center gap-2">Reservasi <i class="fa-solid fa-arrow-right text-xs"></i></button></div></div>`;
+        window.generateServiceCard = (s) => {
+            const safeTitle = s.title.replace(/'/g, "\\'"); // Prevents HTML injection errors
+            return `<div class="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-slate-100 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 group flex flex-col relative"><div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/5 z-10 pointer-events-none group-hover:opacity-0 transition-opacity"></div><div class="h-56 overflow-hidden relative"><img src="${s.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"></div><div class="p-8 flex-1 flex flex-col relative z-20 bg-white rounded-t-[2rem] -mt-6"><h4 class="text-2xl font-black text-slate-900 mb-3 group-hover:text-primary transition-colors">${s.title}</h4><p class="text-slate-600 mb-8 flex-1 leading-relaxed font-medium">${s.desc}</p><button onclick="openReservationModal('${safeTitle}')" class="w-full py-4 rounded-xl border-2 border-slate-100 text-slate-700 font-bold hover:border-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-sm hover:shadow-md flex items-center justify-center gap-2">Reservasi <i class="fa-solid fa-arrow-right text-xs"></i></button></div></div>`;
+        };
         window.generateArticleCard = (a) => `<div class="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-slate-100 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 flex flex-col group"><div class="h-56 overflow-hidden relative"><img src="${a.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"><div class="absolute top-4 left-4 bg-white/90 backdrop-blur text-primary text-[10px] font-black px-3 py-1.5 rounded-lg shadow-sm uppercase tracking-wider">${a.tag}</div></div><div class="p-8 flex-1 flex flex-col"><div class="flex items-center gap-2 mb-3 text-xs font-bold text-slate-400"><i class="fa-regular fa-calendar"></i> ${a.date}</div><h4 class="text-xl font-black text-slate-900 mb-3 line-clamp-2 group-hover:text-primary transition-colors">${a.title}</h4><p class="text-sm text-slate-500 mb-6 line-clamp-3 font-medium leading-relaxed">${a.desc}</p><button onclick="readArticle('${a.id}')" class="mt-auto text-primary font-bold hover:text-primary-dark flex items-center gap-2 group-hover:translate-x-2 transition-transform">Baca Jurnal <i class="fa-solid fa-arrow-right-long"></i></button></div></div>`;
         window.generateTherapistCard = (t) => `<div class="bg-white rounded-[2rem] p-8 text-center shadow-sm border border-slate-100 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 relative overflow-hidden group"><div class="absolute -top-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors"></div><div class="w-32 h-32 mx-auto mb-6 relative"><div class="absolute inset-0 bg-gradient-to-tr from-primary to-emerald-400 rounded-full animate-pulse blur-sm opacity-50 group-hover:opacity-100 transition-opacity"></div><img src="${t.image}" class="w-full h-full rounded-full object-cover border-4 border-white relative z-10 shadow-md"></div><h4 class="font-black text-xl text-slate-900">${t.name}</h4><p class="text-sm text-primary font-bold mt-2 bg-primary/10 inline-block px-3 py-1 rounded-full">${t.spec}</p></div>`;
         window.generateCareerCard = (c) => `<div class="bg-white rounded-[2rem] p-8 shadow-sm border border-slate-100 hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-6 group"><div class="flex-1"><h4 class="text-xl font-black text-slate-900 group-hover:text-primary transition-colors">${c.title}</h4><div class="flex gap-4 text-xs text-slate-500 mt-3 font-bold uppercase tracking-wider"><span class="bg-slate-100 px-3 py-1.5 rounded-lg flex items-center gap-1"><i class="fa-solid fa-location-dot text-primary"></i> ${c.loc}</span><span class="bg-slate-100 px-3 py-1.5 rounded-lg flex items-center gap-1"><i class="fa-solid fa-clock text-primary"></i> Full-time</span></div><p class="text-sm text-slate-600 mt-4 leading-relaxed font-medium">${c.desc}</p></div><button onclick="openWhatsApp('Halo HRD Thibbun Care, saya ingin melamar posisi ${c.title} di cabang ${c.loc}')" class="btn-gradient text-white px-8 py-4 rounded-xl font-bold whitespace-nowrap shadow-btn hover:-translate-y-1 active:scale-95 transition-all">Kirim Lamaran</button></div>`;
@@ -692,19 +734,37 @@
             m+=`\n\n*Total Tagihan Akhir:* ${document.getElementById('cart-total-price').innerText}\n\nMohon informasi ongkir dan rekening pembayaran. Terima kasih.`;
             window.cart=[]; safeSet('tc_cart_v7_premium', window.cart); window.renderCartUI(); toggleModal('cart-modal'); window.openWhatsApp(m);
         };
+        
         window.submitReservationForm = (e) => {
             e.preventDefault();
-            const m = `*RESERVASI LAYANAN (THIBBUN CARE)*\n\nNama Pasien: ${document.getElementById('res-name').value}\nNo HP/WA: ${document.getElementById('res-phone').value}\nJenis Layanan: ${document.getElementById('res-service').value}\nTanggal Terapi: ${document.getElementById('res-date').value}\n\nMohon konfirmasi ketersediaan jadwal terapis. Terima kasih.`;
+            const m = `*RESERVASI LAYANAN (THIBBUN CARE)*\n\nNama Pasien: ${document.getElementById('res-name').value}\nNo HP/WA: ${document.getElementById('res-phone').value}\nJenis Layanan: ${document.getElementById('res-service').value}\nTanggal Terapi: ${document.getElementById('res-date').value}\nWaktu Terapi: ${document.getElementById('res-time').value}\nKeluhan Utama: ${document.getElementById('res-complaint').value}\n\nMohon konfirmasi ketersediaan jadwal terapis. Terima kasih.`;
             toggleModal('reservation-modal'); window.openWhatsApp(m);
         };
 
         window.renderAll = () => {
             document.documentElement.style.setProperty('--color-primary', window.appState.settings.primaryColor);
+            
+            // Populate Admin Settings Inputs
             const waIn = document.getElementById('setting-wa'); if(waIn && !waIn.value) waIn.value = window.appState.settings.waNumber;
             const usIn = document.getElementById('setting-user'); if(usIn && !usIn.value) usIn.value = window.appState.settings.adminUser;
             const coIn = document.getElementById('setting-color'); if(coIn && !coIn.value) coIn.value = window.appState.settings.primaryColor;
+            
+            const ids = ['setting-address', 'setting-email', 'setting-hours', 'setting-fb', 'setting-ig', 'setting-yt'];
+            const keys = ['address', 'email', 'hours', 'facebook', 'instagram', 'youtube'];
+            ids.forEach((id, idx) => { const el = document.getElementById(id); if(el) el.value = window.appState.settings[keys[idx]] || ''; });
 
+            // Ensure Safe Injection
             const safeHtml = (id, str) => { const el = document.getElementById(id); if(el) el.innerHTML = str; };
+            
+            // Populate Public Footer Links
+            safeHtml('footer-address', window.appState.settings.address || 'Alamat Belum Diatur');
+            safeHtml('footer-email', window.appState.settings.email || 'Email Belum Diatur');
+            safeHtml('footer-hours', window.appState.settings.hours || 'Jam Belum Diatur');
+            const fbEl = document.getElementById('footer-fb'); if(fbEl) fbEl.href = window.appState.settings.facebook || '#';
+            const igEl = document.getElementById('footer-ig'); if(igEl) igEl.href = window.appState.settings.instagram || '#';
+            const ytEl = document.getElementById('footer-yt'); if(ytEl) ytEl.href = window.appState.settings.youtube || '#';
+
+            // Populate Public Grids
             safeHtml('home-services-grid', window.appState.services.slice(0,3).map(window.generateServiceCard).join(''));
             safeHtml('full-services-grid', window.appState.services.map(window.generateServiceCard).join(''));
             safeHtml('home-products-grid', window.appState.products.slice(0,5).map(window.generateProductCard).join(''));
@@ -715,6 +775,7 @@
             safeHtml('careers-grid', window.appState.careers.map(window.generateCareerCard).join(''));
             safeHtml('branches-container', window.appState.branches.map(window.generateBranchCard).join(''));
 
+            // Populate Admin Tables
             const tBtn = (t,id) => `<td class="px-6 py-4 text-right"><button onclick="openFormModal('${t}','${id}')" class="text-blue-500 hover:text-blue-700 bg-blue-50 w-8 h-8 rounded-lg mx-2 transition-colors"><i class="fa fa-pen"></i></button><button onclick="deleteItem('${t}','${id}')" class="text-red-500 hover:text-red-700 bg-red-50 w-8 h-8 rounded-lg transition-colors"><i class="fa fa-trash"></i></button></td>`;
             safeHtml('table-produk', window.appState.products.map(p=>`<tr><td class="px-6 py-4 flex items-center gap-4"><img src="${p.image}" class="w-12 h-12 object-cover rounded-xl shadow-sm border border-slate-100"> <span class="font-bold text-slate-800">${p.name}</span></td><td class="px-6 py-4 font-bold text-primary">${window.formatRp(p.price)}</td>${tBtn('produk',p.id)}</tr>`).join(''));
             safeHtml('table-layanan', window.appState.services.map(s=>`<tr><td class="px-6 py-4 flex items-center gap-4"><img src="${s.image}" class="w-12 h-12 object-cover rounded-xl shadow-sm border border-slate-100"> <span class="font-bold text-slate-800">${s.title}</span></td>${tBtn('layanan',s.id)}</tr>`).join(''));
@@ -803,11 +864,19 @@
             if(e) e.preventDefault();
             window.appState.settings.waNumber = document.getElementById('setting-wa').value || window.appState.settings.waNumber;
             window.appState.settings.adminUser = document.getElementById('setting-user').value || window.appState.settings.adminUser;
-            const newPass = document.getElementById('setting-pass').value;
-            if(newPass) window.appState.settings.adminPass = newPass;
+            const newPass = document.getElementById('setting-pass').value; if(newPass) window.appState.settings.adminPass = newPass;
             window.appState.settings.primaryColor = document.getElementById('setting-color').value || window.appState.settings.primaryColor;
             
+            // New Footer Info Savings
+            window.appState.settings.address = document.getElementById('setting-address').value;
+            window.appState.settings.email = document.getElementById('setting-email').value;
+            window.appState.settings.hours = document.getElementById('setting-hours').value;
+            window.appState.settings.facebook = document.getElementById('setting-fb').value;
+            window.appState.settings.instagram = document.getElementById('setting-ig').value;
+            window.appState.settings.youtube = document.getElementById('setting-yt').value;
+            
             safeSet('tc_state_v7_premium', window.appState); window.renderAll();
+            
             if(isFirebaseActive && auth.currentUser) {
                 try { await setDoc(doc(db, 'artifacts', activeAppId, 'public', 'data', 'settings', 'main'), window.appState.settings); showToast("Pengaturan Tersimpan di Cloud!"); } catch(e) { showToast("Pengaturan Lokal Disimpan!", true); }
             } else showToast("Pengaturan Lokal Disimpan!", true);
@@ -833,7 +902,7 @@
                     }
                 } catch(e) { showToast("Sistem Berjalan di Mode Offline (Lokal).", true); }
             }
-            window.renderAll();
+            window.renderAll(); // Ensure first render fires even if offline
         };
 
         window.addEventListener('DOMContentLoaded', initCloudSync);
