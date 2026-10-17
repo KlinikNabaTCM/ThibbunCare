@@ -5,9 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Klinik Thibbun Care | Premium Holistic Care</title>
     
+    <!-- Meta Tags SEO & Open Graph (Optimasi WhatsApp/Facebook) -->
+    <meta name="description" content="Pusat pengobatan holistik Islami. Memadukan keilmuan medis timur (TCM) dan prosedur steril modern untuk kesembuhan paripurna Anda.">
+    <meta property="og:title" content="Klinik Thibbun Care | Solusi Kesehatan Alami & Sesuai Sunnah">
+    <meta property="og:description" content="Konsultasikan kesehatan Anda bersama terapis bersertifikat kami. Melayani Akupunktur, Bekam Medis, dan Herbal Premium.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1605684954998-685c79d6a018?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:url" content="https://www.klinik-thibbun.com">
+    <meta property="og:type" content="website">
+    
     <!-- CDN Links -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
@@ -16,11 +24,11 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['JetBrains Mono', 'monospace'] },
                     colors: {
                         primary: { DEFAULT: 'var(--color-primary)', light: '#CCFBF1', dark: '#0F766E' },
                         secondary: { DEFAULT: '#B45309', light: '#FEF3C7' },
-                        surface: '#F8FAFC', // Slate-50 for softer background
+                        surface: '#F8FAFC',
                     },
                     boxShadow: {
                         'premium': '0 20px 40px -15px rgba(15, 118, 110, 0.15), 0 0 10px rgba(0,0,0,0.03)',
@@ -38,7 +46,7 @@
     </script>
     
     <style>
-        :root { --color-primary: #0D9488; /* Teal 600 - slightly brighter for premium feel */ }
+        :root { --color-primary: #0D9488; }
         body { background-color: #F8FAFC; color: #1E293B; }
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #F1F5F9; }
@@ -46,8 +54,6 @@
         ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
         
         .glass { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.5); }
-        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.8); }
-        
         .hero-bg { background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230f766e' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4H6zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
         .page-header-bg { background: linear-gradient(135deg, var(--color-primary) 0%, #042F2E 100%); position: relative; overflow: hidden; }
         .page-header-bg::before { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E"); opacity: 0.8; }
@@ -55,36 +61,57 @@
         .shopee-price { color: #ee4d2d; }
         .text-gradient { background: linear-gradient(135deg, var(--color-primary) 0%, #042F2E 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .btn-gradient { background: linear-gradient(135deg, var(--color-primary) 0%, #0F766E 100%); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Skeleton Animation */
+        .skeleton { background: #e2e8f0; background-image: linear-gradient(90deg, rgba(255,255,255,0) 0, rgba(255,255,255,0.5) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0)); background-size: 200px 100%; background-repeat: no-repeat; animation: shimmer 1.5s infinite linear; }
+        @keyframes shimmer { 0% { background-position: -200px 0; } 100% { background-position: calc(200px + 100%) 0; } }
     </style>
 </head>
 <body class="font-sans antialiased overflow-x-hidden selection:bg-primary-light selection:text-primary-dark">
     
     <div id="public-view">
-        <nav class="glass fixed w-full z-50 transition-all duration-500 shadow-sm" id="navbar">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between h-20 items-center">
-                    <a href="javascript:void(0)" onclick="navigateTo('home')" class="flex items-center gap-3 group">
-                        <div class="w-10 h-10 bg-gradient-to-br from-primary to-teal-700 rounded-xl flex items-center justify-center text-white shadow-lg shadow-teal-500/30 group-hover:scale-105 group-hover:rotate-3 transition-all duration-300"><i class="fa-solid fa-leaf text-lg"></i></div>
-                        <span class="font-extrabold text-xl md:text-2xl text-slate-900 tracking-tight">Thibbun Care.</span>
-                    </a>
-                    <div class="hidden lg:flex items-center space-x-2 xl:space-x-4 bg-white/50 px-4 py-1.5 rounded-full border border-slate-200/60 shadow-sm backdrop-blur-md">
-                        <button onclick="navigateTo('home')" class="px-3 py-2 text-sm font-semibold text-slate-600 hover:text-primary hover:bg-primary/5 rounded-full transition-all">Beranda</button>
-                        <button onclick="navigateTo('services')" class="px-3 py-2 text-sm font-semibold text-slate-600 hover:text-primary hover:bg-primary/5 rounded-full transition-all">Layanan</button>
-                        <button onclick="navigateTo('articles')" class="px-3 py-2 text-sm font-semibold text-slate-600 hover:text-primary hover:bg-primary/5 rounded-full transition-all">Artikel</button>
-                        <button onclick="navigateTo('shop')" class="px-3 py-2 text-sm font-semibold text-slate-600 hover:text-primary hover:bg-primary/5 rounded-full transition-all">Toko</button>
-                        <button onclick="navigateTo('branches')" class="px-3 py-2 text-sm font-semibold text-slate-600 hover:text-primary hover:bg-primary/5 rounded-full transition-all">Cabang</button>
-                        <button onclick="navigateTo('calculator')" class="text-sm font-bold text-primary hover:text-white hover:bg-primary transition-all flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full ml-2"><i class="fa-solid fa-stethoscope"></i> Cek Kondisi</button>
-                    </div>
-                    <div class="hidden lg:flex items-center gap-4">
-                        <button onclick="toggleModal('cart-modal')" class="relative p-2 text-slate-700 hover:text-primary hover:bg-slate-100 rounded-full transition-all flex items-center gap-1 group" title="Keranjang Belanja">
-                            <i class="fa-solid fa-cart-shopping text-xl group-hover:scale-110 transition-transform"></i>
-                            <span id="cart-badge-desktop" class="absolute top-0 right-0 bg-[#ee4d2d] text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center border border-white shadow-sm">0</span>
-                        </button>
-                        <button onclick="openReservationModal('Umum')" class="btn-gradient hover:opacity-90 text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-btn hover:-translate-y-0.5 active:scale-95 flex items-center gap-2">Reservasi <i class="fa-solid fa-arrow-right text-xs"></i></button>
-                    </div>
-                    <div class="lg:hidden flex items-center gap-3">
-                        <button onclick="toggleModal('cart-modal')" class="relative p-2 text-slate-700 hover:text-primary"><i class="fa-solid fa-cart-shopping text-xl"></i><span id="cart-badge-mobile-nav" class="absolute top-0 right-0 bg-[#ee4d2d] text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center border border-white">0</span></button>
-                        <button onclick="toggleMobileMenu()" class="text-slate-600 hover:text-primary p-2 bg-slate-100 rounded-lg"><i class="fas fa-bars text-xl"></i></button>
+        <nav class="fixed w-full z-50 transition-all duration-500" id="navbar-container">
+            <!-- Banner Pengumuman Dinamis -->
+            <div id="announcement-bar" class="bg-gradient-to-r from-amber-500 to-orange-600 text-white text-[11px] sm:text-xs font-bold text-center py-1.5 px-4 shadow-sm w-full hidden overflow-hidden relative z-50">
+                <div class="max-w-7xl mx-auto flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-bullhorn animate-pulse"></i>
+                    <span id="announcement-text" class="truncate">Promo Spesial Jumat Berkah: Diskon 20% Bekam Medis!</span>
+                </div>
+            </div>
+            
+            <!-- Navbar Utama -->
+            <div class="glass shadow-sm border-b border-white/50 relative z-40" id="navbar">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-between h-20 items-center">
+                        <a href="javascript:void(0)" onclick="navigateTo('home')" class="flex items-center gap-3 group">
+                            <div class="w-10 h-10 bg-gradient-to-br from-primary to-teal-700 rounded-xl flex items-center justify-center text-white shadow-lg shadow-teal-500/30 group-hover:scale-105 group-hover:rotate-3 transition-all duration-300"><i class="fa-solid fa-leaf text-lg"></i></div>
+                            <span class="font-extrabold text-xl md:text-2xl text-slate-900 tracking-tight">Thibbun Care.</span>
+                        </a>
+                        <div class="hidden lg:flex items-center space-x-2 xl:space-x-4 bg-white/50 px-4 py-1.5 rounded-full border border-slate-200/60 shadow-sm backdrop-blur-md">
+                            <button onclick="navigateTo('home')" class="px-3 py-2 text-sm font-semibold text-slate-600 hover:text-primary hover:bg-primary/5 rounded-full transition-all">Beranda</button>
+                            <button onclick="navigateTo('services')" class="px-3 py-2 text-sm font-semibold text-slate-600 hover:text-primary hover:bg-primary/5 rounded-full transition-all">Layanan</button>
+                            <button onclick="navigateTo('articles')" class="px-3 py-2 text-sm font-semibold text-slate-600 hover:text-primary hover:bg-primary/5 rounded-full transition-all">Artikel</button>
+                            <button onclick="navigateTo('shop')" class="px-3 py-2 text-sm font-semibold text-slate-600 hover:text-primary hover:bg-primary/5 rounded-full transition-all">Toko</button>
+                            <button onclick="navigateTo('branches')" class="px-3 py-2 text-sm font-semibold text-slate-600 hover:text-primary hover:bg-primary/5 rounded-full transition-all">Cabang</button>
+                            <button onclick="navigateTo('calculator')" class="text-sm font-bold text-primary hover:text-white hover:bg-primary transition-all flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full ml-2"><i class="fa-solid fa-stethoscope"></i> Cek Kondisi</button>
+                        </div>
+                        <div class="hidden lg:flex items-center gap-2 md:gap-4">
+                            <button onclick="toggleModal('search-modal'); document.getElementById('global-search-input').focus();" class="p-2 text-slate-700 hover:text-primary hover:bg-slate-100 rounded-full transition-all" title="Pencarian Global">
+                                <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                            </button>
+                            <button onclick="toggleModal('cart-modal')" class="relative p-2 text-slate-700 hover:text-primary hover:bg-slate-100 rounded-full transition-all flex items-center gap-1 group" title="Keranjang Belanja">
+                                <i class="fa-solid fa-cart-shopping text-xl group-hover:scale-110 transition-transform"></i>
+                                <span id="cart-badge-desktop" class="absolute top-0 right-0 bg-[#ee4d2d] text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center border border-white shadow-sm">0</span>
+                            </button>
+                            <button onclick="openReservationModal('Umum')" class="btn-gradient hover:opacity-90 text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-btn hover:-translate-y-0.5 active:scale-95 flex items-center gap-2">Reservasi <i class="fa-solid fa-arrow-right text-xs"></i></button>
+                        </div>
+                        <div class="lg:hidden flex items-center gap-3">
+                            <button onclick="toggleModal('search-modal'); document.getElementById('global-search-input').focus();" class="p-2 text-slate-700 hover:text-primary"><i class="fa-solid fa-magnifying-glass text-lg"></i></button>
+                            <button onclick="toggleModal('cart-modal')" class="relative p-2 text-slate-700 hover:text-primary"><i class="fa-solid fa-cart-shopping text-xl"></i><span id="cart-badge-mobile-nav" class="absolute top-0 right-0 bg-[#ee4d2d] text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center border border-white">0</span></button>
+                            <button onclick="toggleMobileMenu()" class="text-slate-600 hover:text-primary p-2 bg-slate-100 rounded-lg"><i class="fas fa-bars text-xl"></i></button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -104,10 +131,8 @@
         </nav>
 
         <main id="main-content" class="min-h-screen">
-            
-            <div id="page-home" class="page-view block">
-                <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-[90vh] flex items-center bg-hero-pattern">
-                    <!-- Decorative Background Elements -->
+            <div id="page-home" class="page-view block pt-10">
+                <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden min-h-[90vh] flex items-center bg-hero-pattern">
                     <div class="absolute top-0 right-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
                         <div class="absolute -top-[10%] -right-[5%] w-[500px] h-[500px] rounded-full bg-teal-400/20 blur-[100px]"></div>
                         <div class="absolute top-[30%] -left-[10%] w-[400px] h-[400px] rounded-full bg-emerald-300/20 blur-[80px]"></div>
@@ -124,7 +149,7 @@
                                 <p class="text-lg md:text-xl text-slate-600 max-w-lg leading-relaxed font-medium">Menggabungkan kearifan Thibbun Nabawi dan sains akupunktur. Pemulihan alami, aman, dan profesional.</p>
                                 <div class="flex flex-col sm:flex-row gap-4 pt-4">
                                     <button onclick="openReservationModal('Umum')" class="btn-gradient text-white px-8 py-4 rounded-full font-bold transition-all shadow-btn hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-3">Reservasi Layanan <i class="fa-solid fa-calendar-check"></i></button>
-                                    <button onclick="navigateTo('calculator')" class="bg-white hover:bg-slate-50 text-slate-800 border-2 border-slate-200 px-8 py-4 rounded-full font-bold transition-all hover:border-primary/50 hover:shadow-lg flex items-center justify-center gap-2"><i class="fa-solid fa-microscope text-primary"></i> Deteksi Mandiri</button>
+                                    <button onclick="navigateTo('calculator')" class="bg-white hover:bg-slate-50 text-slate-800 border-2 border-slate-200 px-8 py-4 rounded-full font-bold transition-all hover:border-primary/50 hover:shadow-lg flex items-center justify-center gap-2"><i class="fa-solid fa-microscope text-primary"></i> Cek Kondisi Mandiri</button>
                                 </div>
                                 
                                 <div class="pt-8 flex items-center gap-6 border-t border-slate-200/60 mt-8">
@@ -152,6 +177,19 @@
                     </div>
                 </section>
 
+                <!-- Pit Legalitas & Trust Badges -->
+                <div class="bg-white border-b border-slate-200/60 py-6">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <p class="text-center text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Telah Terdaftar & Tersertifikasi Oleh</p>
+                        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                            <div class="flex items-center gap-2 text-slate-700 font-black text-lg"><i class="fa-solid fa-notes-medical text-2xl"></i> DINAS KESEHATAN</div>
+                            <div class="flex items-center gap-2 text-slate-700 font-black text-lg"><i class="fa-solid fa-certificate text-2xl"></i> HALAL MUI</div>
+                            <div class="flex items-center gap-2 text-slate-700 font-black text-lg"><i class="fa-solid fa-hand-holding-medical text-2xl"></i> PBI PUSAT</div>
+                            <div class="flex items-center gap-2 text-slate-700 font-black text-lg"><i class="fa-solid fa-shield-virus text-2xl"></i> 100% STERIL</div>
+                        </div>
+                    </div>
+                </div>
+
                 <section class="py-24 bg-white relative z-10">
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div class="flex flex-col items-center text-center max-w-3xl mx-auto mb-16">
@@ -161,7 +199,9 @@
                             <button onclick="navigateTo('services')" class="bg-white border-2 border-slate-200 hover:border-primary text-slate-700 hover:text-primary px-8 py-3 rounded-full font-bold transition-all shadow-sm hover:shadow-md flex items-center gap-2 group">Lihat Semua Layanan <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i></button>
                         </div>
                         <div id="home-services-grid" class="grid md:grid-cols-3 gap-8">
-                            <!-- Dynamic Services Injected Here -->
+                            <div class="skeleton h-96 rounded-[2rem]"></div>
+                            <div class="skeleton h-96 rounded-[2rem]"></div>
+                            <div class="skeleton h-96 rounded-[2rem]"></div>
                         </div>
                     </div>
                 </section>
@@ -177,7 +217,11 @@
                             <button onclick="navigateTo('shop')" class="btn-gradient text-white px-8 py-3.5 rounded-full font-bold transition-all shadow-btn hover:-translate-y-1 flex items-center gap-2">Kunjungi Toko <i class="fa-solid fa-basket-shopping"></i></button>
                         </div>
                         <div id="home-products-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
-                            <!-- Dynamic Products Injected Here -->
+                            <div class="skeleton h-64 rounded-2xl"></div>
+                            <div class="skeleton h-64 rounded-2xl"></div>
+                            <div class="skeleton h-64 rounded-2xl"></div>
+                            <div class="skeleton h-64 rounded-2xl"></div>
+                            <div class="skeleton h-64 rounded-2xl hidden md:block"></div>
                         </div>
                     </div>
                 </section>
@@ -192,9 +236,65 @@
                             <button onclick="navigateTo('articles')" class="text-sm font-bold text-slate-600 hover:text-primary transition-all flex items-center gap-2 group bg-slate-50 px-6 py-3 rounded-full border border-slate-200">Baca Jurnal Lainnya <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i></button>
                         </div>
                         <div id="home-articles-grid" class="grid md:grid-cols-3 gap-8">
-                            <!-- Dynamic Articles Injected Here -->
+                            <div class="skeleton h-96 rounded-[2rem]"></div>
+                            <div class="skeleton h-96 rounded-[2rem]"></div>
+                            <div class="skeleton h-96 rounded-[2rem]"></div>
                         </div>
                     </div>
+                </section>
+
+                <!-- FAQ Slider Section -->
+                <section class="py-24 bg-slate-50 relative z-10 border-t border-slate-200/60 overflow-hidden">
+                    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="text-center mb-12">
+                            <span class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary font-bold text-xs tracking-widest uppercase mb-4">FAQ</span>
+                            <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Pertanyaan Seputar Klinik</h3>
+                        </div>
+                        
+                        <div class="relative max-w-4xl mx-auto group">
+                            <div id="faq-slider" class="flex overflow-x-hidden scroll-smooth snap-x snap-mandatory pb-4 hide-scrollbar">
+                                <div class="w-full flex-none snap-center px-4 md:px-12">
+                                    <div class="bg-white border border-slate-200 rounded-[2rem] p-8 md:p-12 shadow-sm hover:shadow-lg transition-all h-full flex flex-col items-center text-center relative overflow-hidden">
+                                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-2xl pointer-events-none"></div>
+                                        <div class="w-20 h-20 bg-emerald-50 text-emerald-600 rounded-3xl flex items-center justify-center text-4xl mb-8 shadow-inner rotate-3"><i class="fa-solid fa-shield-virus"></i></div>
+                                        <h4 class="text-2xl font-black text-slate-800 mb-6 tracking-tight">Apakah jarum akupunktur dan alat bekam dijamin steril?</h4>
+                                        <p class="text-slate-600 font-medium leading-relaxed text-lg">Ya, 100% Steril. Kami menggunakan jarum akupunktur dan pisau bedah (surgical blade) sekali pakai (disposable). Cup bekam dicuci dengan larutan desinfektan standar rumah sakit dan disterilisasi menggunakan mesin UV/Ozone.</p>
+                                    </div>
+                                </div>
+                                <div class="w-full flex-none snap-center px-4 md:px-12">
+                                    <div class="bg-white border border-slate-200 rounded-[2rem] p-8 md:p-12 shadow-sm hover:shadow-lg transition-all h-full flex flex-col items-center text-center relative overflow-hidden">
+                                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl pointer-events-none"></div>
+                                        <div class="w-20 h-20 bg-blue-50 text-blue-600 rounded-3xl flex items-center justify-center text-4xl mb-8 shadow-inner -rotate-3"><i class="fa-solid fa-person-half-dress"></i></div>
+                                        <h4 class="text-2xl font-black text-slate-800 mb-6 tracking-tight">Apakah ruangan dan terapis pria & wanita dipisah secara Syar'i?</h4>
+                                        <p class="text-slate-600 font-medium leading-relaxed text-lg">Tentu saja. Kami menerapkan konsep klinik Syar'i. Pasien pria hanya akan ditangani oleh terapis pria di ruangan khusus pria, begitu pula dengan pasien wanita untuk menjaga privasi dan kenyamanan Anda.</p>
+                                    </div>
+                                </div>
+                                <div class="w-full flex-none snap-center px-4 md:px-12">
+                                    <div class="bg-white border border-slate-200 rounded-[2rem] p-8 md:p-12 shadow-sm hover:shadow-lg transition-all h-full flex flex-col items-center text-center relative overflow-hidden">
+                                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-amber-500/5 rounded-full blur-2xl pointer-events-none"></div>
+                                        <div class="w-20 h-20 bg-amber-50 text-amber-600 rounded-3xl flex items-center justify-center text-4xl mb-8 shadow-inner rotate-3"><i class="fa-solid fa-house-medical"></i></div>
+                                        <h4 class="text-2xl font-black text-slate-800 mb-6 tracking-tight">Apakah melayani panggilan ke rumah (Homecare)?</h4>
+                                        <p class="text-slate-600 font-medium leading-relaxed text-lg">Ya, kami menyediakan layanan Homecare (Terapi Panggilan). Layanan ini dikhususkan untuk area di sekitar cabang klinik kami dengan sistem reservasi paling lambat H-1 sebelum kedatangan.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button onclick="slideFaq(-1)" class="absolute top-1/2 -translate-y-1/2 left-0 md:-left-4 w-12 h-12 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-slate-100 rounded-full flex items-center justify-center text-slate-600 hover:text-primary hover:scale-110 active:scale-95 transition-all z-10 opacity-0 group-hover:opacity-100 focus:opacity-100 hidden md:flex"><i class="fa-solid fa-chevron-left text-lg"></i></button>
+                            <button onclick="slideFaq(1)" class="absolute top-1/2 -translate-y-1/2 right-0 md:-right-4 w-12 h-12 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-slate-100 rounded-full flex items-center justify-center text-slate-600 hover:text-primary hover:scale-110 active:scale-95 transition-all z-10 opacity-0 group-hover:opacity-100 focus:opacity-100 hidden md:flex"><i class="fa-solid fa-chevron-right text-lg"></i></button>
+                            <div class="flex justify-center gap-3 mt-6">
+                                <button onclick="goToFaq(0)" class="faq-dot w-8 h-3 rounded-full bg-primary transition-all duration-300"></button>
+                                <button onclick="goToFaq(1)" class="faq-dot w-3 h-3 rounded-full bg-slate-300 hover:bg-slate-400 transition-all duration-300"></button>
+                                <button onclick="goToFaq(2)" class="faq-dot w-3 h-3 rounded-full bg-slate-300 hover:bg-slate-400 transition-all duration-300"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        let currentFaq = 0; const totalFaq = 3; let faqTimer;
+                        const updateFaqUI = () => { const slider = document.getElementById('faq-slider'); if(slider) slider.scrollTo({left: slider.offsetWidth * currentFaq, behavior: 'smooth'}); document.querySelectorAll('.faq-dot').forEach((d, i) => { d.className = i === currentFaq ? 'faq-dot w-8 h-3 rounded-full bg-primary transition-all duration-300' : 'faq-dot w-3 h-3 rounded-full bg-slate-300 hover:bg-slate-400 transition-all duration-300'; }); };
+                        window.slideFaq = (dir) => { currentFaq = (currentFaq + dir + totalFaq) % totalFaq; updateFaqUI(); resetFaqTimer(); };
+                        window.goToFaq = (idx) => { currentFaq = idx; updateFaqUI(); resetFaqTimer(); };
+                        const resetFaqTimer = () => { clearInterval(faqTimer); faqTimer = setInterval(() => { const s = document.getElementById('faq-slider'); if(s && s.offsetParent !== null) { currentFaq = (currentFaq + 1) % totalFaq; updateFaqUI(); } }, 5000); };
+                        resetFaqTimer();
+                    </script>
                 </section>
 
                 <section class="py-24 bg-slate-900 text-white relative overflow-hidden">
@@ -204,46 +304,20 @@
                             <span class="inline-block py-1 px-3 rounded-full bg-white/10 text-slate-300 font-bold text-xs tracking-widest uppercase mb-4">Kisah Pasien</span>
                             <h3 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight">Apa Kata Mereka Tentang Kami?</h3>
                         </div>
-                        <div class="grid md:grid-cols-3 gap-8">
-                            <div class="bg-slate-800/50 backdrop-blur-md p-8 rounded-3xl shadow-xl hover:-translate-y-2 transition-all duration-300 relative border-t-4 border-pink-400 border-x border-b border-slate-700 flex flex-col justify-between group">
-                                <div class="absolute top-6 right-8 text-white/5 text-6xl group-hover:scale-110 transition-transform"><i class="fa-solid fa-quote-right"></i></div>
-                                <div>
-                                    <div class="flex text-amber-400 text-sm mb-5 relative z-10 gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                    <p class="text-slate-300 leading-relaxed font-medium mb-8 text-justify relative z-10 text-sm md:text-base">"Setelah rutin akupunktur dan konsumsi madu hitam, keluhan pusing jauh berkurang. Terapisnya ramah & profesional."</p>
-                                </div>
-                                <div class="flex items-center gap-4 pt-5 mt-auto relative z-10">
-                                    <div class="w-12 h-12 bg-pink-500/20 text-pink-400 rounded-full flex items-center justify-center text-2xl font-bold border border-pink-500/30 shadow-inner">♀</div>
-                                    <div><h4 class="font-bold text-white text-sm">Pasien Wanita</h4><p class="text-xs text-slate-400">Terapi TCM</p></div>
-                                </div>
-                            </div>
-                            <div class="bg-slate-800/50 backdrop-blur-md p-8 rounded-3xl shadow-xl hover:-translate-y-2 transition-all duration-300 relative border-t-4 border-blue-400 border-x border-b border-slate-700 transform md:-translate-y-4 flex flex-col justify-between group">
-                                <div class="absolute top-6 right-8 text-white/5 text-6xl group-hover:scale-110 transition-transform"><i class="fa-solid fa-quote-right"></i></div>
-                                <div>
-                                    <div class="flex text-amber-400 text-sm mb-5 relative z-10 gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                    <p class="text-slate-300 leading-relaxed font-medium mb-8 text-justify relative z-10 text-sm md:text-base">"Sangat puas dengan Homecare-nya. Terapis tepat waktu, alat 100% steril segel baru, pelayanannya sesuai sunnah."</p>
-                                </div>
-                                <div class="flex items-center gap-4 pt-5 mt-auto relative z-10">
-                                    <div class="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-full flex items-center justify-center text-2xl font-bold border border-blue-500/30 shadow-inner">♂</div>
-                                    <div><h4 class="font-bold text-white text-sm">Pasien Pria</h4><p class="text-xs text-slate-400">Homecare Bekam</p></div>
-                                </div>
-                            </div>
-                            <div class="bg-slate-800/50 backdrop-blur-md p-8 rounded-3xl shadow-xl hover:-translate-y-2 transition-all duration-300 relative border-t-4 border-emerald-400 border-x border-b border-slate-700 flex flex-col justify-between group">
-                                <div class="absolute top-6 right-8 text-white/5 text-6xl group-hover:scale-110 transition-transform"><i class="fa-solid fa-quote-right"></i></div>
-                                <div>
-                                    <div class="flex text-amber-400 text-sm mb-5 relative z-10 gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                    <p class="text-slate-300 leading-relaxed font-medium mb-8 text-justify relative z-10 text-sm md:text-base">"Kalkulator kondisinya sangat membantu. Beli herbal via WA responnya cepat. Kualitas herbalnya terjamin murni!"</p>
-                                </div>
-                                <div class="flex items-center gap-4 pt-5 mt-auto relative z-10">
-                                    <div class="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center text-2xl font-bold border border-emerald-500/30 shadow-inner">♀</div>
-                                    <div><h4 class="font-bold text-white text-sm">Pelanggan Setia</h4><p class="text-xs text-slate-400">Toko Herbal</p></div>
-                                </div>
-                            </div>
+                        <div id="home-reviews-grid" class="grid md:grid-cols-3 gap-8">
+                            <!-- Placeholder, diisi via Javascript agar ulasan default tergabung -->
+                        </div>
+                        
+                        <!-- Tombol Bagikan Ulasan -->
+                        <div class="mt-16 text-center">
+                            <button onclick="toggleModal('review-modal')" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-3.5 rounded-full font-bold transition-all shadow-lg hover:-translate-y-1 flex items-center justify-center gap-2 mx-auto backdrop-blur-sm"><i class="fa-solid fa-pen-nib"></i> Bagikan Pengalaman Anda</button>
                         </div>
                     </div>
                 </section>
             </div>
 
-            <div id="page-calculator" class="page-view hidden">
+            <!-- Kalkulator Teks -->
+            <div id="page-calculator" class="page-view hidden pt-10">
                 <div class="pt-32 pb-16 page-header-bg text-white text-center">
                     <div class="max-w-3xl mx-auto px-4">
                         <div class="w-20 h-20 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center text-4xl mx-auto mb-6 shadow-lg border border-white/20"><i class="fa-solid fa-stethoscope"></i></div>
@@ -285,7 +359,6 @@
                                 </div>
                                 <div class="text-center"><button onclick="analyzeSymptom()" class="btn-gradient text-white px-10 py-4 rounded-full font-bold shadow-btn hover:-translate-y-1 active:scale-95 w-full sm:w-auto transition-all text-lg"><i class="fa-solid fa-microscope mr-2"></i> Analisa Keluhan Saya</button></div>
                             </div>
-                            
                             <div id="calc-result" class="hidden text-center">
                                 <div class="w-24 h-24 bg-gradient-to-br from-emerald-400 to-teal-500 text-white rounded-full flex items-center justify-center text-4xl mx-auto mb-8 shadow-lg shadow-teal-500/30"><i class="fa-solid fa-file-medical"></i></div>
                                 <h3 class="text-3xl font-black text-slate-900 mb-2 tracking-tight">Hasil Analisa: <span id="res-area" class="text-primary"></span></h3>
@@ -302,22 +375,22 @@
                 </div>
             </div>
 
-            <div id="page-services" class="page-view hidden">
+            <div id="page-services" class="page-view hidden pt-10">
                 <div class="pt-32 pb-16 page-header-bg text-white"><div class="max-w-7xl mx-auto px-4 text-center"><h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tight">Layanan Komprehensif</h1><p class="text-slate-100/80 font-medium max-w-2xl mx-auto">Solusi pengobatan holistik berbasis syariat dan medis modern.</p></div></div>
                 <div class="py-20 bg-slate-50 min-h-[50vh]"><div class="max-w-7xl mx-auto px-4"><div id="full-services-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div></div></div>
             </div>
 
-            <div id="page-shop" class="page-view hidden">
+            <div id="page-shop" class="page-view hidden pt-10">
                 <div class="pt-32 pb-16 page-header-bg text-white"><div class="max-w-7xl mx-auto px-4 text-center"><h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tight">Toko Herbal Premium</h1><p class="text-amber-300 font-bold flex items-center justify-center gap-2 max-w-2xl mx-auto"><i class="fa-solid fa-coins"></i> Kumpulkan Poin Sehat di setiap pembelian!</p></div></div>
                 <div class="py-16 bg-slate-50 min-h-[60vh]"><div class="max-w-7xl mx-auto px-4"><div id="full-products-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4"></div></div></div>
             </div>
 
-            <div id="page-articles" class="page-view hidden">
+            <div id="page-articles" class="page-view hidden pt-10">
                 <div class="pt-32 pb-16 page-header-bg text-white"><div class="max-w-7xl mx-auto px-4 text-center"><h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tight">Jurnal & Edukasi</h1><p class="text-slate-100/80 font-medium max-w-2xl mx-auto">Artikel kesehatan holistik terpercaya.</p></div></div>
                 <div class="py-20 bg-slate-50 min-h-[50vh]"><div class="max-w-7xl mx-auto px-4"><div id="full-articles-grid" class="grid md:grid-cols-3 gap-8"></div></div></div>
             </div>
 
-            <div id="page-article-detail" class="page-view hidden">
+            <div id="page-article-detail" class="page-view hidden pt-10">
                 <div class="pt-32 pb-12 bg-white border-b border-slate-100">
                     <div class="max-w-4xl mx-auto px-4">
                         <button onclick="navigateTo('articles')" class="inline-flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-primary mb-8 px-4 py-2 rounded-full bg-slate-50 hover:bg-primary/10 transition-all"><i class="fa-solid fa-arrow-left"></i> Kembali ke Jurnal</button>
@@ -331,7 +404,7 @@
                             <img id="detail-article-image" class="w-full aspect-video object-cover rounded-2xl mb-10 shadow-sm">
                             <div id="detail-article-content" class="prose max-w-none text-slate-700 text-justify text-lg leading-relaxed font-medium mb-12"></div>
                             
-                            <!-- Rekomendasi Herbal Section -->
+                            <!-- Rekomendasi Herbal Akhir Artikel -->
                             <div class="border-t-2 border-slate-100 pt-10 mt-10">
                                 <div class="flex items-center justify-between mb-8">
                                     <div>
@@ -347,24 +420,68 @@
                 </div>
             </div>
 
-            <div id="page-branches" class="page-view hidden">
+            <div id="page-branches" class="page-view hidden pt-10">
                 <div class="pt-32 pb-16 page-header-bg text-white"><div class="max-w-7xl mx-auto px-4 text-center"><h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tight">Cabang Klinik Kami</h1></div></div>
                 <div class="py-20 bg-slate-50 min-h-[50vh]"><div class="max-w-7xl mx-auto px-4"><div id="branches-container" class="grid lg:grid-cols-2 gap-8"></div></div></div>
             </div>
 
-            <div id="page-therapists" class="page-view hidden">
+            <div id="page-therapists" class="page-view hidden pt-10">
                 <div class="pt-32 pb-16 page-header-bg text-white"><div class="max-w-7xl mx-auto px-4 text-center"><h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tight">Tim Terapis Ahli</h1></div></div>
                 <div class="py-20 bg-slate-50 min-h-[50vh]"><div class="max-w-7xl mx-auto px-4"><div id="therapists-grid" class="grid md:grid-cols-3 lg:grid-cols-4 gap-8"></div></div></div>
             </div>
 
-            <div id="page-careers" class="page-view hidden">
+            <div id="page-careers" class="page-view hidden pt-10">
                 <div class="pt-32 pb-16 page-header-bg text-white"><div class="max-w-7xl mx-auto px-4 text-center"><h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tight">Karir Thibbun Care</h1></div></div>
                 <div class="py-20 bg-slate-50 min-h-[50vh]"><div class="max-w-4xl mx-auto px-4"><div id="careers-grid" class="space-y-6"></div></div></div>
             </div>
             
-            <div id="page-about" class="page-view hidden">
+            <!-- Galeri VIP Tentang Kami -->
+            <div id="page-about" class="page-view hidden pt-10">
                 <div class="pt-32 pb-16 page-header-bg text-white"><div class="max-w-7xl mx-auto px-4 text-center"><h1 class="text-4xl md:text-5xl font-black mb-4 tracking-tight">Tentang Thibbun Care</h1></div></div>
-                <div class="py-24 bg-white relative"><div class="max-w-7xl mx-auto px-4"><div class="grid lg:grid-cols-2 gap-16 items-center"><div><span class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary font-bold text-xs tracking-widest uppercase mb-4">Profil Klinik</span><h2 class="text-4xl font-black text-slate-900 mb-6 tracking-tight">Pemulihan Alami & Syar'i</h2><p class="text-slate-600 text-justify text-lg leading-relaxed font-medium mb-6">Klinik Thibbun Care didirikan dengan komitmen teguh untuk memberikan solusi pengobatan alami yang berlandaskan sunnah, tanpa mengesampingkan standar higiene medis modern. Kami percaya kesembuhan paripurna berasal dari keseimbangan tubuh dan spiritual.</p><div class="flex gap-6 mt-8"><div class="flex flex-col"><span class="text-3xl font-black text-primary">5+</span><span class="text-sm font-bold text-slate-500">Tahun Pengalaman</span></div><div class="flex flex-col"><span class="text-3xl font-black text-primary">10k+</span><span class="text-sm font-bold text-slate-500">Pasien Terbantu</span></div></div></div><div class="relative"><div class="absolute inset-0 bg-gradient-to-tr from-primary to-emerald-400 rounded-3xl transform rotate-3 scale-105 opacity-20 blur-xl"></div><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80" class="w-full h-[500px] object-cover rounded-3xl shadow-2xl border-4 border-white relative z-10"></div></div></div></div>
+                <div class="py-24 bg-white relative">
+                    <div class="max-w-7xl mx-auto px-4">
+                        <div class="grid lg:grid-cols-2 gap-16 items-center">
+                            <div>
+                                <span class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary font-bold text-xs tracking-widest uppercase mb-4">Profil Klinik</span>
+                                <h2 class="text-4xl font-black text-slate-900 mb-6 tracking-tight">Pemulihan Alami & Syar'i</h2>
+                                <p class="text-slate-600 text-justify text-lg leading-relaxed font-medium mb-6">Klinik Thibbun Care didirikan dengan komitmen teguh untuk memberikan solusi pengobatan alami yang berlandaskan sunnah, tanpa mengesampingkan standar higiene medis modern. Kami percaya kesembuhan paripurna berasal dari keseimbangan tubuh dan spiritual.</p>
+                                <div class="flex gap-6 mt-8">
+                                    <div class="flex flex-col"><span class="text-3xl font-black text-primary">5+</span><span class="text-sm font-bold text-slate-500">Tahun Pengalaman</span></div>
+                                    <div class="flex flex-col"><span class="text-3xl font-black text-primary">10k+</span><span class="text-sm font-bold text-slate-500">Pasien Terbantu</span></div>
+                                </div>
+                            </div>
+                            <div class="relative">
+                                <div class="absolute inset-0 bg-gradient-to-tr from-primary to-emerald-400 rounded-3xl transform rotate-3 scale-105 opacity-20 blur-xl"></div>
+                                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80" class="w-full h-[500px] object-cover rounded-3xl shadow-2xl border-4 border-white relative z-10">
+                            </div>
+                        </div>
+                        
+                        <div class="mt-24 pt-16 border-t border-slate-100">
+                            <div class="text-center mb-12">
+                                <h3 class="text-3xl font-black text-slate-900 mb-4 tracking-tight">Fasilitas Klinik VIP</h3>
+                                <p class="text-slate-600 font-medium max-w-2xl mx-auto">Kenyamanan dan privasi Anda adalah prioritas kami. Nikmati fasilitas berstandar medis dengan balutan kenyamanan ruang tunggu premium.</p>
+                            </div>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <div class="group relative overflow-hidden rounded-2xl aspect-square shadow-sm">
+                                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&q=80" alt="Ruang Terapi" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4"><span class="text-white font-bold text-sm">Ruang Terapi Steril</span></div>
+                                </div>
+                                <div class="group relative overflow-hidden rounded-2xl aspect-square shadow-sm">
+                                    <img src="https://images.unsplash.com/photo-1551842915-1811e58e6576?w=400&q=80" alt="Ruang Tunggu" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4"><span class="text-white font-bold text-sm">Ruang Tunggu VIP</span></div>
+                                </div>
+                                <div class="group relative overflow-hidden rounded-2xl aspect-square shadow-sm">
+                                    <img src="https://images.unsplash.com/photo-1585435465945-bef5a93f8849?w=400&q=80" alt="Apotek Herbal" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4"><span class="text-white font-bold text-sm">Apotek Herbal</span></div>
+                                </div>
+                                <div class="group relative overflow-hidden rounded-2xl aspect-square shadow-sm">
+                                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&q=80" alt="Alat Medis" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4"><span class="text-white font-bold text-sm">Peralatan Standar Medis</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
 
@@ -379,9 +496,9 @@
                         </a>
                         <p class="text-sm leading-relaxed mb-8 font-medium text-slate-400 text-justify">Pusat pengobatan holistik Islami. Memadukan keilmuan medis timur (TCM) dan prosedur steril modern untuk kesembuhan paripurna Anda.</p>
                         <div class="flex gap-4">
-                            <a id="footer-fb" href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all shadow-lg hover:-translate-y-1"><i class="fa-brands fa-facebook-f"></i></a>
-                            <a id="footer-ig" href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-gradient-to-tr hover:from-amber-400 hover:via-pink-500 hover:to-purple-600 hover:text-white transition-all shadow-lg hover:-translate-y-1"><i class="fa-brands fa-instagram"></i></a>
-                            <a id="footer-yt" href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-red-600 hover:text-white transition-all shadow-lg hover:-translate-y-1"><i class="fa-brands fa-youtube"></i></a>
+                            <a id="footer-fb" href="#" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all shadow-lg hover:-translate-y-1"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a id="footer-ig" href="#" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-gradient-to-tr hover:from-amber-400 hover:via-pink-500 hover:to-purple-600 hover:text-white transition-all shadow-lg hover:-translate-y-1"><i class="fa-brands fa-instagram"></i></a>
+                            <a id="footer-yt" href="#" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-red-600 hover:text-white transition-all shadow-lg hover:-translate-y-1"><i class="fa-brands fa-youtube"></i></a>
                         </div>
                     </div>
                     <div>
@@ -413,17 +530,23 @@
                         </ul>
                     </div>
                 </div>
-                <div class="text-center pt-8 border-t border-slate-800 text-sm font-medium text-slate-500">
+                
+                <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-slate-800 text-sm font-medium text-slate-500 gap-4">
                     <p>&copy; 2026 Klinik Thibbun Care. Hak Cipta Dilindungi Undang-Undang.</p>
+                    <div class="flex gap-6">
+                        <button onclick="toggleModal('tnc-modal')" class="hover:text-primary transition-colors">Syarat & Ketentuan</button>
+                        <button onclick="toggleModal('privacy-modal')" class="hover:text-primary transition-colors">Kebijakan Privasi</button>
+                    </div>
                 </div>
             </div>
         </footer>
     </div>
 
+    <!-- Admin Dashboard -->
     <div id="admin-view" class="hidden min-h-screen bg-slate-50 font-sans">
         <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col shadow-2xl z-20 fixed h-full md:relative md:min-h-screen transition-transform transform -translate-x-full md:translate-x-0" id="admin-sidebar">
             <div class="h-20 flex items-center px-6 border-b border-slate-800 justify-between"><div class="flex items-center"><div class="w-8 h-8 bg-gradient-to-br from-primary to-teal-500 rounded-lg flex items-center justify-center text-white mr-3"><i class="fa-solid fa-shield"></i></div><span class="font-extrabold text-lg text-white tracking-tight">Admin CMS</span></div><button onclick="toggleAdminSidebar()" class="md:hidden text-slate-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button></div>
-            <nav class="flex-1 py-6 px-4 space-y-2 overflow-y-auto font-medium">
+            <nav class="flex-1 py-6 px-4 space-y-2 overflow-y-auto font-medium custom-scrollbar">
                 <button onclick="switchAdminPanel('overview', event)" class="admin-tab w-full flex items-center gap-3 px-4 py-3.5 bg-primary text-white rounded-xl text-sm shadow-md transition-all"><i class="fa-solid fa-chart-pie w-5"></i> Ringkasan</button>
                 <button onclick="switchAdminPanel('layanan', event)" class="admin-tab w-full flex items-center gap-3 px-4 py-3.5 hover:bg-slate-800 rounded-xl text-sm transition-all"><i class="fa-solid fa-bed-pulse w-5"></i> Layanan Terapi</button>
                 <button onclick="switchAdminPanel('produk', event)" class="admin-tab w-full flex items-center gap-3 px-4 py-3.5 hover:bg-slate-800 rounded-xl text-sm transition-all"><i class="fa-solid fa-box w-5"></i> Toko Herbal</button>
@@ -431,6 +554,7 @@
                 <button onclick="switchAdminPanel('terapis', event)" class="admin-tab w-full flex items-center gap-3 px-4 py-3.5 hover:bg-slate-800 rounded-xl text-sm transition-all"><i class="fa-solid fa-user-doctor w-5"></i> Tim Terapis</button>
                 <button onclick="switchAdminPanel('karir', event)" class="admin-tab w-full flex items-center gap-3 px-4 py-3.5 hover:bg-slate-800 rounded-xl text-sm transition-all"><i class="fa-solid fa-briefcase w-5"></i> Lowongan Karir</button>
                 <button onclick="switchAdminPanel('cabang', event)" class="admin-tab w-full flex items-center gap-3 px-4 py-3.5 hover:bg-slate-800 rounded-xl text-sm transition-all"><i class="fa-solid fa-location-dot w-5"></i> Cabang Klinik</button>
+                <button onclick="switchAdminPanel('ulasan', event)" class="admin-tab w-full flex items-center gap-3 px-4 py-3.5 hover:bg-slate-800 rounded-xl text-sm transition-all text-amber-400 hover:text-amber-300"><i class="fa-solid fa-star w-5"></i> Ulasan Pasien</button>
                 <div class="pt-4 mt-4 border-t border-slate-800"></div>
                 <button onclick="switchAdminPanel('pengaturan', event)" class="admin-tab w-full flex items-center gap-3 px-4 py-3.5 hover:bg-slate-800 rounded-xl text-sm transition-all"><i class="fa-solid fa-gear w-5"></i> Pengaturan Web</button>
             </nav>
@@ -443,7 +567,6 @@
                 <h2 class="text-xl font-black text-slate-800 tracking-tight">Dashboard Central</h2>
             </header>
             <div class="p-4 md:p-8 overflow-y-auto w-full">
-                <!-- Overview Panel -->
                 <div id="panel-overview" class="admin-panel block">
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8">
                         <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-5 hover:shadow-md transition-shadow"><div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-3xl"><i class="fa-solid fa-users"></i></div><div><p class="text-sm font-bold text-slate-500">Total Pengunjung</p><p class="text-3xl font-black text-slate-900 mt-1">1,248</p></div></div>
@@ -456,16 +579,30 @@
                     </div>
                 </div>
                 
-                <div id="panel-produk" class="admin-panel hidden"><div class="flex justify-between items-center mb-6"><h3 class="text-2xl font-black text-slate-900">Katalog Herbal</h3><button onclick="openFormModal('produk')" class="btn-gradient text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-btn hover:-translate-y-0.5 transition-all"><i class="fa-solid fa-plus mr-1"></i> Tambah</button></div><div class="bg-white rounded-2xl border border-slate-200 overflow-x-auto shadow-sm"><table class="w-full text-left whitespace-nowrap"><thead class="bg-slate-50 border-b border-slate-200 text-slate-500 text-xs uppercase font-bold tracking-wider"><tr><th class="px-6 py-4">Nama Produk</th><th class="px-6 py-4">Harga</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-produk" class="divide-y divide-slate-100 text-sm font-medium"></tbody></table></div></div>
-                <div id="panel-layanan" class="admin-panel hidden"><div class="flex justify-between items-center mb-6"><h3 class="text-2xl font-black text-slate-900">Daftar Layanan</h3><button onclick="openFormModal('layanan')" class="btn-gradient text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-btn hover:-translate-y-0.5 transition-all"><i class="fa-solid fa-plus mr-1"></i> Tambah</button></div><div class="bg-white rounded-2xl border border-slate-200 overflow-x-auto shadow-sm"><table class="w-full text-left whitespace-nowrap"><thead class="bg-slate-50 border-b border-slate-200 text-slate-500 text-xs uppercase font-bold tracking-wider"><tr><th class="px-6 py-4">Judul Layanan</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-layanan" class="divide-y divide-slate-100 text-sm font-medium"></tbody></table></div></div>
-                <div id="panel-artikel" class="admin-panel hidden"><div class="flex justify-between items-center mb-6"><h3 class="text-2xl font-black text-slate-900">Jurnal Artikel</h3><button onclick="openFormModal('artikel')" class="btn-gradient text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-btn hover:-translate-y-0.5 transition-all"><i class="fa-solid fa-plus mr-1"></i> Tulis Baru</button></div><div class="bg-white rounded-2xl border border-slate-200 overflow-x-auto shadow-sm"><table class="w-full text-left whitespace-nowrap"><thead class="bg-slate-50 border-b border-slate-200 text-slate-500 text-xs uppercase font-bold tracking-wider"><tr><th class="px-6 py-4">Judul Artikel</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-artikel" class="divide-y divide-slate-100 text-sm font-medium"></tbody></table></div></div>
-                <div id="panel-terapis" class="admin-panel hidden"><div class="flex justify-between items-center mb-6"><h3 class="text-2xl font-black text-slate-900">Tim Terapis</h3><button onclick="openFormModal('terapis')" class="btn-gradient text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-btn hover:-translate-y-0.5 transition-all"><i class="fa-solid fa-plus mr-1"></i> Tambah</button></div><div class="bg-white rounded-2xl border border-slate-200 overflow-x-auto shadow-sm"><table class="w-full text-left whitespace-nowrap"><thead class="bg-slate-50 border-b border-slate-200 text-slate-500 text-xs uppercase font-bold tracking-wider"><tr><th class="px-6 py-4">Nama Terapis</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-terapis" class="divide-y divide-slate-100 text-sm font-medium"></tbody></table></div></div>
-                <div id="panel-karir" class="admin-panel hidden"><div class="flex justify-between items-center mb-6"><h3 class="text-2xl font-black text-slate-900">Lowongan Karir</h3><button onclick="openFormModal('karir')" class="btn-gradient text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-btn hover:-translate-y-0.5 transition-all"><i class="fa-solid fa-plus mr-1"></i> Tambah</button></div><div class="bg-white rounded-2xl border border-slate-200 overflow-x-auto shadow-sm"><table class="w-full text-left whitespace-nowrap"><thead class="bg-slate-50 border-b border-slate-200 text-slate-500 text-xs uppercase font-bold tracking-wider"><tr><th class="px-6 py-4">Posisi Jabatan</th><th class="px-6 py-4">Lokasi</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-karir" class="divide-y divide-slate-100 text-sm font-medium"></tbody></table></div></div>
-                <div id="panel-cabang" class="admin-panel hidden"><div class="flex justify-between items-center mb-6"><h3 class="text-2xl font-black text-slate-900">Cabang Klinik</h3><button onclick="openFormModal('cabang')" class="btn-gradient text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-btn hover:-translate-y-0.5 transition-all"><i class="fa-solid fa-plus mr-1"></i> Tambah</button></div><div class="bg-white rounded-2xl border border-slate-200 overflow-x-auto shadow-sm"><table class="w-full text-left whitespace-nowrap"><thead class="bg-slate-50 border-b border-slate-200 text-slate-500 text-xs uppercase font-bold tracking-wider"><tr><th class="px-6 py-4">Nama Cabang</th><th class="px-6 py-4">No WA</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-cabang" class="divide-y divide-slate-100 text-sm font-medium"></tbody></table></div></div>
+                <div id="panel-produk" class="admin-panel hidden"><div class="flex flex-col sm:flex-row gap-4 justify-between sm:items-center mb-6"><h3 class="text-2xl font-black text-slate-900">Katalog Herbal</h3><div class="flex gap-2"><button onclick="downloadCSV('products')" class="bg-emerald-100 text-emerald-700 px-4 py-2.5 rounded-xl text-sm font-bold hover:bg-emerald-200 transition-all flex items-center gap-2"><i class="fa-solid fa-file-excel"></i> Excel</button><button onclick="openFormModal('produk')" class="btn-gradient text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-btn hover:-translate-y-0.5 transition-all"><i class="fa-solid fa-plus mr-1"></i> Tambah</button></div></div><div class="bg-white rounded-2xl border border-slate-200 overflow-x-auto shadow-sm"><table class="w-full text-left whitespace-nowrap"><thead class="bg-slate-50 border-b border-slate-200 text-slate-500 text-xs uppercase font-bold tracking-wider"><tr><th class="px-6 py-4">Nama Produk</th><th class="px-6 py-4">Harga</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-produk" class="divide-y divide-slate-100 text-sm font-medium"></tbody></table></div></div>
+                <div id="panel-layanan" class="admin-panel hidden"><div class="flex flex-col sm:flex-row gap-4 justify-between sm:items-center mb-6"><h3 class="text-2xl font-black text-slate-900">Daftar Layanan</h3><div class="flex gap-2"><button onclick="downloadCSV('services')" class="bg-emerald-100 text-emerald-700 px-4 py-2.5 rounded-xl text-sm font-bold hover:bg-emerald-200 transition-all flex items-center gap-2"><i class="fa-solid fa-file-excel"></i> Excel</button><button onclick="openFormModal('layanan')" class="btn-gradient text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-btn hover:-translate-y-0.5 transition-all"><i class="fa-solid fa-plus mr-1"></i> Tambah</button></div></div><div class="bg-white rounded-2xl border border-slate-200 overflow-x-auto shadow-sm"><table class="w-full text-left whitespace-nowrap"><thead class="bg-slate-50 border-b border-slate-200 text-slate-500 text-xs uppercase font-bold tracking-wider"><tr><th class="px-6 py-4">Judul Layanan</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-layanan" class="divide-y divide-slate-100 text-sm font-medium"></tbody></table></div></div>
+                <div id="panel-artikel" class="admin-panel hidden"><div class="flex flex-col sm:flex-row gap-4 justify-between sm:items-center mb-6"><h3 class="text-2xl font-black text-slate-900">Jurnal Artikel</h3><div class="flex gap-2"><button onclick="downloadCSV('articles')" class="bg-emerald-100 text-emerald-700 px-4 py-2.5 rounded-xl text-sm font-bold hover:bg-emerald-200 transition-all flex items-center gap-2"><i class="fa-solid fa-file-excel"></i> Excel</button><button onclick="openFormModal('artikel')" class="btn-gradient text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-btn hover:-translate-y-0.5 transition-all"><i class="fa-solid fa-plus mr-1"></i> Tulis Baru</button></div></div><div class="bg-white rounded-2xl border border-slate-200 overflow-x-auto shadow-sm"><table class="w-full text-left whitespace-nowrap"><thead class="bg-slate-50 border-b border-slate-200 text-slate-500 text-xs uppercase font-bold tracking-wider"><tr><th class="px-6 py-4">Judul Artikel</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-artikel" class="divide-y divide-slate-100 text-sm font-medium"></tbody></table></div></div>
+                <div id="panel-terapis" class="admin-panel hidden"><div class="flex flex-col sm:flex-row gap-4 justify-between sm:items-center mb-6"><h3 class="text-2xl font-black text-slate-900">Tim Terapis</h3><div class="flex gap-2"><button onclick="downloadCSV('therapists')" class="bg-emerald-100 text-emerald-700 px-4 py-2.5 rounded-xl text-sm font-bold hover:bg-emerald-200 transition-all flex items-center gap-2"><i class="fa-solid fa-file-excel"></i> Excel</button><button onclick="openFormModal('terapis')" class="btn-gradient text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-btn hover:-translate-y-0.5 transition-all"><i class="fa-solid fa-plus mr-1"></i> Tambah</button></div></div><div class="bg-white rounded-2xl border border-slate-200 overflow-x-auto shadow-sm"><table class="w-full text-left whitespace-nowrap"><thead class="bg-slate-50 border-b border-slate-200 text-slate-500 text-xs uppercase font-bold tracking-wider"><tr><th class="px-6 py-4">Nama Terapis</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-terapis" class="divide-y divide-slate-100 text-sm font-medium"></tbody></table></div></div>
+                <div id="panel-karir" class="admin-panel hidden"><div class="flex flex-col sm:flex-row gap-4 justify-between sm:items-center mb-6"><h3 class="text-2xl font-black text-slate-900">Lowongan Karir</h3><div class="flex gap-2"><button onclick="downloadCSV('careers')" class="bg-emerald-100 text-emerald-700 px-4 py-2.5 rounded-xl text-sm font-bold hover:bg-emerald-200 transition-all flex items-center gap-2"><i class="fa-solid fa-file-excel"></i> Excel</button><button onclick="openFormModal('karir')" class="btn-gradient text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-btn hover:-translate-y-0.5 transition-all"><i class="fa-solid fa-plus mr-1"></i> Tambah</button></div></div><div class="bg-white rounded-2xl border border-slate-200 overflow-x-auto shadow-sm"><table class="w-full text-left whitespace-nowrap"><thead class="bg-slate-50 border-b border-slate-200 text-slate-500 text-xs uppercase font-bold tracking-wider"><tr><th class="px-6 py-4">Posisi Jabatan</th><th class="px-6 py-4">Lokasi</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-karir" class="divide-y divide-slate-100 text-sm font-medium"></tbody></table></div></div>
+                <div id="panel-cabang" class="admin-panel hidden"><div class="flex flex-col sm:flex-row gap-4 justify-between sm:items-center mb-6"><h3 class="text-2xl font-black text-slate-900">Cabang Klinik</h3><div class="flex gap-2"><button onclick="downloadCSV('branches')" class="bg-emerald-100 text-emerald-700 px-4 py-2.5 rounded-xl text-sm font-bold hover:bg-emerald-200 transition-all flex items-center gap-2"><i class="fa-solid fa-file-excel"></i> Excel</button><button onclick="openFormModal('cabang')" class="btn-gradient text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-btn hover:-translate-y-0.5 transition-all"><i class="fa-solid fa-plus mr-1"></i> Tambah</button></div></div><div class="bg-white rounded-2xl border border-slate-200 overflow-x-auto shadow-sm"><table class="w-full text-left whitespace-nowrap"><thead class="bg-slate-50 border-b border-slate-200 text-slate-500 text-xs uppercase font-bold tracking-wider"><tr><th class="px-6 py-4">Nama Cabang</th><th class="px-6 py-4">No WA</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-cabang" class="divide-y divide-slate-100 text-sm font-medium"></tbody></table></div></div>
+                <div id="panel-ulasan" class="admin-panel hidden"><div class="flex flex-col sm:flex-row gap-4 justify-between sm:items-center mb-6"><h3 class="text-2xl font-black text-slate-900">Ulasan Pasien Masuk</h3><button onclick="downloadCSV('reviews')" class="bg-emerald-100 text-emerald-700 px-4 py-2.5 rounded-xl text-sm font-bold hover:bg-emerald-200 transition-all flex items-center gap-2"><i class="fa-solid fa-file-excel"></i> Excel</button></div><div class="bg-white rounded-2xl border border-slate-200 overflow-x-auto shadow-sm"><table class="w-full text-left whitespace-nowrap"><thead class="bg-slate-50 border-b border-slate-200 text-slate-500 text-xs uppercase font-bold tracking-wider"><tr><th class="px-6 py-4">Nama (Gender)</th><th class="px-6 py-4">Layanan</th><th class="px-6 py-4">Ulasan</th><th class="px-6 py-4">Status</th><th class="px-6 py-4 text-right">Aksi</th></tr></thead><tbody id="table-ulasan" class="divide-y divide-slate-100 text-sm font-medium"></tbody></table></div></div>
                 
-                <!-- Settings Panel with New Features -->
                 <div id="panel-pengaturan" class="admin-panel hidden">
                     <h3 class="text-2xl font-black text-slate-900 mb-6">Pengaturan Web & Informasi Pusat</h3>
+                    
+                    <!-- Announcement Bar Setting -->
+                    <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 p-6 rounded-2xl mb-8 shadow-sm">
+                        <h4 class="font-bold text-lg text-amber-900 mb-4 flex items-center gap-2"><i class="fa-solid fa-bullhorn text-amber-600"></i> Banner Pengumuman Atas</h4>
+                        <div class="flex items-center gap-4 mb-3">
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="setting-announce-active" class="sr-only peer">
+                                <div class="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-amber-500"></div>
+                                <span class="ml-3 text-sm font-bold text-slate-700">Tampilkan Banner Pengumuman</span>
+                            </label>
+                        </div>
+                        <input type="text" id="setting-announce-text" placeholder="Contoh: Promo Spesial Jumat Berkah!" class="w-full px-4 py-3 border-2 border-amber-200 focus:border-amber-400 rounded-xl font-medium outline-none transition-colors">
+                    </div>
+
                     <div class="grid md:grid-cols-2 gap-8">
                         <div class="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm space-y-5">
                             <h4 class="font-bold text-lg text-slate-800 border-b border-slate-100 pb-3 mb-4"><i class="fa-solid fa-shield-halved text-primary"></i> Keamanan & Sistem</h4>
@@ -486,15 +623,125 @@
                             </div>
                         </div>
                     </div>
-                    <button onclick="saveSettings(event)" class="w-full bg-slate-900 text-white px-6 py-4 rounded-xl font-bold hover:bg-black shadow-lg transition-all active:scale-95 text-lg mt-6">Simpan Pengaturan</button>
+                    <button onclick="saveSettings(event)" class="w-full bg-slate-900 text-white px-6 py-4 rounded-xl font-bold hover:bg-black shadow-lg transition-all active:scale-95 text-lg mt-6 flex items-center justify-center gap-2"><i class="fa-solid fa-floppy-disk"></i> Simpan Pengaturan</button>
                 </div>
             </div>
         </main>
     </div>
 
+    <!-- Floating Buttons (Right Cart, Left WA) -->
     <button id="cart-floating-btn" onclick="toggleModal('cart-modal')" class="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-br from-slate-800 to-slate-900 text-white rounded-full flex items-center justify-center text-2xl shadow-[0_10px_25px_rgba(0,0,0,0.3)] hover:scale-110 active:scale-95 transition-all duration-300 z-40 border-2 border-white/20"><i class="fa-solid fa-basket-shopping"></i><span id="cart-badge-float" class="absolute -top-2 -right-2 bg-[#ee4d2d] text-white text-xs font-black w-7 h-7 rounded-full flex items-center justify-center border-2 border-white shadow-md">0</span></button>
     
+    <div id="wa-widget" class="fixed bottom-6 left-6 z-40 flex flex-col items-start">
+        <div id="wa-chat-window" class="hidden bg-white rounded-2xl shadow-2xl border border-slate-100 w-72 mb-4 overflow-hidden transform origin-bottom-left transition-all scale-95 opacity-0">
+            <div class="bg-[#25d366] text-white p-4 flex gap-3 items-center">
+                <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center"><i class="fa-solid fa-robot text-xl"></i></div>
+                <div><h4 class="font-bold leading-tight">Asisten Thibbun Care</h4><p class="text-[10px] text-white/80">Online & Siap Membantu</p></div>
+                <button onclick="toggleWaWidget()" class="ml-auto text-white/80 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="p-4 bg-slate-50 text-sm">
+                <div class="bg-white p-3 rounded-xl rounded-tl-none shadow-sm text-slate-600 mb-4 inline-block font-medium">
+                    Halo! Selamat datang di Klinik Thibbun Care 👋<br><br>Ada yang bisa kami bantu hari ini?
+                </div>
+                <div class="space-y-2">
+                    <button onclick="openWhatsApp('Halo, saya ingin *Reservasi Terapi*.')" class="w-full text-left px-4 py-2.5 bg-white border border-slate-200 hover:border-[#25d366] hover:text-[#25d366] rounded-xl font-bold transition-all text-slate-700 text-xs shadow-sm flex items-center gap-2"><i class="fa-regular fa-calendar-check text-[#25d366]"></i> Reservasi Terapi</button>
+                    <button onclick="openWhatsApp('Halo, saya ingin menanyakan *Ketersediaan Produk Herbal*.')" class="w-full text-left px-4 py-2.5 bg-white border border-slate-200 hover:border-[#25d366] hover:text-[#25d366] rounded-xl font-bold transition-all text-slate-700 text-xs shadow-sm flex items-center gap-2"><i class="fa-solid fa-leaf text-[#25d366]"></i> Ketersediaan Herbal</button>
+                    <button onclick="openWhatsApp('Halo, saya ingin *Konsultasi mengenai keluhan kesehatan* saya.')" class="w-full text-left px-4 py-2.5 bg-white border border-slate-200 hover:border-[#25d366] hover:text-[#25d366] rounded-xl font-bold transition-all text-slate-700 text-xs shadow-sm flex items-center gap-2"><i class="fa-solid fa-user-doctor text-[#25d366]"></i> Konsultasi Keluhan</button>
+                </div>
+            </div>
+        </div>
+        <button onclick="toggleWaWidget()" class="w-16 h-16 bg-gradient-to-r from-[#25d366] to-[#1ebd5a] text-white rounded-full flex items-center justify-center text-3xl shadow-[0_10px_25px_rgba(37,211,102,0.4)] hover:scale-110 active:scale-95 transition-all duration-300 border-2 border-white"><i class="fab fa-whatsapp"></i></button>
+    </div>
+
     <div id="toast-notification" class="fixed top-5 right-5 z-[200] transform translate-x-full transition-transform duration-300 ease-in-out pointer-events-none"><div class="bg-slate-900/95 backdrop-blur text-white px-5 py-4 rounded-2xl flex items-center gap-4 border border-slate-700 shadow-2xl"><div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-lg"><i class="fa-solid fa-info"></i></div><p id="toast-message" class="text-sm font-bold tracking-wide"></p></div></div>
+
+    <!-- Modals -->
+    
+    <!-- Search Modal -->
+    <div id="search-modal" class="fixed inset-0 z-[150] hidden">
+        <div class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm" onclick="toggleModal('search-modal')"></div>
+        <div class="absolute top-10 left-1/2 transform -translate-x-1/2 w-full max-w-2xl px-4">
+            <div class="bg-white rounded-[2rem] shadow-2xl border border-white overflow-hidden flex flex-col max-h-[80vh]">
+                <div class="flex items-center px-6 py-4 border-b border-slate-100 gap-4 bg-slate-50">
+                    <i class="fa-solid fa-magnifying-glass text-slate-400 text-xl"></i>
+                    <input type="text" id="global-search-input" oninput="performSearch(this.value)" placeholder="Cari herbal, terapi, atau artikel..." class="w-full bg-transparent border-none outline-none text-lg font-bold text-slate-800 placeholder-slate-400">
+                    <button onclick="toggleModal('search-modal')" class="text-slate-400 hover:text-slate-700 p-2"><i class="fa-solid fa-xmark text-xl"></i></button>
+                </div>
+                <div id="search-results" class="p-6 overflow-y-auto space-y-2 custom-scrollbar">
+                    <div class="text-center text-slate-400 py-8 font-medium">Ketikkan kata kunci di atas untuk mulai mencari...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Review Submission Modal -->
+    <div id="review-modal" class="fixed inset-0 z-[160] hidden">
+        <div class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm" onclick="toggleModal('review-modal')"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-md px-4">
+            <div class="bg-white rounded-[2rem] shadow-2xl relative flex flex-col overflow-hidden p-8 border border-white">
+                <button onclick="toggleModal('review-modal')" class="absolute top-4 right-4 w-8 h-8 bg-slate-100 hover:bg-slate-200 rounded-full flex justify-center items-center transition-colors"><i class="fa-solid fa-xmark"></i></button>
+                <div class="text-center mb-6">
+                    <div class="w-16 h-16 bg-amber-50 text-amber-500 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4"><i class="fa-solid fa-star"></i></div>
+                    <h2 class="font-black text-2xl tracking-tight text-slate-900">Bagikan Pengalaman</h2>
+                    <p class="text-sm text-slate-500 font-medium mt-1">Bantu kami menjadi lebih baik.</p>
+                </div>
+                
+                <form onsubmit="submitReview(event)" class="space-y-4 text-sm font-medium">
+                    <!-- Interactive Star Rating -->
+                    <div class="flex gap-2 text-3xl text-slate-200 mb-6 justify-center" id="review-star-container">
+                        <i class="fa-solid fa-star cursor-pointer hover:text-amber-400 transition-colors" onclick="setReviewRating(1)"></i>
+                        <i class="fa-solid fa-star cursor-pointer hover:text-amber-400 transition-colors" onclick="setReviewRating(2)"></i>
+                        <i class="fa-solid fa-star cursor-pointer hover:text-amber-400 transition-colors" onclick="setReviewRating(3)"></i>
+                        <i class="fa-solid fa-star cursor-pointer hover:text-amber-400 transition-colors" onclick="setReviewRating(4)"></i>
+                        <i class="fa-solid fa-star cursor-pointer hover:text-amber-400 transition-colors" onclick="setReviewRating(5)"></i>
+                    </div>
+                    <input type="hidden" id="rev-rating" value="0" required>
+                    
+                    <div class="flex gap-4">
+                        <input type="text" id="rev-name" placeholder="Nama Anda" class="w-2/3 px-4 py-3.5 border-2 border-slate-200 focus:border-primary rounded-xl outline-none transition-colors" required>
+                        <select id="rev-gender" class="w-1/3 px-4 py-3.5 border-2 border-slate-200 focus:border-primary rounded-xl outline-none transition-colors bg-white" required>
+                            <option value="">Gender</option><option value="Pria">Pria</option><option value="Wanita">Wanita</option>
+                        </select>
+                    </div>
+                    <input type="text" id="rev-service" placeholder="Layanan yang digunakan (Misal: Bekam)" class="w-full px-4 py-3.5 border-2 border-slate-200 focus:border-primary rounded-xl outline-none transition-colors" required>
+                    <textarea id="rev-text" placeholder="Tuliskan ulasan jujur Anda di sini..." class="w-full px-4 py-3.5 border-2 border-slate-200 focus:border-primary rounded-xl outline-none transition-colors h-24 resize-none" required></textarea>
+                    
+                    <button type="submit" class="w-full bg-slate-900 hover:bg-black text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg transition-all active:scale-95 text-base mt-2"><i class="fa-solid fa-paper-plane"></i> Kirim Ulasan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Invoice Modal -->
+    <div id="invoice-modal" class="fixed inset-0 z-[160] hidden">
+        <div class="absolute inset-0 bg-slate-900/80 backdrop-blur-sm" onclick="toggleModal('invoice-modal')"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-sm px-4">
+            <div class="bg-white rounded-t-lg rounded-b-2xl shadow-2xl relative flex flex-col overflow-hidden">
+                <div class="h-3 w-full bg-[radial-gradient(circle,transparent_4px,#fff_5px)] bg-[length:10px_10px] -mt-1 relative z-10"></div>
+                <div class="p-8 pt-6 pb-8 bg-white text-slate-800 flex-1 relative">
+                    <button onclick="toggleModal('invoice-modal')" class="absolute top-4 right-4 text-slate-300 hover:text-slate-500"><i class="fa-solid fa-xmark"></i></button>
+                    <div class="text-center mb-6 border-b-2 border-dashed border-slate-200 pb-6">
+                        <div class="w-12 h-12 bg-slate-900 text-white rounded-lg flex items-center justify-center text-xl mx-auto mb-3"><i class="fa-solid fa-leaf"></i></div>
+                        <h2 class="font-black text-xl tracking-tight uppercase">Thibbun Care</h2>
+                        <p class="text-xs text-slate-500 font-mono mt-1" id="invoice-date"></p>
+                    </div>
+                    <div class="space-y-4 mb-6">
+                        <div><p class="text-[10px] font-bold text-slate-400 uppercase">Penerima</p><p id="inv-name" class="font-bold text-sm"></p></div>
+                        <div><p class="text-[10px] font-bold text-slate-400 uppercase">Alamat Pengiriman</p><p id="inv-address" class="text-xs font-medium"></p></div>
+                    </div>
+                    <div class="border-t-2 border-dashed border-slate-200 py-4 mb-4">
+                        <p class="text-[10px] font-bold text-slate-400 uppercase mb-3">Rincian Belanja</p>
+                        <div id="invoice-items" class="space-y-2 text-xs font-mono font-medium max-h-32 overflow-y-auto custom-scrollbar"></div>
+                    </div>
+                    <div class="flex justify-between items-end border-t-4 border-slate-900 pt-4 mb-6">
+                        <p class="text-xs font-bold uppercase">Total Tagihan</p>
+                        <p id="invoice-total" class="font-black text-xl text-[#ee4d2d]"></p>
+                    </div>
+                    <button onclick="confirmCheckoutWA()" class="w-full bg-[#25d366] hover:bg-[#1ebd5a] text-white py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-green-500/30 transition-all active:scale-95"><i class="fab fa-whatsapp text-lg"></i> Konfirmasi & Lanjut WA</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Admin Login Modal -->
     <div id="admin-login-modal" class="fixed inset-0 z-[100] hidden">
@@ -514,39 +761,95 @@
         </div>
     </div>
 
+    <!-- T&C Modal -->
+    <div id="tnc-modal" class="fixed inset-0 z-[130] hidden">
+        <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onclick="toggleModal('tnc-modal')"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl px-4">
+            <div class="bg-white rounded-[2rem] p-8 relative shadow-2xl border border-white max-h-[85vh] flex flex-col">
+                <button onclick="toggleModal('tnc-modal')" class="absolute top-4 right-4 w-8 h-8 bg-slate-100 hover:bg-slate-200 rounded-full flex items-center justify-center transition-colors"><i class="fa-solid fa-xmark"></i></button>
+                <h3 class="text-2xl font-black mb-6 text-slate-900 border-b border-slate-100 pb-4">Syarat & Ketentuan Layanan</h3>
+                <div class="overflow-y-auto pr-4 space-y-4 text-sm text-slate-600 font-medium leading-relaxed custom-scrollbar">
+                    <p>Selamat datang di Klinik Thibbun Care. Dengan menggunakan layanan situs dan klinik kami, Anda setuju untuk terikat dengan Syarat dan Ketentuan berikut:</p>
+                    <h4 class="font-bold text-slate-800 mt-4">1. Layanan Medis & Terapi</h4>
+                    <p>Semua prosedur terapi yang dilakukan di klinik kami maupun secara homecare dilakukan oleh tenaga yang telah tersertifikasi. Efek terapi dapat berbeda pada setiap individu.</p>
+                    <h4 class="font-bold text-slate-800 mt-4">2. Reservasi & Pembatalan</h4>
+                    <p>Reservasi diwajibkan minimal H-1 sebelum jadwal terapi. Pembatalan atau perubahan jadwal harus diinformasikan paling lambat 6 jam sebelum jadwal yang disepakati.</p>
+                    <h4 class="font-bold text-slate-800 mt-4">3. Pembelian Produk Herbal</h4>
+                    <p>Semua produk herbal yang dijual telah melalui proses kurasi. Kesalahan pengiriman akibat alamat yang tidak lengkap menjadi tanggung jawab pembeli. Barang yang sudah dibeli tidak dapat dikembalikan kecuali terdapat cacat produksi dengan menyertakan video unboxing.</p>
+                    <h4 class="font-bold text-slate-800 mt-4">4. Sistem Poin Sehat</h4>
+                    <p>Poin Sehat dikumpulkan dari setiap pembelian dan hanya dapat digunakan sebagai potongan harga (diskon) pada pembelian berikutnya. Poin tidak dapat diuangkan dalam kondisi apapun.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacy-modal" class="fixed inset-0 z-[130] hidden">
+        <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onclick="toggleModal('privacy-modal')"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl px-4">
+            <div class="bg-white rounded-[2rem] p-8 relative shadow-2xl border border-white max-h-[85vh] flex flex-col">
+                <button onclick="toggleModal('privacy-modal')" class="absolute top-4 right-4 w-8 h-8 bg-slate-100 hover:bg-slate-200 rounded-full flex items-center justify-center transition-colors"><i class="fa-solid fa-xmark"></i></button>
+                <h3 class="text-2xl font-black mb-6 text-slate-900 border-b border-slate-100 pb-4">Kebijakan Privasi (Privacy Policy)</h3>
+                <div class="overflow-y-auto pr-4 space-y-4 text-sm text-slate-600 font-medium leading-relaxed custom-scrollbar">
+                    <p>Klinik Thibbun Care sangat menghargai privasi data Anda. Kebijakan ini mengatur bagaimana kami mengumpulkan, menggunakan, dan melindungi informasi pribadi pasien.</p>
+                    <h4 class="font-bold text-slate-800 mt-4">1. Pengumpulan Data</h4>
+                    <p>Kami mengumpulkan data seperti Nama, Nomor WhatsApp, Alamat (untuk homecare/pengiriman herbal), dan riwayat keluhan medis saat Anda melakukan reservasi atau menggunakan Kalkulator Cek Kondisi.</p>
+                    <h4 class="font-bold text-slate-800 mt-4">2. Penggunaan Informasi</h4>
+                    <p>Informasi medis digunakan secara eksklusif oleh terapis kami untuk menentukan diagnosis dan metode pengobatan TCM/Thibbun Nabawi yang paling tepat. Kami juga menggunakan data untuk menghubungi Anda terkait jadwal reservasi.</p>
+                    <h4 class="font-bold text-slate-800 mt-4">3. Keamanan Rekam Medis</h4>
+                    <p>Seluruh data keluhan dan riwayat terapi pasien disimpan dengan aman dan bersifat rahasia sesuai dengan standar etika medis. Kami tidak akan pernah menjual, menyewakan, atau membagikan data pasien kepada pihak ketiga tanpa persetujuan tertulis.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Reservation Modal -->
     <div id="reservation-modal" class="fixed inset-0 z-[130] hidden">
         <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onclick="toggleModal('reservation-modal')"></div>
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-md px-4">
-            <div class="bg-white rounded-[2rem] p-8 relative shadow-2xl border border-white max-h-[90vh] overflow-y-auto">
+            <div class="bg-white rounded-[2rem] p-8 relative shadow-2xl border border-white max-h-[90vh] flex flex-col">
                 <button onclick="toggleModal('reservation-modal')" class="absolute top-4 right-4 w-8 h-8 bg-slate-100 hover:bg-slate-200 rounded-full flex items-center justify-center transition-colors"><i class="fa-solid fa-xmark"></i></button>
-                <h3 class="text-2xl font-black mb-6 text-slate-900">Reservasi Terapi</h3>
-                <form onsubmit="submitReservationForm(event)" class="space-y-4 text-sm font-medium">
-                    <input type="text" id="res-name" class="w-full px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:border-primary outline-none transition-colors" required placeholder="Nama Lengkap Pasien">
-                    <input type="tel" id="res-phone" class="w-full px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:border-primary outline-none transition-colors" required placeholder="No WhatsApp (Contoh: 628...)">
-                    <select id="res-service" class="w-full px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:border-primary outline-none transition-colors bg-white" required>
-                        <option value="Umum">- Pilih Layanan Utama -</option>
-                        <option value="Bekam Medis">Bekam Medis</option>
-                        <option value="Akupunktur TCM">Akupunktur TCM</option>
-                        <option value="Homecare Terapi">Homecare Terapi</option>
-                        <option value="Konsultasi Umum">Konsultasi Umum</option>
-                    </select>
-                    <div class="flex gap-4">
-                        <input type="date" id="res-date" class="w-1/2 px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:border-primary outline-none transition-colors bg-white" required>
-                        <select id="res-time" class="w-1/2 px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:border-primary outline-none transition-colors bg-white" required>
-                            <option value="">- Waktu -</option>
-                            <option value="Pagi (09:00 - 12:00)">Pagi (09:00 - 12:00)</option>
-                            <option value="Siang (13:00 - 15:00)">Siang (13:00 - 15:00)</option>
-                            <option value="Sore (16:00 - 20:00)">Sore (16:00 - 20:00)</option>
-                        </select>
-                    </div>
-                    <textarea id="res-complaint" class="w-full px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:border-primary outline-none transition-colors h-24 resize-none" placeholder="Tuliskan keluhan yang Anda rasakan..." required></textarea>
-                    <button type="submit" class="w-full bg-gradient-to-r from-[#25d366] to-[#1ebd5a] text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-green-500/30 hover:-translate-y-1 active:scale-95 transition-all text-base mt-2"><i class="fab fa-whatsapp text-xl"></i> Pesan Jadwal via WA</button>
-                </form>
+                <h3 class="text-2xl font-black mb-6 text-slate-900 flex-shrink-0">Reservasi Terapi</h3>
+                <div class="overflow-y-auto pr-2 custom-scrollbar flex-1">
+                    <form onsubmit="submitReservationForm(event)" class="space-y-4 text-sm font-medium pb-2">
+                        <div class="flex gap-4">
+                            <input type="text" id="res-name" class="w-2/3 px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:border-primary outline-none transition-colors" required placeholder="Nama Lengkap Pasien">
+                            <input type="number" id="res-age" class="w-1/3 px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:border-primary outline-none transition-colors" required placeholder="Usia">
+                        </div>
+                        <input type="tel" id="res-phone" class="w-full px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:border-primary outline-none transition-colors" required placeholder="No WhatsApp (Contoh: 628...)">
+                        <textarea id="res-address" class="w-full px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:border-primary outline-none transition-colors h-20 resize-none" placeholder="Alamat Lengkap (Wajib jika Homecare)" required></textarea>
+                        
+                        <div class="flex gap-4">
+                            <select id="res-type" class="w-1/2 px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:border-primary outline-none transition-colors bg-white" required>
+                                <option value="">- Kehadiran -</option>
+                                <option value="Datang ke Klinik">Datang ke Klinik</option>
+                                <option value="Homecare (Panggilan)">Homecare (Panggilan)</option>
+                            </select>
+                            <select id="res-service" class="w-1/2 px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:border-primary outline-none transition-colors bg-white" required>
+                                <option value="Umum">- Layanan -</option>
+                                <option value="Bekam Medis">Bekam Medis</option>
+                                <option value="Akupunktur TCM">Akupunktur TCM</option>
+                            </select>
+                        </div>
+                        
+                        <div class="flex gap-4">
+                            <input type="date" id="res-date" class="w-1/2 px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:border-primary outline-none transition-colors bg-white" required>
+                            <select id="res-time" class="w-1/2 px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:border-primary outline-none transition-colors bg-white" required>
+                                <option value="">- Waktu -</option>
+                                <option value="Pagi (09:00 - 12:00)">Pagi (09:00 - 12:00)</option>
+                                <option value="Siang (13:00 - 15:00)">Siang (13:00 - 15:00)</option>
+                                <option value="Sore (16:00 - 20:00)">Sore (16:00 - 20:00)</option>
+                            </select>
+                        </div>
+                        <textarea id="res-complaint" class="w-full px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:border-primary outline-none transition-colors h-24 resize-none" placeholder="Tuliskan keluhan yang Anda rasakan..." required></textarea>
+                        <button type="submit" class="w-full bg-gradient-to-r from-[#25d366] to-[#1ebd5a] text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-green-500/30 hover:-translate-y-1 active:scale-95 transition-all text-base mt-2"><i class="fab fa-whatsapp text-xl"></i> Pesan Jadwal via WA</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
     
+    <!-- Cart Modal -->
     <div id="cart-modal" class="fixed inset-0 z-[110] hidden">
         <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="toggleModal('cart-modal')"></div>
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-lg px-4">
@@ -555,10 +858,9 @@
                     <h3 class="font-black text-xl text-slate-900 flex items-center gap-2"><i class="fa-solid fa-basket-shopping text-primary"></i> Keranjang Belanja</h3>
                     <button onclick="toggleModal('cart-modal')" class="w-8 h-8 bg-slate-100 hover:bg-slate-200 rounded-full flex justify-center items-center transition-colors"><i class="fa-solid fa-xmark"></i></button>
                 </div>
-                <div class="p-6 overflow-y-auto flex-1 bg-slate-50">
+                <div class="p-6 overflow-y-auto flex-1 bg-slate-50 custom-scrollbar">
                     <div id="cart-items-container" class="space-y-3"></div>
                     <div id="cart-checkout-form" class="mt-6 pt-6 border-t border-slate-200 space-y-4 hidden">
-                        <!-- Loyalty Points Toggle -->
                         <div class="p-4 bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl flex justify-between items-center border border-amber-200 shadow-sm cursor-pointer hover:shadow-md transition-all" onclick="document.getElementById('use-points-cb').click()">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center text-white shadow-inner"><i class="fa-solid fa-coins text-lg"></i></div>
@@ -572,7 +874,7 @@
                 </div>
                 <div class="px-6 py-5 border-t border-slate-200 bg-white flex justify-between items-center z-10">
                     <div><p class="text-xs font-bold text-slate-500 mb-1">Total Pembayaran</p><p id="cart-total-price" class="text-2xl font-black shopee-price">Rp 0</p></div>
-                    <button id="cart-checkout-btn" onclick="checkoutCartWA()" class="px-8 py-3.5 bg-[#ee4d2d] hover:bg-[#d73d20] text-white font-bold rounded-xl text-sm flex items-center gap-2 shadow-lg shadow-[#ee4d2d]/30 hover:-translate-y-0.5 active:scale-95 transition-all">Checkout WA</button>
+                    <button id="cart-checkout-btn" onclick="generateInvoice()" class="px-8 py-3.5 bg-[#ee4d2d] hover:bg-[#d73d20] text-white font-bold rounded-xl text-sm flex items-center gap-2 shadow-lg shadow-[#ee4d2d]/30 hover:-translate-y-0.5 active:scale-95 transition-all">Checkout WA</button>
                 </div>
             </div>
         </div>
@@ -582,15 +884,15 @@
     <div id="crud-modal" class="fixed inset-0 z-[120] hidden">
         <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeFormModal()"></div>
         <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-lg px-4">
-            <div class="bg-white rounded-[2rem] flex flex-col max-h-[90vh] shadow-2xl">
-                <div class="px-6 py-5 border-b border-slate-100 flex justify-between sticky top-0 bg-white rounded-t-[2rem] z-10">
+            <div class="bg-white rounded-[2rem] flex flex-col max-h-[90vh] shadow-2xl overflow-hidden border border-white">
+                <div class="px-6 py-5 border-b border-slate-100 flex justify-between bg-white z-10 flex-shrink-0">
                     <h3 id="crud-modal-title" class="font-black text-xl text-slate-900">Kelola Data</h3>
                     <button onclick="closeFormModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition-colors"><i class="fa-solid fa-xmark"></i></button>
                 </div>
-                <div class="p-6 overflow-y-auto bg-slate-50">
-                    <form id="crud-form" class="space-y-5 text-sm font-medium"></form>
+                <div class="p-6 overflow-y-auto bg-slate-50 flex-1 custom-scrollbar">
+                    <form id="crud-form" class="space-y-5 text-sm font-medium pb-4"></form>
                 </div>
-                <div class="px-6 py-5 border-t border-slate-100 bg-white flex justify-end gap-3 sticky bottom-0 rounded-b-[2rem] z-10">
+                <div class="px-6 py-5 border-t border-slate-100 bg-white flex justify-end gap-3 mt-auto flex-shrink-0 z-10">
                     <button onclick="closeFormModal()" class="px-6 py-3 rounded-xl bg-slate-100 text-slate-700 font-bold hover:bg-slate-200 transition-colors">Batal</button>
                     <button onclick="saveCrudData()" class="px-6 py-3 rounded-xl btn-gradient text-white font-bold shadow-btn hover:-translate-y-0.5 active:scale-95 transition-all">Simpan Data</button>
                 </div>
@@ -603,7 +905,6 @@
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, doc, setDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Global Format Helpers
         window.formatRp = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
         
         window.showToast = (msg, isErr=false) => {
@@ -619,48 +920,76 @@
         let app, auth, db, isFirebaseActive = false;
         try { app = initializeApp(firebaseConfig); auth = getAuth(app); db = getFirestore(app); isFirebaseActive = true; } catch(e) { console.warn("Firebase Offline Mode"); }
 
-        // Master Data Dummy with full initial settings
         const comprehensiveData = {
             settings: { 
                 waNumber: "6281200000000", primaryColor: "#0D9488", adminUser: "admin", adminPass: "admin",
                 address: "Jl. Margasatwa Raya No. 45, Jakarta Selatan, 12345, Indonesia",
-                email: "info@thibbuncare.com",
-                hours: "Buka: 09.00 - 20.00 WIB (Setiap Hari)",
-                facebook: "#", instagram: "#", youtube: "#"
+                email: "info@thibbuncare.com", hours: "Buka: 09.00 - 20.00 WIB (Setiap Hari)",
+                facebook: "#", instagram: "#", youtube: "#",
+                announcementText: "🌟 Promo Spesial Jumat Berkah: Diskon 20% Bekam Medis!", announcementActive: true
             },
             services: [{ id: "s1", title: "Bekam (Hijamah) Medis", desc: "Membersihkan darah statis dengan metode steril & pisau bedah sekali pakai.", image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80" }, { id: "s2", title: "Akupunktur TCM", desc: "Stimulasi titik meridian menggunakan jarum halus untuk keseimbangan Qi.", image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&q=80" }], 
             products: [{ id: "p1", name: "Madu Hitam Pahit Ar-Risyah", price: 75000, tag: "Imunitas", image: "https://images.unsplash.com/photo-1587049352847-4a222e784d38?w=400&q=80" }, { id: "p2", name: "Habbatussauda Extra Propolis", price: 50000, tag: "Imunitas", image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&q=80" }, { id: "p3", name: "Kapsul Minyak Zaitun", price: 45000, tag: "Kolesterol", image: "https://images.unsplash.com/photo-1474631245212-32dc3c8310c6?w=400&q=80" }, { id: "p4", name: "Jahe Merah Instan", price: 30000, tag: "Pencernaan", image: "https://images.unsplash.com/photo-1596356453261-0d265eb2c205?w=400&q=80" }, { id: "p5", name: "Teh Jati Cina", price: 25000, tag: "Diet", image: "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?w=400&q=80" }], 
             articles: [{ id: "a1", title: "Keutamaan & Manfaat Medis Bekam", tag: "Thibbun Nabawi", date: "10 Okt 2026", image: "https://images.unsplash.com/photo-1512290900672-468205f77864?w=600&q=80", desc: "Penjelasan ilmiah bagaimana bekam dapat menstabilkan tekanan darah.", content: "Bekam atau Hijamah adalah metode pengobatan yang dianjurkan dalam Islam. Secara medis modern, bekam basah dapat membantu membuang sel darah merah yang menua dan merangsang produksi sel darah merah baru..." }], 
             therapists: [{ id: "t1", name: "dr. Ahmad Fauzi", spec: "Dokter Penanggung Jawab", image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80" }, { id: "t2", name: "Siti Rahma, Amd.Kep", spec: "Terapis Akupunktur Wanita", image: "https://images.unsplash.com/photo-1594824432258-c28f0814467f?w=400&q=80" }], 
             careers: [{ id: "c1", title: "Terapis Bekam & Akupunktur", loc: "Jakarta Selatan", desc: "Dicari terapis berpengalaman minimal 1 tahun, memiliki STPT aktif, dan memahami adab Islami." }], 
-            branches: [{ id: "b1", name: "Pusat - Jakarta Selatan", address: "Jl. Margasatwa Raya No. 45", phone: "0812-3456-7890", hours: "09.00 - 20.00 WIB" }]
+            branches: [{ id: "b1", name: "Pusat - Jakarta Selatan", address: "Jl. Margasatwa Raya No. 45", phone: "0812-3456-7890", hours: "09.00 - 20.00 WIB" }],
+            reviews: [] // Array untuk ulasan dinamis (Admin)
         };
 
         function safeGet(key, def) { try{ const v = localStorage.getItem(key); return v ? JSON.parse(v) : def; }catch(e){ return def; } }
         function safeSet(key, val) { try{ localStorage.setItem(key, JSON.stringify(val)); }catch(e){} }
 
-        window.appState = safeGet('tc_state_v7_premium', comprehensiveData);
-        window.cart = safeGet('tc_cart_v7_premium', []);
+        window.appState = safeGet('tc_state_v10_premium', comprehensiveData);
+        window.cart = safeGet('tc_cart_v10_premium', []);
         
-        // Data Fallback Protection
         if(!window.appState.settings) window.appState.settings = comprehensiveData.settings;
-        ['services', 'products', 'articles', 'therapists', 'careers', 'branches'].forEach(k => { if(!window.appState[k] || window.appState[k].length===0) window.appState[k] = comprehensiveData[k] || []; });
+        if(window.appState.settings.announcementActive === undefined) window.appState.settings.announcementActive = comprehensiveData.settings.announcementActive;
+        if(!window.appState.settings.announcementText) window.appState.settings.announcementText = comprehensiveData.settings.announcementText;
+        
+        ['services', 'products', 'articles', 'therapists', 'careers', 'branches', 'reviews'].forEach(k => { if(!window.appState[k]) window.appState[k] = comprehensiveData[k] || []; });
 
-        // Basic Navigation & UI Toggles
         window.toggleModal = (id) => { const m = document.getElementById(id); if(m) { m.classList.toggle('hidden'); document.body.style.overflow = m.classList.contains('hidden') ? 'auto' : 'hidden'; } };
         window.navigateTo = (id) => { document.querySelectorAll('.page-view').forEach(p => { p.classList.add('hidden'); p.classList.remove('block'); }); const target = document.getElementById('page-'+id); if(target) { target.classList.remove('hidden'); target.classList.add('block'); window.scrollTo(0,0); } };
         window.openWhatsApp = (msg, num) => { window.open(`https://wa.me/${num || window.appState.settings.waNumber}?text=${encodeURIComponent(msg)}`, '_blank'); };
         window.toggleMobileMenu = () => { document.getElementById('mobile-menu').classList.toggle('hidden'); };
         window.toggleAdminSidebar = () => { document.getElementById('admin-sidebar').classList.toggle('-translate-x-full'); };
         
-        // Smart Reservation Modal Logic (Prevents missing option errors)
+        window.toggleWaWidget = () => {
+            const w = document.getElementById('wa-chat-window');
+            if(w.classList.contains('hidden')) {
+                w.classList.remove('hidden');
+                setTimeout(() => { w.classList.remove('scale-95', 'opacity-0'); w.classList.add('scale-100', 'opacity-100'); }, 10);
+            } else {
+                w.classList.remove('scale-100', 'opacity-100'); w.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => w.classList.add('hidden'), 300);
+            }
+        };
+
+        window.performSearch = (val) => {
+            const q = val.toLowerCase();
+            const resContainer = document.getElementById('search-results');
+            if(!q) { resContainer.innerHTML = '<div class="text-center text-slate-400 py-8 font-medium">Ketikkan kata kunci di atas untuk mulai mencari...</div>'; return; }
+            
+            const resP = window.appState.products.filter(p => p.name.toLowerCase().includes(q) || (p.tag && p.tag.toLowerCase().includes(q)));
+            const resS = window.appState.services.filter(s => s.title.toLowerCase().includes(q) || s.desc.toLowerCase().includes(q));
+            const resA = window.appState.articles.filter(a => a.title.toLowerCase().includes(q));
+            
+            let html = '';
+            if(resS.length) html += `<h4 class="font-bold text-xs text-slate-400 uppercase mt-4 mb-2 tracking-wider">Layanan Terapi</h4>` + resS.map(s=>{ const safeT = s.title.replace(/'/g, "\\'"); return `<div onclick="toggleModal('search-modal'); openReservationModal('${safeT}')" class="p-3 bg-white border border-slate-100 hover:border-primary hover:bg-primary/5 rounded-xl cursor-pointer font-bold text-slate-700 transition-all flex items-center gap-3"><div class="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center text-slate-400"><i class="fa-solid fa-bed-pulse"></i></div> ${s.title}</div>`; }).join('');
+            if(resP.length) html += `<h4 class="font-bold text-xs text-slate-400 uppercase mt-4 mb-2 tracking-wider">Toko Herbal</h4>` + resP.map(p=>`<div onclick="toggleModal('search-modal'); navigateTo('shop');" class="p-3 bg-white border border-slate-100 hover:border-primary hover:bg-primary/5 rounded-xl cursor-pointer font-bold text-slate-700 transition-all flex justify-between items-center"><div class="flex items-center gap-3"><div class="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center text-slate-400"><i class="fa-solid fa-box"></i></div> <span>${p.name}</span></div><span class="text-primary">${window.formatRp(p.price)}</span></div>`).join('');
+            if(resA.length) html += `<h4 class="font-bold text-xs text-slate-400 uppercase mt-4 mb-2 tracking-wider">Jurnal & Artikel</h4>` + resA.map(a=>`<div onclick="toggleModal('search-modal'); readArticle('${a.id}')" class="p-3 bg-white border border-slate-100 hover:border-primary hover:bg-primary/5 rounded-xl cursor-pointer font-bold text-slate-700 transition-all flex items-center gap-3"><div class="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center text-slate-400"><i class="fa-regular fa-newspaper"></i></div> <span class="truncate">${a.title}</span></div>`).join('');
+            
+            resContainer.innerHTML = html || `<div class="p-8 text-center text-slate-500 font-medium bg-slate-50 rounded-xl"><i class="fa-regular fa-face-frown text-3xl mb-3 opacity-50"></i><br>Tidak ada hasil yang sesuai.</div>`;
+        };
+
         window.openReservationModal = (svc) => { 
             const select = document.getElementById('res-service');
+            const safeSvc = svc ? svc.replace(/\\'/g, "'") : 'Umum';
             let found = false;
-            for(let i=0; i<select.options.length; i++) { if(select.options[i].value === svc) { found = true; break; } }
-            if(!found && svc) { const opt = document.createElement('option'); opt.value = svc; opt.innerText = svc; select.appendChild(opt); }
-            select.value = svc; 
-            toggleModal('reservation-modal'); 
+            for(let i=0; i<select.options.length; i++) { if(select.options[i].value === safeSvc) { found = true; break; } }
+            if(!found && safeSvc) { const opt = document.createElement('option'); opt.value = safeSvc; opt.innerText = safeSvc; select.appendChild(opt); }
+            select.value = safeSvc; toggleModal('reservation-modal'); 
         };
 
         let currentSymptomArea = '';
@@ -668,8 +997,7 @@
             currentSymptomArea = area;
             document.querySelectorAll('.symptom-card').forEach(c => { c.classList.remove('border-primary', 'bg-primary/5', 'shadow-primary/10'); c.classList.add('border-slate-100'); });
             element.classList.remove('border-slate-100'); element.classList.add('border-primary', 'bg-primary/5', 'shadow-primary/10');
-            document.getElementById('res-area').innerText = area;
-            document.getElementById('res-desc').innerText = desc;
+            document.getElementById('res-area').innerText = area; document.getElementById('res-desc').innerText = desc;
         };
         window.analyzeSymptom = () => { if(currentSymptomArea) { document.getElementById('calc-step-1').classList.add('hidden'); document.getElementById('calc-result').classList.remove('hidden'); } else window.showToast('Ketuk salah satu area keluhan terlebih dahulu!', true); };
         window.resetCalc = () => { document.getElementById('calc-result').classList.add('hidden'); document.getElementById('calc-step-1').classList.remove('hidden'); currentSymptomArea=''; document.querySelectorAll('.symptom-card').forEach(c => { c.classList.remove('border-primary', 'bg-primary/5', 'shadow-primary/10'); c.classList.add('border-slate-100'); }); };
@@ -683,13 +1011,20 @@
             </div>`;
         };
         window.generateServiceCard = (s) => {
-            const safeTitle = s.title.replace(/'/g, "\\'"); // Prevents HTML injection errors
+            const safeTitle = s.title.replace(/'/g, "\\'");
             return `<div class="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-slate-100 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 group flex flex-col relative"><div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/5 z-10 pointer-events-none group-hover:opacity-0 transition-opacity"></div><div class="h-56 overflow-hidden relative"><img src="${s.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"></div><div class="p-8 flex-1 flex flex-col relative z-20 bg-white rounded-t-[2rem] -mt-6"><h4 class="text-2xl font-black text-slate-900 mb-3 group-hover:text-primary transition-colors">${s.title}</h4><p class="text-slate-600 mb-8 flex-1 leading-relaxed font-medium">${s.desc}</p><button onclick="openReservationModal('${safeTitle}')" class="w-full py-4 rounded-xl border-2 border-slate-100 text-slate-700 font-bold hover:border-primary hover:bg-primary hover:text-white transition-all duration-300 shadow-sm hover:shadow-md flex items-center justify-center gap-2">Reservasi <i class="fa-solid fa-arrow-right text-xs"></i></button></div></div>`;
         };
         window.generateArticleCard = (a) => `<div class="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-slate-100 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 flex flex-col group"><div class="h-56 overflow-hidden relative"><img src="${a.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"><div class="absolute top-4 left-4 bg-white/90 backdrop-blur text-primary text-[10px] font-black px-3 py-1.5 rounded-lg shadow-sm uppercase tracking-wider">${a.tag}</div></div><div class="p-8 flex-1 flex flex-col"><div class="flex items-center gap-2 mb-3 text-xs font-bold text-slate-400"><i class="fa-regular fa-calendar"></i> ${a.date}</div><h4 class="text-xl font-black text-slate-900 mb-3 line-clamp-2 group-hover:text-primary transition-colors">${a.title}</h4><p class="text-sm text-slate-500 mb-6 line-clamp-3 font-medium leading-relaxed">${a.desc}</p><button onclick="readArticle('${a.id}')" class="mt-auto text-primary font-bold hover:text-primary-dark flex items-center gap-2 group-hover:translate-x-2 transition-transform">Baca Jurnal <i class="fa-solid fa-arrow-right-long"></i></button></div></div>`;
         window.generateTherapistCard = (t) => `<div class="bg-white rounded-[2rem] p-8 text-center shadow-sm border border-slate-100 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 relative overflow-hidden group"><div class="absolute -top-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors"></div><div class="w-32 h-32 mx-auto mb-6 relative"><div class="absolute inset-0 bg-gradient-to-tr from-primary to-emerald-400 rounded-full animate-pulse blur-sm opacity-50 group-hover:opacity-100 transition-opacity"></div><img src="${t.image}" class="w-full h-full rounded-full object-cover border-4 border-white relative z-10 shadow-md"></div><h4 class="font-black text-xl text-slate-900">${t.name}</h4><p class="text-sm text-primary font-bold mt-2 bg-primary/10 inline-block px-3 py-1 rounded-full">${t.spec}</p></div>`;
         window.generateCareerCard = (c) => `<div class="bg-white rounded-[2rem] p-8 shadow-sm border border-slate-100 hover:shadow-md transition-all flex flex-col md:flex-row md:items-center justify-between gap-6 group"><div class="flex-1"><h4 class="text-xl font-black text-slate-900 group-hover:text-primary transition-colors">${c.title}</h4><div class="flex gap-4 text-xs text-slate-500 mt-3 font-bold uppercase tracking-wider"><span class="bg-slate-100 px-3 py-1.5 rounded-lg flex items-center gap-1"><i class="fa-solid fa-location-dot text-primary"></i> ${c.loc}</span><span class="bg-slate-100 px-3 py-1.5 rounded-lg flex items-center gap-1"><i class="fa-solid fa-clock text-primary"></i> Full-time</span></div><p class="text-sm text-slate-600 mt-4 leading-relaxed font-medium">${c.desc}</p></div><button onclick="openWhatsApp('Halo HRD Thibbun Care, saya ingin melamar posisi ${c.title} di cabang ${c.loc}')" class="btn-gradient text-white px-8 py-4 rounded-xl font-bold whitespace-nowrap shadow-btn hover:-translate-y-1 active:scale-95 transition-all">Kirim Lamaran</button></div>`;
         window.generateBranchCard = (b) => `<div class="bg-white rounded-[2rem] p-8 shadow-sm border border-slate-100 hover:shadow-card-hover hover:-translate-y-2 transition-all duration-300 flex flex-col sm:flex-row gap-6 relative overflow-hidden group"><div class="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors pointer-events-none"></div><div class="w-16 h-16 bg-gradient-to-br from-primary-light to-emerald-100 text-primary rounded-2xl flex items-center justify-center text-2xl flex-shrink-0 shadow-inner border border-white"><i class="fa-solid fa-hospital"></i></div><div class="flex-1"><h4 class="text-2xl font-black text-slate-900 mb-4 group-hover:text-primary transition-colors">${b.name}</h4><ul class="space-y-3 text-sm text-slate-600 font-medium mb-6"><li class="flex items-start gap-3"><i class="fa-solid fa-map-location-dot mt-1 text-slate-400"></i> <span>${b.address}</span></li><li class="flex items-center gap-3"><i class="fa-solid fa-phone text-slate-400"></i> <span>${b.phone}</span></li><li class="flex items-center gap-3"><i class="fa-regular fa-clock text-slate-400"></i> <span>${b.hours}</span></li></ul><button onclick="openWhatsApp('Halo Admin Cabang ${b.name}, saya ingin reservasi terapi.', '${b.phone.replace(/\D/g,'')}')" class="text-primary font-black hover:text-primary-dark flex items-center gap-2 group-hover:translate-x-2 transition-transform">Hubungi Cabang <i class="fa-solid fa-arrow-right"></i></button></div></div>`;
+        
+        window.generateReviewCard = (r) => {
+            const stars = Array(r.rating).fill('<i class="fas fa-star"></i>').join('') + Array(5-r.rating).fill('<i class="far fa-star"></i>').join('');
+            const genderIcon = r.gender === 'Pria' ? '♂' : (r.gender === 'Wanita' ? '♀' : '👤');
+            const bgClass = r.gender === 'Pria' ? 'border-blue-400 bg-blue-500/20 text-blue-400' : (r.gender === 'Wanita' ? 'border-pink-400 bg-pink-500/20 text-pink-400' : 'border-emerald-400 bg-emerald-500/20 text-emerald-400');
+            return `<div class="bg-slate-800/50 backdrop-blur-md p-8 rounded-3xl shadow-xl hover:-translate-y-2 transition-all duration-300 relative border-t-4 border-x border-b border-slate-700 flex flex-col justify-between group ${bgClass.split(' ')[0]}"><div class="absolute top-6 right-8 text-white/5 text-6xl group-hover:scale-110 transition-transform"><i class="fa-solid fa-quote-right"></i></div><div><div class="flex text-amber-400 text-sm mb-5 relative z-10 gap-1">${stars}</div><p class="text-slate-300 leading-relaxed font-medium mb-8 text-justify relative z-10 text-sm md:text-base">"${r.text}"</p></div><div class="flex items-center gap-4 pt-5 mt-auto relative z-10"><div class="w-12 h-12 rounded-full flex items-center justify-center text-2xl font-bold border shadow-inner ${bgClass.split(' ')[1]} ${bgClass.split(' ')[2]} border-white/10">${genderIcon}</div><div><h4 class="font-bold text-white text-sm">${r.name}</h4><p class="text-xs text-slate-400">${r.service}</p></div></div></div>`;
+        };
 
         window.readArticle = (id) => {
             const a = window.appState.articles.find(x=>x.id===id); if(!a) return;
@@ -700,10 +1035,7 @@
             document.getElementById('detail-article-content').innerHTML = `<p>${a.content.replace(/\n/g, '<br><br>')}</p>`;
             
             const recContainer = document.getElementById('article-recommended-products');
-            if(recContainer) {
-                const recommendedProducts = window.appState.products.slice(0, 4);
-                recContainer.innerHTML = recommendedProducts.map(window.generateProductCard).join('');
-            }
+            if(recContainer) { const recommendedProducts = window.appState.products.slice(0, 4); recContainer.innerHTML = recommendedProducts.map(window.generateProductCard).join(''); }
             navigateTo('article-detail');
         };
 
@@ -711,52 +1043,161 @@
             const p = window.appState.products.find(x=>x.id===id); if(!p) return;
             const ex = window.cart.findIndex(i=>i.id===id);
             if(ex>-1) window.cart[ex].qty++; else window.cart.push({...p, qty:1});
-            safeSet('tc_cart_v7_premium', window.cart); window.renderCartUI(); showToast(`Satu item ditambahkan ke keranjang!`);
+            safeSet('tc_cart_v10_premium', window.cart); window.renderCartUI(); showToast(`Satu item ditambahkan ke keranjang!`);
         };
-        window.updateCartQty = (id, d) => { const idx=window.cart.findIndex(i=>i.id===id); if(idx>-1){window.cart[idx].qty+=d; if(window.cart[idx].qty<=0) window.cart.splice(idx,1); safeSet('tc_cart_v7_premium', window.cart); window.renderCartUI();} };
+        window.updateCartQty = (id, d) => { const idx=window.cart.findIndex(i=>i.id===id); if(idx>-1){window.cart[idx].qty+=d; if(window.cart[idx].qty<=0) window.cart.splice(idx,1); safeSet('tc_cart_v10_premium', window.cart); window.renderCartUI();} };
         window.renderCartUI = () => {
             const tQty = window.cart.reduce((s,i)=>s+i.qty,0); const tPrice = window.cart.reduce((s,i)=>s+(i.price*i.qty),0);
             ['cart-badge-desktop', 'cart-badge-mobile-nav', 'cart-badge-float'].forEach(id=>{const e=document.getElementById(id); if(e) e.innerText=tQty;});
-            const usePts = document.getElementById('use-points-cb')?.checked;
-            const fp = tPrice - (usePts&&tPrice>=20000?15000:0);
+            const usePts = document.getElementById('use-points-cb')?.checked; const fp = tPrice - (usePts&&tPrice>=20000?15000:0);
             document.getElementById('cart-total-price').innerText = window.formatRp(Math.max(fp,0));
             const c = document.getElementById('cart-items-container');
-            if(window.cart.length===0){ c.innerHTML='<div class="text-center text-slate-400 py-12"><i class="fa-solid fa-basket-shopping text-5xl mb-4 opacity-50"></i><p class="font-bold">Keranjang Kosong</p></div>'; document.getElementById('cart-checkout-form').classList.add('hidden'); }
-            else{ c.innerHTML=window.cart.map(i=>`<div class="flex gap-4 bg-white border border-slate-100 p-4 rounded-2xl shadow-sm hover:shadow-md transition-shadow"><img src="${i.image}" class="w-20 h-20 object-cover rounded-xl border border-slate-100"><div class="flex-1 min-w-0 flex flex-col justify-center"><h5 class="font-bold text-sm text-slate-800 line-clamp-2">${i.name}</h5><p class="text-sm text-[#ee4d2d] font-black mt-1">${window.formatRp(i.price)}</p></div><div class="flex items-center gap-1"><button onclick="updateCartQty('${i.id}',-1)" class="w-8 h-8 bg-slate-100 rounded-lg text-slate-600 font-bold hover:bg-slate-200 transition-colors">-</button><span class="text-sm font-bold w-6 text-center">${i.qty}</span><button onclick="updateCartQty('${i.id}',1)" class="w-8 h-8 bg-slate-100 rounded-lg text-slate-600 font-bold hover:bg-slate-200 transition-colors">+</button></div></div>`).join(''); document.getElementById('cart-checkout-form').classList.remove('hidden'); }
+            if(window.cart.length===0){ c.innerHTML='<div class="text-center text-slate-400 py-12"><i class="fa-solid fa-basket-shopping text-5xl mb-4 opacity-50"></i><p class="font-bold">Keranjang Kosong</p></div>'; document.getElementById('cart-checkout-form').classList.add('hidden'); document.getElementById('cart-checkout-btn').disabled=true; }
+            else{ c.innerHTML=window.cart.map(i=>`<div class="flex gap-4 bg-white border border-slate-100 p-4 rounded-2xl shadow-sm hover:shadow-md transition-shadow"><img src="${i.image}" class="w-20 h-20 object-cover rounded-xl border border-slate-100"><div class="flex-1 min-w-0 flex flex-col justify-center"><h5 class="font-bold text-sm text-slate-800 line-clamp-2">${i.name}</h5><p class="text-sm text-[#ee4d2d] font-black mt-1">${window.formatRp(i.price)}</p></div><div class="flex items-center gap-1"><button onclick="updateCartQty('${i.id}',-1)" class="w-8 h-8 bg-slate-100 rounded-lg text-slate-600 font-bold hover:bg-slate-200 transition-colors">-</button><span class="text-sm font-bold w-6 text-center">${i.qty}</span><button onclick="updateCartQty('${i.id}',1)" class="w-8 h-8 bg-slate-100 rounded-lg text-slate-600 font-bold hover:bg-slate-200 transition-colors">+</button></div></div>`).join(''); document.getElementById('cart-checkout-form').classList.remove('hidden'); document.getElementById('cart-checkout-btn').disabled=false;}
         };
-        window.checkoutCartWA = () => {
+        
+        window.generateInvoice = () => {
             if(window.cart.length===0) return showToast('Keranjang kosong!', true);
             const nm = document.getElementById('cust-name').value; const al = document.getElementById('cust-address').value;
             if(!nm||!al) return showToast('Lengkapi Nama & Alamat Penerima!', true);
+            
+            document.getElementById('inv-name').innerText = nm;
+            document.getElementById('inv-address').innerText = al;
+            const now = new Date(); document.getElementById('invoice-date').innerText = now.toLocaleDateString('id-ID') + ' ' + now.toLocaleTimeString('id-ID').slice(0,5);
+            
+            let itemHtml = '';
+            window.cart.forEach(i => { itemHtml += `<div class="flex justify-between"><span>${i.qty}x ${i.name.substring(0,15)}..</span><span>${window.formatRp(i.price*i.qty)}</span></div>`; });
+            
+            const up = document.getElementById('use-points-cb').checked;
+            const tPrice = window.cart.reduce((s,i)=>s+(i.price*i.qty),0);
+            if(up && tPrice>=20000) itemHtml += `<div class="flex justify-between text-amber-600 border-t border-dashed border-slate-200 pt-2 mt-2"><span>Tukar Poin Sehat</span><span>-Rp 15.000</span></div>`;
+            
+            document.getElementById('invoice-items').innerHTML = itemHtml;
+            document.getElementById('invoice-total').innerText = document.getElementById('cart-total-price').innerText;
+            
+            toggleModal('cart-modal'); toggleModal('invoice-modal');
+        };
+
+        window.confirmCheckoutWA = () => {
+            const nm = document.getElementById('cust-name').value; const al = document.getElementById('cust-address').value;
             let m = `*PESANAN HERBAL (THIBBUN CARE)*\n\n*Penerima:* ${nm}\n*Alamat:* ${al}\n\n*Rincian Belanja:*`;
             window.cart.forEach(i=>m+=`\n- ${i.name} (${i.qty}x) = ${window.formatRp(i.price*i.qty)}`);
             const up = document.getElementById('use-points-cb').checked; if(up) m+='\n- Penukaran Poin Sehat: -Rp 15.000';
-            m+=`\n\n*Total Tagihan Akhir:* ${document.getElementById('cart-total-price').innerText}\n\nMohon informasi ongkir dan rekening pembayaran. Terima kasih.`;
-            window.cart=[]; safeSet('tc_cart_v7_premium', window.cart); window.renderCartUI(); toggleModal('cart-modal'); window.openWhatsApp(m);
+            m+=`\n\n*Total Tagihan Akhir:* ${document.getElementById('invoice-total').innerText}\n\nMohon informasi ongkir dan rekening pembayaran. Terima kasih.`;
+            window.cart=[]; safeSet('tc_cart_v10_premium', window.cart); window.renderCartUI(); 
+            toggleModal('invoice-modal'); window.openWhatsApp(m);
+            document.getElementById('cust-name').value = ''; document.getElementById('cust-address').value = '';
         };
         
         window.submitReservationForm = (e) => {
             e.preventDefault();
-            const m = `*RESERVASI LAYANAN (THIBBUN CARE)*\n\nNama Pasien: ${document.getElementById('res-name').value}\nNo HP/WA: ${document.getElementById('res-phone').value}\nJenis Layanan: ${document.getElementById('res-service').value}\nTanggal Terapi: ${document.getElementById('res-date').value}\nWaktu Terapi: ${document.getElementById('res-time').value}\nKeluhan Utama: ${document.getElementById('res-complaint').value}\n\nMohon konfirmasi ketersediaan jadwal terapis. Terima kasih.`;
+            const name = document.getElementById('res-name').value;
+            const age = document.getElementById('res-age').value;
+            const phone = document.getElementById('res-phone').value;
+            const address = document.getElementById('res-address').value;
+            const type = document.getElementById('res-type').value;
+            const service = document.getElementById('res-service').value;
+            const date = document.getElementById('res-date').value;
+            const time = document.getElementById('res-time').value;
+            const complaint = document.getElementById('res-complaint').value;
+
+            const m = `*RESERVASI LAYANAN (THIBBUN CARE)*\n\n*Nama Pasien:* ${name} (${age} Tahun)\n*No HP/WA:* ${phone}\n*Alamat:* ${address}\n\n*Kehadiran:* ${type}\n*Jenis Layanan:* ${service}\n*Jadwal Terapi:* ${date} | ${time}\n\n*Keluhan Utama:*\n${complaint}\n\nMohon konfirmasi ketersediaan jadwal terapis. Terima kasih.`;
+            
             toggleModal('reservation-modal'); window.openWhatsApp(m);
+        };
+        
+        /* Fitur Bintang Ulasan */
+        window.setReviewRating = (num) => {
+            document.getElementById('rev-rating').value = num;
+            const stars = document.getElementById('review-star-container').children;
+            for(let i=0; i<5; i++) {
+                if(i<num) { stars[i].classList.remove('text-slate-200'); stars[i].classList.add('text-amber-400'); }
+                else { stars[i].classList.remove('text-amber-400'); stars[i].classList.add('text-slate-200'); }
+            }
+        };
+
+        window.submitReview = async (e) => {
+            e.preventDefault();
+            const rating = parseInt(document.getElementById('rev-rating').value);
+            if(rating === 0) return showToast('Pilih bintang penilaian terlebih dahulu!', true);
+            
+            const obj = {
+                id: 'rev_' + Date.now(),
+                name: document.getElementById('rev-name').value,
+                gender: document.getElementById('rev-gender').value,
+                service: document.getElementById('rev-service').value,
+                text: document.getElementById('rev-text').value,
+                rating: rating,
+                status: 'Pending'
+            };
+            
+            window.appState.reviews.push(obj);
+            safeSet('tc_state_v10_premium', window.appState);
+            
+            if(isFirebaseActive && auth.currentUser) {
+                try { await setDoc(doc(db, 'artifacts', activeAppId, 'public', 'data', 'reviews', obj.id), obj); }
+                catch(err) { console.log(err); }
+            }
+            
+            toggleModal('review-modal');
+            showToast('Terima kasih! Ulasan Anda telah terkirim.');
+            
+            // Reset Form
+            document.getElementById('rev-name').value = ''; document.getElementById('rev-service').value = ''; document.getElementById('rev-text').value = '';
+            window.setReviewRating(0);
+            window.renderAll();
+        };
+
+        window.toggleReviewStatus = async (id) => {
+            const idx = window.appState.reviews.findIndex(x=>x.id===id);
+            if(idx>-1) {
+                window.appState.reviews[idx].status = window.appState.reviews[idx].status === 'Approved' ? 'Pending' : 'Approved';
+                safeSet('tc_state_v10_premium', window.appState); window.renderAll();
+                if(isFirebaseActive && auth.currentUser) {
+                    try { await setDoc(doc(db, 'artifacts', activeAppId, 'public', 'data', 'reviews', id), window.appState.reviews[idx]); } catch(e){}
+                }
+            }
+        };
+
+        window.downloadCSV = (type) => {
+            const data = window.appState[type];
+            if(!data || !data.length) return showToast('Tidak ada data untuk diunduh', true);
+            const headers = Object.keys(data[0]).join(',');
+            const rows = data.map(obj => Object.values(obj).map(v => `"${String(v).replace(/"/g, '""')}"`).join(',')).join('\n');
+            // Menambahkan BOM \uFEFF agar Microsoft Excel membaca karakter dengan sempurna
+            const csv = '\uFEFF' + headers + '\n' + rows;
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", `ThibbunCare_${type}_${new Date().toISOString().slice(0,10)}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         };
 
         window.renderAll = () => {
             document.documentElement.style.setProperty('--color-primary', window.appState.settings.primaryColor);
-            
-            // Populate Admin Settings Inputs
             const waIn = document.getElementById('setting-wa'); if(waIn && !waIn.value) waIn.value = window.appState.settings.waNumber;
             const usIn = document.getElementById('setting-user'); if(usIn && !usIn.value) usIn.value = window.appState.settings.adminUser;
             const coIn = document.getElementById('setting-color'); if(coIn && !coIn.value) coIn.value = window.appState.settings.primaryColor;
             
+            const annCb = document.getElementById('setting-announce-active'); if(annCb) annCb.checked = window.appState.settings.announcementActive;
+            const annTxt = document.getElementById('setting-announce-text'); if(annTxt && !annTxt.value) annTxt.value = window.appState.settings.announcementText;
+            
+            // Render Announcement Bar
+            const annBar = document.getElementById('announcement-bar');
+            if(annBar) {
+                if(window.appState.settings.announcementActive && window.appState.settings.announcementText) {
+                    annBar.classList.remove('hidden'); document.getElementById('announcement-text').innerText = window.appState.settings.announcementText;
+                } else { annBar.classList.add('hidden'); }
+            }
+
             const ids = ['setting-address', 'setting-email', 'setting-hours', 'setting-fb', 'setting-ig', 'setting-yt'];
             const keys = ['address', 'email', 'hours', 'facebook', 'instagram', 'youtube'];
             ids.forEach((id, idx) => { const el = document.getElementById(id); if(el) el.value = window.appState.settings[keys[idx]] || ''; });
 
-            // Ensure Safe Injection
             const safeHtml = (id, str) => { const el = document.getElementById(id); if(el) el.innerHTML = str; };
-            
-            // Populate Public Footer Links
             safeHtml('footer-address', window.appState.settings.address || 'Alamat Belum Diatur');
             safeHtml('footer-email', window.appState.settings.email || 'Email Belum Diatur');
             safeHtml('footer-hours', window.appState.settings.hours || 'Jam Belum Diatur');
@@ -764,7 +1205,6 @@
             const igEl = document.getElementById('footer-ig'); if(igEl) igEl.href = window.appState.settings.instagram || '#';
             const ytEl = document.getElementById('footer-yt'); if(ytEl) ytEl.href = window.appState.settings.youtube || '#';
 
-            // Populate Public Grids
             safeHtml('home-services-grid', window.appState.services.slice(0,3).map(window.generateServiceCard).join(''));
             safeHtml('full-services-grid', window.appState.services.map(window.generateServiceCard).join(''));
             safeHtml('home-products-grid', window.appState.products.slice(0,5).map(window.generateProductCard).join(''));
@@ -775,7 +1215,48 @@
             safeHtml('careers-grid', window.appState.careers.map(window.generateCareerCard).join(''));
             safeHtml('branches-container', window.appState.branches.map(window.generateBranchCard).join(''));
 
-            // Populate Admin Tables
+            // Render Reviews (Default digabungkan dengan yang disetujui Admin agar halaman tetap terisi penuh dan rapi)
+            const defaultStaticReviews = `
+                <div class="bg-slate-800/50 backdrop-blur-md p-8 rounded-3xl shadow-xl hover:-translate-y-2 transition-all duration-300 relative border-t-4 border-pink-400 border-x border-b border-slate-700 flex flex-col justify-between group">
+                    <div class="absolute top-6 right-8 text-white/5 text-6xl group-hover:scale-110 transition-transform"><i class="fa-solid fa-quote-right"></i></div>
+                    <div>
+                        <div class="flex text-amber-400 text-sm mb-5 relative z-10 gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-slate-300 leading-relaxed font-medium mb-8 text-justify relative z-10 text-sm md:text-base">"Setelah rutin akupunktur dan konsumsi madu hitam, keluhan pusing jauh berkurang. Terapisnya ramah & profesional."</p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-5 mt-auto relative z-10">
+                        <div class="w-12 h-12 bg-pink-500/20 text-pink-400 rounded-full flex items-center justify-center text-2xl font-bold border border-pink-500/30 shadow-inner">♀</div>
+                        <div><h4 class="font-bold text-white text-sm">Pasien Wanita</h4><p class="text-xs text-slate-400">Terapi TCM</p></div>
+                    </div>
+                </div>
+                <div class="bg-slate-800/50 backdrop-blur-md p-8 rounded-3xl shadow-xl hover:-translate-y-2 transition-all duration-300 relative border-t-4 border-blue-400 border-x border-b border-slate-700 transform md:-translate-y-4 flex flex-col justify-between group">
+                    <div class="absolute top-6 right-8 text-white/5 text-6xl group-hover:scale-110 transition-transform"><i class="fa-solid fa-quote-right"></i></div>
+                    <div>
+                        <div class="flex text-amber-400 text-sm mb-5 relative z-10 gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-slate-300 leading-relaxed font-medium mb-8 text-justify relative z-10 text-sm md:text-base">"Sangat puas dengan Homecare-nya. Terapis tepat waktu, alat 100% steril segel baru, pelayanannya sesuai sunnah."</p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-5 mt-auto relative z-10">
+                        <div class="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-full flex items-center justify-center text-2xl font-bold border border-blue-500/30 shadow-inner">♂</div>
+                        <div><h4 class="font-bold text-white text-sm">Pasien Pria</h4><p class="text-xs text-slate-400">Homecare Bekam</p></div>
+                    </div>
+                </div>
+                <div class="bg-slate-800/50 backdrop-blur-md p-8 rounded-3xl shadow-xl hover:-translate-y-2 transition-all duration-300 relative border-t-4 border-emerald-400 border-x border-b border-slate-700 flex flex-col justify-between group">
+                    <div class="absolute top-6 right-8 text-white/5 text-6xl group-hover:scale-110 transition-transform"><i class="fa-solid fa-quote-right"></i></div>
+                    <div>
+                        <div class="flex text-amber-400 text-sm mb-5 relative z-10 gap-1"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-slate-300 leading-relaxed font-medium mb-8 text-justify relative z-10 text-sm md:text-base">"Kalkulator kondisinya sangat membantu. Beli herbal via WA responnya cepat. Kualitas herbalnya terjamin murni!"</p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-5 mt-auto relative z-10">
+                        <div class="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center text-2xl font-bold border border-emerald-500/30 shadow-inner">👤</div>
+                        <div><h4 class="font-bold text-white text-sm">Pelanggan Setia</h4><p class="text-xs text-slate-400">Toko Herbal</p></div>
+                    </div>
+                </div>
+            `;
+            
+            const approvedReviews = window.appState.reviews.filter(r => r.status === 'Approved');
+            const approvedHtml = approvedReviews.map(window.generateReviewCard).join('');
+            // Menggabungkan review baru dengan review bawaan agar tampilan tetap estetik
+            safeHtml('home-reviews-grid', approvedHtml + defaultStaticReviews);
+
             const tBtn = (t,id) => `<td class="px-6 py-4 text-right"><button onclick="openFormModal('${t}','${id}')" class="text-blue-500 hover:text-blue-700 bg-blue-50 w-8 h-8 rounded-lg mx-2 transition-colors"><i class="fa fa-pen"></i></button><button onclick="deleteItem('${t}','${id}')" class="text-red-500 hover:text-red-700 bg-red-50 w-8 h-8 rounded-lg transition-colors"><i class="fa fa-trash"></i></button></td>`;
             safeHtml('table-produk', window.appState.products.map(p=>`<tr><td class="px-6 py-4 flex items-center gap-4"><img src="${p.image}" class="w-12 h-12 object-cover rounded-xl shadow-sm border border-slate-100"> <span class="font-bold text-slate-800">${p.name}</span></td><td class="px-6 py-4 font-bold text-primary">${window.formatRp(p.price)}</td>${tBtn('produk',p.id)}</tr>`).join(''));
             safeHtml('table-layanan', window.appState.services.map(s=>`<tr><td class="px-6 py-4 flex items-center gap-4"><img src="${s.image}" class="w-12 h-12 object-cover rounded-xl shadow-sm border border-slate-100"> <span class="font-bold text-slate-800">${s.title}</span></td>${tBtn('layanan',s.id)}</tr>`).join(''));
@@ -784,26 +1265,24 @@
             safeHtml('table-karir', window.appState.careers.map(c=>`<tr><td class="px-6 py-4 font-bold text-slate-800">${c.title}</td><td class="px-6 py-4"><span class="bg-slate-100 px-3 py-1 rounded-lg text-xs">${c.loc}</span></td>${tBtn('karir',c.id)}</tr>`).join(''));
             safeHtml('table-cabang', window.appState.branches.map(b=>`<tr><td class="px-6 py-4 font-bold text-slate-800">${b.name}</td><td class="px-6 py-4">${b.phone}</td>${tBtn('cabang',b.id)}</tr>`).join(''));
             
+            // Render Table Ulasan Admin
+            safeHtml('table-ulasan', window.appState.reviews.map(r=>`<tr><td class="px-6 py-4"><p class="font-bold text-slate-800">${r.name}</p><p class="text-[10px] text-slate-500">${r.gender}</p></td><td class="px-6 py-4 text-xs font-bold text-slate-600">${r.service}</td><td class="px-6 py-4"><p class="w-64 truncate text-xs">${r.text}</p></td><td class="px-6 py-4"><span class="px-2 py-1 rounded-lg text-xs font-bold ${r.status==='Approved'?'bg-green-100 text-green-700':'bg-amber-100 text-amber-700'}">${r.status}</span></td><td class="px-6 py-4 text-right"><button onclick="toggleReviewStatus('${r.id}')" class="text-xs px-3 py-1.5 rounded-lg font-bold mr-2 ${r.status==='Approved'?'bg-slate-100 text-slate-600':'bg-emerald-100 text-emerald-700 hover:bg-emerald-200'}">${r.status==='Approved'?'Batalkan':'Approve'}</button><button onclick="deleteItem('reviews','${r.id}')" class="text-red-500 hover:text-red-700 bg-red-50 w-8 h-8 rounded-lg transition-colors"><i class="fa fa-trash"></i></button></td></tr>`).join(''));
+
             const sts = document.getElementById('stat-system'); if(sts) sts.innerText = window.appState.products.length + window.appState.articles.length + window.appState.services.length;
             window.renderCartUI();
         };
 
         let chartInst = null;
         const renderChart = () => {
-            const ctx = document.getElementById('dashboardChart');
-            if(!ctx) return;
+            const ctx = document.getElementById('dashboardChart'); if(!ctx) return;
             if(chartInst) chartInst.destroy();
-            chartInst = new Chart(ctx, {
-                type: 'line',
-                data: { labels: ['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'], datasets: [{ label: 'Pengunjung Web', data: [120, 190, 150, 320, 280, 410, 350], borderColor: window.appState.settings.primaryColor, backgroundColor: (context) => { const g = context.chart.ctx.createLinearGradient(0,0,0,300); g.addColorStop(0, window.appState.settings.primaryColor+'40'); g.addColorStop(1, 'rgba(255,255,255,0)'); return g; }, tension: 0.4, fill: true, borderWidth: 3, pointBackgroundColor: '#fff', pointBorderColor: window.appState.settings.primaryColor, pointBorderWidth: 2, pointRadius: 4, pointHoverRadius: 6 }] },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, grid: { borderDash: [5, 5] }, ticks: { font: { family: 'Inter', weight: 'bold' } } }, x: { grid: { display: false }, ticks: { font: { family: 'Inter', weight: 'bold' } } } } }
-            });
+            chartInst = new Chart(ctx, { type: 'line', data: { labels: ['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'], datasets: [{ label: 'Pengunjung Web', data: [120, 190, 150, 320, 280, 410, 350], borderColor: window.appState.settings.primaryColor, backgroundColor: (context) => { const g = context.chart.ctx.createLinearGradient(0,0,0,300); g.addColorStop(0, window.appState.settings.primaryColor+'40'); g.addColorStop(1, 'rgba(255,255,255,0)'); return g; }, tension: 0.4, fill: true, borderWidth: 3, pointBackgroundColor: '#fff', pointBorderColor: window.appState.settings.primaryColor, pointBorderWidth: 2, pointRadius: 4, pointHoverRadius: 6 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, grid: { borderDash: [5, 5] }, ticks: { font: { family: 'Inter', weight: 'bold' } } }, x: { grid: { display: false }, ticks: { font: { family: 'Inter', weight: 'bold' } } } } } });
         };
 
         let crType='', crId='', upImg='';
         window.handleAdminLogin = (e) => { e.preventDefault(); if(document.getElementById('admin-user').value === window.appState.settings.adminUser && document.getElementById('admin-pass').value === window.appState.settings.adminPass) { toggleModal('admin-login-modal'); document.getElementById('public-view').classList.add('hidden'); document.getElementById('admin-view').classList.remove('hidden'); document.getElementById('admin-view').classList.add('flex'); renderChart(); document.getElementById('admin-user').value=''; document.getElementById('admin-pass').value=''; } else document.getElementById('login-error').classList.remove('hidden'); };
         window.logoutAdmin = () => { document.getElementById('admin-view').classList.add('hidden'); document.getElementById('admin-view').classList.remove('flex'); document.getElementById('public-view').classList.remove('hidden'); };
-        window.switchAdminPanel = (id, e) => { document.querySelectorAll('.admin-panel').forEach(p=>p.classList.add('hidden')); document.getElementById('panel-'+id).classList.remove('hidden'); document.querySelectorAll('.admin-tab').forEach(t=>{ t.classList.remove('bg-primary','text-white','shadow-md'); t.classList.add('hover:bg-slate-800'); }); if(e && e.currentTarget) { e.currentTarget.classList.remove('hover:bg-slate-800'); e.currentTarget.classList.add('bg-primary','text-white','shadow-md'); } if(id==='overview') renderChart(); };
+        window.switchAdminPanel = (id, e) => { document.querySelectorAll('.admin-panel').forEach(p=>p.classList.add('hidden')); document.getElementById('panel-'+id).classList.remove('hidden'); document.querySelectorAll('.admin-tab').forEach(t=>{ t.classList.remove('bg-primary','text-white','shadow-md','text-amber-400','hover:text-amber-300'); t.classList.add('hover:bg-slate-800'); }); if(e && e.currentTarget) { e.currentTarget.classList.remove('hover:bg-slate-800'); e.currentTarget.classList.add('bg-primary','text-white','shadow-md'); } if(id==='overview') renderChart(); };
         
         window.openFormModal = (type, id='') => {
             crType=type; crId=id; upImg='';
@@ -837,7 +1316,7 @@
             else if(crType==='cabang') { obj.name=document.getElementById('f-n')?.value; obj.address=document.getElementById('f-a')?.value; obj.phone=document.getElementById('f-ph')?.value; obj.hours=document.getElementById('f-h')?.value; }
             
             if(crId) { const idx = window.appState[k].findIndex(x=>x.id===crId); if(idx>-1) window.appState[k][idx]=obj; } else window.appState[k].push(obj);
-            safeSet('tc_state_v7_premium', window.appState); window.renderAll(); closeFormModal();
+            safeSet('tc_state_v10_premium', window.appState); window.renderAll(); closeFormModal();
 
             if(isFirebaseActive && auth.currentUser) {
                 try { 
@@ -850,9 +1329,9 @@
 
         window.deleteItem = async (type, id) => {
             if(!confirm("Yakin menghapus data ini secara permanen?")) return;
-            const k = type==='produk'?'products':type==='layanan'?'services':type==='artikel'?'articles':type==='terapis'?'therapists':type==='karir'?'careers':'branches';
+            const k = type==='produk'?'products':type==='layanan'?'services':type==='artikel'?'articles':type==='terapis'?'therapists':type==='karir'?'careers':(type==='reviews'?'reviews':'branches');
             window.appState[k] = window.appState[k].filter(x=>x.id!==id);
-            safeSet('tc_state_v7_premium', window.appState); window.renderAll();
+            safeSet('tc_state_v10_premium', window.appState); window.renderAll();
             
             if(isFirebaseActive && auth.currentUser) {
                 try { await deleteDoc(doc(db, 'artifacts', activeAppId, 'public', 'data', k, id)); showToast("Dihapus permanen dari Cloud"); }
@@ -866,8 +1345,6 @@
             window.appState.settings.adminUser = document.getElementById('setting-user').value || window.appState.settings.adminUser;
             const newPass = document.getElementById('setting-pass').value; if(newPass) window.appState.settings.adminPass = newPass;
             window.appState.settings.primaryColor = document.getElementById('setting-color').value || window.appState.settings.primaryColor;
-            
-            // New Footer Info Savings
             window.appState.settings.address = document.getElementById('setting-address').value;
             window.appState.settings.email = document.getElementById('setting-email').value;
             window.appState.settings.hours = document.getElementById('setting-hours').value;
@@ -875,34 +1352,28 @@
             window.appState.settings.instagram = document.getElementById('setting-ig').value;
             window.appState.settings.youtube = document.getElementById('setting-yt').value;
             
-            safeSet('tc_state_v7_premium', window.appState); window.renderAll();
+            window.appState.settings.announcementActive = document.getElementById('setting-announce-active').checked;
+            window.appState.settings.announcementText = document.getElementById('setting-announce-text').value;
             
-            if(isFirebaseActive && auth.currentUser) {
-                try { await setDoc(doc(db, 'artifacts', activeAppId, 'public', 'data', 'settings', 'main'), window.appState.settings); showToast("Pengaturan Tersimpan di Cloud!"); } catch(e) { showToast("Pengaturan Lokal Disimpan!", true); }
-            } else showToast("Pengaturan Lokal Disimpan!", true);
+            safeSet('tc_state_v10_premium', window.appState); window.renderAll();
+            if(isFirebaseActive && auth.currentUser) { try { await setDoc(doc(db, 'artifacts', activeAppId, 'public', 'data', 'settings', 'main'), window.appState.settings); showToast("Pengaturan Tersimpan di Cloud!"); } catch(e) { showToast("Pengaturan Lokal Disimpan!", true); } } else showToast("Pengaturan Lokal Disimpan!", true);
         };
 
         const initCloudSync = async () => {
-            if (isFirebaseActive && auth) {
-                try {
-                    await signInAnonymously(auth);
-                    if (auth.currentUser) {
-                        onSnapshot(doc(db, 'artifacts', activeAppId, 'public', 'data', 'settings', 'main'), (docSnap) => {
-                            if(docSnap.exists()) { window.appState.settings = docSnap.data(); safeSet('tc_state_v7_premium', window.appState); window.renderAll(); }
-                        }, (error) => console.log("Firebase Setting Sync Error: ", error));
-                        
-                        ['products', 'services', 'articles', 'therapists', 'careers', 'branches'].forEach(k => {
-                            onSnapshot(collection(db, 'artifacts', activeAppId, 'public', 'data', k), (qSnap) => {
-                                if (!qSnap.empty) {
-                                    let arr = []; qSnap.forEach(d => arr.push(d.data()));
-                                    window.appState[k] = arr; safeSet('tc_state_v7_premium', window.appState); window.renderAll();
-                                }
-                            }, (error) => console.log(`Firebase ${k} Sync Error: `, error));
-                        });
-                    }
-                } catch(e) { showToast("Sistem Berjalan di Mode Offline (Lokal).", true); }
-            }
-            window.renderAll(); // Ensure first render fires even if offline
+            setTimeout(() => {
+                if (isFirebaseActive && auth) {
+                    try {
+                        signInAnonymously(auth).then(() => {
+                            if (auth.currentUser) {
+                                onSnapshot(doc(db, 'artifacts', activeAppId, 'public', 'data', 'settings', 'main'), (docSnap) => { if(docSnap.exists()) { window.appState.settings = docSnap.data(); safeSet('tc_state_v10_premium', window.appState); window.renderAll(); } }, (e) => console.log(e));
+                                ['products', 'services', 'articles', 'therapists', 'careers', 'branches', 'reviews'].forEach(k => {
+                                    onSnapshot(collection(db, 'artifacts', activeAppId, 'public', 'data', k), (qSnap) => { if (!qSnap.empty) { let arr = []; qSnap.forEach(d => arr.push(d.data())); window.appState[k] = arr; safeSet('tc_state_v10_premium', window.appState); window.renderAll(); } }, (e) => console.log(e));
+                                });
+                            }
+                        }).catch(()=> { window.renderAll(); showToast("Sistem Berjalan di Mode Offline (Lokal).", true); });
+                    } catch(e) { window.renderAll(); }
+                } else { window.renderAll(); }
+            }, 800); 
         };
 
         window.addEventListener('DOMContentLoaded', initCloudSync);
